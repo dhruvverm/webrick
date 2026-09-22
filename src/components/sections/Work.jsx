@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
-import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion, useInView, useMotionValue, useSpring } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import SectionHeader from '../ui/SectionHeader'
 import ProjectMockup from '../ProjectMockup'
@@ -9,6 +9,24 @@ import { EASE } from '../ui/Reveal'
 
 const PREVIEW_W = 400
 const PREVIEW_H = 300
+
+/** Inline preview for small screens. Reveals once when scrolled into view. */
+function MobilePreview({ project: p }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '0px 0px -8% 0px' })
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.8, ease: EASE }}
+      className="mb-6 aspect-[16/10] overflow-hidden rounded-[6px] border border-line px-6 pt-6 lg:hidden"
+      style={{ background: `radial-gradient(120% 90% at 50% 0%, hsl(${p.hue} 18% 32% / 0.5), transparent 70%), #141413` }}
+    >
+      <ProjectMockup variant={p.mockup} hue={p.hue} image={p.image} name={p.name} />
+    </motion.div>
+  )
+}
 
 /**
  * Project index. On desktop a preview follows the cursor over the hovered
@@ -63,16 +81,7 @@ export default function Work() {
                 className="group row-hover w-full py-6 text-left lg:py-7"
               >
                 {/* inline preview, small screens only */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, margin: '0px 0px -10% 0px' }}
-                  transition={{ duration: 0.8, ease: EASE }}
-                  className="mb-6 aspect-[16/10] overflow-hidden rounded-[6px] border border-line px-6 pt-6 lg:hidden"
-                  style={{ background: `radial-gradient(120% 90% at 50% 0%, hsl(${p.hue} 18% 32% / 0.5), transparent 70%), #141413` }}
-                >
-                  <ProjectMockup variant={p.mockup} hue={p.hue} image={p.image} name={p.name} />
-                </motion.div>
+                <MobilePreview project={p} />
 
                 <div className="grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 sm:gap-x-6 lg:grid-cols-12">
                   <span className="mono text-xs text-dim lg:col-span-1">0{i + 1}</span>
