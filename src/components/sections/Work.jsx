@@ -64,10 +64,10 @@ export default function Work() {
               >
                 {/* inline preview, small screens only */}
                 <motion.div
-                  initial={{ clipPath: 'inset(0 0 100% 0)' }}
-                  whileInView={{ clipPath: 'inset(0 0 0% 0)' }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.9, ease: EASE }}
+                  initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+                  transition={{ duration: 0.8, ease: EASE }}
                   className="mb-6 aspect-[16/10] overflow-hidden rounded-[6px] border border-line px-6 pt-6 lg:hidden"
                   style={{ background: `radial-gradient(120% 90% at 50% 0%, hsl(${p.hue} 18% 32% / 0.5), transparent 70%), #141413` }}
                 >

@@ -49,7 +49,7 @@ export default function Testimonials() {
                 <p className="display max-w-[30ch] text-2xl font-medium leading-[1.2] sm:text-3xl lg:text-[2.5rem]">
                   “{t.quote}”
                 </p>
-                <footer className="mt-8 flex items-baseline gap-4">
+                <footer className="mt-8 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
                   <span className="text-[0.95rem] text-text">{t.name}</span>
                   <span className="text-sm text-dim">{t.role}</span>
                 </footer>
