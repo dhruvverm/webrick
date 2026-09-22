@@ -16,6 +16,20 @@ npm run build      # production build in dist/
 npm run preview    # serve the production build
 ```
 
+## Deploy (GitHub Pages)
+
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site with
+`VITE_BASE=/webrick/` and publishes it to **https://dhruvverm.github.io/webrick/**.
+
+Two one-time settings on GitHub are required:
+
+1. The repository must be **public** (Settings → General → Danger Zone → Change visibility),
+   because GitHub Pages on a free account is only available for public repositories.
+2. Settings → Pages → *Build and deployment* → Source: **GitHub Actions**
+   (the workflow tries to enable this itself; set it by hand if the first run complains).
+
+After that, re-run the workflow from the Actions tab or push any commit.
+
 ## Structure
 
 ```
