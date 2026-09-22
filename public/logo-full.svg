@@ -1,0 +1,19 @@
+<svg width="220" height="48" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(4 4)">
+    <g fill="#f2efe8">
+      <rect x="2" y="5.75" width="6" height="6" rx="0.8"/>
+      <rect x="32" y="5.75" width="6" height="6" rx="0.8"/>
+      <rect x="2" y="13.25" width="6" height="6" rx="0.8"/>
+      <rect x="17" y="13.25" width="6" height="6" rx="0.8"/>
+      <rect x="32" y="13.25" width="6" height="6" rx="0.8"/>
+      <rect x="2" y="20.75" width="6" height="6" rx="0.8"/>
+      <rect x="17" y="20.75" width="6" height="6" rx="0.8"/>
+      <rect x="32" y="20.75" width="6" height="6" rx="0.8"/>
+    </g>
+    <g fill="#e4632f">
+      <rect x="9.5" y="28.25" width="6" height="6" rx="0.8"/>
+      <rect x="24.5" y="28.25" width="6" height="6" rx="0.8"/>
+    </g>
+  </g>
+  <text x="58" y="33" font-family="Bricolage Grotesque, Geist, system-ui, sans-serif" font-weight="600" font-size="30" letter-spacing="-1.3" fill="#f2efe8">Webrick</text>
+</svg>
