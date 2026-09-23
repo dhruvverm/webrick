@@ -1,11 +1,12 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { LOGO_BLOCKS } from './Logo'
 
 /**
  * The Webrick "W" as a standing wall of bricks, drawn in a dimetric
  * projection. Bricks drop in from the bottom row up, then a slow wave
- * travels through the wall every few seconds. Bricks lift on hover.
+ * travels through the wall every few seconds. Hovering (or tapping) a brick
+ * spins it a full 360° about its own centre over one second.
  */
 
 const S = 44
@@ -32,6 +33,31 @@ function brickFaces(c, l) {
 const PALETTE = {
   base: { top: '#2b2b28', front: '#1a1a18', side: '#222220', stroke: 'rgba(242,239,232,0.16)' },
   accent: { top: '#f0916b', front: '#a63f18', side: '#d5592a', stroke: 'rgba(242,239,232,0.28)' },
+}
+
+/** One brick. Each hover or tap adds a full forward turn; a turn in progress is not interrupted. */
+function Brick({ faces, pal }) {
+  const [turns, setTurns] = useState(0)
+  const [spinning, setSpinning] = useState(false)
+  const spin = () => {
+    if (spinning) return
+    setSpinning(true)
+    setTurns((n) => n + 1)
+  }
+  return (
+    <motion.g
+      onHoverStart={spin}
+      onTap={spin}
+      animate={{ rotate: turns * 360 }}
+      transition={{ duration: 1, ease: [0.45, 0, 0.2, 1] }}
+      onAnimationComplete={() => setSpinning(false)}
+      style={{ cursor: 'pointer' }}
+    >
+      <polygon points={pts(faces.front)} fill={pal.front} stroke={pal.stroke} strokeWidth="0.8" strokeLinejoin="round" />
+      <polygon points={pts(faces.side)} fill={pal.side} stroke={pal.stroke} strokeWidth="0.8" strokeLinejoin="round" />
+      <polygon points={pts(faces.top)} fill={pal.top} stroke={pal.stroke} strokeWidth="0.8" strokeLinejoin="round" />
+    </motion.g>
+  )
 }
 
 export default function BlockAssembly({ className = '', delay = 0.5, wave = false }) {
@@ -70,11 +96,7 @@ export default function BlockAssembly({ className = '', delay = 0.5, wave = fals
                   : undefined
               }
             >
-              <motion.g whileHover={{ y: -9 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-                <polygon points={pts(b.faces.front)} fill={pal.front} stroke={pal.stroke} strokeWidth="0.8" strokeLinejoin="round" />
-                <polygon points={pts(b.faces.side)} fill={pal.side} stroke={pal.stroke} strokeWidth="0.8" strokeLinejoin="round" />
-                <polygon points={pts(b.faces.top)} fill={pal.top} stroke={pal.stroke} strokeWidth="0.8" strokeLinejoin="round" />
-              </motion.g>
+              <Brick faces={b.faces} pal={pal} />
             </motion.g>
           </motion.g>
         )
