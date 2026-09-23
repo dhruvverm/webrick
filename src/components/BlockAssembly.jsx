@@ -11,9 +11,12 @@ import { LOGO_BLOCKS } from './Logo'
  * Sizes are in `cqw` so the figure scales with its container width.
  */
 
-const S = 16 // brick width and height
-const D = 10.5 // brick depth
-const P = 21.5 // pitch between bricks
+const W = 17 // brick length
+const H = 8 // brick height
+const D = 8 // brick depth
+const PX = 21 // column pitch
+const PY = 10 // row pitch (brick height + mortar gap)
+const LEVELS = 8 // each logo cell is two stacked bricks
 const u = (n) => `${n}cqw`
 
 const PALETTE = {
@@ -29,12 +32,12 @@ const PALETTE = {
 
 // Each face is centred in the brick box, then pushed out along its axis.
 const FACES = [
-  ['front', `translateZ(${u(D / 2)})`, S, S],
-  ['back', `rotateY(180deg) translateZ(${u(D / 2)})`, S, S],
-  ['right', `rotateY(90deg) translateZ(${u(S / 2)})`, D, S],
-  ['left', `rotateY(-90deg) translateZ(${u(S / 2)})`, D, S],
-  ['top', `rotateX(90deg) translateZ(${u(S / 2)})`, S, D],
-  ['bottom', `rotateX(-90deg) translateZ(${u(S / 2)})`, S, D],
+  ['front', `translateZ(${u(D / 2)})`, W, H],
+  ['back', `rotateY(180deg) translateZ(${u(D / 2)})`, W, H],
+  ['right', `rotateY(90deg) translateZ(${u(W / 2)})`, D, H],
+  ['left', `rotateY(-90deg) translateZ(${u(W / 2)})`, D, H],
+  ['top', `rotateX(90deg) translateZ(${u(H / 2)})`, W, D],
+  ['bottom', `rotateX(-90deg) translateZ(${u(H / 2)})`, W, D],
 ]
 
 function Brick({ pal }) {
@@ -53,7 +56,7 @@ function Brick({ pal }) {
       transition={{ duration: 1, ease: [0.45, 0, 0.2, 1] }}
       onAnimationComplete={() => setSpinning(false)}
       className="relative cursor-pointer"
-      style={{ width: u(S), height: u(S), transformStyle: 'preserve-3d' }}
+      style={{ width: u(W), height: u(H), transformStyle: 'preserve-3d' }}
     >
       {FACES.map(([name, transform, w, h]) => (
         <div
@@ -76,9 +79,12 @@ function Brick({ pal }) {
 }
 
 export default function BlockAssembly({ className = '', delay = 0.5, wave = false }) {
-  const bricks = LOGO_BLOCKS.map(([c, r, accent]) => ({ c, level: 3 - r, accent: !!accent, key: `${c}-${r}` }))
-  const wallW = 4 * P + S
-  const wallH = 3 * P + S
+  // Two bricks per logo cell: logo row r (0 = top) becomes levels (3-r)*2+1 and (3-r)*2 (0 = bottom).
+  const bricks = LOGO_BLOCKS.flatMap(([c, r, accent]) =>
+    [1, 0].map((k) => ({ c, level: (3 - r) * 2 + k, accent: !!accent, key: `${c}-${r}-${k}` })),
+  )
+  const wallW = 4 * PX + W
+  const wallH = (LEVELS - 1) * PY + H
 
   return (
     <div className={className} style={{ containerType: 'inline-size' }} aria-hidden="true">
@@ -95,13 +101,13 @@ export default function BlockAssembly({ className = '', delay = 0.5, wave = fals
         >
           {bricks.map((b, i) => {
             const pal = b.accent ? PALETTE.accent : PALETTE.base
-            const enter = delay + b.level * 0.12 + b.c * 0.04
+            const enter = delay + b.level * 0.06 + b.c * 0.03
             return (
               <motion.div
                 key={b.key}
                 className="absolute"
-                style={{ left: u(b.c * P), top: u((3 - b.level) * P), width: u(S), height: u(S), transformStyle: 'preserve-3d' }}
-                initial={{ y: '-80%', scale: 0.4 }}
+                style={{ left: u(b.c * PX), top: u((LEVELS - 1 - b.level) * PY), width: u(W), height: u(H), transformStyle: 'preserve-3d' }}
+                initial={{ y: '-120%', scale: 0.5 }}
                 animate={{ y: 0, scale: 1 }}
                 transition={{ delay: enter, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               >
@@ -110,7 +116,7 @@ export default function BlockAssembly({ className = '', delay = 0.5, wave = fals
                   animate={wave ? { y: ['0%', '-12%', '0%'] } : undefined}
                   transition={
                     wave
-                      ? { duration: 1.4, ease: 'easeInOut', repeat: Infinity, repeatDelay: 3.6, delay: enter + 1.6 + (b.c + b.level) * 0.11 }
+                      ? { duration: 1.4, ease: 'easeInOut', repeat: Infinity, repeatDelay: 3.6, delay: enter + 1.6 + (b.c + b.level * 0.5) * 0.11 }
                       : undefined
                   }
                 >
