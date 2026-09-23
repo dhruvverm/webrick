@@ -21,7 +21,9 @@ Keep clear space of at least one brick (the height of the mark ÷ 4) around the 
 
 | File | Where | Notes |
 | --- | --- | --- |
-| `profile-1080.png` | Instagram + Facebook profile picture | Mark on charcoal, sized for the circular crop. |
+| `dp-1080.png` | Instagram + Facebook profile picture | Mark stacked over the wordmark, on charcoal. Fits inside the circular crop. |
+| `dp-accent-1080.png` | Alternative profile picture | Same stacked lockup, charcoal on terracotta. |
+| `profile-1080.png` | Mark-only profile picture | Mark on charcoal, sized for the circular crop. |
 | `profile-accent-1080.png` | Alternative profile picture | Charcoal mark on terracotta. Stands out in feeds. |
 | `facebook-cover-1640x624.png` | Facebook page cover | Logo kept inside the mobile-safe centre, so nothing is cropped on phones. |
 | `instagram-post-1080.png` | Instagram / Facebook feed post | Brand announcement square. |
