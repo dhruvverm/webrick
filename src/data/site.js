@@ -1,9 +1,9 @@
 /** Studio-wide details used in the navbar, contact section and footer. */
 export const site = {
   name: 'Webrick',
-  email: 'hello@webrick.dev',
-  phone: '+1 (555) 010-2040',
-  phoneHref: 'tel:+15550102040',
+  email: 'tech.webrick@gmail.com',
+  phone: '+91 92559 96661',
+  phoneHref: 'tel:+919255996661',
   location: 'Remote-first · Clients worldwide',
   hours: 'Mon – Fri, 9:00 – 18:00',
   founded: 2020,
