@@ -7,7 +7,7 @@ import MaskedText from '../ui/MaskedText'
 import { site } from '../../data/site'
 
 const projectTypes = ['Website', 'Web application', 'E-commerce store', 'Mobile app', 'UI/UX design', 'Something else']
-const budgets = ['Under ₹50,000', '₹50,000 – ₹1.5 lakh', '₹1.5 – ₹5 lakh', '₹5 lakh+', 'Not sure yet']
+const budgets = ['₹5,000 – ₹15,000', '₹15,000 – ₹50,000', '₹50,000 – ₹1.5 lakh', '₹1.5 lakh+', 'Not sure yet']
 const initial = { name: '', email: '', company: '', type: '', budget: '', message: '' }
 
 const shake = { x: [0, -6, 6, -4, 4, 0], transition: { duration: 0.4 } }
