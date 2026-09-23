@@ -7,7 +7,7 @@ import MaskedText from '../ui/MaskedText'
 import { site } from '../../data/site'
 
 const projectTypes = ['Website', 'Web application', 'E-commerce store', 'Mobile app', 'UI/UX design', 'Something else']
-const budgets = ['Under $5k', '$5k – $15k', '$15k – $40k', '$40k+', 'Not sure yet']
+const budgets = ['Under ₹50,000', '₹50,000 – ₹1.5 lakh', '₹1.5 – ₹5 lakh', '₹5 lakh+', 'Not sure yet']
 const initial = { name: '', email: '', company: '', type: '', budget: '', message: '' }
 
 const shake = { x: [0, -6, 6, -4, 4, 0], transition: { duration: 0.4 } }
@@ -287,8 +287,8 @@ export default function Contact() {
                   transition={{ duration: 0.3 }}
                   className="relative grid gap-x-8 gap-y-8 sm:grid-cols-2"
                 >
-                  <TextField label="Name" name="name" index={0} inputRef={refs.name} value={form.name} onChange={update} error={errors.name} placeholder="Jane Smith" autoComplete="name" />
-                  <TextField label="Email" name="email" type="email" index={1} inputRef={refs.email} value={form.email} onChange={update} error={errors.email} placeholder="jane@company.com" autoComplete="email" />
+                  <TextField label="Name" name="name" index={0} inputRef={refs.name} value={form.name} onChange={update} error={errors.name} placeholder="Priya Sharma" autoComplete="name" />
+                  <TextField label="Email" name="email" type="email" index={1} inputRef={refs.email} value={form.email} onChange={update} error={errors.email} placeholder="priya@company.com" autoComplete="email" />
                   <div className="sm:col-span-2">
                     <TextField label="Company" hint="(optional)" name="company" index={2} value={form.company} onChange={update} placeholder="Company name" autoComplete="organization" />
                   </div>

@@ -8,14 +8,14 @@ export const testimonials = [
   },
   {
     quote: 'We had four websites and no idea where patients were getting lost. Now we have one site that books appointments while we sleep.',
-    name: 'Daniel Okafor',
+    name: 'Arjun Mehta',
     role: 'Managing Partner, Lumen Dental',
-    initials: 'DO',
+    initials: 'AM',
   },
   {
     quote: 'They shipped a real product, not a prototype. Multi-tenant, billing, the lot. Our first paying customers were on it within a week of launch.',
-    name: 'Sofia Marchetti',
+    name: 'Ananya Iyer',
     role: 'Co-founder, Orbit CRM',
-    initials: 'SM',
+    initials: 'AI',
   },
 ]
