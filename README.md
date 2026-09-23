@@ -16,19 +16,20 @@ npm run build      # production build in dist/
 npm run preview    # serve the production build
 ```
 
-## Deploy (GitHub Pages)
+## Deploy (GitHub Pages, custom domain)
 
-Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site with
-`VITE_BASE=/webrick/` and publishes it to **https://dhruvverm.github.io/webrick/**.
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it to
+**https://www.webrick.in** (GitHub Pages with a custom domain; `dhruvverm.github.io/webrick` redirects there).
 
-Two one-time settings on GitHub are required:
+One-time setup that was done:
 
-1. The repository must be **public** (Settings → General → Danger Zone → Change visibility),
-   because GitHub Pages on a free account is only available for public repositories.
-2. Settings → Pages → *Build and deployment* → Source: **GitHub Actions**
-   (the workflow tries to enable this itself; set it by hand if the first run complains).
+1. Hostinger DNS for `webrick.in`: four `A` records on `@` pointing to GitHub Pages
+   (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) and a `CNAME` on `www`
+   pointing to `dhruvverm.github.io`.
+2. GitHub → Settings → Pages → Custom domain `www.webrick.in`, then *Enforce HTTPS* once the DNS check passes.
+3. `public/CNAME` holds the domain and `VITE_BASE` is `/` in the workflow, so assets resolve at the root.
 
-After that, re-run the workflow from the Actions tab or push any commit.
+If the domain ever changes, update `public/CNAME`, the Open Graph URLs in `index.html`, and the Pages setting.
 
 ## Structure
 
