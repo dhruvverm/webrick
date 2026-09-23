@@ -79,7 +79,7 @@ export const projects = [
     duration: 'Ongoing',
     mockup: 'dashboard',
     hue: 262,
-    image: null,
+    image: '/work/sabsera-crm.webp',
     link: null,
   },
   {
