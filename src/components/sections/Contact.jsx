@@ -137,7 +137,8 @@ function validate(form) {
 export default function Contact() {
   const [form, setForm] = useState(initial)
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle') // idle | sending | sent
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
+  const [sendError, setSendError] = useState('')
   const refs = { name: useRef(null), email: useRef(null), message: useRef(null) }
 
   const set = (name, value) => {
@@ -155,11 +156,33 @@ export default function Contact() {
       refs[first]?.current?.focus()
       return
     }
+    if (e.target._honey?.value) return // honeypot: bots fill this, people never see it
     setStatus('sending')
-    // TODO: replace with a real request, e.g.
-    // await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) })
-    await new Promise((r) => setTimeout(r, 1100))
-    setStatus('sent')
+    setSendError('')
+    try {
+      const res = await fetch(site.formEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          email: form.email.trim(),
+          company: form.company.trim() || '—',
+          project_type: form.type,
+          budget: form.budget || 'Not specified',
+          message: form.message.trim(),
+          _subject: `New project enquiry from ${form.name.trim()} — Webrick`,
+          _replyto: form.email.trim(),
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || String(data.success) === 'false') throw new Error(data.message || `Request failed (${res.status})`)
+      setStatus('sent')
+    } catch (err) {
+      setSendError(err.message || 'Something went wrong.')
+      setStatus('error')
+    }
   }
 
   const rows = [
@@ -245,6 +268,7 @@ export default function Contact() {
                     onClick={() => {
                       setForm(initial)
                       setErrors({})
+                      setSendError('')
                       setStatus('idle')
                     }}
                     className="btn btn-secondary btn-sm mt-8"
@@ -261,7 +285,7 @@ export default function Contact() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.3 }}
-                  className="grid gap-x-8 gap-y-8 sm:grid-cols-2"
+                  className="relative grid gap-x-8 gap-y-8 sm:grid-cols-2"
                 >
                   <TextField label="Name" name="name" index={0} inputRef={refs.name} value={form.name} onChange={update} error={errors.name} placeholder="Jane Smith" autoComplete="name" />
                   <TextField label="Email" name="email" type="email" index={1} inputRef={refs.email} value={form.email} onChange={update} error={errors.email} placeholder="jane@company.com" autoComplete="email" />
@@ -288,6 +312,22 @@ export default function Contact() {
                       placeholder="What are you building, who is it for, and when do you need it?"
                     />
                   </div>
+                  <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
+                  <AnimatePresence>
+                    {status === 'error' && (
+                      <motion.p
+                        key="send-error"
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        role="alert"
+                        className="border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-text sm:col-span-2"
+                      >
+                        We couldn’t send that ({sendError}). Please try again, or email us directly at{' '}
+                        <a href={`mailto:${site.email}`} className="underline underline-offset-4 hover:text-accent-soft">{site.email}</a>.
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
                   <div className="flex flex-col justify-between gap-5 pt-2 sm:col-span-2 sm:flex-row sm:items-center">
                     <p className="text-xs text-dim">We never share your details. No newsletters, no spam.</p>
                     <motion.button

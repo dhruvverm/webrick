@@ -85,11 +85,13 @@ Each entry in `projects.js` has an `image` field (`null` by default). Set it to 
 replaced automatically. `mockup` picks the placeholder layout (`storefront | business | dashboard |
 app | mobile | gallery`) and `hue` (0–360) tints it. Add `link` to show a "Visit live site" button.
 
-### Wiring the contact form
+### Contact form delivery
 
-`src/components/sections/Contact.jsx` currently simulates a send. Replace the `TODO` in `onSubmit`
-with a request to your backend, Formspree, EmailJS, etc. The form state object already has
-`name, email, company, type, budget, message`.
+The form posts to [FormSubmit](https://formsubmit.co) (`site.formEndpoint` in `src/data/site.js`),
+which forwards each submission to `site.email` with the sender's address as reply-to. FormSubmit sends
+a one-time **activation email** to that inbox after the first submission; click the link once and
+messages flow from then on. A hidden honeypot field (`_honey`) filters bots. To move to another
+service or your own backend, change `formEndpoint` and the JSON body in `onSubmit`.
 
 ### Brand tokens
 

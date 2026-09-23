@@ -9,6 +9,8 @@ export const site = {
   founded: 2020,
   availability: 'Taking on projects for Q4 2026',
   responseTime: 'Reply within one business day',
+  /** Contact form relay (FormSubmit). Submissions are forwarded to `email`; activate once via the link they send. */
+  formEndpoint: 'https://formsubmit.co/ajax/tech.webrick@gmail.com',
   socials: [
     { label: 'LinkedIn', href: '#' },
     { label: 'X', href: '#' },
