@@ -15,7 +15,7 @@ export const testimonials = [
   {
     quote: 'They shipped a real product, not a prototype. Multi-tenant, billing, the lot. Our first paying customers were on it within a week of launch.',
     name: 'Ananya Iyer',
-    role: 'Co-founder, Orbit CRM',
+    role: 'Founder, Fleetly',
     initials: 'AI',
   },
 ]
