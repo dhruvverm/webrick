@@ -82,7 +82,7 @@ export default function Hero() {
             </div>
             <figcaption className="label relative mt-6 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <span>Fig. 01 — The Webrick mark</span>
-              <span className="sm:text-right">Ten bricks, running bond</span>
+              <span className="sm:text-right">Twenty bricks, stack bond</span>
             </figcaption>
           </motion.figure>
         </div>
