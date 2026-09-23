@@ -1,14 +1,15 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import SectionHeader from '../ui/SectionHeader'
 import Reveal, { EASE } from '../ui/Reveal'
 import MaskedText from '../ui/MaskedText'
 import { site } from '../../data/site'
+import { PREFILL_EVENT } from '../../prefill'
 
 const projectTypes = ['Website', 'Web application', 'E-commerce store', 'Mobile app', 'UI/UX design', 'Something else']
 const budgets = ['₹5,000 – ₹15,000', '₹15,000 – ₹50,000', '₹50,000 – ₹1.5 lakh', '₹1.5 lakh+', 'Not sure yet']
-const initial = { name: '', email: '', company: '', type: '', budget: '', message: '' }
+const initial = { name: '', email: '', company: '', phone: '', type: '', budget: '', message: '' }
 
 const shake = { x: [0, -6, 6, -4, 4, 0], transition: { duration: 0.4 } }
 
@@ -97,7 +98,7 @@ function Chips({ label, name, options, value, onChange, error, index = 0 }) {
                 aria-checked={active}
                 onClick={() => onChange(o)}
                 whileTap={{ scale: 0.95 }}
-                className={`relative rounded-[4px] border px-3.5 py-2 text-sm transition-colors duration-300 ${
+                className={`relative rounded-[4px] border px-3.5 py-2.5 text-sm transition-colors duration-300 ${
                   active ? 'border-accent text-bg-0' : 'border-line text-muted hover:border-line-strong hover:text-text'
                 }`}
               >
@@ -147,6 +148,19 @@ export default function Contact() {
   }
   const update = (e) => set(e.target.name, e.target.value)
 
+  // A service row or project modal can pre-select the project type.
+  useEffect(() => {
+    const onPrefill = (e) => {
+      const t = e.detail?.type
+      if (!t || !projectTypes.includes(t)) return
+      setForm((f) => ({ ...f, type: t }))
+      setErrors((er) => ({ ...er, type: undefined }))
+      setStatus((s) => (s === 'sent' ? 'idle' : s))
+    }
+    window.addEventListener(PREFILL_EVENT, onPrefill)
+    return () => window.removeEventListener(PREFILL_EVENT, onPrefill)
+  }, [])
+
   const onSubmit = async (e) => {
     e.preventDefault()
     const found = validate(form)
@@ -167,6 +181,7 @@ export default function Contact() {
           name: form.name.trim(),
           email: form.email.trim(),
           company: form.company.trim() || '—',
+          phone: form.phone.trim() || '—',
           project_type: form.type,
           budget: form.budget || 'Not specified',
           message: form.message.trim(),
@@ -188,12 +203,13 @@ export default function Contact() {
   const rows = [
     ['Email', site.email, `mailto:${site.email}`],
     ['Phone', site.phone, site.phoneHref],
-    ['Location', site.location],
+    ['WhatsApp', 'Chat with us on WhatsApp', site.whatsapp, true],
+    ['Hours', site.hours],
     ['Response', site.responseTime],
   ]
 
   return (
-    <section id="contact" className="section scroll-mt-16">
+    <section id="contact" className="section scroll-mt-20">
       <div className="container-x">
         <SectionHeader
           index="07"
@@ -211,11 +227,22 @@ export default function Contact() {
               </p>
             </Reveal>
             <dl className="mt-10 border-t border-line">
-              {rows.map(([k, v, href], i) => (
+              {rows.map(([k, v, href, external], i) => (
                 <Reveal key={k} delay={0.05 + i * 0.05} className="grid grid-cols-[6.5rem_1fr] gap-4 border-b border-line py-4">
                   <dt className="label pt-0.5">{k}</dt>
                   <dd className="text-[0.95rem]">
-                    {href ? <a href={href} className="text-text transition-colors hover:text-accent-soft">{v}</a> : <span className="text-text/90">{v}</span>}
+                    {href ? (
+                      <a
+                        href={href}
+                        target={external ? '_blank' : undefined}
+                        rel={external ? 'noreferrer' : undefined}
+                        className="text-text transition-colors hover:text-accent-soft"
+                      >
+                        {v}
+                      </a>
+                    ) : (
+                      <span className="text-text/90">{v}</span>
+                    )}
                   </dd>
                 </Reveal>
               ))}
@@ -289,9 +316,8 @@ export default function Contact() {
                 >
                   <TextField label="Name" name="name" index={0} inputRef={refs.name} value={form.name} onChange={update} error={errors.name} placeholder="Priya Sharma" autoComplete="name" />
                   <TextField label="Email" name="email" type="email" index={1} inputRef={refs.email} value={form.email} onChange={update} error={errors.email} placeholder="priya@company.com" autoComplete="email" />
-                  <div className="sm:col-span-2">
-                    <TextField label="Company" hint="(optional)" name="company" index={2} value={form.company} onChange={update} placeholder="Company name" autoComplete="organization" />
-                  </div>
+                  <TextField label="Company" hint="(optional)" name="company" index={2} value={form.company} onChange={update} placeholder="Company name" autoComplete="organization" />
+                  <TextField label="Phone / WhatsApp" hint="(optional)" name="phone" type="tel" index={2} value={form.phone} onChange={update} placeholder="+91 98765 43210" autoComplete="tel" />
                   <div className="sm:col-span-2">
                     <Chips label="Project type" name="type" index={3} options={projectTypes} value={form.type} onChange={(v) => set('type', v)} error={errors.type} />
                   </div>

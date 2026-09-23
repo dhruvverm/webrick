@@ -35,7 +35,12 @@ function MobilePreview({ project: p }) {
 export default function Work() {
   const [selected, setSelected] = useState(null)
   const [hovered, setHovered] = useState(null)
-  const close = useCallback(() => setSelected(null), [])
+  const triggerRef = useRef(null)
+  const close = useCallback(() => {
+    setSelected(null)
+    // hand keyboard focus back to the row that opened the dialog
+    requestAnimationFrame(() => triggerRef.current?.focus({ preventScroll: true }))
+  }, [])
 
   const mx = useMotionValue(0)
   const my = useMotionValue(0)
@@ -54,7 +59,7 @@ export default function Work() {
   const hoveredProject = hovered !== null ? projects[hovered] : null
 
   return (
-    <section id="work" className="section scroll-mt-16">
+    <section id="work" className="section scroll-mt-20">
       <div className="container-x">
         <SectionHeader
           index="03"
@@ -76,7 +81,10 @@ export default function Work() {
             >
               <button
                 type="button"
-                onClick={() => setSelected(p)}
+                onClick={(e) => {
+                  triggerRef.current = e.currentTarget
+                  setSelected(p)
+                }}
                 onMouseEnter={() => setHovered(i)}
                 className="group row-hover w-full py-6 text-left lg:py-7"
               >

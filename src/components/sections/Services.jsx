@@ -3,10 +3,11 @@ import { ArrowUpRight } from 'lucide-react'
 import SectionHeader from '../ui/SectionHeader'
 import { services } from '../../data/services'
 import { EASE } from '../ui/Reveal'
+import { prefillContact } from '../../prefill'
 
 export default function Services() {
   return (
-    <section id="services" className="section scroll-mt-16">
+    <section id="services" className="section scroll-mt-20">
       <div className="container-x">
         <SectionHeader
           index="01"
@@ -30,6 +31,8 @@ export default function Services() {
               >
                 <a
                   href="#contact"
+                  onClick={() => prefillContact(s.formType)}
+                  aria-label={`${s.title}: start a project`}
                   className="group row-hover grid grid-cols-[2.5rem_1fr_auto] items-start gap-x-4 py-6 sm:gap-x-6 lg:grid-cols-12 lg:items-baseline lg:py-8"
                 >
                   <span className="mono pt-1 text-xs text-dim lg:col-span-1 lg:pt-0">0{i + 1}</span>

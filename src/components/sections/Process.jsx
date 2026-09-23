@@ -10,7 +10,7 @@ export default function Process() {
   const scaleX = useSpring(scrollYProgress, { stiffness: 90, damping: 26, mass: 0.4 })
 
   return (
-    <section id="process" className="section scroll-mt-16">
+    <section id="process" className="section scroll-mt-20">
       <div className="container-x">
         <SectionHeader
           index="04"

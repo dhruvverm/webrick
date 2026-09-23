@@ -73,7 +73,7 @@ export default function Hero() {
           </div>
 
           {/* Figure */}
-          <motion.figure {...fade(0.35)} className="relative mx-auto w-full max-w-[440px] lg:col-span-5 lg:max-w-none">
+          <motion.figure {...fade(0.35)} className="relative mx-auto w-full max-w-[360px] sm:max-w-[440px] lg:col-span-5 lg:max-w-none">
             <div className="dots absolute -inset-10 lg:-inset-16" aria-hidden="true" />
             <div style={{ perspective: 1400 }}>
               <motion.div style={{ rotateX, rotateY, x: shiftX, transformStyle: 'preserve-3d' }}>

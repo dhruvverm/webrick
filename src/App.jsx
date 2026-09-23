@@ -1,3 +1,4 @@
+import { MotionConfig } from 'framer-motion'
 import Intro from './components/Intro'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -13,10 +14,11 @@ import Contact from './components/sections/Contact'
 
 export default function App() {
   return (
-    <>
+    <MotionConfig reducedMotion="user">
+      <a href="#main" className="skip-link">Skip to content</a>
       <Intro />
       <Navbar />
-      <main className="relative">
+      <main id="main" className="relative">
         <Hero />
         <Services />
         <WhyWebrick />
@@ -28,6 +30,6 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </MotionConfig>
   )
 }

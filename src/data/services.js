@@ -7,6 +7,7 @@ export const services = [
     description: 'Modern, responsive and high-performing websites for businesses.',
     icon: Globe,
     tags: ['Marketing sites', 'Landing pages', 'CMS'],
+    formType: 'Website',
   },
   {
     id: 'web-applications',
@@ -14,6 +15,7 @@ export const services = [
     description: 'Custom web applications designed around business requirements.',
     icon: AppWindow,
     tags: ['Dashboards', 'Portals', 'Internal tools'],
+    formType: 'Web application',
   },
   {
     id: 'e-commerce',
@@ -21,6 +23,7 @@ export const services = [
     description: 'Scalable e-commerce websites that help businesses sell online.',
     icon: ShoppingBag,
     tags: ['Shopify', 'Headless', 'Payments'],
+    formType: 'E-commerce store',
   },
   {
     id: 'ui-ux',
@@ -28,6 +31,7 @@ export const services = [
     description: 'Clean, intuitive and conversion-focused digital interfaces.',
     icon: PenTool,
     tags: ['Design systems', 'Prototypes', 'Conversion'],
+    formType: 'UI/UX design',
   },
   {
     id: 'mobile-applications',
@@ -35,6 +39,7 @@ export const services = [
     description: 'Modern mobile applications for Android and iOS.',
     icon: Smartphone,
     tags: ['Flutter', 'iOS', 'Android'],
+    formType: 'Mobile app',
   },
   {
     id: 'business-solutions',
@@ -42,5 +47,6 @@ export const services = [
     description: 'Custom digital tools and software to solve real business problems.',
     icon: Workflow,
     tags: ['Automation', 'Integrations', 'APIs'],
+    formType: 'Something else',
   },
 ]

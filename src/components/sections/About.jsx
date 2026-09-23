@@ -18,7 +18,7 @@ const facts = [
 
 export default function About() {
   return (
-    <section id="about" className="section scroll-mt-16">
+    <section id="about" className="section scroll-mt-20">
       <div className="container-x">
         <SectionHeader index="06" label="About" meta={`Est. ${site.founded}`} title="A small studio with a builder’s mindset." />
 

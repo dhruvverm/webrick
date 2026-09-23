@@ -9,7 +9,7 @@
   --color-line-strong: rgba(242, 239, 232, 0.2);
   --color-text: #f2efe8;
   --color-muted: #a7a297;
-  --color-dim: #6e6a62;
+  --color-dim: #8a867d;
   --color-accent: #e4632f;
   --color-accent-soft: #f0916b;
   --color-accent-deep: #b8471c;
@@ -164,6 +164,15 @@
     color: var(--color-muted);
     white-space: nowrap;
   }
+
+  /* ---------- Skip link (keyboard users) ---------- */
+  .skip-link {
+    position: fixed; top: 0.75rem; left: 0.75rem; z-index: 100;
+    padding: 0.6rem 0.9rem; border-radius: 4px;
+    background: var(--color-text); color: var(--color-bg-0); font-weight: 500; font-size: 0.9rem;
+    transform: translateY(-200%); transition: transform 0.2s ease;
+  }
+  .skip-link:focus { transform: translateY(0); outline: 2px solid var(--color-accent); outline-offset: 2px; }
 
   /* ---------- Nav ---------- */
   .nav-solid {

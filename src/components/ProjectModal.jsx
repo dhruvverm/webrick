@@ -5,6 +5,7 @@ import ProjectMockup from './ProjectMockup'
 import Button from './ui/Button'
 import useLockBody from '../hooks/useLockBody'
 import { EASE } from './ui/Reveal'
+import { prefillContact, TYPE_BY_CATEGORY } from '../prefill'
 
 export default function ProjectModal({ project: p, onClose }) {
   const closeRef = useRef(null)
@@ -99,7 +100,15 @@ export default function ProjectModal({ project: p, onClose }) {
           </div>
 
           <div className="mt-10 flex flex-col gap-3 border-t border-line pt-6 sm:flex-row">
-            <Button href="#contact" onClick={onClose}>Start a similar project</Button>
+            <Button
+              href="#contact"
+              onClick={() => {
+                prefillContact(TYPE_BY_CATEGORY[p.category])
+                onClose()
+              }}
+            >
+              Start a similar project
+            </Button>
             {p.link && (
               <Button href={p.link} target="_blank" rel="noreferrer" variant="secondary" icon="diag">
                 Visit live site

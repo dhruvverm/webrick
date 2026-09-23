@@ -40,11 +40,15 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="label">Elsewhere</h4>
-            <ul className="mt-4 space-y-2">
-              {site.socials.map((s) => (
-                <li key={s.label}><a href={s.href} className="text-sm text-muted transition-colors hover:text-text">{s.label}</a></li>
+            <h4 className="label">Get in touch</h4>
+            <ul className="mt-4 space-y-2 text-sm">
+              <li><a href={`mailto:${site.email}`} className="text-muted transition-colors hover:text-text">Email us</a></li>
+              <li><a href={site.phoneHref} className="text-muted transition-colors hover:text-text">Call {site.phone}</a></li>
+              <li><a href={site.whatsapp} target="_blank" rel="noreferrer" className="text-muted transition-colors hover:text-text">WhatsApp</a></li>
+              {site.socials.filter((s) => s.href).map((s) => (
+                <li key={s.label}><a href={s.href} target="_blank" rel="noreferrer" className="text-muted transition-colors hover:text-text">{s.label}</a></li>
               ))}
+              <li className="text-dim">{site.hours}</li>
             </ul>
           </div>
         </div>
@@ -58,8 +62,7 @@ export default function Footer() {
         <div className="mt-6 flex flex-col-reverse gap-4 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="label normal-case tracking-normal">© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
           <div className="flex items-center gap-6 text-xs text-muted">
-            <a href="#" className="transition-colors hover:text-text">Privacy</a>
-            <a href="#" className="transition-colors hover:text-text">Terms</a>
+            <span className="text-dim">Made in India</span>
             <a href="#home" className="group inline-flex items-center gap-1.5 transition-colors hover:text-text">
               Back to top <ArrowUp size={13} className="transition-transform group-hover:-translate-y-0.5" />
             </a>
