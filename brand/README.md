@@ -16,3 +16,16 @@ outlines so these files need no fonts installed.
 
 Colours: bone `#f2efe8`, charcoal `#111110`, tile `#171716`, accent `#e4632f`.
 Keep clear space of at least one brick (the height of the mark ÷ 4) around the logo.
+
+## Social kit (`social/`)
+
+| File | Where | Notes |
+| --- | --- | --- |
+| `profile-1080.png` | Instagram + Facebook profile picture | Mark on charcoal, sized for the circular crop. |
+| `profile-accent-1080.png` | Alternative profile picture | Charcoal mark on terracotta. Stands out in feeds. |
+| `facebook-cover-1640x624.png` | Facebook page cover | Logo kept inside the mobile-safe centre, so nothing is cropped on phones. |
+| `instagram-post-1080.png` | Instagram / Facebook feed post | Brand announcement square. |
+| `instagram-story-1080x1920.png` | Instagram / Facebook story, Reels cover | Content inside the story safe zone (clear of the top and bottom UI). |
+| `og-image-1200x630.png` | Link previews | Also shipped as `public/og-image.png` and referenced by the site's Open Graph tags. |
+
+All are also provided as SVG for edits. Text is outlined; no fonts required.
