@@ -68,7 +68,6 @@ export default function ProjectModal({ project: p, onClose }) {
             <div className="lg:col-span-7">
               {[
                 ['Overview', p.description],
-                ['The challenge', p.challenge],
                 ['What we built', p.solution],
               ].map(([h, body]) => (
                 <div key={h} className="grid gap-2 border-t border-line py-5 sm:grid-cols-[9rem_1fr] sm:gap-6">

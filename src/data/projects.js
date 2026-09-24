@@ -9,6 +9,7 @@
 export const projects = [
   {
     id: 'northwind-supply',
+    featured: true,
     name: 'Northwind Supply',
     category: 'E-commerce',
     tagline: 'A B2B storefront built for repeat industrial buyers.',
@@ -34,6 +35,7 @@ export const projects = [
   },
   {
     id: 'lumen-dental',
+    featured: true,
     name: 'Lumen Dental',
     category: 'Business Website',
     tagline: 'A calm, fast website for a multi-location dental group.',
@@ -59,6 +61,7 @@ export const projects = [
   },
   {
     id: 'sabsera-crm',
+    featured: true,
     name: 'SabseraCRM',
     category: 'SaaS',
     tagline: 'Our own calling CRM, built for sales teams that live on the phone.',
@@ -109,6 +112,7 @@ export const projects = [
   },
   {
     id: 'kabin',
+    featured: true,
     name: 'Kabin',
     category: 'Mobile App',
     tagline: 'A booking app for boutique cabin stays.',

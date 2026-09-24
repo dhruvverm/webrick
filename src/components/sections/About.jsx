@@ -3,16 +3,14 @@ import Reveal from '../ui/Reveal'
 import { site } from '../../data/site'
 
 const principles = [
-  { title: 'Clarity over complexity', text: 'Simple structures that the next developer, and your own team, can understand.' },
-  { title: 'Ship, then improve', text: 'Real users beat perfect plans. We launch solid foundations and iterate on evidence.' },
-  { title: 'Own the outcome', text: 'We measure our work by what it does for your business, not by the number of pages.' },
+  { title: 'Custom-built, never templated', text: 'Designed and coded around your business.' },
+  { title: 'Fast and responsive by default', text: 'Tested on real phones before launch.' },
+  { title: 'One point of contact', text: 'Weekly updates from kickoff to launch.' },
 ]
 
 const facts = [
   ['Founded', String(site.founded)],
-  ['Team', 'Designers and engineers, in one room'],
   ['Based', site.location],
-  ['Working with', 'Startups, local businesses, founders and growing teams'],
   ['Currently', site.availability],
 ]
 
@@ -32,9 +30,7 @@ export default function About() {
             </Reveal>
             <Reveal delay={0.08}>
               <p className="mt-7 max-w-xl text-[1.02rem] leading-relaxed text-muted">
-                We build the other kind. Sites and software with a job to do, built by people who care whether they do
-                it. We are a compact team of designers and engineers, small enough that you talk to the people doing the
-                work and experienced enough to take a product from a napkin sketch to production.
+                We build the other kind: sites and software with a job to do, by a small team you talk to directly.
               </p>
             </Reveal>
 

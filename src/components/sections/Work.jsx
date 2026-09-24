@@ -4,7 +4,10 @@ import { ArrowUpRight } from 'lucide-react'
 import SectionHeader from '../ui/SectionHeader'
 import ProjectMockup from '../ProjectMockup'
 import ProjectModal from '../ProjectModal'
-import { projects } from '../../data/projects'
+import { projects as allProjects } from '../../data/projects'
+
+// Lead with our own product, then a short selection. Toggle `featured` in data/projects.js.
+const projects = [...allProjects.filter((p) => p.featured)].sort((a, b) => (a.id === 'sabsera-crm' ? -1 : b.id === 'sabsera-crm' ? 1 : 0))
 import { EASE } from '../ui/Reveal'
 
 const PREVIEW_W = 400
@@ -64,9 +67,8 @@ export default function Work() {
         <SectionHeader
           index="03"
           label="Selected work"
-          meta="2024 — 2025"
+          meta="Selected projects"
           title="Built for Real Businesses"
-          lede="A selection of websites, platforms and products we have designed and built. Every one is custom, and every one is still in use."
         />
 
         <ul className="mt-14 border-t border-line lg:mt-20" onMouseLeave={() => setHovered(null)}>
@@ -99,9 +101,8 @@ export default function Work() {
                   <p className="col-start-2 mt-2 max-w-sm text-[0.95rem] leading-relaxed text-muted lg:col-span-3 lg:col-start-auto lg:mt-0">
                     {p.tagline}
                   </p>
-                  <div className="col-start-2 mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1 text-sm lg:col-span-3 lg:col-start-auto lg:mt-0 lg:flex-col lg:gap-y-1.5">
+                  <div className="col-start-2 mt-3 text-sm lg:col-span-3 lg:col-start-auto lg:mt-0">
                     <span className="text-text/90">{p.category}</span>
-                    <span className="mono text-[0.7rem] text-dim">{p.tech.slice(0, 3).join(' · ')}</span>
                   </div>
                   <span className="col-start-3 row-start-1 flex items-center gap-3 justify-self-end lg:col-span-1 lg:col-start-auto lg:row-start-auto">
                     <span className="mono hidden text-xs text-dim lg:inline">{p.year}</span>

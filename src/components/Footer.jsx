@@ -1,8 +1,6 @@
 import { ArrowUp, ArrowUpRight } from 'lucide-react'
 import { LogoMark } from './Logo'
 import MaskedText from './ui/MaskedText'
-import { services } from '../data/services'
-import { navLinks } from '../data/nav'
 import { site } from '../data/site'
 
 export default function Footer() {
@@ -21,25 +19,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="md:col-span-3 md:col-start-6">
-            <h4 className="label">Services</h4>
-            <ul className="mt-4 space-y-2">
-              {services.map((s) => (
-                <li key={s.id}><a href="#services" className="text-sm text-muted transition-colors hover:text-text">{s.title}</a></li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="md:col-span-2">
-            <h4 className="label">Company</h4>
-            <ul className="mt-4 space-y-2">
-              {navLinks.slice(1).map((l) => (
-                <li key={l.href}><a href={l.href} className="text-sm text-muted transition-colors hover:text-text">{l.label}</a></li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="md:col-span-2">
+          <div className="md:col-span-3 md:col-start-10">
             <h4 className="label">Get in touch</h4>
             <ul className="mt-4 space-y-2 text-sm">
               <li><a href={`mailto:${site.email}`} className="text-muted transition-colors hover:text-text">Email us</a></li>
