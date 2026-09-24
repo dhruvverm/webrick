@@ -180,6 +180,7 @@ export default function Contact() {
         body: JSON.stringify({
           name: form.name.trim(),
           email: form.email.trim(),
+          company: form.company.trim() || '—',
           phone: form.phone.trim() || '—',
           project_type: form.type,
           budget: form.budget || 'Not specified',
@@ -203,6 +204,8 @@ export default function Contact() {
     ['Email', site.email, `mailto:${site.email}`],
     ['Phone', site.phone, site.phoneHref],
     ['WhatsApp', 'Chat with us on WhatsApp', site.whatsapp, true],
+    ['Hours', site.hours],
+    ['Response', site.responseTime],
   ]
 
   return (
@@ -219,7 +222,8 @@ export default function Contact() {
           <div className="lg:col-span-4">
             <Reveal>
               <p className="max-w-sm text-[1.02rem] leading-relaxed text-muted">
-                Tell us about the project. We reply within one business day with honest thoughts and a rough scope.
+                Tell us about the project. We will come back with honest thoughts, a rough scope and a clear next step.
+                No pressure, no sales script.
               </p>
             </Reveal>
             <dl className="mt-10 border-t border-line">
@@ -312,9 +316,8 @@ export default function Contact() {
                 >
                   <TextField label="Name" name="name" index={0} inputRef={refs.name} value={form.name} onChange={update} error={errors.name} placeholder="Priya Sharma" autoComplete="name" />
                   <TextField label="Email" name="email" type="email" index={1} inputRef={refs.email} value={form.email} onChange={update} error={errors.email} placeholder="priya@company.com" autoComplete="email" />
-                  <div className="sm:col-span-2">
-                    <TextField label="Phone / WhatsApp" hint="(optional)" name="phone" type="tel" index={2} value={form.phone} onChange={update} placeholder="+91 98765 43210" autoComplete="tel" />
-                  </div>
+                  <TextField label="Company" hint="(optional)" name="company" index={2} value={form.company} onChange={update} placeholder="Company name" autoComplete="organization" />
+                  <TextField label="Phone / WhatsApp" hint="(optional)" name="phone" type="tel" index={2} value={form.phone} onChange={update} placeholder="+91 98765 43210" autoComplete="tel" />
                   <div className="sm:col-span-2">
                     <Chips label="Project type" name="type" index={3} options={projectTypes} value={form.type} onChange={(v) => set('type', v)} error={errors.type} />
                   </div>

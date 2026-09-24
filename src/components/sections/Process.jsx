@@ -17,6 +17,7 @@ export default function Process() {
           label="Process"
           meta="Five stages"
           title="From idea to launch, without surprises."
+          lede="You know what is happening, what comes next and what you will receive at every step."
         />
 
         <div ref={ref} className="relative mt-14 lg:mt-20">
@@ -41,7 +42,16 @@ export default function Process() {
                 <span className="display text-[2.6rem] leading-none text-accent md:text-5xl">{s.number}</span>
                 <div className="md:mt-10">
                   <h3 className="display text-2xl">{s.title}</h3>
-                  <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">{s.description}</p>
+                  <p className="mt-2 text-[0.95rem] text-text/85">{s.description}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{s.detail}</p>
+                  <ul className="mt-5 space-y-1.5">
+                    {s.outputs.map((o) => (
+                      <li key={o} className="flex items-center gap-2 text-xs text-dim">
+                        <span className="h-px w-3 bg-line-strong" />
+                        {o}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.li>
             ))}

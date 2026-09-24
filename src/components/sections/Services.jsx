@@ -14,6 +14,7 @@ export default function Services() {
           label="Services"
           meta="Six disciplines"
           title="What We Build"
+          lede="From a first website to a full product, we design and develop the digital tools a business runs on."
         />
 
         <ul className="mt-14 border-t border-line lg:mt-20">
@@ -43,9 +44,15 @@ export default function Services() {
                     </h3>
                   </div>
 
-                  <p className="col-start-2 mt-2 max-w-md text-[0.95rem] leading-relaxed text-muted lg:col-span-6 lg:col-start-auto lg:mt-0">
+                  <p className="col-start-2 mt-2 max-w-md text-[0.95rem] leading-relaxed text-muted lg:col-span-4 lg:col-start-auto lg:mt-0">
                     {s.description}
                   </p>
+
+                  <ul className="col-start-2 mt-4 flex flex-wrap gap-1.5 lg:col-span-2 lg:col-start-auto lg:mt-0">
+                    {s.tags.map((t) => (
+                      <li key={t} className="tag">{t}</li>
+                    ))}
+                  </ul>
 
                   <span className="col-start-3 row-start-1 justify-self-end text-dim transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent lg:col-span-1 lg:col-start-auto lg:row-start-auto">
                     <ArrowUpRight size={20} strokeWidth={1.6} />

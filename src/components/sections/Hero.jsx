@@ -1,4 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { ArrowDown } from 'lucide-react'
 import Button from '../ui/Button'
 import MaskedText from '../ui/MaskedText'
 import BlockAssembly from '../BlockAssembly'
@@ -86,6 +87,35 @@ export default function Hero() {
           </motion.figure>
         </div>
 
+        <motion.dl
+          {...fade(1.0)}
+          className="mt-14 grid gap-x-8 gap-y-6 border-t border-line pt-5 sm:grid-cols-[1fr_1fr_1fr_auto] lg:mt-16"
+        >
+          <div>
+            <dt className="label">We build</dt>
+            <dd className="mt-2 max-w-xs text-sm leading-relaxed text-muted">
+              Websites, web applications, e-commerce stores and mobile apps.
+            </dd>
+          </div>
+          <div>
+            <dt className="label">How we work</dt>
+            <dd className="mt-2 max-w-xs text-sm leading-relaxed text-muted">
+              Fixed scope, weekly updates and one point of contact from kickoff to launch.
+            </dd>
+          </div>
+          <div>
+            <dt className="label">Where</dt>
+            <dd className="mt-2 max-w-xs text-sm leading-relaxed text-muted">
+              {site.location}. {site.availability}.
+            </dd>
+          </div>
+          <a href="#services" className="label group hidden items-center gap-2 self-end sm:inline-flex" aria-label="Scroll to services">
+            Scroll
+            <motion.span animate={{ y: [0, 4, 0] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}>
+              <ArrowDown size={13} className="text-accent" />
+            </motion.span>
+          </a>
+        </motion.dl>
       </div>
     </section>
   )

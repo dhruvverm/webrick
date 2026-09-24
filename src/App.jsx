@@ -4,10 +4,12 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Hero from './components/sections/Hero'
 import Services from './components/sections/Services'
+import WhyWebrick from './components/sections/WhyWebrick'
 import Work from './components/sections/Work'
 import Process from './components/sections/Process'
-import StackBand from './components/sections/StackBand'
+import TechStack from './components/sections/TechStack'
 import About from './components/sections/About'
+import Testimonials from './components/sections/Testimonials'
 import Contact from './components/sections/Contact'
 
 export default function App() {
@@ -19,10 +21,12 @@ export default function App() {
       <main id="main" className="relative">
         <Hero />
         <Services />
+        <WhyWebrick />
         <Work />
         <Process />
-        <StackBand />
+        <TechStack />
         <About />
+        <Testimonials />
         <Contact />
       </main>
       <Footer />
