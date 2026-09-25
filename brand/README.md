@@ -31,3 +31,13 @@ Keep clear space of at least one brick (the height of the mark ÷ 4) around the 
 | `og-image-1200x630.png` | Link previews | Also shipped as `public/og-image.png` and referenced by the site's Open Graph tags. |
 
 All are also provided as SVG for edits. Text is outlined; no fonts required.
+
+## Instagram creatives (`social/instagram/`)
+
+| File | Use |
+| --- | --- |
+| `carousel-01-cover` … `carousel-04-contact` (1080×1350) | Four-slide intro carousel: cover, what we build, how a project runs, contact. Post in order. |
+| `post-now-live-1080` (1080×1080) | Single "Webrick is live" launch post. |
+| `story-1080x1920` | Story / Reel cover with the same message. Add a link sticker to www.webrick.in. |
+
+SVG sources are alongside for edits; all text is outlined.
