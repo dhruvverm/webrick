@@ -2,9 +2,9 @@
 export const site = {
   name: 'Webrick',
   email: 'tech.webrick@gmail.com',
-  phone: '+91 92559 96661',
-  phoneHref: 'tel:+919255996661',
-  whatsapp: 'https://wa.me/919255996661?text=Hi%20Webrick%2C%20I%27d%20like%20to%20talk%20about%20a%20project.',
+  phone: '+91 90348 89399',
+  phoneHref: 'tel:+919034889399',
+  whatsapp: 'https://wa.me/919034889399?text=Hi%20Webrick%2C%20I%27d%20like%20to%20talk%20about%20a%20project.',
   location: 'Remote-first · Clients worldwide',
   hours: 'Mon – Sat, 10:00 – 19:00 IST',
   founded: 2020,
