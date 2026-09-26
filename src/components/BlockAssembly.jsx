@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { LOGO_BLOCKS } from './Logo'
 
@@ -8,6 +8,8 @@ import { LOGO_BLOCKS } from './Logo'
  * bottom row up, a slow wave travels through the wall, and hovering or
  * tapping a brick turns it a full 360° about its vertical axis in one second.
  *
+ * Browsers do not hit-test 3D-transformed faces reliably, so pointer
+ * position is matched against each brick's on-screen rectangle by hand.
  * Sizes are in `cqw` so the figure scales with its container width.
  */
 
@@ -40,22 +42,29 @@ const FACES = [
   ['bottom', `rotateX(-90deg) translateZ(${u(H / 2)})`, W, D],
 ]
 
-function Brick({ pal }) {
+function Brick({ id, pal, register }) {
+  const ref = useRef(null)
   const [turns, setTurns] = useState(0)
-  const [spinning, setSpinning] = useState(false)
-  const spin = () => {
-    if (spinning) return
-    setSpinning(true)
+  const busy = useRef(false)
+
+  const spin = useCallback(() => {
+    if (busy.current) return
+    busy.current = true
     setTurns((n) => n + 1)
-  }
+    setTimeout(() => { busy.current = false }, 1050)
+  }, [])
+
+  useEffect(() => {
+    register(id, { el: ref.current, spin })
+    return () => register(id, null)
+  }, [id, register, spin])
+
   return (
     <motion.div
-      onHoverStart={spin}
-      onTap={spin}
+      ref={ref}
       animate={{ rotateY: turns * 360 }}
       transition={{ duration: 1, ease: [0.45, 0, 0.2, 1] }}
-      onAnimationComplete={() => setSpinning(false)}
-      className="relative cursor-pointer"
+      className="relative"
       style={{ width: u(W), height: u(H), transformStyle: 'preserve-3d' }}
     >
       {FACES.map(([name, transform, w, h]) => (
@@ -79,6 +88,42 @@ function Brick({ pal }) {
 }
 
 export default function BlockAssembly({ className = '', delay = 0.5, wave = false }) {
+  const registry = useRef(new Map())
+  const lastHit = useRef(null)
+  const [overBrick, setOverBrick] = useState(false)
+
+  const register = useCallback((id, entry) => {
+    if (entry) registry.current.set(id, entry)
+    else registry.current.delete(id)
+  }, [])
+
+  // Which brick's projected rectangle is under the pointer? Later bricks win ties (they are drawn in front).
+  const hitTest = (x, y) => {
+    let hit = null
+    for (const [id, { el }] of registry.current) {
+      if (!el) continue
+      const r = el.getBoundingClientRect()
+      if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) hit = id
+    }
+    return hit
+  }
+
+  const onPointerMove = (e) => {
+    if (e.pointerType === 'touch') return
+    const id = hitTest(e.clientX, e.clientY)
+    setOverBrick(!!id)
+    if (id && id !== lastHit.current) registry.current.get(id)?.spin()
+    lastHit.current = id
+  }
+  const onPointerLeave = () => {
+    lastHit.current = null
+    setOverBrick(false)
+  }
+  const onPointerDown = (e) => {
+    const id = hitTest(e.clientX, e.clientY)
+    if (id) registry.current.get(id)?.spin()
+  }
+
   // Two bricks per logo cell: logo row r (0 = top) becomes levels (3-r)*2+1 and (3-r)*2 (0 = bottom).
   const bricks = LOGO_BLOCKS.flatMap(([c, r, accent]) =>
     [1, 0].map((k) => ({ c, level: (3 - r) * 2 + k, accent: !!accent, key: `${c}-${r}-${k}` })),
@@ -87,7 +132,14 @@ export default function BlockAssembly({ className = '', delay = 0.5, wave = fals
   const wallH = (LEVELS - 1) * PY + H
 
   return (
-    <div className={className} style={{ containerType: 'inline-size' }} aria-hidden="true">
+    <div
+      className={`${className} ${overBrick ? 'cursor-pointer' : ''}`}
+      style={{ containerType: 'inline-size', touchAction: 'pan-y' }}
+      aria-hidden="true"
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
+      onPointerDown={onPointerDown}
+    >
       <div className="relative flex items-center justify-center" style={{ height: u(96) }}>
         {/* the scene: rotated as a whole to give the dimetric view */}
         <div
@@ -120,7 +172,7 @@ export default function BlockAssembly({ className = '', delay = 0.5, wave = fals
                       : undefined
                   }
                 >
-                  <Brick pal={pal} />
+                  <Brick id={b.key} pal={pal} register={register} />
                 </motion.div>
               </motion.div>
             )
