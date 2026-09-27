@@ -44,5 +44,5 @@ export const stats = [
   { value: 120, suffix: '+', label: 'Projects delivered' },
   { value: 98, suffix: '%', label: 'Client satisfaction' },
   { value: 1.2, suffix: 's', label: 'Average page load', decimals: 1, prefix: '<' },
-  { value: 6, suffix: '+', label: 'Years building' },
+  { value: 24, suffix: 'h', label: 'Max reply time' },
 ]
