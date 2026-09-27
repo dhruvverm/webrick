@@ -48,7 +48,7 @@ export default function Footer() {
               {site.socials.filter((s) => s.href).map((s) => (
                 <li key={s.label}><a href={s.href} target="_blank" rel="noreferrer" className="text-muted transition-colors hover:text-text">{s.label}</a></li>
               ))}
-              <li className="text-dim">{site.hours}</li>
+              <li className="whitespace-nowrap text-dim">{site.hours}</li>
             </ul>
           </div>
         </div>
