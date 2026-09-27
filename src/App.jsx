@@ -2,6 +2,7 @@ import { MotionConfig } from 'framer-motion'
 import Intro from './components/Intro'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
 import Hero from './components/sections/Hero'
 import Services from './components/sections/Services'
 import WhyWebrick from './components/sections/WhyWebrick'
@@ -30,6 +31,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
     </MotionConfig>
   )
 }
