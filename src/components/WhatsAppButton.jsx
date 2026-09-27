@@ -32,20 +32,21 @@ export default function WhatsAppButton() {
   })
   const rootRef = useRef(null)
 
-  useEffect(() => {
-    const onScroll = () => setPastHero(window.scrollY > 240)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  // Hide while the footer (which has its own WhatsApp link) is in view, so it never covers "Back to top".
+  // Show after the hero; hide while the footer (which has its own WhatsApp link) is on screen,
+  // so the widget never covers "Back to top".
   useEffect(() => {
     const footer = document.querySelector('footer')
-    if (!footer) return
-    const io = new IntersectionObserver(([e]) => setFooterVisible(e.isIntersecting), { threshold: 0.05 })
-    io.observe(footer)
-    return () => io.disconnect()
+    const update = () => {
+      setPastHero(window.scrollY > 240)
+      if (footer) setFooterVisible(footer.getBoundingClientRect().top < window.innerHeight - 24)
+    }
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
   }, [])
 
   useEffect(() => {
