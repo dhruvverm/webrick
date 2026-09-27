@@ -35,6 +35,8 @@ function MobilePreview({ project: p }) {
 export default function Work() {
   const [selected, setSelected] = useState(null)
   const [hovered, setHovered] = useState(null)
+  const [showAll, setShowAll] = useState(false)
+  const MOBILE_COUNT = 3
   const triggerRef = useRef(null)
   const close = useCallback(() => {
     setSelected(null)
@@ -77,7 +79,7 @@ export default function Work() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, ease: EASE, delay: (i % 3) * 0.05 }}
-              className="border-b border-line"
+              className={`border-b border-line ${i >= MOBILE_COUNT && !showAll ? 'hidden lg:block' : ''}`}
             >
               <button
                 type="button"
@@ -112,6 +114,11 @@ export default function Work() {
             </motion.li>
           ))}
         </ul>
+        {!showAll && projects.length > MOBILE_COUNT && (
+          <button type="button" onClick={() => setShowAll(true)} className="btn btn-secondary mt-6 w-full lg:hidden">
+            Show {projects.length - MOBILE_COUNT} more projects
+          </button>
+        )}
       </div>
 
       {/* cursor-following preview, desktop only */}

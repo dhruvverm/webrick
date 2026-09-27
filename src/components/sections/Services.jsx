@@ -48,7 +48,7 @@ export default function Services() {
                     {s.description}
                   </p>
 
-                  <ul className="col-start-2 mt-4 flex flex-wrap gap-1.5 lg:col-span-2 lg:col-start-auto lg:mt-0">
+                  <ul className="col-start-2 mt-4 hidden flex-wrap gap-1.5 lg:col-span-2 lg:col-start-auto lg:mt-0 lg:flex">
                     {s.tags.map((t) => (
                       <li key={t} className="tag">{t}</li>
                     ))}

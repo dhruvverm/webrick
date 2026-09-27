@@ -204,8 +204,8 @@ export default function Contact() {
     ['Email', site.email, `mailto:${site.email}`],
     ['Phone', site.phone, site.phoneHref],
     ['WhatsApp', 'Chat with us on WhatsApp', site.whatsapp, true],
-    ['Hours', site.hours],
-    ['Response', site.responseTime],
+    ['Hours', site.hours, null, false, true],
+    ['Response', site.responseTime, null, false, true],
   ]
 
   return (
@@ -220,15 +220,15 @@ export default function Contact() {
 
         <div className="mt-14 grid gap-x-8 gap-y-12 lg:mt-20 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Reveal>
+            <Reveal className="hidden lg:block">
               <p className="max-w-sm text-[1.02rem] leading-relaxed text-muted">
                 Tell us about the project. We will come back with honest thoughts, a rough scope and a clear next step.
                 No pressure, no sales script.
               </p>
             </Reveal>
-            <dl className="mt-10 border-t border-line">
-              {rows.map(([k, v, href, external], i) => (
-                <Reveal key={k} delay={0.05 + i * 0.05} className="grid grid-cols-[6.5rem_1fr] gap-4 border-b border-line py-4">
+            <dl className="mt-0 border-t border-line lg:mt-10">
+              {rows.map(([k, v, href, external, desktopOnly], i) => (
+                <Reveal key={k} delay={0.05 + i * 0.05} className={`grid-cols-[6.5rem_1fr] gap-4 border-b border-line py-4 ${desktopOnly ? 'hidden lg:grid' : 'grid'}`}>
                   <dt className="label pt-0.5">{k}</dt>
                   <dd className="text-[0.95rem]">
                     {href ? (

@@ -274,9 +274,9 @@ export default function WhyWebrick() {
           <Card id="custom" index={0} className="lg:col-span-7"><WallLoop /></Card>
           <Card id="performance" index={1} className="lg:col-span-5"><PerformanceRing /></Card>
           <Card id="responsive" index={2} className="lg:col-span-4"><Devices /></Card>
-          <Card id="modern" index={3} className="lg:col-span-4"><TechFloat /></Card>
-          <Card id="scalable" index={4} className="lg:col-span-4"><Layers /></Card>
-          <Card id="client" index={5} className="sm:col-span-2 lg:col-span-8"><Timeline /></Card>
+          <Card id="modern" index={3} className="hidden lg:col-span-4 lg:flex"><TechFloat /></Card>
+          <Card id="scalable" index={4} className="hidden lg:col-span-4 lg:flex"><Layers /></Card>
+          <Card id="client" index={5} className="hidden sm:col-span-2 lg:col-span-8 lg:flex"><Timeline /></Card>
           <div className="sm:col-span-2 lg:col-span-4"><StatsCard index={6} /></div>
         </div>
       </div>

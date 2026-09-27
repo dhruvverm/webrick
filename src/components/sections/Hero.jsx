@@ -85,7 +85,7 @@ export default function Hero() {
 
         <motion.dl
           {...fade(1.0)}
-          className="mt-14 grid gap-x-8 gap-y-6 border-t border-line pt-5 sm:grid-cols-[1fr_1fr_1fr_auto] lg:mt-16"
+          className="mt-14 hidden gap-x-8 gap-y-6 border-t border-line pt-5 sm:grid-cols-[1fr_1fr_1fr_auto] lg:mt-16 lg:grid"
         >
           <div>
             <dt className="label">We build</dt>

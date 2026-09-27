@@ -38,7 +38,7 @@ export default function TechStack() {
       </div>
 
       <div className="container-x">
-        <dl className="mt-12 lg:mt-16">
+        <dl className="mt-12 hidden md:block lg:mt-16">
           {techGroups.map((g, gi) => (
             <motion.div
               key={g.group}
@@ -65,7 +65,7 @@ export default function TechStack() {
             </motion.div>
           ))}
         </dl>
-        <p className="mt-8 max-w-xl text-sm text-dim">
+        <p className="mt-8 hidden max-w-xl text-sm text-dim md:block">
           Plus TypeScript, PostgreSQL, Redis, Tailwind CSS, Firebase and whatever the project genuinely needs.
         </p>
       </div>

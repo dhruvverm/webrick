@@ -21,7 +21,7 @@ export default function SectionHeader({ index, label, meta, title, lede, classNa
           <MaskedText text={title} stagger={0.04} />
         </h2>
         {lede && (
-          <Reveal delay={0.25} className="lg:col-span-4">
+          <Reveal delay={0.25} className="hidden lg:col-span-4 lg:block">
             <p className="max-w-md text-[1.02rem] leading-relaxed text-muted">{lede}</p>
           </Reveal>
         )}

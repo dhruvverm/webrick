@@ -43,8 +43,8 @@ export default function Process() {
                 <div className="md:mt-10">
                   <h3 className="display text-2xl">{s.title}</h3>
                   <p className="mt-2 text-[0.95rem] text-text/85">{s.description}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">{s.detail}</p>
-                  <ul className="mt-5 space-y-1.5">
+                  <p className="mt-3 hidden text-sm leading-relaxed text-muted md:block">{s.detail}</p>
+                  <ul className="mt-5 hidden space-y-1.5 md:block">
                     {s.outputs.map((o) => (
                       <li key={o} className="flex items-center gap-2 text-xs text-dim">
                         <span className="h-px w-3 bg-line-strong" />

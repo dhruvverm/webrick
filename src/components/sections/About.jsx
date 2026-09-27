@@ -30,7 +30,7 @@ export default function About() {
                 and did nothing.
               </p>
             </Reveal>
-            <Reveal delay={0.08}>
+            <Reveal delay={0.08} className="hidden lg:block">
               <p className="mt-7 max-w-xl text-[1.02rem] leading-relaxed text-muted">
                 We build the other kind. Sites and software with a job to do, built by people who care whether they do
                 it. We are a compact team of designers and engineers, small enough that you talk to the people doing the
@@ -44,14 +44,14 @@ export default function About() {
                   <span className="mono pt-1 text-xs text-accent">0{i + 1}</span>
                   <div>
                     <h3 className="display text-xl">{p.title}</h3>
-                    <p className="mt-1.5 max-w-lg text-[0.95rem] text-muted">{p.text}</p>
+                    <p className="mt-1.5 hidden max-w-lg text-[0.95rem] text-muted sm:block">{p.text}</p>
                   </div>
                 </Reveal>
               ))}
             </ol>
           </div>
 
-          <Reveal delay={0.15} className="lg:col-span-4 lg:col-start-9">
+          <Reveal delay={0.15} className="hidden lg:col-span-4 lg:col-start-9 lg:block">
             <dl className="border-t border-line">
               {facts.map(([k, v]) => (
                 <div key={k} className="grid grid-cols-[6.5rem_1fr] gap-4 border-b border-line py-4">

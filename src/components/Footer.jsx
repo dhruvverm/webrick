@@ -21,7 +21,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="md:col-span-3 md:col-start-6">
+          <div className="hidden md:col-span-3 md:col-start-6 md:block">
             <h4 className="label">Services</h4>
             <ul className="mt-4 space-y-2">
               {services.map((s) => (
@@ -30,7 +30,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-2">
+          <div className="hidden md:col-span-2 md:block">
             <h4 className="label">Company</h4>
             <ul className="mt-4 space-y-2">
               {navLinks.slice(1).map((l) => (
