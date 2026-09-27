@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import Logo from './Logo'
 import Button from './ui/Button'
+import { WhatsAppIcon } from './WhatsAppButton'
 import { navLinks } from '../data/nav'
 import { site } from '../data/site'
 import useActiveSection from '../hooks/useActiveSection'
@@ -157,9 +158,21 @@ export default function Navbar() {
                   <a href={`mailto:${site.email}`} className="text-text">{site.email}</a>
                   <span className="text-sm text-muted">{site.availability}</span>
                 </div>
-                <Button href="#contact" onClick={() => setOpen(false)} className="w-full" icon="diag">
-                  Start a Project
-                </Button>
+                <div className="grid grid-cols-2 gap-3">
+                  <a
+                    href={site.whatsapp}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="btn btn-secondary w-full gap-2.5"
+                  >
+                    <WhatsAppIcon className="h-5 w-5 text-[#25D366]" />
+                    WhatsApp
+                  </a>
+                  <Button href="#contact" onClick={() => setOpen(false)} className="w-full" icon="diag">
+                    Start a Project
+                  </Button>
+                </div>
               </motion.div>
             </div>
           </motion.div>
