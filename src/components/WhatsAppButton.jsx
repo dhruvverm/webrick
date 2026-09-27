@@ -72,7 +72,7 @@ export default function WhatsAppButton() {
   const show = pastHero && !footerVisible
 
   return (
-    <div ref={rootRef} className="fixed right-5 z-30 flex flex-col items-end gap-3 sm:right-6" style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}>
+    <div ref={rootRef} className={`fixed right-5 z-30 flex flex-col items-end gap-3 sm:right-6 ${show ? '' : 'pointer-events-none'}`} style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}>
       <AnimatePresence>
         {show && open && (
           <motion.div
@@ -124,50 +124,48 @@ export default function WhatsAppButton() {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {show && (
-          <motion.button
-            key="fab"
-            type="button"
-            onClick={toggle}
-            aria-label={open ? 'Close WhatsApp chat' : 'Chat with Webrick on WhatsApp'}
-            aria-expanded={open}
-            initial={{ opacity: 0, scale: 0.6, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.6, y: 16 }}
-            transition={{ type: 'spring', stiffness: 380, damping: 26 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.94 }}
-            className="group relative flex items-center gap-3"
-          >
-            {!open && (
-              <span className="pointer-events-none hidden translate-x-2 rounded-lg border border-line bg-bg-2/95 px-3 py-2 text-sm text-text opacity-0 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.8)] backdrop-blur transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 sm:block">
-                Chat on WhatsApp
-              </span>
-            )}
-            <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_14px_36px_-10px_rgba(37,211,102,0.7)]">
-              {!open && <span aria-hidden="true" className="absolute inset-0 animate-[wa-ring_3.2s_ease-out_infinite] rounded-full border-2 border-[#25D366]" />}
-              <motion.span
-                className="relative flex items-center justify-center"
-                animate={{ rotate: open ? 90 : 0, scale: open ? 0.9 : 1 }}
-                transition={{ duration: 0.25 }}
-              >
-                {open ? <X size={26} strokeWidth={2.2} /> : <WhatsAppIcon className="h-7 w-7" />}
-              </motion.span>
-              {!seen && !open && (
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 18, delay: 0.6 }}
-                  className="absolute -right-0.5 -top-0.5 flex h-5 min-w-[20px] items-center justify-center rounded-full border-2 border-bg-1 bg-accent px-1 text-[0.65rem] font-semibold text-white"
-                >
-                  1
-                </motion.span>
-              )}
-            </span>
-          </motion.button>
+      {/* The button animates in place (no unmount), so it becomes non-interactive the instant it starts hiding. */}
+      <motion.button
+        type="button"
+        onClick={toggle}
+        aria-label={open ? 'Close WhatsApp chat' : 'Chat with Webrick on WhatsApp'}
+        aria-expanded={open}
+        aria-hidden={!show}
+        tabIndex={show ? 0 : -1}
+        initial={false}
+        animate={{ opacity: show ? 1 : 0, scale: show ? 1 : 0.6, y: show ? 0 : 16 }}
+        transition={{ type: 'spring', stiffness: 380, damping: 26 }}
+        whileHover={show ? { scale: 1.05 } : undefined}
+        whileTap={show ? { scale: 0.94 } : undefined}
+        style={{ pointerEvents: show ? 'auto' : 'none' }}
+        className="group relative flex items-center gap-3"
+      >
+        {!open && (
+          <span className="pointer-events-none hidden translate-x-2 rounded-lg border border-line bg-bg-2/95 px-3 py-2 text-sm text-text opacity-0 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.8)] backdrop-blur transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 sm:block">
+            Chat on WhatsApp
+          </span>
         )}
-      </AnimatePresence>
+        <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_14px_36px_-10px_rgba(37,211,102,0.7)]">
+          {!open && show && <span aria-hidden="true" className="absolute inset-0 animate-[wa-ring_3.2s_ease-out_infinite] rounded-full border-2 border-[#25D366]" />}
+          <motion.span
+            className="relative flex items-center justify-center"
+            animate={{ rotate: open ? 90 : 0, scale: open ? 0.9 : 1 }}
+            transition={{ duration: 0.25 }}
+          >
+            {open ? <X size={26} strokeWidth={2.2} /> : <WhatsAppIcon className="h-7 w-7" />}
+          </motion.span>
+          {!seen && !open && (
+            <motion.span
+              initial={{ scale: 0 }}
+              animate={{ scale: show ? 1 : 0 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 18, delay: 0.6 }}
+              className="absolute -right-0.5 -top-0.5 flex h-5 min-w-[20px] items-center justify-center rounded-full border-2 border-bg-1 bg-accent px-1 text-[0.65rem] font-semibold text-white"
+            >
+              1
+            </motion.span>
+          )}
+        </span>
+      </motion.button>
     </div>
   )
 }
