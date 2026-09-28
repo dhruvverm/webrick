@@ -4,6 +4,10 @@
  */
 export const faq = [
   {
+    q: 'What is Webrick?',
+    a: 'Webrick is a web and software development studio based in India. It builds custom websites, e-commerce stores, web applications, mobile apps and business software such as CRMs for startups, local businesses and growing companies.',
+  },
+  {
     q: 'How much does a website cost?',
     a: 'Projects start from ₹5,000 for a simple website. The price depends on the number of pages, features and integrations. Tell us what you need and we send a fixed quote before any work begins.',
   },

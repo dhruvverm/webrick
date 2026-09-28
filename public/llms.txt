@@ -1,0 +1,36 @@
+# Webrick
+
+> Webrick is a web and software development studio based in India. It builds custom websites, e-commerce stores, web applications, mobile apps and business software for startups, local businesses and growing companies.
+
+Website: https://www.webrick.in/
+Founded: 2026
+Based in: India, remote-first, working with clients worldwide
+Hours: Monday to Friday, 10 AM to 6 PM IST
+Contact: tech.webrick@gmail.com, +91 90348 89399 (phone and WhatsApp)
+
+## Services
+
+- Website Development: modern, responsive and high-performing websites for businesses.
+- Web Applications: custom web applications designed around business requirements.
+- E-Commerce: scalable online stores on Shopify, WooCommerce and custom stacks.
+- UI/UX Development: clean, intuitive and conversion-focused digital interfaces.
+- Mobile Applications: mobile apps for Android and iOS, built with Flutter and React Native.
+- Business Solutions: custom digital tools and software, including CRMs and internal tools.
+
+## Products
+
+- SabseraCRM: a calling CRM for sales teams. Leads, click-to-call, call logs, recordings and follow-up reminders in one screen, with a live dashboard per agent.
+
+## How Webrick works
+
+- Discover, Design, Develop, Test, Launch.
+- Fixed scope, weekly updates and one point of contact from kickoff to launch.
+- Every project is custom-built, mobile-first and tested for performance.
+
+## Technology
+
+React, Next.js, TypeScript, Node.js, PHP, Laravel, Python, PostgreSQL, MySQL, MongoDB, Shopify, WordPress, WooCommerce, Flutter, React Native, AWS, Docker, Vercel.
+
+## Pricing
+
+Projects start from INR 5,000. A fixed quote is given before work begins.

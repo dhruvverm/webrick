@@ -57,6 +57,18 @@ const ld = {
       },
     },
     {
+      '@type': 'SoftwareApplication',
+      '@id': `${SITE}#sabseracrm`,
+      name: 'SabseraCRM',
+      applicationCategory: 'BusinessApplication',
+      applicationSubCategory: 'Calling CRM',
+      operatingSystem: 'Web',
+      description:
+        'SabseraCRM is a calling CRM for sales teams built by Webrick. It brings leads, click-to-call, call logs, recordings and follow-up reminders into one screen, with a live dashboard for each agent.',
+      featureList: ['Click-to-call', 'Automatic call logging', 'Call recordings', 'Follow-up reminders', 'Lead assignment', 'Agent and team reports'],
+      publisher: { '@id': `${SITE}#organization` },
+    },
+    {
       '@type': 'FAQPage',
       '@id': `${SITE}#faq`,
       mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
