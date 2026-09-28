@@ -39,6 +39,8 @@
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
+  /* The static snapshot is for crawlers and no-JS visitors; with JS the live app takes over at once. */
+  .js #root[data-prerendered] { visibility: hidden; }
   ::selection {
     background: rgba(var(--glow) / 0.45);
     color: #fff;

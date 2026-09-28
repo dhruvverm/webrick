@@ -11,13 +11,13 @@ import Process from './components/sections/Process'
 import TechStack from './components/sections/TechStack'
 import About from './components/sections/About'
 import Testimonials from './components/sections/Testimonials'
+import Faq from './components/sections/Faq'
 import Contact from './components/sections/Contact'
 
-export default function App() {
+/** The page itself. Also rendered to static HTML at build time (see scripts/prerender.mjs). */
+export function Page() {
   return (
-    <MotionConfig reducedMotion="user">
-      <a href="#main" className="skip-link">Skip to content</a>
-      <Intro />
+    <>
       <Navbar />
       <main id="main" className="relative">
         <Hero />
@@ -28,9 +28,20 @@ export default function App() {
         <TechStack />
         <About />
         <Testimonials />
+        <Faq />
         <Contact />
       </main>
       <Footer />
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <MotionConfig reducedMotion="user">
+      <a href="#main" className="skip-link">Skip to content</a>
+      <Intro />
+      <Page />
       <WhatsAppButton />
     </MotionConfig>
   )

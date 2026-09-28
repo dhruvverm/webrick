@@ -55,6 +55,19 @@ src/
   hooks/               # useActiveSection (nav highlight), useLockBody (menus/modals)
 ```
 
+## SEO
+
+- **Prerendering.** `npm run build` builds the client, then server-renders the page and writes it into
+  `dist/index.html` (`scripts/prerender.mjs`). Crawlers and link-preview bots get the full content in the
+  raw HTML; in the browser the live React app replaces the snapshot on load.
+- **Structured data.** `index.html` carries `WebSite` and `Organization`; the prerender step adds
+  `ProfessionalService` (with the service catalogue) and `FAQPage`, generated from `src/data/services.js`
+  and `src/data/faq.js` so markup and page never drift apart.
+- **FAQ.** Edit `src/data/faq.js`. Answers must stay truthful, since they are published to Google.
+- **Crawling.** `public/robots.txt`, `public/sitemap.xml` (its `lastmod` is refreshed on every build),
+  canonical link, favicons in 48/96/192 px and `.ico`.
+- Title and meta description live in `index.html`.
+
 ## Motion
 
 Intro curtain (bricks assemble, curtain lifts) plays once per browser session via `sessionStorage`;

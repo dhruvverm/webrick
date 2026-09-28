@@ -67,7 +67,7 @@ function WallLoop() {
 function PerformanceRing() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-40px' })
-  const [n, setN] = useState(0)
+  const [n, setN] = useState(typeof window === 'undefined' ? 98 : 0)
   useEffect(() => {
     if (!inView) return
     const c = animate(0, 98, { duration: 1.8, ease: [0.16, 1, 0.3, 1], onUpdate: (v) => setN(Math.round(v)) })
@@ -224,7 +224,7 @@ function Timeline() {
 function Counter({ value, prefix = '', suffix = '', decimals = 0 }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-40px' })
-  const [n, setN] = useState(0)
+  const [n, setN] = useState(typeof window === 'undefined' ? value : 0)
   useEffect(() => {
     if (!inView) return
     const c = animate(0, value, { duration: 1.6, ease: [0.16, 1, 0.3, 1], onUpdate: setN })

@@ -212,7 +212,7 @@ export default function Contact() {
     <section id="contact" className="section scroll-mt-20">
       <div className="container-x">
         <SectionHeader
-          index="07"
+          index="08"
           label="Contact"
           meta={site.availability}
           title="Let’s build something that moves your business forward."

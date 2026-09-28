@@ -77,7 +77,7 @@ export default function Hero() {
             <div className="dots absolute -inset-10 lg:-inset-16" aria-hidden="true" />
             <div style={{ perspective: 1400 }}>
               <motion.div style={{ rotateX, rotateY, x: shiftX, transformStyle: 'preserve-3d' }}>
-                <BlockAssembly className="relative w-full" delay={T + 0.5} wave />
+                {typeof window !== 'undefined' && <BlockAssembly className="relative w-full" delay={T + 0.5} wave />}
               </motion.div>
             </div>
           </motion.figure>
