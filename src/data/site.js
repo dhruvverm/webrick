@@ -14,6 +14,7 @@ export const site = {
   formEndpoint: 'https://formsubmit.co/ajax/tech.webrick@gmail.com',
   /** Add real profile URLs here; entries without a URL are not shown. */
   socials: [
+    { label: 'Find us on Google', href: 'https://share.google/uXp31dZQbqohx6kTv' },
     { label: 'LinkedIn', href: '' },
     { label: 'Instagram', href: '' },
     { label: 'GitHub', href: '' },
