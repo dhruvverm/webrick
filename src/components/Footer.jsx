@@ -1,16 +1,22 @@
-import { ArrowUp, ArrowUpRight } from 'lucide-react'
+import { ArrowUp, ArrowUpRight, Mail, Phone } from 'lucide-react'
 import { LogoMark } from './Logo'
+import BrandIcon from './BrandIcon'
 import MaskedText from './ui/MaskedText'
 import { services } from '../data/services'
 import { navLinks } from '../data/nav'
 import { site } from '../data/site'
+
+const channels = [
+  { label: 'WhatsApp', icon: 'whatsapp', href: site.whatsapp },
+  ...site.socials.filter((s) => s.href),
+]
 
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-line">
       <div className="container-x pt-14 pb-6">
         <div className="grid gap-x-8 gap-y-10 md:grid-cols-12">
-          <div className="md:col-span-5">
+          <div className="md:col-span-12 lg:col-span-4">
             <LogoMark size={28} />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
               A web and software development studio. We build fast, modern and scalable websites and digital products
@@ -21,7 +27,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="hidden md:col-span-3 md:col-start-6 md:block">
+          <div className="hidden md:col-span-4 md:block lg:col-span-3 lg:col-start-5">
             <h4 className="label">Services</h4>
             <ul className="mt-4 space-y-2">
               {services.map((s) => (
@@ -30,7 +36,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="hidden md:col-span-2 md:block">
+          <div className="hidden md:col-span-3 md:block lg:col-span-2">
             <h4 className="label">Company</h4>
             <ul className="mt-4 space-y-2">
               {navLinks.slice(1).map((l) => (
@@ -39,17 +45,39 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-2">
+          <div className="md:col-span-5 lg:col-span-3">
             <h4 className="label">Get in touch</h4>
-            <ul className="mt-4 space-y-2 text-sm">
-              <li><a href={`mailto:${site.email}`} className="text-muted transition-colors hover:text-text">Email us</a></li>
-              <li><a href={site.phoneHref} className="text-muted transition-colors hover:text-text">Call {site.phone}</a></li>
-              <li><a href={site.whatsapp} target="_blank" rel="noreferrer" className="text-muted transition-colors hover:text-text">WhatsApp</a></li>
-              {site.socials.filter((s) => s.href).map((s) => (
-                <li key={s.label}><a href={s.href} target="_blank" rel="noreferrer" className="text-muted transition-colors hover:text-text">{s.label}</a></li>
-              ))}
-              <li className="whitespace-nowrap text-dim">{site.hours}</li>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li>
+                <a href={`mailto:${site.email}`} className="group inline-flex items-center gap-2.5 text-muted transition-colors hover:text-text">
+                  <Mail size={15} strokeWidth={1.6} className="text-dim transition-colors group-hover:text-accent-soft" aria-hidden="true" />
+                  Email us
+                </a>
+              </li>
+              <li>
+                <a href={site.phoneHref} aria-label={`Call ${site.phone}`} className="group inline-flex items-center gap-2.5 whitespace-nowrap text-muted transition-colors hover:text-text">
+                  <Phone size={15} strokeWidth={1.6} className="text-dim transition-colors group-hover:text-accent-soft" aria-hidden="true" />
+                  {site.phone}
+                </a>
+              </li>
             </ul>
+            <ul className="mt-5 flex flex-wrap gap-2 lg:gap-1.5 xl:gap-2">
+              {channels.map((c) => (
+                <li key={c.label}>
+                  <a
+                    href={c.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={c.label}
+                    title={c.label}
+                    className="grid h-10 w-10 place-items-center rounded-full border lg:h-9 lg:w-9 xl:h-10 xl:w-10 border-line text-muted transition duration-200 hover:-translate-y-0.5 hover:border-accent hover:bg-accent hover:text-bg-0"
+                  >
+                    <BrandIcon name={c.icon} className="h-[17px] w-[17px]" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 whitespace-nowrap text-sm text-dim">{site.hours}</p>
           </div>
         </div>
 

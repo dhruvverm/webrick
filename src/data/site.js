@@ -12,12 +12,13 @@ export const site = {
   responseTime: 'Reply within one business day',
   /** Contact form relay (FormSubmit). Submissions are forwarded to `email`; activate once via the link they send. */
   formEndpoint: 'https://formsubmit.co/ajax/tech.webrick@gmail.com',
-  /** Add real profile URLs here; entries without a URL are not shown. */
+  /** Add real profile URLs here; entries without a URL are not shown. `icon` is a key of BRAND_PATHS. */
   socials: [
-    { label: 'Find us on Google', href: 'https://share.google/uXp31dZQbqohx6kTv' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/webick-in-75545343b/' },
-    { label: 'Instagram', href: 'https://www.instagram.com/webrick.in/' },
-    { label: 'X (Twitter)', href: 'https://x.com/WEBRICKINDIA' },
-    { label: 'GitHub', href: '' },
+    { label: 'Find us on Google', icon: 'google', href: 'https://share.google/uXp31dZQbqohx6kTv' },
+    { label: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/in/webick-in-75545343b/' },
+    { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/webrick.in/' },
+    { label: 'X (Twitter)', icon: 'x', href: 'https://x.com/WEBRICKINDIA' },
+    { label: 'Facebook', icon: 'facebook', href: '' },
+    { label: 'GitHub', icon: 'github', href: '' },
   ],
 }
