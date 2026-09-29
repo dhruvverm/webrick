@@ -16,7 +16,8 @@ export const site = {
   socials: [
     { label: 'Find us on Google', href: 'https://share.google/uXp31dZQbqohx6kTv' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/webick-in-75545343b/' },
-    { label: 'Instagram', href: '' },
+    { label: 'Instagram', href: 'https://www.instagram.com/webrick.in/' },
+    { label: 'X (Twitter)', href: 'https://x.com/WEBRICKINDIA' },
     { label: 'GitHub', href: '' },
   ],
 }
