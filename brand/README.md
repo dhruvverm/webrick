@@ -39,5 +39,8 @@ All are also provided as SVG for edits. Text is outlined; no fonts required.
 | `carousel-01-cover` … `carousel-04-contact` (1080×1350) | Four-slide intro carousel: cover, what we build, how a project runs, contact. Post in order. |
 | `post-now-live-1080` (1080×1080) | Single "Webrick is live" launch post. |
 | `story-1080x1920` | Story / Reel cover with the same message. Add a link sticker to www.webrick.in. |
+| `first-post-1080x1350.png` | First feed post: "Hello, world." over the brick wall. Post on its own. |
+| `first-post-carousel-cover-1080x1350.png` | Same design marked `01 / 04` with a swipe cue. Use as the cover, followed by `carousel-02` … `carousel-04`. |
 
-SVG sources are alongside for edits; all text is outlined.
+SVG sources are alongside for edits; all text is outlined. The first post is built from `first-post.html`
+(open it in Chrome at 1080×1350; add `?carousel=1` for the cover variant). It loads its fonts from Google Fonts.
