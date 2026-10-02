@@ -8,7 +8,7 @@ import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 
 const root = process.cwd()
-const { render, faq, services, site } = await import(pathToFileURL(path.join(root, 'dist-ssr/entry-server.js')).href)
+const { render, faq, services, site, keywords, serviceAreas } = await import(pathToFileURL(path.join(root, 'dist-ssr/entry-server.js')).href)
 
 // Animation start states (opacity 0, off-screen transforms) make no sense in static HTML: strip them.
 const clean = (html) =>
@@ -38,8 +38,13 @@ const ld = {
       logo: `${SITE}icon-512.png`,
       email: site.email,
       telephone: site.phoneHref.replace('tel:', ''),
-      priceRange: '₹₹',
-      areaServed: ['India', 'Worldwide'],
+      description:
+        'Webrick is a website and software development company in India. It designs and builds business websites, e-commerce stores, web applications, mobile apps and custom CRM software.',
+      slogan: 'Websites and software that move businesses forward.',
+      keywords: keywords.join(', '),
+      knowsAbout: services.map((s) => s.serviceType),
+      priceRange: 'From ₹5,000',
+      areaServed: [{ '@type': 'Country', name: 'India' }, ...serviceAreas.map((name) => ({ '@type': 'City', name }))],
       address: { '@type': 'PostalAddress', addressCountry: 'IN' },
       openingHoursSpecification: {
         '@type': 'OpeningHoursSpecification',
@@ -52,7 +57,14 @@ const ld = {
         name: 'Web and software development services',
         itemListElement: services.map((s) => ({
           '@type': 'Offer',
-          itemOffered: { '@type': 'Service', name: s.title, description: s.description, provider: { '@id': `${SITE}#organization` } },
+          itemOffered: {
+            '@type': 'Service',
+            name: s.title,
+            serviceType: s.serviceType,
+            description: s.description,
+            areaServed: { '@type': 'Country', name: 'India' },
+            provider: { '@id': `${SITE}#organization` },
+          },
         })),
       },
     },
@@ -76,6 +88,8 @@ const ld = {
   ],
 }
 html = html.replace('</head>', `  <script type="application/ld+json">${JSON.stringify(ld)}</script>\n  </head>`)
+// Keywords meta tag from the same list. Google ignores it; some other engines and tools still read it.
+html = html.replace('<link rel="canonical"', `<meta name="keywords" content="${keywords.join(', ')}" />\n    <link rel="canonical"`)
 fs.writeFileSync('dist/index.html', html)
 
 // Keep the sitemap's lastmod honest.

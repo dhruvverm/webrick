@@ -271,7 +271,7 @@ export default function ProjectMockup({ variant = 'business', hue = 210, image =
   if (image) {
     return (
       <div className={`overflow-hidden rounded-t-[6px] border border-b-0 border-text/[0.12] bg-bg-1 ${className}`}>
-        <img src={image} alt={`${name} preview`} className="w-full h-full object-cover object-top" loading="lazy" />
+        <img src={image} alt={`Screenshot of ${name}, built by Webrick`} className="w-full h-full object-cover object-top" loading="lazy" />
       </div>
     )
   }

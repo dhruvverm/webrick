@@ -67,6 +67,8 @@ src/
 - **Crawling.** `public/robots.txt`, `public/sitemap.xml` (its `lastmod` is refreshed on every build),
   canonical link, favicons in 48/96/192 px and `.ico`.
 - Title and meta description live in `index.html`.
+- Target search phrases live in `src/data/seo.js`. They feed the keywords meta tag and structured data at build time.
+  Google ranks on visible text, so use the same phrases in the copy (hero, `services.js`, `faq.js`).
 
 ## Motion
 

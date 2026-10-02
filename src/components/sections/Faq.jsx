@@ -9,6 +9,8 @@ const isServer = typeof window === 'undefined'
 
 export default function Faq() {
   const [open, setOpen] = useState(0)
+  const [showAll, setShowAll] = useState(false)
+  const MOBILE_COUNT = 6
 
   return (
     <section id="faq" className="section scroll-mt-20">
@@ -25,7 +27,7 @@ export default function Faq() {
           {faq.map((item, i) => {
             const isOpen = isServer || open === i
             return (
-              <li key={item.q} className="border-b border-line">
+              <li key={item.q} className={`border-b border-line ${i >= MOBILE_COUNT && !showAll ? 'hidden lg:block' : ''}`}>
                 <h3>
                   <button
                     type="button"
@@ -35,7 +37,7 @@ export default function Faq() {
                     className="group row-hover flex w-full items-center justify-between gap-6 py-5 text-left lg:py-6"
                   >
                     <span className="flex items-baseline gap-4 sm:gap-6">
-                      <span className={`mono text-xs transition-colors ${isOpen ? 'text-accent' : 'text-dim'}`}>0{i + 1}</span>
+                      <span className={`mono text-xs transition-colors ${isOpen ? 'text-accent' : 'text-dim'}`}>{String(i + 1).padStart(2, '0')}</span>
                       <span className="display text-xl sm:text-2xl">{item.q}</span>
                     </span>
                     <motion.span
@@ -72,6 +74,11 @@ export default function Faq() {
             )
           })}
         </ul>
+        {!showAll && faq.length > MOBILE_COUNT && (
+          <button type="button" onClick={() => setShowAll(true)} className="btn btn-secondary mt-6 w-full lg:hidden">
+            Show {faq.length - MOBILE_COUNT} more questions
+          </button>
+        )}
       </div>
     </section>
   )

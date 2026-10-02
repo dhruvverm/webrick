@@ -19,8 +19,8 @@ export default function Footer() {
           <div className="md:col-span-12 lg:col-span-4">
             <LogoMark size={28} />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
-              A web and software development studio. We build fast, modern and scalable websites and digital products
-              for businesses that want to grow.
+              Webrick is a website and software development company in India. We build fast, modern websites, online
+              stores, web apps and mobile apps for businesses that want to grow.
             </p>
             <a href={`mailto:${site.email}`} className="mt-6 inline-flex items-center gap-2 text-text transition-colors hover:text-accent-soft">
               {site.email} <ArrowUpRight size={15} strokeWidth={1.6} />

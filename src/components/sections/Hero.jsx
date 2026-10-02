@@ -52,17 +52,18 @@ export default function Hero() {
           {/* Copy */}
           <div className="lg:col-span-7">
             <motion.p {...fade(0.05)} className="label flex flex-wrap items-center gap-x-3 gap-y-1">
-              <span>Web &amp; software development studio</span>
+              <span>Web development company in India</span>
               <span className="hidden text-line-strong sm:inline">/</span>
               <span className="hidden sm:inline">Est. {site.founded}</span>
             </motion.p>
 
             <h1 className="display mt-6 max-w-[12ch] text-[3.1rem] xs:text-[3.7rem] sm:text-[4.6rem] lg:text-[4.9rem] xl:text-[5.7rem]">
-              <MaskedText text="We Build Digital Experiences That Move Businesses Forward." onMount delay={T + 0.15} stagger={0.055} accentDot />
+              <MaskedText text="We Build Websites & Software That Move Businesses Forward." onMount delay={T + 0.15} stagger={0.055} accentDot />
             </h1>
 
             <motion.p {...fade(0.7)} className="mt-8 max-w-md text-[1.05rem] leading-relaxed text-muted">
-              Webrick helps businesses turn ideas into fast, modern and scalable websites and digital products.
+              Webrick is a website design and development company. We build fast, modern websites, online stores and apps
+              for growing businesses.
             </motion.p>
             <motion.div {...fade(0.8)} className="mt-7 flex flex-wrap gap-3">
               <Button href="#contact">Start a Project</Button>
@@ -90,7 +91,7 @@ export default function Hero() {
           <div>
             <dt className="label">We build</dt>
             <dd className="mt-2 max-w-xs text-sm leading-relaxed text-muted">
-              Websites, web applications, e-commerce stores and mobile apps.
+              Business websites, e-commerce stores, web applications, mobile apps and custom CRM software.
             </dd>
           </div>
           <div>

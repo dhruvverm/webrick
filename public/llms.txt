@@ -1,6 +1,6 @@
 # Webrick
 
-> Webrick is a web and software development studio based in India. It builds custom websites, e-commerce stores, web applications, mobile apps and business software for startups, local businesses and growing companies.
+> Webrick is a website and software development company based in India. It designs and builds custom websites, e-commerce stores, web applications, mobile apps and business software such as CRMs for startups, local businesses and growing companies.
 
 Website: https://www.webrick.in/
 LinkedIn: https://www.linkedin.com/in/webick-in-75545343b/
@@ -8,18 +8,19 @@ Instagram: https://www.instagram.com/webrick.in/
 X (Twitter): https://x.com/WEBRICKINDIA
 Google Business Profile: https://share.google/uXp31dZQbqohx6kTv
 Founded: 2026
-Based in: India, remote-first, working with clients worldwide
+Based in: India, remote-first. Takes projects from anywhere in India (Delhi NCR, Mumbai, Bengaluru, Pune, Hyderabad, Chandigarh, Jaipur) and from clients abroad
 Hours: Monday to Friday, 10 AM to 6 PM IST
 Contact: tech.webrick@gmail.com, +91 90348 89399 (phone and WhatsApp)
 
 ## Services
 
-- Website Development: modern, responsive and high-performing websites for businesses.
-- Web Applications: custom web applications designed around business requirements.
-- E-Commerce: scalable online stores on Shopify, WooCommerce and custom stacks.
-- UI/UX Development: clean, intuitive and conversion-focused digital interfaces.
+- Website Development: website design and development for businesses. Fast, responsive, SEO-friendly websites and landing pages.
+- Web Applications: custom web application development. Dashboards, customer portals and SaaS products.
+- E-Commerce: e-commerce website development on Shopify, WooCommerce and custom stacks.
+- UI/UX Development: UI/UX design and front-end development for websites and apps.
 - Mobile Applications: mobile apps for Android and iOS, built with Flutter and React Native.
-- Business Solutions: custom digital tools and software, including CRMs and internal tools.
+- Business Solutions: custom software development, including CRM software, automation and integrations.
+- Website redesign: rebuilding slow or outdated websites to be faster and mobile-friendly.
 
 ## Products
 

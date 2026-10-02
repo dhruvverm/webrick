@@ -13,8 +13,8 @@ export default function Services() {
           index="01"
           label="Services"
           meta="Six disciplines"
-          title="What We Build"
-          lede="From a first website to a full product, we design and develop the digital tools a business runs on."
+          title="Web Development Services"
+          lede="Website design, web development, e-commerce, mobile apps and custom software. From a first business website to a full product, built by one team."
         />
 
         <ul className="mt-14 border-t border-line lg:mt-20">

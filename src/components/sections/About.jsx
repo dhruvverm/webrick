@@ -32,7 +32,7 @@ export default function About() {
             </Reveal>
             <Reveal delay={0.08} className="hidden lg:block">
               <p className="mt-7 max-w-xl text-[1.02rem] leading-relaxed text-muted">
-                Webrick is a web and software development studio based in India. We build the other kind. Sites and software with a job to do, built by people who care whether they do
+                Webrick is a website and software development company based in India. We build the other kind. Sites and software with a job to do, built by people who care whether they do
                 it. We are a compact team of designers and engineers, small enough that you talk to the people doing the
                 work and experienced enough to take a product from a napkin sketch to production.
               </p>
