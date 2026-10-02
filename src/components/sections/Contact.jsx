@@ -218,7 +218,7 @@ export default function Contact() {
           title="Let’s build something that moves your business forward."
         />
 
-        <div className="mt-14 grid gap-x-8 gap-y-12 lg:mt-20 lg:grid-cols-12">
+        <div className="mt-8 grid gap-x-8 gap-y-8 lg:mt-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Reveal className="hidden lg:block">
               <p className="max-w-sm text-[1.02rem] leading-relaxed text-muted">
@@ -312,7 +312,7 @@ export default function Contact() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.3 }}
-                  className="relative grid gap-x-8 gap-y-8 sm:grid-cols-2"
+                  className="relative grid gap-x-8 gap-y-7 sm:grid-cols-2"
                 >
                   <TextField label="Name" name="name" index={0} inputRef={refs.name} value={form.name} onChange={update} error={errors.name} placeholder="Priya Sharma" autoComplete="name" />
                   <TextField label="Email" name="email" type="email" index={1} inputRef={refs.email} value={form.email} onChange={update} error={errors.email} placeholder="priya@company.com" autoComplete="email" />

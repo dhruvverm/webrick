@@ -23,7 +23,7 @@ export default function Faq() {
           lede="What people ask before starting a website, app or software project with us."
         />
 
-        <ul className="mt-14 border-t border-line lg:mt-20">
+        <ul className="mt-8 border-t border-line lg:mt-12">
           {faq.map((item, i) => {
             const isOpen = isServer || open === i
             return (

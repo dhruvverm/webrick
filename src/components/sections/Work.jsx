@@ -71,7 +71,7 @@ export default function Work() {
           lede="A selection of websites, platforms and products we have designed and built. Every one is custom, and every one is still in use."
         />
 
-        <ul className="mt-14 border-t border-line lg:mt-20" onMouseLeave={() => setHovered(null)}>
+        <ul className="mt-8 border-t border-line lg:mt-12" onMouseLeave={() => setHovered(null)}>
           {projects.map((p, i) => (
             <motion.li
               key={p.id}
@@ -88,7 +88,7 @@ export default function Work() {
                   setSelected(p)
                 }}
                 onMouseEnter={() => setHovered(i)}
-                className="group row-hover w-full py-6 text-left lg:py-7"
+                className="group row-hover w-full py-5 text-left lg:py-6"
               >
                 {/* inline preview, small screens only */}
                 <MobilePreview project={p} />

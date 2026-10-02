@@ -16,7 +16,7 @@ export default function SectionHeader({ index, label, meta, title, lede, classNa
         </span>
         {meta && <span className="hidden sm:inline">{meta}</span>}
       </Reveal>
-      <div className="mt-8 grid items-end gap-x-8 gap-y-6 lg:mt-12 lg:grid-cols-12">
+      <div className="mt-5 grid items-end gap-x-8 gap-y-5 lg:mt-7 lg:grid-cols-12">
         <h2 className="display max-w-[16ch] text-[2.5rem] sm:text-5xl lg:text-[3.9rem] lg:col-span-8">
           <MaskedText text={title} stagger={0.04} />
         </h2>

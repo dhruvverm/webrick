@@ -33,12 +33,12 @@ export default function TechStack() {
         />
       </div>
 
-      <div className="mt-14 lg:mt-20">
+      <div className="mt-8 lg:mt-12">
         <Band />
       </div>
 
       <div className="container-x">
-        <dl className="mt-12 hidden md:block lg:mt-16">
+        <dl className="mt-6 hidden md:block lg:mt-8">
           {techGroups.map((g, gi) => (
             <motion.div
               key={g.group}
@@ -46,7 +46,7 @@ export default function TechStack() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, ease: EASE, delay: gi * 0.05 }}
-              className="grid grid-cols-1 gap-y-3 border-b border-line py-6 sm:grid-cols-12 sm:gap-x-6 lg:py-7"
+              className="grid grid-cols-1 gap-y-3 border-b border-line py-5 sm:grid-cols-12 sm:gap-x-6 lg:py-5"
             >
               <dt className="label sm:col-span-3 sm:pt-2 lg:col-span-2">
                 <span className="text-accent">0{gi + 1}</span>
@@ -65,7 +65,7 @@ export default function TechStack() {
             </motion.div>
           ))}
         </dl>
-        <p className="mt-8 hidden max-w-xl text-sm text-dim md:block">
+        <p className="mt-6 hidden max-w-xl text-sm text-dim md:block">
           Plus TypeScript, PostgreSQL, Redis, Tailwind CSS, Firebase and whatever the project genuinely needs.
         </p>
       </div>

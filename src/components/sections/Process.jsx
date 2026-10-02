@@ -20,7 +20,7 @@ export default function Process() {
           lede="You know what is happening, what comes next and what you will receive at every step."
         />
 
-        <div ref={ref} className="relative mt-14 lg:mt-20">
+        <div ref={ref} className="relative mt-8 lg:mt-12">
           <div className="rule" aria-hidden="true" />
           <motion.div
             style={{ scaleX }}
@@ -28,7 +28,7 @@ export default function Process() {
             aria-hidden="true"
           />
 
-          <ol className="grid gap-y-10 md:grid-cols-5 md:gap-x-6">
+          <ol className="grid gap-y-7 md:grid-cols-5 md:gap-x-6">
             {processSteps.map((s, i) => (
               <motion.li
                 key={s.number}
@@ -36,11 +36,11 @@ export default function Process() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.7, ease: EASE, delay: i * 0.1 }}
-                className="relative grid grid-cols-[3.5rem_1fr] gap-x-4 pt-6 md:block md:pt-7"
+                className="relative grid grid-cols-[3.5rem_1fr] gap-x-4 pt-5 md:block md:pt-6"
               >
                 <span className="absolute -top-px left-0 h-px w-8 bg-text md:w-full md:bg-transparent" aria-hidden="true" />
                 <span className="display text-[2.6rem] leading-none text-accent md:text-5xl">{s.number}</span>
-                <div className="md:mt-10">
+                <div className="md:mt-6">
                   <h3 className="display text-2xl">{s.title}</h3>
                   <p className="mt-2 text-[0.95rem] text-text/85">{s.description}</p>
                   <p className="mt-3 hidden text-sm leading-relaxed text-muted md:block">{s.detail}</p>

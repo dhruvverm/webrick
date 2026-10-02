@@ -36,7 +36,7 @@ function WallLoop() {
   const rows = [3, 3, 3, 3]
   let i = 0
   return (
-    <div className="flex h-56 items-end justify-center overflow-hidden px-6 pb-0 sm:h-64">
+    <div className="flex h-48 items-end justify-center overflow-hidden px-6 pb-0 sm:h-56">
       <div className="flex w-[300px] flex-col-reverse gap-1.5">
         {rows.map((count, ri) => (
           <div key={ri} className={`flex gap-1.5 ${ri % 2 ? 'ml-[-49px]' : ''}`}>
@@ -75,7 +75,7 @@ function PerformanceRing() {
   }, [inView])
   const R = 54, C = 2 * Math.PI * R
   return (
-    <div ref={ref} className="flex h-56 items-center justify-center gap-8 sm:h-64">
+    <div ref={ref} className="flex h-48 items-center justify-center gap-8 sm:h-56">
       <div className="relative h-36 w-36">
         <svg viewBox="0 0 128 128" className="h-full w-full -rotate-90">
           <circle cx="64" cy="64" r={R} fill="none" stroke="rgba(242,239,232,0.08)" strokeWidth="8" />
@@ -107,7 +107,7 @@ function Devices() {
     { w: 40, h: 72, r: 9 },
   ]
   return (
-    <div className="flex h-56 items-end justify-center gap-4 px-6 pb-8 sm:h-64">
+    <div className="flex h-48 items-end justify-center gap-4 px-6 pb-8 sm:h-56">
       {frames.map((f, i) => (
         <motion.div
           key={i}
@@ -132,7 +132,7 @@ function Devices() {
 function TechFloat() {
   const keys = ['react', 'node', 'flutter', 'shopify', 'aws', 'docker']
   return (
-    <div className="flex h-56 items-center justify-center sm:h-64">
+    <div className="flex h-48 items-center justify-center sm:h-56">
       <div className="grid grid-cols-3 gap-3">
       {keys.map((k, i) => (
         <motion.span
@@ -153,8 +153,8 @@ function TechFloat() {
 function Layers() {
   const plates = [0, 1, 2, 3]
   return (
-    <div className="flex h-56 items-center justify-center sm:h-64">
-      <div className="relative h-40 w-40" style={{ transform: 'rotateX(56deg) rotateZ(-45deg)', transformStyle: 'preserve-3d' }}>
+    <div className="flex h-48 items-center justify-center sm:h-56">
+      <div className="relative h-40 w-40 translate-y-4" style={{ transform: 'rotateX(56deg) rotateZ(-45deg)', transformStyle: 'preserve-3d' }}>
         {plates.map((p) => (
           <motion.span
             key={p}
@@ -177,7 +177,7 @@ function Layers() {
 function Timeline() {
   const weeks = ['Kickoff', 'Design', 'Build', 'Test', 'Launch']
   return (
-    <div className="flex h-56 flex-col justify-center px-6 sm:h-64 sm:px-8">
+    <div className="flex h-48 flex-col justify-center px-6 sm:h-56 sm:px-8">
       <div className="relative">
         <div className="absolute left-0 right-0 top-[7px] h-px bg-line" />
         <motion.div
@@ -270,7 +270,7 @@ export default function WhyWebrick() {
           lede="Most agencies ship a template with your logo on it. We build the thing your business actually needs, on a foundation that will still make sense in five years."
         />
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-12">
           <Card id="custom" index={0} className="lg:col-span-7"><WallLoop /></Card>
           <Card id="performance" index={1} className="lg:col-span-5"><PerformanceRing /></Card>
           <Card id="responsive" index={2} className="lg:col-span-4"><Devices /></Card>

@@ -39,7 +39,7 @@ export default function Hero() {
       id="home"
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pt-24 pb-8 lg:pt-28 lg:pb-10"
+      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pt-24 pb-4 lg:pt-28 lg:pb-8"
     >
       <div
         aria-hidden="true"
@@ -48,7 +48,7 @@ export default function Hero() {
       />
 
       <div className="container-x relative">
-        <div className="grid gap-x-8 gap-y-12 lg:grid-cols-12 lg:items-center">
+        <div className="grid gap-x-8 gap-y-8 lg:grid-cols-12 lg:items-center">
           {/* Copy */}
           <div className="lg:col-span-7">
             <motion.p {...fade(0.05)} className="label flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -61,11 +61,11 @@ export default function Hero() {
               <MaskedText text="We Build Websites & Software That Move Businesses Forward." onMount delay={T + 0.15} stagger={0.055} accentDot />
             </h1>
 
-            <motion.p {...fade(0.7)} className="mt-8 max-w-md text-[1.05rem] leading-relaxed text-muted">
+            <motion.p {...fade(0.7)} className="mt-6 max-w-md text-[1.05rem] leading-relaxed text-muted">
               Webrick is a website design and development company. We build fast, modern websites, online stores and apps
               for growing businesses.
             </motion.p>
-            <motion.div {...fade(0.8)} className="mt-7 flex flex-wrap gap-3">
+            <motion.div {...fade(0.8)} className="mt-6 flex flex-wrap gap-3">
               <Button href="#contact">Start a Project</Button>
               <Button href="#work" variant="secondary" icon="diag">
                 Explore Our Work
@@ -86,7 +86,7 @@ export default function Hero() {
 
         <motion.dl
           {...fade(1.0)}
-          className="mt-14 hidden gap-x-8 gap-y-6 border-t border-line pt-5 sm:grid-cols-[1fr_1fr_1fr_auto] lg:mt-16 lg:grid"
+          className="mt-10 hidden gap-x-8 gap-y-6 border-t border-line pt-5 sm:grid-cols-[1fr_1fr_1fr_auto] lg:mt-10 lg:grid"
         >
           <div>
             <dt className="label">We build</dt>

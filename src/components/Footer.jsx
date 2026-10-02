@@ -14,8 +14,8 @@ const channels = [
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-line">
-      <div className="container-x pt-14 pb-6">
-        <div className="grid gap-x-8 gap-y-10 md:grid-cols-12">
+      <div className="container-x pt-10 pb-5">
+        <div className="grid gap-x-8 gap-y-8 md:grid-cols-12">
           <div className="md:col-span-12 lg:col-span-4">
             <LogoMark size={28} />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
@@ -81,7 +81,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 select-none overflow-hidden" aria-hidden="true">
+        <div className="mt-10 select-none overflow-hidden" aria-hidden="true">
           <span className="display -mb-[0.16em] block text-[22vw] leading-[0.85] tracking-[-0.05em] text-text md:text-[19vw]">
             <MaskedText text="Webrick" letters stagger={0.04} duration={1} />
           </span>

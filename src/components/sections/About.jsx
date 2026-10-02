@@ -22,7 +22,7 @@ export default function About() {
       <div className="container-x">
         <SectionHeader index="06" label="About" meta={`Est. ${site.founded}`} title="A small studio with a builder’s mindset." />
 
-        <div className="mt-14 grid gap-x-8 gap-y-12 lg:mt-20 lg:grid-cols-12">
+        <div className="mt-8 grid gap-x-8 gap-y-8 lg:mt-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Reveal>
               <p className="display max-w-[28ch] text-2xl font-medium leading-[1.25] text-text sm:text-[1.9rem]">
@@ -31,14 +31,14 @@ export default function About() {
               </p>
             </Reveal>
             <Reveal delay={0.08} className="hidden lg:block">
-              <p className="mt-7 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+              <p className="mt-6 max-w-xl text-[1.02rem] leading-relaxed text-muted">
                 Webrick is a website and software development company based in India. We build the other kind. Sites and software with a job to do, built by people who care whether they do
                 it. We are a compact team of designers and engineers, small enough that you talk to the people doing the
                 work and experienced enough to take a product from a napkin sketch to production.
               </p>
             </Reveal>
 
-            <ol className="mt-12 border-t border-line">
+            <ol className="mt-8 border-t border-line">
               {principles.map((p, i) => (
                 <Reveal key={p.title} delay={0.1 + i * 0.06} as="li" className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-line py-5 sm:gap-x-6">
                   <span className="mono pt-1 text-xs text-accent">0{i + 1}</span>

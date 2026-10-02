@@ -36,7 +36,7 @@ export default function Testimonials() {
           <span className="mono">{String(index + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}</span>
         </div>
 
-        <Reveal className="mt-8 grid gap-x-8 gap-y-8 lg:mt-12 lg:grid-cols-12">
+        <Reveal className="mt-6 grid gap-x-8 gap-y-6 lg:mt-8 lg:grid-cols-12">
           <div className="relative min-h-[9rem] lg:col-span-9">
             <AnimatePresence mode="wait">
               <motion.blockquote
@@ -49,7 +49,7 @@ export default function Testimonials() {
                 <p className="display max-w-[30ch] text-2xl font-medium leading-[1.2] sm:text-3xl lg:text-[2.5rem]">
                   “{t.quote}”
                 </p>
-                <footer className="mt-8 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
+                <footer className="mt-6 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
                   <span className="text-[0.95rem] text-text">{t.name}</span>
                   <span className="text-sm text-dim">{t.role}</span>
                 </footer>

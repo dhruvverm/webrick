@@ -17,7 +17,7 @@ export default function Services() {
           lede="Website design, web development, e-commerce, mobile apps and custom software. From a first business website to a full product, built by one team."
         />
 
-        <ul className="mt-14 border-t border-line lg:mt-20">
+        <ul className="mt-8 border-t border-line lg:mt-12">
           {services.map((s, i) => {
             const Icon = s.icon
             return (
@@ -33,7 +33,7 @@ export default function Services() {
                   href="#contact"
                   onClick={() => prefillContact(s.formType)}
                   aria-label={`${s.title}: start a project`}
-                  className="group row-hover grid grid-cols-[2.5rem_1fr_auto] items-start gap-x-4 py-6 sm:gap-x-6 lg:grid-cols-12 lg:items-baseline lg:py-8"
+                  className="group row-hover grid grid-cols-[2.5rem_1fr_auto] items-start gap-x-4 py-5 sm:gap-x-6 lg:grid-cols-12 lg:items-baseline lg:py-6"
                 >
                   <span className="mono pt-1 text-xs text-dim lg:col-span-1 lg:pt-0">0{i + 1}</span>
 
