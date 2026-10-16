@@ -13,7 +13,7 @@ export const faq = [
   },
   {
     q: 'How long does it take to build a website?',
-    a: 'A small business website typically takes two to four weeks. E-commerce stores and web applications take longer depending on scope. You get a timeline with the quote and weekly updates along the way.',
+    a: 'A simple business website typically takes two to three days. E-commerce stores and web applications take longer depending on scope. You get a timeline with the quote and regular updates along the way.',
   },
   {
     q: 'What services does Webrick offer?',
