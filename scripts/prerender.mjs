@@ -43,7 +43,7 @@ const ld = {
       slogan: 'Websites and software that move businesses forward.',
       keywords: keywords.join(', '),
       knowsAbout: services.map((s) => s.serviceType),
-      priceRange: 'From ₹5,000',
+      priceRange: 'From ₹3,999',
       areaServed: [{ '@type': 'Country', name: 'India' }, ...serviceAreas.map((name) => ({ '@type': 'City', name }))],
       address: { '@type': 'PostalAddress', addressCountry: 'IN' },
       openingHoursSpecification: {

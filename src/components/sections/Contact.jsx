@@ -8,7 +8,7 @@ import { site } from '../../data/site'
 import { PREFILL_EVENT } from '../../prefill'
 
 const projectTypes = ['Website', 'Web application', 'E-commerce store', 'Mobile app', 'UI/UX design', 'Something else']
-const budgets = ['₹5,000 – ₹15,000', '₹15,000 – ₹50,000', '₹50,000 – ₹1.5 lakh', '₹1.5 lakh+', 'Not sure yet']
+const budgets = ['₹3,999 – ₹15,000', '₹15,000 – ₹50,000', '₹50,000 – ₹1.5 lakh', '₹1.5 lakh+', 'Not sure yet']
 const initial = { name: '', email: '', company: '', phone: '', type: '', budget: '', message: '' }
 
 const shake = { x: [0, -6, 6, -4, 4, 0], transition: { duration: 0.4 } }
@@ -218,7 +218,7 @@ export default function Contact() {
           title="Let’s build something that moves your business forward."
         />
 
-        <div className="mt-8 grid gap-x-8 gap-y-8 lg:mt-12 lg:grid-cols-12">
+        <div className="mt-8 grid gap-x-8 gap-y-8 lg:mt-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Reveal className="hidden lg:block">
               <p className="max-w-sm text-[1.02rem] leading-relaxed text-muted">

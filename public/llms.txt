@@ -38,4 +38,4 @@ React, Next.js, TypeScript, Node.js, PHP, Laravel, Python, PostgreSQL, MySQL, Mo
 
 ## Pricing
 
-Projects start from INR 5,000. A fixed quote is given before work begins.
+Projects start from INR 3,999. A fixed quote is given before work begins.
