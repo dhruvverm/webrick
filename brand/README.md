@@ -41,6 +41,11 @@ All are also provided as SVG for edits. Text is outlined; no fonts required.
 | `story-1080x1920` | Story / Reel cover with the same message. Add a link sticker to www.webrick.in. |
 | `first-post-1080x1350.png` | First feed post: "Hello, world." over the brick wall. Post on its own. |
 | `first-post-carousel-cover-1080x1350.png` | Same design marked `01 / 04` with a swipe cue. Use as the cover, followed by `carousel-02` … `carousel-04`. |
+| `info-post-1080x1350.png` | Colourful explainer post: what we build, how it works, what it costs. |
+| `info-reel-1080x1920.mp4` + `info-reel-cover-1080x1920.jpg` | 25-second Reel of the same content (no audio; add music in the app). Cover frame alongside. |
 
 SVG sources are alongside for edits; all text is outlined. The first post is built from `first-post.html`
 (open it in Chrome at 1080×1350; add `?carousel=1` for the cover variant). It loads its fonts from Google Fonts.
+The explainer post comes from `info-post.html` (1080×1350). The Reel is `info-reel.html`, a `seek(t)` animation rendered
+frame by frame with `node info-reel-capture.mjs info-reel.html frames 1080 1920 30 25` and encoded with
+`ffmpeg -framerate 30 -i frames/%04d.jpg -c:v libx264 -crf 18 -pix_fmt yuv420p -movflags +faststart info-reel-1080x1920.mp4`.

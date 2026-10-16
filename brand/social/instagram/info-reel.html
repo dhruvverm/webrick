@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Webrick reel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=block" rel="stylesheet" />
+<style>
+  :root { --bg:#111110; --bone:#f2efe8; --ink:#111110; --muted:#a7a297; --dim:#8a867d;
+    --c1:#e4632f; --c2:#f2b63c; --c3:#2fbfa4; --c4:#8b7cf6; --c5:#f0648f; --c6:#4aa3ff; --P:72px; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:var(--bg); width:1080px; height:1920px; overflow:hidden; }
+  .stage { position:relative; width:1080px; height:1920px; overflow:hidden; background:var(--bg); color:var(--bone); font-family:'Geist',sans-serif; }
+  .glow { position:absolute; inset:0; background:
+      radial-gradient(700px 520px at 100% 0%, rgba(139,124,246,.22), transparent 70%),
+      radial-gradient(700px 520px at 0% 100%, rgba(228,99,47,.22), transparent 70%),
+      radial-gradient(560px 420px at 100% 100%, rgba(47,191,164,.16), transparent 70%); }
+  .mono { font-family:'Geist Mono',monospace; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
+  .display { font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'opsz' 96; font-weight:600; letter-spacing:-.025em; }
+  .el { position:absolute; left:var(--P); will-change:transform,opacity; }
+
+  .logo { top:250px; display:flex; align-items:center; gap:12px; }
+  .wordmark { font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:40px; letter-spacing:-.04em; line-height:1; font-variation-settings:'opsz' 96; }
+  .tag { top:258px; left:auto; right:var(--P); font-size:24px; color:var(--dim); }
+
+  .h { font-size:104px; line-height:.98; width:936px; }
+  .sub { font-size:34px; color:var(--muted); line-height:1.3; width:900px; }
+  .label { font-size:28px; color:var(--muted); display:flex; align-items:center; gap:14px; }
+  .label i { width:12px; height:12px; border-radius:50%; display:block; }
+
+  .tile { width:936px; height:148px; border-radius:22px; padding:0 30px; color:var(--ink); display:grid; grid-template-columns:70px 1fr; align-items:center; }
+  .tile .n { font-family:'Geist Mono',monospace; font-weight:500; font-size:24px; opacity:.55; }
+  .tile h3 { margin:0; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:46px; letter-spacing:-.02em; line-height:1; font-variation-settings:'opsz' 96; }
+  .tile p { margin:8px 0 0; font-size:29px; line-height:1.2; font-weight:500; opacity:.8; }
+
+  .step { width:936px; display:grid; grid-template-columns:84px 1fr; column-gap:24px; align-items:center; }
+  .step b { width:64px; height:64px; border-radius:50%; display:grid; place-items:center; color:var(--ink); font-family:'Geist Mono',monospace; font-size:26px; font-weight:500; }
+  .step h3 { margin:0; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:58px; letter-spacing:-.025em; line-height:1; font-variation-settings:'opsz' 96; }
+  .step p { margin:6px 0 0; font-size:30px; color:var(--muted); }
+  .line { left:calc(var(--P) + 31px); width:3px; background:rgba(242,239,232,.14); transform-origin:top; }
+
+  .fact { width:936px; height:210px; border-radius:24px; border:2px solid rgba(242,239,232,.16); background:rgba(242,239,232,.04); padding:30px 36px; }
+  .fact strong { display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:88px; letter-spacing:-.035em; line-height:1; font-variation-settings:'opsz' 96; }
+  .fact span { display:block; margin-top:14px; font-size:32px; color:var(--muted); }
+  .chips { display:flex; gap:14px; flex-wrap:wrap; width:936px; }
+  .chip { border-radius:999px; padding:14px 24px; font-size:27px; font-weight:500; color:var(--ink); }
+
+  .cta-h { font-size:128px; line-height:.95; width:936px; }
+  .cta-h .d { color:var(--c1); }
+  .url { font-size:44px; color:var(--bone); }
+  .wa { font-size:34px; color:var(--muted); }
+  .bio { font-size:30px; color:var(--c2); }
+  .bricks { display:flex; gap:14px; }
+  .bricks span { width:144px; height:60px; border-radius:12px; display:block; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="glow"></div>
+  <div class="el logo" id="logo"><svg width="48" height="48" viewBox="0 0 40 40" id="mark"></svg><span class="wordmark">Webrick</span></div>
+  <div class="el tag mono" id="tag">Web development · India</div>
+
+  <!-- S1 hook -->
+  <div class="el h display" id="h1a" style="top:560px">Need a website<br>for your<br>business?</div>
+  <div class="el sub" id="h1b" style="top:1000px">Here's everything you need to know about working with Webrick, in 20 seconds.</div>
+  <div class="el mono" id="h1c" style="top:1180px;font-size:28px;color:var(--c2)">Keep watching ↓</div>
+
+  <!-- S2 what we build -->
+  <div class="el label mono" id="l2" style="top:400px"><i style="background:var(--c1)"></i>01 — What we build</div>
+  <div class="el tile" id="t1" style="top:470px;background:var(--c1)"><span class="n">01</span><div><h3>Websites</h3><p>Business websites and landing pages that load fast.</p></div></div>
+  <div class="el tile" id="t2" style="top:636px;background:var(--c2)"><span class="n">02</span><div><h3>E-commerce stores</h3><p>Shopify, WooCommerce or custom. Built to sell.</p></div></div>
+  <div class="el tile" id="t3" style="top:802px;background:var(--c3)"><span class="n">03</span><div><h3>Web apps</h3><p>Dashboards, customer portals and SaaS products.</p></div></div>
+  <div class="el tile" id="t4" style="top:968px;background:var(--c4)"><span class="n">04</span><div><h3>Mobile apps</h3><p>Android and iOS with Flutter and React Native.</p></div></div>
+  <div class="el tile" id="t5" style="top:1134px;background:var(--c5)"><span class="n">05</span><div><h3>UI/UX design</h3><p>Clean, conversion-focused design for sites and apps.</p></div></div>
+  <div class="el tile" id="t6" style="top:1300px;background:var(--c6)"><span class="n">06</span><div><h3>Custom software</h3><p>CRM software, automation and integrations.</p></div></div>
+
+  <!-- S3 how it works -->
+  <div class="el label mono" id="l3" style="top:400px"><i style="background:var(--c3)"></i>02 — How it works</div>
+  <div class="el line" id="line" style="top:502px;height:688px"></div>
+  <div class="el step" id="s1" style="top:470px"><b style="background:var(--c1)">1</b><div><h3>Discover</h3><p>Goals, scope, timeline and a fixed quote.</p></div></div>
+  <div class="el step" id="s2" style="top:642px"><b style="background:var(--c2)">2</b><div><h3>Design</h3><p>Wireframes, then the real UI, before any code.</p></div></div>
+  <div class="el step" id="s3" style="top:814px"><b style="background:var(--c3)">3</b><div><h3>Develop</h3><p>Modern stack, staging site, weekly updates.</p></div></div>
+  <div class="el step" id="s4" style="top:986px"><b style="background:var(--c4)">4</b><div><h3>Test</h3><p>Every device, every flow, performance checked.</p></div></div>
+  <div class="el step" id="s5" style="top:1158px"><b style="background:var(--c5)">5</b><div><h3>Launch</h3><p>Deploy, hand over, and stay on for support.</p></div></div>
+  <div class="el sub" id="s6" style="top:1330px">One point of contact from kickoff to launch.</div>
+
+  <!-- S4 what it costs -->
+  <div class="el label mono" id="l4" style="top:400px"><i style="background:var(--c2)"></i>03 — What it costs</div>
+  <div class="el fact" id="f1" style="top:470px"><strong style="color:var(--c2)" id="price">From ₹5,000</strong><span>for a simple business website</span></div>
+  <div class="el fact" id="f2" style="top:706px"><strong style="color:var(--c3)">2–4 weeks</strong><span>typical build time for a business site</span></div>
+  <div class="el fact" id="f3" style="top:942px"><strong style="color:var(--c1)">Fixed quote</strong><span>agreed before any work begins. No surprises.</span></div>
+  <div class="el chips" id="f4" style="top:1200px"><span class="chip" style="background:var(--c4)">Weekly updates</span><span class="chip" style="background:var(--c5)">Mobile-first</span><span class="chip" style="background:var(--c6)">SEO-friendly</span><span class="chip" style="background:var(--c2)">Support after launch</span></div>
+
+  <!-- S5 CTA -->
+  <div class="el cta-h display" id="c1" style="top:560px">Let’s build<br>yours<span class="d">.</span></div>
+  <div class="el url mono" id="c2" style="top:880px">www.webrick.in</div>
+  <div class="el wa" id="c3" style="top:950px">WhatsApp +91 90348 89399 · tech.webrick@gmail.com</div>
+  <div class="el bio mono" id="c4" style="top:1030px">DM us or tap the link in bio →</div>
+  <div class="el bricks" id="c5" style="top:1180px"><span style="background:var(--c1)"></span><span style="background:var(--c2)"></span><span style="background:var(--c3)"></span><span style="background:var(--c4)"></span><span style="background:var(--c5)"></span><span style="background:var(--c6)"></span></div>
+</div>
+
+<script>
+  const COLS=[2,9.5,17,24.5,32], ROWS=[5.75,13.25,20.75,28.25]
+  const BLOCKS=[[0,0],[4,0],[0,1],[2,1],[4,1],[0,2],[2,2],[4,2],[1,3,1],[3,3,1]]
+  document.getElementById('mark').innerHTML=BLOCKS.map(([c,r,a])=>`<rect x="${COLS[c]}" y="${ROWS[r]}" width="6" height="6" rx="0.8" fill="${a?'#e4632f':'#f2efe8'}"/>`).join('')
+
+  // ---- tiny deterministic tween engine: window.seek(t) sets every element for time t ----
+  const E = {
+    out: p => 1 - Math.pow(1 - p, 3),
+    in: p => p * p * p,
+    back: p => { const c = 1.70158 * 1.2; return 1 + (c + 1) * Math.pow(p - 1, 3) + c * Math.pow(p - 1, 2) },
+    lin: p => p,
+  }
+  const byEl = new Map()
+  const $ = (id) => document.getElementById(id)
+  function tw(id, start, dur, from, to, ease = 'out') {
+    const el = $(id); if (!byEl.has(el)) byEl.set(el, []); byEl.get(el).push({ start, dur, from, to, ease })
+  }
+  const lerp = (a, b, p) => a + (b - a) * p
+  function apply(el, s) {
+    el.style.opacity = s.o ?? 1
+    const sx = s.sx ?? s.s ?? 1, sy = s.sy ?? s.s ?? 1
+    el.style.transform = `translate(${s.x || 0}px, ${s.y || 0}px) scale(${sx}, ${sy})`
+  }
+  window.seek = (t) => {
+    for (const [el, list] of byEl) {
+      list.sort((a, b) => a.start - b.start)
+      let cur = null
+      for (const k of list) if (t >= k.start) cur = k
+      if (!cur) { apply(el, list[0].from); continue }
+      const p = E[cur.ease](Math.min(1, Math.max(0, (t - cur.start) / cur.dur)))
+      const s = {}
+      for (const key of new Set([...Object.keys(cur.from), ...Object.keys(cur.to)])) s[key] = lerp(cur.from[key] ?? 1, cur.to[key] ?? cur.from[key], p)
+      apply(el, s)
+    }
+    // price counter
+    const pr = $('price'); const t0 = 15.9, d = 1.1
+    const q = Math.min(1, Math.max(0, (t - t0) / d)); const v = Math.round(E.out(q) * 5000 / 100) * 100
+    pr.textContent = 'From ₹' + v.toLocaleString('en-IN')
+  }
+  const IN = (id, at, dy = 40, dur = .55, ease = 'out') => tw(id, at, dur, { o: 0, y: dy }, { o: 1, y: 0 }, ease)
+  const OUT = (id, at, dur = .35) => tw(id, at, dur, { o: 1, y: 0 }, { o: 0, y: -40 }, 'in')
+  const POP = (id, at, dur = .5) => tw(id, at, dur, { o: 0, s: .85 }, { o: 1, s: 1 }, 'back')
+
+  // persistent header
+  IN('logo', 0.1, 20); IN('tag', 0.25, 20)
+  // S1 0–4
+  IN('h1a', 0.3, 60, .7); IN('h1b', 1.1, 40); IN('h1c', 1.7, 20)
+  OUT('h1a', 3.6); OUT('h1b', 3.6); OUT('h1c', 3.6)
+  // S2 4–10.6
+  IN('l2', 4.0, 20)
+  ;['t1','t2','t3','t4','t5','t6'].forEach((id, i) => { POP(id, 4.25 + i * .42); OUT(id, 10.2 + i * .04) })
+  OUT('l2', 10.2)
+  // S3 10.6–15.8
+  IN('l3', 10.7, 20)
+  tw('line', 10.9, 3.4, { o: 1, sy: 0 }, { o: 1, sy: 1 }, 'lin')
+  ;['s1','s2','s3','s4','s5'].forEach((id, i) => { IN(id, 10.95 + i * .62, 30, .5); OUT(id, 15.4 + i * .04) })
+  IN('s6', 14.2, 20); OUT('s6', 15.4); OUT('l3', 15.4); tw('line', 15.4, .35, { o: 1, sy: 1 }, { o: 0, sy: 1 }, 'in')
+  // S4 15.8–21
+  IN('l4', 15.8, 20)
+  ;['f1','f2','f3'].forEach((id, i) => { POP(id, 15.95 + i * .55); OUT(id, 20.6 + i * .04) })
+  IN('f4', 17.9, 30); OUT('f4', 20.7); OUT('l4', 20.6)
+  // S5 21–25
+  IN('c1', 21.0, 70, .8); IN('c2', 21.6, 30); IN('c3', 21.85, 30); IN('c4', 22.1, 20); IN('c5', 22.3, 50, .7, 'back')
+  tw('tag', 21.0, .4, { o: 1, y: 0 }, { o: 0, y: -10 }, 'in')
+
+  window.preload = () => Promise.all([
+    document.fonts.load('600 100px "Bricolage Grotesque"'), document.fonts.load('700 60px "Bricolage Grotesque"'),
+    document.fonts.load('400 30px Geist'), document.fonts.load('500 30px Geist'), document.fonts.load('600 30px Geist'),
+    document.fonts.load('500 24px "Geist Mono"'), document.fonts.ready,
+  ])
+  seek(0)
+</script>
+</body>
+</html>
