@@ -86,11 +86,10 @@
   <div class="el sub" id="s6" style="top:1330px">One point of contact from kickoff to launch.</div>
 
   <!-- S4 what it costs -->
-  <div class="el label mono" id="l4" style="top:400px"><i style="background:var(--c2)"></i>03 — What it costs</div>
-  <div class="el fact" id="f1" style="top:470px"><strong style="color:var(--c2)" id="price">From ₹3,999</strong><span>for a simple business website</span></div>
-  <div class="el fact" id="f2" style="top:706px"><strong style="color:var(--c3)">2–3 days</strong><span>typical build time for a business site</span></div>
-  <div class="el fact" id="f3" style="top:942px"><strong style="color:var(--c1)">Fixed quote</strong><span>agreed before any work begins. No surprises.</span></div>
-  <div class="el chips" id="f4" style="top:1200px"><span class="chip" style="background:var(--c4)">Weekly updates</span><span class="chip" style="background:var(--c5)">Mobile-first</span><span class="chip" style="background:var(--c6)">SEO-friendly</span><span class="chip" style="background:var(--c2)">Support after launch</span></div>
+  <div class="el label mono" id="l4" style="top:400px"><i style="background:var(--c2)"></i>03 — Good to know</div>
+  <div class="el fact" id="f2" style="top:470px"><strong style="color:var(--c3)">2–3 days</strong><span>typical build time for a business site</span></div>
+  <div class="el fact" id="f3" style="top:706px"><strong style="color:var(--c1)">Fixed quote</strong><span>agreed before any work begins. No surprises.</span></div>
+  <div class="el chips" id="f4" style="top:964px"><span class="chip" style="background:var(--c4)">Weekly updates</span><span class="chip" style="background:var(--c5)">Mobile-first</span><span class="chip" style="background:var(--c6)">SEO-friendly</span><span class="chip" style="background:var(--c2)">Support after launch</span></div>
 
   <!-- S5 CTA -->
   <div class="el cta-h display" id="c1" style="top:560px">Let’s build<br>yours<span class="d">.</span></div>
@@ -134,10 +133,6 @@
       for (const key of new Set([...Object.keys(cur.from), ...Object.keys(cur.to)])) s[key] = lerp(cur.from[key] ?? 1, cur.to[key] ?? cur.from[key], p)
       apply(el, s)
     }
-    // price counter
-    const pr = $('price'); const t0 = 15.9, d = 1.1
-    const q = Math.min(1, Math.max(0, (t - t0) / d)); const v = q >= 1 ? 3999 : Math.round(E.out(q) * 3999 / 100) * 100
-    pr.textContent = 'From ₹' + v.toLocaleString('en-IN')
   }
   const IN = (id, at, dy = 40, dur = .55, ease = 'out') => tw(id, at, dur, { o: 0, y: dy }, { o: 1, y: 0 }, ease)
   const OUT = (id, at, dur = .35) => tw(id, at, dur, { o: 1, y: 0 }, { o: 0, y: -40 }, 'in')
@@ -159,8 +154,8 @@
   IN('s6', 14.2, 20); OUT('s6', 15.4); OUT('l3', 15.4); tw('line', 15.4, .35, { o: 1, sy: 1 }, { o: 0, sy: 1 }, 'in')
   // S4 15.8–21
   IN('l4', 15.8, 20)
-  ;['f1','f2','f3'].forEach((id, i) => { POP(id, 15.95 + i * .55); OUT(id, 20.6 + i * .04) })
-  IN('f4', 17.9, 30); OUT('f4', 20.7); OUT('l4', 20.6)
+  ;['f2','f3'].forEach((id, i) => { POP(id, 15.95 + i * .55); OUT(id, 20.6 + i * .04) })
+  IN('f4', 17.3, 30); OUT('f4', 20.7); OUT('l4', 20.6)
   // S5 21–25
   IN('c1', 21.0, 70, .8); IN('c2', 21.6, 30); IN('c3', 21.85, 30); IN('c4', 22.1, 20); IN('c5', 22.3, 50, .7, 'back')
   tw('tag', 21.0, .4, { o: 1, y: 0 }, { o: 0, y: -10 }, 'in')
