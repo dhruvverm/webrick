@@ -43,6 +43,7 @@ All are also provided as SVG for edits. Text is outlined; no fonts required.
 | `first-post-carousel-cover-1080x1350.png` | Same design marked `01 / 04` with a swipe cue. Use as the cover, followed by `carousel-02` … `carousel-04`. |
 | `info-post-1080x1350.png` | Colourful explainer post: what we build, how it works, what it costs. |
 | `info-reel-1080x1920.mp4` + `info-reel-cover-1080x1920.jpg` | 25-second Reel of the same content (no audio; add music in the app). Cover frame alongside. |
+| `hook-post-1080x1350.png` | Attention post: "Still no website?" on terracotta with the live site on a phone and laptop. Source in `hook-post-src/`. |
 
 SVG sources are alongside for edits; all text is outlined. The first post is built from `first-post.html`
 (open it in Chrome at 1080×1350; add `?carousel=1` for the cover variant). It loads its fonts from Google Fonts.

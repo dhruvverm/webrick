@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Webrick attention post</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=block" rel="stylesheet" />
+<style>
+  :root { --bg:#e4632f; --ink:#111110; --bone:#f2efe8; --deep:#b8471c; --P:72px; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:var(--bg); }
+  .post { position:relative; width:1080px; height:1350px; overflow:hidden; background:var(--bg); color:var(--ink); font-family:'Geist',sans-serif; }
+  .post::before { content:''; position:absolute; inset:0; background:
+      radial-gradient(760px 560px at 100% 100%, rgba(17,17,16,.28), transparent 70%),
+      radial-gradient(600px 400px at 0% 0%, rgba(255,255,255,.14), transparent 70%); }
+  .mono { font-family:'Geist Mono',monospace; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
+  .display { font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'opsz' 96; font-weight:700; letter-spacing:-.035em; }
+
+  .head { position:absolute; left:var(--P); right:var(--P); top:60px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { display:flex; align-items:center; gap:11px; }
+  .wordmark { font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:34px; letter-spacing:-.04em; line-height:1; font-variation-settings:'opsz' 96; }
+  .head .mono { font-size:21px; color:rgba(17,17,16,.7); }
+
+  h1 { position:absolute; left:calc(var(--P) - 6px); top:150px; margin:0; font-size:188px; line-height:.88; width:980px; }
+  h1 .q { color:var(--bone); }
+  .sub { position:absolute; left:var(--P); top:556px; margin:0; width:470px; font-size:38px; line-height:1.18; font-weight:500; }
+  .sub b { font-weight:600; color:var(--bone); background:var(--ink); padding:2px 12px; border-radius:10px; display:inline-block; }
+
+  .pill { position:absolute; left:var(--P); top:770px; display:inline-flex; align-items:center; gap:16px; background:var(--ink); color:var(--bone); border-radius:999px; padding:18px 28px; font-size:30px; font-weight:600; }
+  .pill i { width:14px; height:14px; border-radius:50%; background:var(--bg); display:block; box-shadow:0 0 0 6px rgba(228,99,47,.35); }
+
+  .laptop { position:absolute; left:640px; top:600px; width:900px; border-radius:18px 18px 0 0; background:#0b0b0a; padding:14px 14px 0; box-shadow:0 50px 90px rgba(0,0,0,.45); transform:rotate(-4deg); transform-origin:top left; }
+  .laptop img { display:block; width:872px; height:auto; border-radius:8px 8px 0 0; }
+  .phone { position:absolute; left:590px; top:450px; width:310px; height:640px; border-radius:44px; background:#0b0b0a; padding:12px; box-shadow:0 40px 80px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.08); transform:rotate(-6deg); }
+  .phone img { display:block; width:286px; height:616px; object-fit:cover; object-position:top; border-radius:34px; }
+  .phone::after { content:''; position:absolute; left:50%; top:22px; width:90px; height:26px; margin-left:-45px; border-radius:14px; background:#0b0b0a; }
+
+  .foot { position:absolute; left:var(--P); bottom:62px; display:flex; flex-direction:column; gap:10px; }
+  .foot .url { font-size:36px; color:var(--bone); font-weight:600; }
+  .foot .mono { font-size:22px; color:rgba(17,17,16,.75); }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="head">
+    <div class="logo"><svg width="40" height="40" viewBox="0 0 40 40" id="mark"></svg><span class="wordmark">Webrick</span></div>
+    <span class="mono">Web development · India</span>
+  </div>
+
+  <h1 class="display"><span class="q">Still no</span><br>website?</h1>
+  <p class="sub">We build it in <b>2–3 days</b> at a <b>fixed price</b>.</p>
+  <div class="pill"><i></i>From ₹3,999 · Link in bio</div>
+
+  <div class="laptop"><img src="./site-desktop-right.png" alt=""></div>
+  <div class="phone"><img src="./site-mobile.png" alt=""></div>
+
+  <div class="foot">
+    <span class="url">www.webrick.in</span>
+    <span class="mono">WhatsApp +91 90348 89399</span>
+  </div>
+</div>
+<script>
+  const COLS=[2,9.5,17,24.5,32], ROWS=[5.75,13.25,20.75,28.25]
+  const BLOCKS=[[0,0],[4,0],[0,1],[2,1],[4,1],[0,2],[2,2],[4,2],[1,3,1],[3,3,1]]
+  document.getElementById('mark').innerHTML=BLOCKS.map(([c,r,a])=>`<rect x="${COLS[c]}" y="${ROWS[r]}" width="6" height="6" rx="0.8" fill="${a?'#f2efe8':'#111110'}"/>`).join('')
+</script>
+</body>
+</html>
