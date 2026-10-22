@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Webrick ad: goodwill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=block" rel="stylesheet" />
+<link rel="stylesheet" href="ads.css" />
+<script>
+  const q=new URLSearchParams(location.search); if(q.get('sq')) document.documentElement.style.setProperty('--H','1080px'); document.documentElement.classList.toggle('sq',!!q.get('sq'))
+  function mark(id,a,l){const C=[2,9.5,17,24.5,32],R=[5.75,13.25,20.75,28.25],B=[[0,0],[4,0],[0,1],[2,1],[4,1],[0,2],[2,2],[4,2],[1,3,1],[3,3,1]];document.getElementById(id).innerHTML=B.map(([c,r,x])=>`<rect x="${C[c]}" y="${R[r]}" width="6" height="6" rx="0.8" fill="${x?a:l}"/>`).join('')}
+</script>
+
+<style>
+  body { background:#111110; } .post { background:#111110; color:var(--bone); }
+  .post::before { content:''; position:absolute; inset:0; background:radial-gradient(640px 520px at 100% 60%, rgba(228,99,47,.26), transparent 70%); } .post > * { position:relative; }
+  h1 { margin:0; font-size:104px; line-height:.96; } h1 em { font-style:normal; color:var(--c2); }
+  .sub { margin:30px 0 0; font-size:38px; line-height:1.3; color:var(--muted); max-width:900px; } .sub b { color:var(--bone); font-weight:500; }
+  .card { margin-top:40px; background:#fff; color:var(--ink); border-radius:28px; padding:28px 30px; box-shadow:0 30px 70px rgba(0,0,0,.45); }
+  .card .nm { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:44px; letter-spacing:-.02em; }
+  .card .meta { font-size:24px; color:#5f6368; margin-top:6px; }
+  .card .stars { color:#f2b63c; font-size:26px; margin-top:10px; } .card .stars span { color:#5f6368; font-size:22px; margin-left:8px; }
+  .card .btns { display:flex; gap:12px; margin-top:20px; }
+  .card .btns span { flex:1; border-radius:14px; padding:16px; text-align:center; font-size:24px; font-weight:600; border:2px solid rgba(17,17,16,.12); }
+  .card .btns span.p { background:var(--ink); color:var(--bone); border-color:var(--ink); }
+  .sq h1 { font-size:84px; } .sq .sub { font-size:32px; margin-top:20px; } .sq .card { margin-top:26px; padding:22px 26px; } .sq .card .nm { font-size:38px; } .sq .card .btns span { padding:12px; font-size:22px; }
+  .strip { background:var(--c2); color:var(--ink); }
+</style></head><body>
+<div class="post">
+  <div class="head"><div class="logo flat"><svg width="40" height="40" viewBox="0 0 40 40" id="m"></svg><span class="wordmark">Webrick</span></div><span class="mono">Web development · India</span></div>
+  <div class="grow"></div>
+  <h1 class="display">20 years of goodwill. <em>0 minutes</em> on the internet.</h1>
+  <p class="sub">Your customers' children search on Google first. <b>Let them find your name, not a new shop's.</b></p>
+  <div class="card">
+    <div class="nm">Gupta Tailors</div>
+    <div class="meta">Since 2004 · Men's &amp; women's tailoring · Open till 8 PM</div>
+    <div class="stars">★★★★★<span>Trusted by three generations</span></div>
+    <div class="btns"><span class="p">Call</span><span>WhatsApp</span><span>Directions</span></div>
+  </div>
+  <div class="grow"></div>
+  <div class="strip"><span>Put your name online in 3 days · From ₹3,999</span><span class="mono">www.webrick.in</span></div>
+</div>
+<script>mark('m','#e4632f','#f2efe8')</script>
+</body></html>

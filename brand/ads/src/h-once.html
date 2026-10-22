@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Webrick ad: pay once</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=block" rel="stylesheet" />
+<link rel="stylesheet" href="ads.css" />
+<script>
+  const q=new URLSearchParams(location.search); if(q.get('sq')) document.documentElement.style.setProperty('--H','1080px'); document.documentElement.classList.toggle('sq',!!q.get('sq'))
+  function mark(id,a,l){const C=[2,9.5,17,24.5,32],R=[5.75,13.25,20.75,28.25],B=[[0,0],[4,0],[0,1],[2,1],[4,1],[0,2],[2,2],[4,2],[1,3,1],[3,3,1]];document.getElementById(id).innerHTML=B.map(([c,r,x])=>`<rect x="${C[c]}" y="${R[r]}" width="6" height="6" rx="0.8" fill="${x?a:l}"/>`).join('')}
+</script>
+
+<style>
+  body { background:var(--bone); } .post { background:var(--bone); color:var(--ink); }
+  .price { margin:0; font-size:230px; line-height:.9; letter-spacing:-.05em; }
+  .once { margin:18px 0 0; font-size:84px; line-height:1; } .once em { font-style:normal; color:var(--c1); }
+  .pts { margin-top:44px; display:flex; flex-direction:column; gap:14px; }
+  .pts div { display:flex; align-items:center; gap:18px; font-size:36px; font-weight:500; background:#fff; border:2px solid rgba(17,17,16,.1); border-radius:18px; padding:18px 24px; }
+  .pts i { width:44px; height:44px; border-radius:50%; background:var(--c3); color:var(--ink); display:grid; place-items:center; font-style:normal; font-size:26px; font-weight:700; flex:none; }
+  .fine { margin-top:22px; font-size:24px; color:var(--dim); }
+  .sq .price { font-size:180px; } .sq .once { font-size:66px; margin-top:12px; } .sq .pts { margin-top:28px; gap:10px; } .sq .pts div { font-size:30px; padding:13px 20px; } .sq .fine { margin-top:14px; font-size:21px; }
+  .strip { background:var(--c1); color:var(--ink); }
+</style></head><body>
+<div class="post">
+  <div class="head"><div class="logo"><svg width="40" height="40" viewBox="0 0 40 40" id="m"></svg><span class="wordmark">Webrick</span></div><span class="mono">Web development · India</span></div>
+  <div class="grow"></div>
+  <div class="price display">₹3,999</div>
+  <div class="once display">Once. <em>Not every month.</em></div>
+  <div class="pts">
+    <div><i>✓</i>Fixed price agreed before we start</div>
+    <div><i>✓</i>No monthly charges to us, ever</div>
+    <div><i>✓</i>You see the site before it goes live</div>
+  </div>
+  <div class="fine">Domain and hosting are in your name and billed separately.</div>
+  <div class="grow"></div>
+  <div class="strip"><span>No surprises · Live in 2–3 days</span><span class="mono">www.webrick.in</span></div>
+</div>
+<script>mark('m','#e4632f','#f2efe8')</script>
+</body></html>

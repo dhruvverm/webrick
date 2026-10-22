@@ -43,6 +43,10 @@ Four concepts, each in 4:5 (`1080x1350`, feed) and 1:1 (`1080x1080`, feed/ad pla
 | `ad-lost-customer-*` | "One lost customer costs more than a website": ₹ ??? vs ₹3,999 on a light background. |
 | `ad-whatsapp-photo-*` | "Still sending your price list as a WhatsApp photo?": blurry photo vs a clean menu page. |
 | `ad-72-hours-*` | "72 hours": giant number with Day 1 / Day 2 / Day 3 cards. |
+| `ad-not-technical-*` | For 25–65 owners without a site: "Don't know computers? Doesn't matter." What to send on WhatsApp, what you don't need. |
+| `ad-goodwill-*` | "20 years of goodwill. 0 minutes on the internet." with a sample listing card (Gupta Tailors, fictional). |
+| `ad-5-things-*` | "A website is just 5 things." A sample phone page next to the five items. |
+| `ad-pay-once-*` | "₹3,999. Once. Not every month." Three reassurances and the domain/hosting note. |
 
 ## Instagram creatives (`social/instagram/`)
 

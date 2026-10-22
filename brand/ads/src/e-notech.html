@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Webrick ad: not technical</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=block" rel="stylesheet" />
+<link rel="stylesheet" href="ads.css" />
+<script>
+  const q=new URLSearchParams(location.search); if(q.get('sq')) document.documentElement.style.setProperty('--H','1080px'); document.documentElement.classList.toggle('sq',!!q.get('sq'))
+  function mark(id,a,l){const C=[2,9.5,17,24.5,32],R=[5.75,13.25,20.75,28.25],B=[[0,0],[4,0],[0,1],[2,1],[4,1],[0,2],[2,2],[4,2],[1,3,1],[3,3,1]];document.getElementById(id).innerHTML=B.map(([c,r,x])=>`<rect x="${C[c]}" y="${R[r]}" width="6" height="6" rx="0.8" fill="${x?a:l}"/>`).join('')}
+</script>
+
+<style>
+  body { background:var(--bone); } .post { background:var(--bone); color:var(--ink); }
+  h1 { margin:0; font-size:108px; line-height:.96; } h1 em { font-style:normal; color:var(--c1); }
+  .bub { margin-top:44px; background:#d9f5cf; border-radius:28px; border-top-left-radius:8px; padding:30px 34px; font-size:40px; line-height:1.3; max-width:900px; box-shadow:0 2px 2px rgba(0,0,0,.08); }
+  .bub b { font-weight:600; }
+  .bub .t { display:block; text-align:right; font-size:22px; color:#5f6b58; margin-top:10px; }
+  .no { margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:14px 28px; }
+  .no div { display:flex; align-items:center; gap:14px; font-size:34px; font-weight:500; }
+  .no i { width:44px; height:44px; border-radius:50%; background:var(--ink); color:var(--bone); display:grid; place-items:center; font-style:normal; font-size:24px; font-weight:700; flex:none; }
+  .no .h { grid-column:1/-1; font-size:24px; }
+  .sq h1 { font-size:88px; } .sq .bub { margin-top:28px; font-size:34px; padding:24px 28px; } .sq .no { margin-top:26px; gap:10px 24px; } .sq .no div { font-size:30px; }
+  .strip { background:var(--c3); color:var(--ink); }
+</style></head><body>
+<div class="post">
+  <div class="head"><div class="logo"><svg width="40" height="40" viewBox="0 0 40 40" id="m"></svg><span class="wordmark">Webrick</span></div><span class="mono">Web development · India</span></div>
+  <div class="grow"></div>
+  <h1 class="display">Don't know <em>computers?</em><br>Doesn't matter.</h1>
+  <div class="bub">Just send us on WhatsApp:<br><b>📷 5–6 photos of your shop or work<br>📞 your phone number<br>📍 your address and timings</b><br>We do everything else.<span class="t">Webrick · 10:14 AM ✓✓</span></div>
+  <div class="no">
+    <div class="h mono">You do not need</div>
+    <div><i>✕</i>A computer</div><div><i>✕</i>To write anything</div>
+    <div><i>✕</i>To learn anything</div><div><i>✕</i>Monthly payments to us</div>
+  </div>
+  <div class="grow"></div>
+  <div class="strip"><span>We build it, you approve it · From ₹3,999</span><span class="mono">www.webrick.in</span></div>
+</div>
+<script>mark('m','#e4632f','#f2efe8')</script>
+</body></html>
