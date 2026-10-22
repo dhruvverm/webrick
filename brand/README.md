@@ -32,6 +32,18 @@ Keep clear space of at least one brick (the height of the mark ÷ 4) around the 
 
 All are also provided as SVG for edits. Text is outlined; no fonts required.
 
+## Ad creatives (`ads/`)
+
+Four concepts, each in 4:5 (`1080x1350`, feed) and 1:1 (`1080x1080`, feed/ad placements). Sources in `ads/src/`
+(open an HTML in Chrome at 1080×1350; add `?sq=1` for the square). They share `ads/src/ads.css`.
+
+| File | Concept |
+| --- | --- |
+| `ad-night-search-*` | "11:47 PM": someone searched for what you sell; a results list where your shop is "Not found". |
+| `ad-lost-customer-*` | "One lost customer costs more than a website": ₹ ??? vs ₹3,999 on a light background. |
+| `ad-whatsapp-photo-*` | "Still sending your price list as a WhatsApp photo?": blurry photo vs a clean menu page. |
+| `ad-72-hours-*` | "72 hours": giant number with Day 1 / Day 2 / Day 3 cards. |
+
 ## Instagram creatives (`social/instagram/`)
 
 | File | Use |
