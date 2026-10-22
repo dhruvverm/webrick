@@ -44,6 +44,7 @@ All are also provided as SVG for edits. Text is outlined; no fonts required.
 | `info-post-1080x1350.png` | Colourful explainer post: what we build, how it works, what it costs. |
 | `info-reel-1080x1920.mp4` + `info-reel-cover-1080x1920.jpg` | 25-second Reel of the same content (no audio; add music in the app). Cover frame alongside. |
 | `hook-post-1080x1350.png` | Attention post: "Still no website?" on terracotta with the live site on a phone and laptop. Source in `hook-post-src/`. |
+| `vs-post-1080x1350.png` | Before/after post: a dated website vs the Webrick site, "Which one would you trust?". Source in `vs-post-src/` (`before.html` is the fake old site). |
 
 SVG sources are alongside for edits; all text is outlined. The first post is built from `first-post.html`
 (open it in Chrome at 1080×1350; add `?carousel=1` for the cover variant). It loads its fonts from Google Fonts.

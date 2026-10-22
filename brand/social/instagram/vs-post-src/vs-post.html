@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Webrick before after</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=block" rel="stylesheet" />
+<style>
+  :root { --bg:#111110; --bone:#f2efe8; --ink:#111110; --muted:#a7a297; --dim:#8a867d; --c1:#e4632f; --c2:#f2b63c; --c3:#2fbfa4; --P:72px; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:var(--bg); }
+  .post { position:relative; width:1080px; height:1350px; overflow:hidden; background:var(--bg); color:var(--bone); font-family:'Geist',sans-serif; }
+  .glow { position:absolute; inset:0; background:
+      radial-gradient(620px 700px at 78% 62%, rgba(228,99,47,.30), transparent 70%),
+      radial-gradient(520px 600px at 22% 62%, rgba(242,239,232,.06), transparent 70%); }
+  .mono { font-family:'Geist Mono',monospace; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
+  .display { font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'opsz' 96; font-weight:700; letter-spacing:-.03em; }
+
+  .head { position:absolute; left:var(--P); right:var(--P); top:60px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { display:flex; align-items:center; gap:11px; }
+  .wordmark { font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:34px; letter-spacing:-.04em; line-height:1; font-variation-settings:'opsz' 96; }
+  .head .mono { font-size:21px; color:var(--dim); }
+
+  h1 { position:absolute; left:var(--P); top:150px; margin:0; font-size:96px; line-height:.98; width:960px; }
+  h1 em { font-style:normal; color:var(--c1); }
+
+  .chip { position:absolute; top:398px; font-size:22px; padding:10px 18px; border-radius:999px; }
+  .chip.b { left:116px; background:rgba(242,239,232,.12); color:var(--muted); }
+  .chip.a { left:655px; background:var(--c1); color:var(--ink); }
+
+  .phone { position:absolute; top:452px; width:372px; height:772px; border-radius:48px; background:#0b0b0a; padding:12px; box-shadow:0 40px 80px rgba(0,0,0,.55), 0 0 0 2px rgba(255,255,255,.08); }
+  .phone img { display:block; width:348px; height:748px; object-fit:cover; object-position:top; border-radius:38px; }
+  .phone::after { content:''; position:absolute; left:50%; top:22px; width:100px; height:28px; margin-left:-50px; border-radius:14px; background:#0b0b0a; }
+  .phone.before { left:84px; transform:rotate(-4deg); }
+  .phone.before img { filter:saturate(.55) brightness(.92); }
+  .phone.after { left:624px; transform:rotate(4deg); box-shadow:0 40px 90px rgba(0,0,0,.6), 0 0 80px rgba(228,99,47,.35), 0 0 0 2px rgba(255,255,255,.1); }
+
+  .vs { position:absolute; left:50%; top:805px; width:108px; height:108px; margin-left:-54px; border-radius:50%; background:var(--bone); color:var(--ink); display:grid; place-items:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:40px; letter-spacing:-.03em; box-shadow:0 20px 50px rgba(0,0,0,.5); z-index:3; }
+
+  .strip { position:absolute; left:0; right:0; bottom:0; height:92px; background:var(--c1); color:var(--ink); display:flex; align-items:center; justify-content:space-between; padding:0 var(--P); font-size:28px; font-weight:600; }
+  .strip .mono { font-size:22px; font-weight:500; }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="glow"></div>
+  <div class="head">
+    <div class="logo"><svg width="40" height="40" viewBox="0 0 40 40" id="mark"></svg><span class="wordmark">Webrick</span></div>
+    <span class="mono">Web development · India</span>
+  </div>
+
+  <h1 class="display">Which one would <em>you</em> trust with your money?</h1>
+
+  <span class="chip mono b">Before</span>
+  <span class="chip mono a">After Webrick</span>
+  <div class="phone before"><img src="./before-mobile.png" alt=""></div>
+  <div class="phone after"><img src="./site-mobile.png" alt=""></div>
+  <div class="vs">VS</div>
+
+  <div class="strip"><span>We fix this in 2–3 days · From ₹3,999</span><span class="mono">www.webrick.in</span></div>
+</div>
+<script>
+  const COLS=[2,9.5,17,24.5,32], ROWS=[5.75,13.25,20.75,28.25]
+  const BLOCKS=[[0,0],[4,0],[0,1],[2,1],[4,1],[0,2],[2,2],[4,2],[1,3,1],[3,3,1]]
+  document.getElementById('mark').innerHTML=BLOCKS.map(([c,r,a])=>`<rect x="${COLS[c]}" y="${ROWS[r]}" width="6" height="6" rx="0.8" fill="${a?'#e4632f':'#f2efe8'}"/>`).join('')
+</script>
+</body>
+</html>
