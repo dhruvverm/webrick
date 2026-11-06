@@ -90,6 +90,7 @@ export default function Footer() {
         <div className="mt-6 flex flex-col-reverse gap-4 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="label normal-case tracking-normal">© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
           <div className="flex items-center gap-6 text-xs text-muted">
+            <a href="/privacy-policy/" className="transition-colors hover:text-text">Privacy Policy</a>
             <span className="text-dim">Made in India</span>
             <a href="#home" className="group inline-flex items-center gap-1.5 transition-colors hover:text-text">
               Back to top <ArrowUp size={13} className="transition-transform group-hover:-translate-y-0.5" />

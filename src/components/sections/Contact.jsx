@@ -355,7 +355,10 @@ export default function Contact() {
                     )}
                   </AnimatePresence>
                   <div className="flex flex-col justify-between gap-5 pt-2 sm:col-span-2 sm:flex-row sm:items-center">
-                    <p className="text-xs text-dim">We never share your details. No newsletters, no spam.</p>
+                    <p className="text-xs text-dim">
+                      We never share your details. No newsletters, no spam.{' '}
+                      <a href="/privacy-policy/" className="underline underline-offset-2 transition-colors hover:text-text">Privacy policy</a>
+                    </p>
                     <motion.button
                       type="submit"
                       disabled={status === 'sending'}
