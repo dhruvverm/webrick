@@ -16,14 +16,14 @@ export default function Faq() {
     <section id="faq" className="section scroll-mt-20">
       <div className="container-x">
         <SectionHeader
-          index="07"
+          index="08"
           label="FAQ"
           meta="Common questions"
           title="Questions, answered."
-          lede="What people ask before starting a website, app or software project with us."
+          lede="What people ask before handing us their website, ads or social media."
         />
 
-        <ul className="mt-8 border-t border-line lg:mt-12">
+        <ul className="mt-8 border-t border-line lg:mt-10">
           {faq.map((item, i) => {
             const isOpen = isServer || open === i
             return (

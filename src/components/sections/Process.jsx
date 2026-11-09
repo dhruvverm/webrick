@@ -13,14 +13,14 @@ export default function Process() {
     <section id="process" className="section scroll-mt-20">
       <div className="container-x">
         <SectionHeader
-          index="04"
-          label="Process"
-          meta="Five stages"
-          title="From idea to launch, without surprises."
-          lede="You know what is happening, what comes next and what you will receive at every step."
+          index="02"
+          label="How it works"
+          meta="Start to end"
+          title="From first post to paying customer."
+          lede="Five steps, one team. You know what is happening, what it costs and what came back at every step."
         />
 
-        <div ref={ref} className="relative mt-8 lg:mt-12">
+        <div ref={ref} className="relative mt-8 lg:mt-10">
           <div className="rule" aria-hidden="true" />
           <motion.div
             style={{ scaleX }}

@@ -7,7 +7,7 @@ import MaskedText from '../ui/MaskedText'
 import { site } from '../../data/site'
 import { PREFILL_EVENT } from '../../prefill'
 
-const projectTypes = ['Website', 'Web application', 'E-commerce store', 'Mobile app', 'UI/UX design', 'Something else']
+const projectTypes = ['Website', 'Ads', 'Social media', 'Branding', 'Full package', 'Something else']
 const budgets = ['₹3,999 – ₹15,000', '₹15,000 – ₹50,000', '₹50,000 – ₹1.5 lakh', '₹1.5 lakh+', 'Not sure yet']
 const initial = { name: '', email: '', company: '', phone: '', type: '', budget: '', message: '' }
 
@@ -212,18 +212,18 @@ export default function Contact() {
     <section id="contact" className="section scroll-mt-20">
       <div className="container-x">
         <SectionHeader
-          index="08"
+          index="09"
           label="Contact"
           meta={site.availability}
-          title="Let’s build something that moves your business forward."
+          title="Tell us about your business. We’ll send a simple plan."
         />
 
         <div className="mt-8 grid gap-x-8 gap-y-8 lg:mt-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Reveal className="hidden lg:block">
               <p className="max-w-sm text-[1.02rem] leading-relaxed text-muted">
-                Tell us about the project. We will come back with honest thoughts, a rough scope and a clear next step.
-                No pressure, no sales script.
+                Tell us what you sell and who you want to reach. We will come back with honest thoughts, a simple plan and
+                a fixed quote. No pressure, no sales script.
               </p>
             </Reveal>
             <dl className="mt-0 border-t border-line lg:mt-10">
@@ -319,14 +319,14 @@ export default function Contact() {
                   <TextField label="Company" hint="(optional)" name="company" index={2} value={form.company} onChange={update} placeholder="Company name" autoComplete="organization" />
                   <TextField label="Phone / WhatsApp" hint="(optional)" name="phone" type="tel" index={2} value={form.phone} onChange={update} placeholder="+91 98765 43210" autoComplete="tel" />
                   <div className="sm:col-span-2">
-                    <Chips label="Project type" name="type" index={3} options={projectTypes} value={form.type} onChange={(v) => set('type', v)} error={errors.type} />
+                    <Chips label="What do you need?" name="type" index={3} options={projectTypes} value={form.type} onChange={(v) => set('type', v)} error={errors.type} />
                   </div>
                   <div className="sm:col-span-2">
                     <Chips label="Budget" name="budget" index={4} options={budgets} value={form.budget} onChange={(v) => set('budget', v)} />
                   </div>
                   <div className="sm:col-span-2">
                     <TextField
-                      label="About the project"
+                      label="About your business"
                       name="message"
                       textarea
                       rows={4}
@@ -335,7 +335,7 @@ export default function Contact() {
                       value={form.message}
                       onChange={update}
                       error={errors.message}
-                      placeholder="What are you building, who is it for, and when do you need it?"
+                      placeholder="What do you sell, who are your customers, and what do you want more of?"
                     />
                   </div>
                   <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />

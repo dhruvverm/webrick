@@ -39,8 +39,8 @@ const ld = {
       email: site.email,
       telephone: site.phoneHref.replace('tel:', ''),
       description:
-        'Webrick is a website and software development company in India. It designs and builds business websites, e-commerce stores, web applications, mobile apps and custom CRM software.',
-      slogan: 'Websites and software that move businesses forward.',
+        'Webrick is a digital marketing agency in India. It builds websites, runs Facebook, Instagram and Google ads, manages social media, designs branding and creatives, and sets up lead follow-up for small and growing businesses.',
+      slogan: 'Websites, ads and social media that bring customers.',
       keywords: keywords.join(', '),
       knowsAbout: services.map((s) => s.serviceType),
       priceRange: 'From ₹3,999',
@@ -54,7 +54,7 @@ const ld = {
       },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Web and software development services',
+        name: 'Digital marketing services',
         itemListElement: services.map((s) => ({
           '@type': 'Offer',
           itemOffered: {

@@ -10,9 +10,9 @@ const principles = [
 
 const facts = [
   ['Founded', String(site.founded)],
-  ['Team', 'Designers and engineers, in one room'],
+  ['Team', 'Designers, developers and marketers, in one team'],
   ['Based', site.location],
-  ['Working with', 'Startups, local businesses, founders and growing teams'],
+  ['Working with', 'Shops, clinics, local services, startups and growing brands'],
   ['Currently', site.availability],
 ]
 
@@ -20,9 +20,9 @@ export default function About() {
   return (
     <section id="about" className="section scroll-mt-20">
       <div className="container-x">
-        <SectionHeader index="06" label="About" meta={`Est. ${site.founded}`} title="A small studio with a builder’s mindset." />
+        <SectionHeader index="07" label="About" meta={`Est. ${site.founded}`} title="A small agency with a builder’s mindset." />
 
-        <div className="mt-8 grid gap-x-8 gap-y-8 lg:mt-12 lg:grid-cols-12">
+        <div className="mt-8 grid gap-x-8 gap-y-8 lg:mt-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Reveal>
               <p className="display max-w-[28ch] text-2xl font-medium leading-[1.25] text-text sm:text-[1.9rem]">
@@ -32,9 +32,10 @@ export default function About() {
             </Reveal>
             <Reveal delay={0.08} className="hidden lg:block">
               <p className="mt-6 max-w-xl text-[1.02rem] leading-relaxed text-muted">
-                Webrick is a website and software development company based in India. We build the other kind. Sites and software with a job to do, built by people who care whether they do
-                it. We are a compact team of designers and engineers, small enough that you talk to the people doing the
-                work and experienced enough to take a product from a napkin sketch to production.
+                Webrick is a digital marketing agency based in India. We started by building websites and kept seeing the same thing: a good
+                website with nobody visiting it. So now we do the whole job: the website, the ads, the content and the
+                follow-up. We are a compact team of designers, developers and marketers, small enough that you talk to
+                the people doing the work.
               </p>
             </Reveal>
 

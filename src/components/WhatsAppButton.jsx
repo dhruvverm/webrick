@@ -99,7 +99,7 @@ export default function WhatsAppButton() {
                 transition={{ delay: 0.15, duration: 0.35, ease: EASE }}
                 className="relative max-w-[88%] rounded-2xl rounded-tl-sm bg-bg-3 px-3.5 py-2.5 text-sm leading-relaxed text-text"
               >
-                Hi 👋 Tell us what you&apos;re building and we&apos;ll reply on WhatsApp with next steps.
+                Hi 👋 Tell us about your business and we&apos;ll reply on WhatsApp with a simple plan.
                 <span className="mt-1 block text-[0.65rem] text-dim">just now</span>
               </motion.div>
               <a

@@ -1,61 +1,45 @@
-/** Grouped by layer. Each item has a `key` matching a glyph in TechGlyph.jsx. */
+/** Platforms Webrick works on, grouped by job. Each item has a `key` matching a glyph in TechGlyph.jsx. */
 export const techGroups = [
   {
-    group: 'Frontend',
+    group: 'Advertising',
     items: [
+      { key: 'meta', name: 'Meta Ads' },
+      { key: 'googleads', name: 'Google Ads' },
+    ],
+  },
+  {
+    group: 'Social media',
+    items: [
+      { key: 'instagram', name: 'Instagram' },
+      { key: 'facebook', name: 'Facebook' },
+      { key: 'linkedin', name: 'LinkedIn' },
+      { key: 'youtube', name: 'YouTube' },
+    ],
+  },
+  {
+    group: 'Websites',
+    items: [
+      { key: 'wordpress', name: 'WordPress' },
+      { key: 'shopify', name: 'Shopify' },
+      { key: 'woocommerce', name: 'WooCommerce' },
       { key: 'react', name: 'React' },
       { key: 'nextjs', name: 'Next.js' },
-      { key: 'typescript', name: 'TypeScript' },
-      { key: 'javascript', name: 'JavaScript' },
-      { key: 'tailwind', name: 'Tailwind CSS' },
-      { key: 'html', name: 'HTML & CSS' },
     ],
   },
   {
-    group: 'Backend',
+    group: 'Leads',
     items: [
-      { key: 'node', name: 'Node.js' },
-      { key: 'express', name: 'Express' },
-      { key: 'php', name: 'PHP' },
-      { key: 'laravel', name: 'Laravel' },
-      { key: 'python', name: 'Python' },
+      { key: 'whatsapp', name: 'WhatsApp Business' },
+      { key: 'crm', name: 'SabseraCRM' },
+      { key: 'forms', name: 'Lead forms' },
     ],
   },
   {
-    group: 'Databases',
+    group: 'Tracking',
     items: [
-      { key: 'postgresql', name: 'PostgreSQL' },
-      { key: 'mysql', name: 'MySQL' },
-      { key: 'mongodb', name: 'MongoDB' },
-      { key: 'redis', name: 'Redis' },
-      { key: 'firebase', name: 'Firebase' },
-    ],
-  },
-  {
-    group: 'Platforms',
-    items: [
-      { key: 'shopify', name: 'Shopify' },
-      { key: 'wordpress', name: 'WordPress' },
-      { key: 'woocommerce', name: 'WooCommerce' },
-    ],
-  },
-  {
-    group: 'Mobile',
-    items: [
-      { key: 'flutter', name: 'Flutter' },
-      { key: 'reactnative', name: 'React Native' },
-      { key: 'swift', name: 'Swift' },
-      { key: 'kotlin', name: 'Kotlin' },
-    ],
-  },
-  {
-    group: 'Infrastructure',
-    items: [
-      { key: 'aws', name: 'AWS' },
-      { key: 'docker', name: 'Docker' },
-      { key: 'vercel', name: 'Vercel' },
-      { key: 'nginx', name: 'Nginx' },
-      { key: 'git', name: 'Git' },
+      { key: 'pixel', name: 'Meta Pixel' },
+      { key: 'analytics', name: 'Google Analytics' },
+      { key: 'search', name: 'Search Console' },
     ],
   },
 ]

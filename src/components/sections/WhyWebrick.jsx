@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, animate } from 'framer-motion'
 import SectionHeader from '../ui/SectionHeader'
-import TechGlyph from '../TechGlyph'
+import BrandIcon from '../BrandIcon'
 import { reasons, stats } from '../../data/reasons'
 import { EASE } from '../ui/Reveal'
 
@@ -128,9 +128,9 @@ function Devices() {
   )
 }
 
-/** Floating glyphs of the core stack. */
+/** Floating logos of the channels we work on. */
 function TechFloat() {
-  const keys = ['react', 'node', 'flutter', 'shopify', 'aws', 'docker']
+  const keys = ['instagram', 'facebook', 'google', 'whatsapp', 'linkedin', 'x']
   return (
     <div className="flex h-48 items-center justify-center sm:h-56">
       <div className="grid grid-cols-3 gap-3">
@@ -141,7 +141,7 @@ function TechFloat() {
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 3.2 + (i % 3) * 0.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.35 }}
         >
-          <TechGlyph name={k} />
+          <BrandIcon name={k} className="h-6 w-6" />
         </motion.span>
       ))}
       </div>
@@ -175,7 +175,7 @@ function Layers() {
 
 /** Weekly-update timeline with a status card. */
 function Timeline() {
-  const weeks = ['Kickoff', 'Design', 'Build', 'Test', 'Launch']
+  const weeks = ['Plan', 'Build', 'Launch', 'Improve', 'Report']
   return (
     <div className="flex h-48 flex-col justify-center px-6 sm:h-56 sm:px-8">
       <div className="relative">
@@ -211,7 +211,7 @@ function Timeline() {
       >
         <div>
           <div className="text-sm text-text">Weekly update · Week 3</div>
-          <div className="mt-0.5 text-xs text-muted">Staging link, progress and next steps</div>
+          <div className="mt-0.5 text-xs text-muted">Posts, ad spend, enquiries and next steps</div>
         </div>
         <span className="flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2.5 py-1 text-xs text-emerald-300">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> On track
@@ -263,14 +263,14 @@ export default function WhyWebrick() {
     <section id="why" className="section">
       <div className="container-x">
         <SectionHeader
-          index="02"
+          index="04"
           label="Why Webrick"
           meta="Six reasons"
-          title="Built properly. Built to last."
-          lede="Most agencies ship a template with your logo on it. We build the thing your business actually needs, on a foundation that will still make sense in five years."
+          title="One team. The whole job."
+          lede="Most small businesses juggle a web designer, an ads freelancer and whoever has time to post. We replace all of them with one team that answers for the result."
         />
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-12">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-12">
           <Card id="custom" index={0} className="lg:col-span-7"><WallLoop /></Card>
           <Card id="performance" index={1} className="lg:col-span-5"><PerformanceRing /></Card>
           <Card id="responsive" index={2} className="lg:col-span-4"><Devices /></Card>

@@ -8,7 +8,7 @@ export const site = {
   location: 'Remote-first · Clients worldwide',
   hours: 'Mon – Fri, 10 AM – 6 PM IST',
   founded: 2026,
-  availability: 'Taking on projects for Q4 2026',
+  availability: 'Taking on new clients for Q4 2026',
   responseTime: 'Reply within one business day',
   /** Contact form relay (FormSubmit). Submissions are forwarded to `email`; activate once via the link they send. */
   formEndpoint: 'https://formsubmit.co/ajax/tech.webrick@gmail.com',

@@ -1,41 +1,42 @@
-import { Puzzle, Cpu, Smartphone, Gauge, Layers, Users } from 'lucide-react'
+import { Puzzle, Share2, Smartphone, Gauge, Layers, Users } from 'lucide-react'
 
+/** Ids map to the illustrated cards in WhyWebrick.jsx; keep them stable. */
 export const reasons = [
   {
     id: 'custom',
-    title: 'Custom-built solutions',
+    title: 'One team, start to end',
     icon: Puzzle,
-    description: 'No templates, no page builders. Every site and product is designed and coded around your business, your content and your customers.',
+    description: 'Website, ads, creatives and follow-up come from the same people. Nothing gets lost between an agency, a freelancer and a designer.',
   },
   {
     id: 'modern',
-    title: 'Modern technology',
-    icon: Cpu,
-    description: 'React, Node.js, Flutter and modern cloud infrastructure. A stack chosen for longevity, not for what happened to be convenient.',
+    title: 'The right channels, not every channel',
+    icon: Share2,
+    description: 'Instagram, Facebook, Google or WhatsApp: we start where your customers already are and add channels only when they pay back.',
   },
   {
     id: 'responsive',
-    title: 'Responsive by default',
+    title: 'Made for the phone first',
     icon: Smartphone,
-    description: 'Designed and tested on real phones, tablets and desktops from day one. Not adapted for mobile at the end.',
+    description: 'Your customers are on their phones. Every page, form and ad is designed and tested there before anywhere else.',
   },
   {
     id: 'performance',
-    title: 'Performance focused',
+    title: 'Fast pages that convert',
     icon: Gauge,
-    description: 'Performance budgets on every build. Fast pages convert better, rank better and cost less to run.',
+    description: 'Ads are wasted on a slow page. Ours load in about a second, so more of the clicks you pay for become enquiries.',
   },
   {
     id: 'scalable',
-    title: 'Scalable architecture',
+    title: 'Start small, grow what works',
     icon: Layers,
-    description: 'Clean structure, clear data models and infrastructure that grows with you, so the next feature is easier than the last.',
+    description: 'Begin with a website or a small ad budget. When something brings enquiries, we put more behind it.',
   },
   {
     id: 'client',
-    title: 'Client-focused development',
+    title: 'Weekly updates you can read',
     icon: Users,
-    description: 'Weekly updates, a staging site you can watch progress on and a single point of contact from kickoff to launch.',
+    description: 'A short update every week: what we posted, what the ads spent, how many enquiries came in and what we will change next.',
   },
 ]
 

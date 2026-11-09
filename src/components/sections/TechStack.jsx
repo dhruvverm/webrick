@@ -25,15 +25,15 @@ export default function TechStack() {
     <section id="stack" className="section">
       <div className="container-x">
         <SectionHeader
-          index="05"
-          label="Stack"
-          meta="Chosen per project"
-          title="Modern tools, chosen deliberately."
-          lede="We pick the technology to fit the project, not the other way round. This is the core of what we build with."
+          index="06"
+          label="Platforms"
+          meta="Chosen per business"
+          title="The channels your customers already use."
+          lede="We work on the platforms that matter for a growing business, and build on tools you can keep running yourself."
         />
       </div>
 
-      <div className="mt-8 lg:mt-12">
+      <div className="mt-8 lg:mt-10">
         <Band />
       </div>
 
@@ -66,7 +66,7 @@ export default function TechStack() {
           ))}
         </dl>
         <p className="mt-6 hidden max-w-xl text-sm text-dim md:block">
-          Plus TypeScript, PostgreSQL, Redis, Tailwind CSS, Firebase and whatever the project genuinely needs.
+          For web apps, mobile apps and custom software we also build with Node.js, Laravel, Flutter and React Native.
         </p>
       </div>
     </section>

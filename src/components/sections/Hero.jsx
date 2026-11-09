@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { ArrowDown } from 'lucide-react'
+import { ArrowDown, ArrowRight } from 'lucide-react'
 import Button from '../ui/Button'
 import MaskedText from '../ui/MaskedText'
 import BlockAssembly from '../BlockAssembly'
@@ -8,6 +8,8 @@ import { INTRO_DELAY } from '../../intro'
 
 const EASE = [0.2, 0.65, 0.2, 1]
 const T = INTRO_DELAY
+/** The whole job in four words: what we build, and what it is for. */
+const FLOW = ['Website', 'Ads', 'Leads', 'Customers']
 
 const fade = (delay) => ({
   initial: { opacity: 0, y: 14 },
@@ -52,25 +54,39 @@ export default function Hero() {
           {/* Copy */}
           <div className="lg:col-span-7">
             <motion.p {...fade(0.05)} className="label flex flex-wrap items-center gap-x-3 gap-y-1">
-              <span>Web development company in India</span>
+              <span>Digital marketing agency in India</span>
               <span className="hidden text-line-strong sm:inline">/</span>
               <span className="hidden sm:inline">Est. {site.founded}</span>
             </motion.p>
 
             <h1 className="display mt-6 max-w-[12ch] text-[3.1rem] xs:text-[3.7rem] sm:text-[4.6rem] lg:text-[4.9rem] xl:text-[5.7rem]">
-              <MaskedText text="We Build Websites & Software That Move Businesses Forward." onMount delay={T + 0.15} stagger={0.055} accentDot />
+              <MaskedText text="Websites, Ads & Social Media That Bring Customers." onMount delay={T + 0.15} stagger={0.055} accentDot />
             </h1>
 
             <motion.p {...fade(0.7)} className="mt-6 max-w-md text-[1.05rem] leading-relaxed text-muted">
-              Webrick is a website design and development company. We build fast, modern websites, online stores and apps
-              for growing businesses.
+              Webrick is a digital marketing agency. We build your website, run your ads, manage your social media and
+              follow up every lead, start to end.
             </motion.p>
             <motion.div {...fade(0.8)} className="mt-6 flex flex-wrap gap-3">
-              <Button href="#contact">Start a Project</Button>
-              <Button href="#work" variant="secondary" icon="diag">
-                Explore Our Work
+              <Button href="#contact">Get a Free Quote</Button>
+              <Button href="#process" variant="secondary" icon="diag">
+                See How It Works
               </Button>
             </motion.div>
+            <motion.ol {...fade(0.9)} aria-label="From a website to paying customers" className="mt-7 flex flex-wrap items-center gap-1.5 text-[0.72rem] sm:gap-2 sm:text-[0.8rem]">
+              {FLOW.map((step, i) => (
+                <li key={step} className="flex items-center gap-1.5 sm:gap-2">
+                  <span
+                    className={`rounded-full border px-2.5 py-1 sm:px-3 sm:py-1.5 ${
+                      i === FLOW.length - 1 ? 'border-accent bg-accent font-medium text-bg-0' : 'border-line-strong text-muted'
+                    }`}
+                  >
+                    {step}
+                  </span>
+                  {i < FLOW.length - 1 && <ArrowRight size={12} className="text-dim" aria-hidden="true" />}
+                </li>
+              ))}
+            </motion.ol>
           </div>
 
           {/* Figure */}
@@ -89,15 +105,15 @@ export default function Hero() {
           className="mt-10 hidden gap-x-8 gap-y-6 border-t border-line pt-5 sm:grid-cols-[1fr_1fr_1fr_auto] lg:mt-10 lg:grid"
         >
           <div>
-            <dt className="label">We build</dt>
+            <dt className="label">We do</dt>
             <dd className="mt-2 max-w-xs text-sm leading-relaxed text-muted">
-              Business websites, e-commerce stores, web applications, mobile apps and custom CRM software.
+              Websites, paid ads, social media, branding, SEO and lead follow-up for growing businesses.
             </dd>
           </div>
           <div>
             <dt className="label">How we work</dt>
             <dd className="mt-2 max-w-xs text-sm leading-relaxed text-muted">
-              Fixed scope, weekly updates and one point of contact from kickoff to launch.
+              One team from the first post to the paying customer. Fixed fees and weekly updates.
             </dd>
           </div>
           <div>

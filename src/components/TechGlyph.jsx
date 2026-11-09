@@ -1,4 +1,6 @@
-/** Minimal, consistent line glyphs for the tech stack (24px grid, 1.6 stroke). */
+import { BRAND_PATHS } from './BrandIcon'
+
+/** Minimal, consistent line glyphs for platforms and tools (24px grid, 1.6 stroke). Brand marks come from BrandIcon. */
 const common = {
   width: 26,
   height: 26,
@@ -41,6 +43,56 @@ const Cylinder = ({ children }) => (
 )
 
 const glyphs = {
+  // Marketing platforms
+  meta: (
+    <svg {...common}>
+      <path d="M4 12c0-2.5 1.5-4.5 3.5-4.5 3 0 5.5 9 9 9 2 0 3.5-2 3.5-4.5S18.5 7.5 16.5 7.5c-3.5 0-6 9-9 9C5.5 16.5 4 14.5 4 12Z" />
+    </svg>
+  ),
+  googleads: (
+    <svg {...common}>
+      <path d="M4 10v4h3l6 4V6L7 10H4Z" />
+      <path d="M16.5 9.5a4 4 0 0 1 0 5M19 7a7.5 7.5 0 0 1 0 10" />
+    </svg>
+  ),
+  youtube: (
+    <svg {...common}>
+      <rect x="2.5" y="6" width="19" height="12" rx="3.5" />
+      <path d="m10.5 9.5 4.5 2.5-4.5 2.5v-5Z" />
+    </svg>
+  ),
+  crm: (
+    <svg {...common}>
+      <path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4.5 5.5a2 2 0 0 1 2-2Z" />
+    </svg>
+  ),
+  forms: (
+    <svg {...common}>
+      <rect x="5" y="3" width="14" height="18" rx="2" />
+      <path d="M8.5 8h7M8.5 12h7M8.5 16h4" />
+    </svg>
+  ),
+  pixel: (
+    <svg {...common}>
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="5" />
+      <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none" />
+    </svg>
+  ),
+  analytics: (
+    <svg {...common}>
+      <rect x="4" y="11" width="3.5" height="9" rx="1" />
+      <rect x="10.25" y="4" width="3.5" height="16" rx="1" />
+      <rect x="16.5" y="14" width="3.5" height="6" rx="1" />
+    </svg>
+  ),
+  search: (
+    <svg {...common}>
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m16 16 4.5 4.5" />
+    </svg>
+  ),
+
   // Frontend
   react: (
     <svg {...common}>
@@ -231,5 +283,10 @@ const glyphs = {
 }
 
 export default function TechGlyph({ name, className = '' }) {
-  return <span className={`inline-flex ${className}`}>{glyphs[name] || glyphs.javascript}</span>
+  const glyph = glyphs[name] || (BRAND_PATHS[name] ? (
+    <svg width="26" height="26" viewBox="-2.5 -2.5 29 29" fill="currentColor" aria-hidden="true">
+      <path d={BRAND_PATHS[name]} />
+    </svg>
+  ) : glyphs.javascript)
+  return <span className={`inline-flex ${className}`}>{glyph}</span>
 }

@@ -64,14 +64,14 @@ export default function Work() {
     <section id="work" className="section scroll-mt-20">
       <div className="container-x">
         <SectionHeader
-          index="03"
+          index="05"
           label="Selected work"
           meta="2024 — 2025"
           title="Built for Real Businesses"
-          lede="A selection of websites, platforms and products we have designed and built. Every one is custom, and every one is still in use."
+          lede="A selection of websites, stores and products we have designed and built. Every one is custom, and every one is still in use."
         />
 
-        <ul className="mt-8 border-t border-line lg:mt-12" onMouseLeave={() => setHovered(null)}>
+        <ul className="mt-8 border-t border-line lg:mt-10" onMouseLeave={() => setHovered(null)}>
           {projects.map((p, i) => (
             <motion.li
               key={p.id}

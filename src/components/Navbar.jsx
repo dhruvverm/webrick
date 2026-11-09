@@ -90,7 +90,7 @@ export default function Navbar() {
               {site.availability}
             </span>
             <Button href="#contact" className="btn-sm hidden sm:inline-flex" icon="diag">
-              Start a Project
+              Get a Free Quote
             </Button>
             <button
               type="button"
@@ -170,7 +170,7 @@ export default function Navbar() {
                     WhatsApp
                   </a>
                   <Button href="#contact" onClick={() => setOpen(false)} className="w-full" icon="diag">
-                    Start a Project
+                    Get a Free Quote
                   </Button>
                 </div>
               </motion.div>

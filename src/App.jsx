@@ -8,6 +8,7 @@ import Services from './components/sections/Services'
 import WhyWebrick from './components/sections/WhyWebrick'
 import Work from './components/sections/Work'
 import Process from './components/sections/Process'
+import Plans from './components/sections/Plans'
 import TechStack from './components/sections/TechStack'
 import About from './components/sections/About'
 import Testimonials from './components/sections/Testimonials'
@@ -22,9 +23,10 @@ export function Page() {
       <main id="main" className="relative">
         <Hero />
         <Services />
+        <Process />
+        <Plans />
         <WhyWebrick />
         <Work />
-        <Process />
         <TechStack />
         <About />
         <Testimonials />

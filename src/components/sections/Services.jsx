@@ -12,12 +12,12 @@ export default function Services() {
         <SectionHeader
           index="01"
           label="Services"
-          meta="Six disciplines"
-          title="Web Development Services"
-          lede="Website design, web development, e-commerce, mobile apps and custom software. From a first business website to a full product, built by one team."
+          meta="Six services, one team"
+          title="Digital Marketing Services"
+          lede="Website, paid ads, social media, branding, SEO and lead follow-up. Take one service, or hand us the whole thing."
         />
 
-        <ul className="mt-8 border-t border-line lg:mt-12">
+        <ul className="mt-8 border-t border-line lg:mt-10">
           {services.map((s, i) => {
             const Icon = s.icon
             return (
@@ -62,6 +62,13 @@ export default function Services() {
             )
           })}
         </ul>
+        <p className="mt-5 max-w-2xl text-sm text-dim">
+          Need a web app, a mobile app or custom software? We build those too.{' '}
+          <a href="#contact" onClick={() => prefillContact('Something else')} className="text-muted underline underline-offset-2 transition-colors hover:text-text">
+            Tell us what you need
+          </a>
+          .
+        </p>
       </div>
     </section>
   )

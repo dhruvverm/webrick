@@ -87,7 +87,8 @@ Everything the site displays comes from `src/data/`:
 | --- | --- |
 | `site.js` | Email, phone, location, availability line, social links |
 | `nav.js` | Navbar and footer links |
-| `services.js` | The six service cards (title, description, icon, tags) |
+| `services.js` | The six services (title, description, icon, tags, contact-form chip) |
+| `plans.js` | The three "ways to start" cards and the note under them |
 | `projects.js` | Portfolio projects and the detail modal |
 | `process.js` | The five timeline steps |
 | `tech.js` | Tech stack, grouped by layer (also feeds the marquee band) |
