@@ -62,7 +62,7 @@ export default function Cursor() {
       }
       const hit = t?.closest(INTERACTIVE)
       if (t?.closest(TEXT_ENTRY) || next) target = 0
-      else if (hit && !hit.classList.contains('cursor-default')) target = 1
+      else if (hit && !hit.classList.contains('cursor-default') && !hit.classList.contains('btn')) target = 1
       else target = REST
     }
     const onDown = () => (down = true)

@@ -58,7 +58,8 @@ export default function Plans() {
                 onClick={() => prefillContact(p.formType)}
                 className={`btn mt-7 w-full ${p.highlight ? 'btn-primary' : 'btn-secondary'}`}
               >
-                {p.cta} <ArrowUpRight size={16} strokeWidth={1.8} aria-hidden="true" />
+                <span>{p.cta}</span>
+                <ArrowUpRight size={16} strokeWidth={1.8} className="btn-icon btn-icon-diag" aria-hidden="true" />
               </a>
             </motion.li>
           ))}

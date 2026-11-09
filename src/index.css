@@ -282,11 +282,12 @@
   .row-hover:hover::before, .row-hover:focus-within::before { transform: scaleX(1); }
 
   /* primary button: accent fill rises from the bottom */
-  .btn-primary { overflow: hidden; }
+  .btn-primary { overflow: hidden; isolation: isolate; }
   .btn-primary::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: -1;
     background: var(--color-accent);
     transform: translateY(101%);
     transition: transform 0.45s cubic-bezier(0.2, 0.65, 0.2, 1);
