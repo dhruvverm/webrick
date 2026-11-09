@@ -35,6 +35,7 @@ export default function ProjectModal({ project: p, onClose }) {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 30 }}
         transition={{ duration: 0.45, ease: EASE }}
+        data-lenis-prevent
         className="relative max-h-[92svh] w-full max-w-5xl overflow-y-auto overscroll-contain rounded-t-[8px] border border-line bg-bg-1 sm:rounded-[8px]"
       >
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-line bg-bg-1/90 px-5 py-3 backdrop-blur-md sm:px-8">

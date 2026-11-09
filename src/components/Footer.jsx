@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { ArrowUp, ArrowUpRight, Mail, Phone } from 'lucide-react'
 import { LogoMark } from './Logo'
 import BrandIcon from './BrandIcon'
@@ -12,8 +13,23 @@ const channels = [
 ]
 
 export default function Footer() {
+  // Desktop: the page slides up to uncover the footer. Only when the footer fits the screen, or its top could never be seen.
+  const ref = useRef(null)
+  const [reveal, setReveal] = useState(false)
+  useEffect(() => {
+    const check = () => ref.current && setReveal(window.innerWidth >= 1024 && ref.current.offsetHeight <= window.innerHeight - 24)
+    check()
+    const ro = new ResizeObserver(check)
+    ro.observe(ref.current)
+    window.addEventListener('resize', check)
+    return () => {
+      ro.disconnect()
+      window.removeEventListener('resize', check)
+    }
+  }, [])
+
   return (
-    <footer className="relative overflow-hidden border-t border-line">
+    <footer ref={ref} className={`overflow-hidden border-t border-line bg-bg-0 ${reveal ? 'sticky bottom-0 z-0' : 'relative'}`}>
       <div className="container-x pt-10 pb-5">
         <div className="grid gap-x-8 gap-y-8 md:grid-cols-12">
           <div className="md:col-span-12 lg:col-span-4">

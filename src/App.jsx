@@ -3,6 +3,9 @@ import Intro from './components/Intro'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
+import SmoothScroll from './components/SmoothScroll'
+import Cursor from './components/Cursor'
+import ServicesBand from './components/sections/ServicesBand'
 import Hero from './components/sections/Hero'
 import Services from './components/sections/Services'
 import WhyWebrick from './components/sections/WhyWebrick'
@@ -21,17 +24,24 @@ export function Page() {
     <>
       <Navbar />
       <main id="main" className="relative">
-        <Hero />
-        <Services />
-        <Process />
-        <Plans />
-        <WhyWebrick />
-        <Work />
-        <TechStack />
-        <About />
-        <Testimonials />
-        <Faq />
-        <Contact />
+        {/* On desktop the hero stays put for one screen while the rest of the page slides up over it. */}
+        <div className="relative z-[1]">
+          <Hero />
+          <div aria-hidden="true" className="hidden h-screen lg:block" />
+        </div>
+        <div className="relative z-[1] bg-bg-1 lg:-mt-[100vh] lg:rounded-[2rem] lg:border-t lg:border-line lg:shadow-[0_-30px_90px_rgba(0,0,0,0.6)]">
+          <ServicesBand />
+          <Services />
+          <Process />
+          <Plans />
+          <WhyWebrick />
+          <Work />
+          <TechStack />
+          <About />
+          <Testimonials />
+          <Faq />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </>
@@ -42,6 +52,8 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <a href="#main" className="skip-link">Skip to content</a>
+      <SmoothScroll />
+      <Cursor />
       <Intro />
       <Page />
       <WhatsAppButton />

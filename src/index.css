@@ -61,6 +61,9 @@
   0% { transform: scale(1); opacity: 0.7; }
   70%, 100% { transform: scale(1.9); opacity: 0; }
 }
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.25; }
@@ -112,9 +115,8 @@
     font-weight: 500;
     font-size: 0.92rem;
     white-space: nowrap;
-    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   }
-  .btn:active { transform: translateY(1px); }
   .btn .btn-icon { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
   .btn:hover .btn-icon { transform: translateX(3px); }
   .btn:hover .btn-icon-diag { transform: translate(2px, -2px); }
@@ -296,7 +298,14 @@
   .progress-line { transform-origin: left; animation: grow-x var(--dur, 7s) linear forwards; }
   .paused .progress-line { animation-play-state: paused; }
 
+  /* ---------- Custom cursor (mouse only; see Cursor.jsx) ---------- */
+  html.has-cursor, html.has-cursor * { cursor: none !important; }
+  html.has-cursor input, html.has-cursor textarea { cursor: text !important; }
+  .cursor-label-track { animation: marquee 5s linear infinite; }
+
+  .spin-slow { animation: spin-slow 9s linear infinite; }
+
   @media (prefers-reduced-motion: reduce) {
-    .animate-drift, .progress-line, [class*="wa-ring"] { animation: none; }
+    .animate-drift, .progress-line, .spin-slow, .cursor-label-track, [class*="wa-ring"] { animation: none; }
   }
 }

@@ -8,10 +8,12 @@ export default function useLockBody(locked) {
     const prevPad = document.body.style.paddingRight
     const scrollbar = window.innerWidth - document.documentElement.clientWidth
     document.body.style.overflow = 'hidden'
+    window.__lenis?.stop()
     if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`
     return () => {
       document.body.style.overflow = prev
       document.body.style.paddingRight = prevPad
+      window.__lenis?.start()
     }
   }, [locked])
 }

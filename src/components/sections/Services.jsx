@@ -32,7 +32,8 @@ export default function Services() {
                 <a
                   href="#contact"
                   onClick={() => prefillContact(s.formType)}
-                  aria-label={`${s.title}: start a project`}
+                  aria-label={`${s.title}: get a quote`}
+                  data-cursor-text="Get a quote"
                   className="group row-hover grid grid-cols-[2.5rem_1fr_auto] items-start gap-x-4 py-5 sm:gap-x-6 lg:grid-cols-12 lg:items-baseline lg:py-6"
                 >
                   <span className="mono pt-1 text-xs text-dim lg:col-span-1 lg:pt-0">0{i + 1}</span>

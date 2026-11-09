@@ -12,6 +12,26 @@ import { INTRO_DELAY } from '../intro'
 
 const SECTION_IDS = navLinks.map((l) => l.href.slice(1))
 const EASE = [0.2, 0.65, 0.3, 1]
+const WORDS = ['Websites', 'Ads', 'Social Media', 'Branding', 'Leads']
+
+/** What Webrick does, one word at a time, beside the logo on wide screens. */
+function RotatingWord() {
+  const [i, setI] = useState(0)
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const id = setInterval(() => setI((n) => (n + 1) % WORDS.length), 2200)
+    return () => clearInterval(id)
+  }, [])
+  return (
+    <span aria-hidden="true" className="mono ml-3 hidden h-5 items-center overflow-hidden border-l border-line-strong pl-3 text-xs text-muted xl:flex">
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span key={WORDS[i]} initial={{ y: 12, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -12, opacity: 0 }} transition={{ duration: 0.3 }}>
+          {WORDS[i]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  )
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -59,6 +79,7 @@ export default function Navbar() {
         <nav aria-label="Primary" className="container-x flex h-16 items-center justify-between lg:h-[4.5rem]">
           <a href="#home" className="flex items-center" aria-label="Webrick home">
             <Logo size={26} />
+            <RotatingWord />
           </a>
 
           <ul className="hidden items-center gap-8 lg:flex">

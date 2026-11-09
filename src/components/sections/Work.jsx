@@ -88,6 +88,7 @@ export default function Work() {
                   setSelected(p)
                 }}
                 onMouseEnter={() => setHovered(i)}
+                data-cursor-text="View project"
                 className="group row-hover w-full py-5 text-left lg:py-6"
               >
                 {/* inline preview, small screens only */}

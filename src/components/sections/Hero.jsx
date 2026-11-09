@@ -1,4 +1,5 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion'
 import { ArrowDown, ArrowRight } from 'lucide-react'
 import Button from '../ui/Button'
 import MaskedText from '../ui/MaskedText'
@@ -26,6 +27,23 @@ export default function Hero() {
   const rotateX = useTransform(sy, [-1, 1], [5, -5])
   const shiftX = useTransform(sx, [-1, 1], [-10, 10])
 
+  // Desktop: the hero is pinned while the next section slides over it, and eases back as it is covered.
+  const [pinned, setPinned] = useState({ on: false, vh: 900 })
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const sync = () => setPinned({ on: mq.matches, vh: window.innerHeight })
+    sync()
+    mq.addEventListener('change', sync)
+    window.addEventListener('resize', sync)
+    return () => {
+      mq.removeEventListener('change', sync)
+      window.removeEventListener('resize', sync)
+    }
+  }, [])
+  const { scrollY } = useScroll()
+  const coverOpacity = useTransform(scrollY, [0, pinned.vh * 0.9], [1, 0.2])
+  const coverScale = useTransform(scrollY, [0, pinned.vh], [1, 0.94])
+
   const onMove = (e) => {
     const r = e.currentTarget.getBoundingClientRect()
     mx.set(((e.clientX - r.left) / r.width) * 2 - 1)
@@ -41,7 +59,7 @@ export default function Hero() {
       id="home"
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pt-24 pb-4 lg:pt-28 lg:pb-8"
+      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-bg-1 pt-24 pb-4 lg:sticky lg:top-0 lg:pt-28 lg:pb-8"
     >
       <div
         aria-hidden="true"
@@ -49,7 +67,7 @@ export default function Hero() {
         style={{ background: 'radial-gradient(closest-side, #e4632f, transparent 70%)' }}
       />
 
-      <div className="container-x relative">
+      <motion.div style={pinned.on ? { opacity: coverOpacity, scale: coverScale } : undefined} className="container-x relative">
         <div className="grid gap-x-8 gap-y-8 lg:grid-cols-12 lg:items-center">
           {/* Copy */}
           <div className="lg:col-span-7">
@@ -129,7 +147,7 @@ export default function Hero() {
             </motion.span>
           </a>
         </motion.dl>
-      </div>
+      </motion.div>
     </section>
   )
 }

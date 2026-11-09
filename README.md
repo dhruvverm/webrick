@@ -31,6 +31,16 @@ One-time setup that was done:
 
 If the domain ever changes, update `public/CNAME`, the Open Graph URLs in `index.html`, and the Pages setting.
 
+### Scroll and pointer effects
+
+- **Smooth scroll:** `src/components/SmoothScroll.jsx` (Lenis). Touch devices and reduced-motion users keep native scrolling.
+- **Custom cursor:** `src/components/Cursor.jsx`, mouse only. Add `data-cursor-text="…"` to any element to show a scrolling label over it.
+- **Pinned hero:** on desktop the hero stays put for one screen while the page slides over it (`App.jsx`, `Hero.jsx`).
+- **Sideways steps:** on desktop "How it works" pins and scrolls horizontally (`Process.jsx`); phones get a plain list.
+- **Footer reveal:** on desktop the page lifts to uncover the footer when the footer fits the screen (`Footer.jsx`).
+- **Marquee:** `ServicesBand.jsx` speeds up and changes direction with the scroll (`ui/VelocityMarquee.jsx`).
+- **Magnetic buttons:** `ui/Button.jsx` leans towards the mouse.
+
 ## Structure
 
 ```
