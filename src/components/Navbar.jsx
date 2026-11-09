@@ -13,6 +13,7 @@ import { INTRO_DELAY } from '../intro'
 const SECTION_IDS = navLinks.map((l) => l.href.slice(1))
 const EASE = [0.2, 0.65, 0.3, 1]
 const WORDS = ['Websites', 'Ads', 'Social Media', 'Branding', 'Leads']
+const LONGEST_WORD = WORDS.reduce((a, b) => (b.length > a.length ? b : a))
 
 /** What Webrick does, one word at a time, beside the logo on wide screens. */
 function RotatingWord() {
@@ -23,9 +24,18 @@ function RotatingWord() {
     return () => clearInterval(id)
   }, [])
   return (
-    <span aria-hidden="true" className="mono ml-3 hidden h-5 items-center overflow-hidden border-l border-line-strong pl-3 text-xs text-muted xl:flex">
+    <span aria-hidden="true" className="mono relative ml-3 hidden h-5 items-center overflow-hidden border-l border-line-strong pl-3 text-xs text-muted xl:flex">
+      {/* The longest word holds the width, so the header never shifts as the words change. */}
+      <span className="invisible whitespace-nowrap">{LONGEST_WORD}</span>
       <AnimatePresence mode="wait" initial={false}>
-        <motion.span key={WORDS[i]} initial={{ y: 12, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -12, opacity: 0 }} transition={{ duration: 0.3 }}>
+        <motion.span
+          key={WORDS[i]}
+          initial={{ y: 12, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -12, opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="absolute left-3 top-0 flex h-full items-center whitespace-nowrap"
+        >
           {WORDS[i]}
         </motion.span>
       </AnimatePresence>
