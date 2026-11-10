@@ -5,7 +5,7 @@ export const services = [
   {
     id: 'websites',
     title: 'Websites & Online Stores',
-    description: 'A fast website or online store that turns visitors into enquiries. Live in 2–3 days, from ₹3,999.',
+    description: 'A fast website or online store that turns visitors into enquiries. Live in 2–3 days, with a fixed quote up front.',
     serviceType: 'Website design and development',
     icon: Globe,
     tags: ['Business websites', 'Landing pages', 'Online stores'],

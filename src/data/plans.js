@@ -3,11 +3,11 @@ export const plans = [
   {
     id: 'website',
     name: 'Just the website',
-    price: 'From ₹3,999',
+    price: 'Custom quote',
     period: 'one time',
     blurb: 'A fast, mobile-first website so customers can find you and contact you.',
     points: ['Custom design, no template', 'WhatsApp and call buttons', 'SEO basics built in', 'Live in 2–3 days'],
-    cta: 'Start with a website',
+    cta: 'Get a quote',
     formType: 'Website',
   },
   {
@@ -28,7 +28,7 @@ export const plans = [
     period: 'monthly',
     blurb: 'We run your whole online presence and hand you the enquiries.',
     points: ['Website, ads and social media', 'Branding and all creatives', 'Leads tracked in a CRM', 'Monthly report and next plan'],
-    cta: 'Hand it to us',
+    cta: 'Get a quote',
     formType: 'Full package',
   },
 ]

@@ -8,7 +8,7 @@ import { site } from '../../data/site'
 import { PREFILL_EVENT } from '../../prefill'
 
 const projectTypes = ['Website', 'Ads', 'Social media', 'Branding', 'Full package', 'Something else']
-const budgets = ['₹3,999 – ₹15,000', '₹15,000 – ₹50,000', '₹50,000 – ₹1.5 lakh', '₹1.5 lakh+', 'Not sure yet']
+const budgets = ['Under ₹15,000', '₹15,000 – ₹50,000', '₹50,000 – ₹1.5 lakh', '₹1.5 lakh+', 'Not sure yet']
 const initial = { name: '', email: '', company: '', phone: '', type: '', budget: '', message: '' }
 
 const shake = { x: [0, -6, 6, -4, 4, 0], transition: { duration: 0.4 } }

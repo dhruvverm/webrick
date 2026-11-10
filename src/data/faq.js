@@ -13,7 +13,7 @@ export const faq = [
   },
   {
     q: 'How much does a website cost in India?',
-    a: 'Website development at Webrick starts from ₹3,999 for a simple business website, which keeps it affordable for small businesses and startups. The price depends on the number of pages, features and integrations. Tell us what you need and we send a fixed quote before any work begins.',
+    a: 'It depends on the number of pages, features and integrations, so we quote each website individually. Simple business websites are priced to be affordable for small businesses and startups. Tell us what you need and we send a fixed quote before any work begins, with no obligation.',
   },
   {
     q: 'How much do ads cost?',

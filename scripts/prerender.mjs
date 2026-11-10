@@ -43,7 +43,7 @@ const ld = {
       slogan: 'Websites, ads and social media that bring customers.',
       keywords: keywords.join(', '),
       knowsAbout: services.map((s) => s.serviceType),
-      priceRange: 'From ₹3,999',
+      priceRange: 'Quote on request',
       areaServed: [{ '@type': 'Country', name: 'India' }, ...serviceAreas.map((name) => ({ '@type': 'City', name }))],
       address: { '@type': 'PostalAddress', addressCountry: 'IN' },
       openingHoursSpecification: {
