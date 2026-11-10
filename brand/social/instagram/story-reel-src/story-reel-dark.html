@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Webrick client story reel (fast cut)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=block" rel="stylesheet" />
+<style>
+  :root { --bg:#111110; --bone:#f2efe8; --ink:#111110; --muted:#a7a297; --dim:#8a867d;
+    --c1:#e4632f; --c2:#f2b63c; --c3:#2fbfa4; --c4:#8b7cf6; --c5:#f0648f; --c6:#4aa3ff; --wa:#25D366; --P:72px; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:var(--bg); width:1080px; height:1920px; overflow:hidden; }
+  .stage { position:relative; width:1080px; height:1920px; overflow:hidden; background:var(--bg); color:var(--bone); font-family:'Geist',sans-serif; }
+  .glow { position:absolute; inset:0; background:
+      radial-gradient(700px 520px at 100% 0%, rgba(139,124,246,.20), transparent 70%),
+      radial-gradient(700px 560px at 0% 100%, rgba(228,99,47,.22), transparent 70%),
+      radial-gradient(560px 420px at 100% 100%, rgba(47,191,164,.14), transparent 70%); }
+  .flash { position:absolute; inset:0; opacity:0; z-index:20; pointer-events:none; }
+  .mono { font-family:'Geist Mono',monospace; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
+  .display { font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'opsz' 96; font-weight:700; letter-spacing:-.03em; }
+  .a { position:absolute; will-change:transform,opacity; }
+  .el { position:absolute; left:var(--P); will-change:transform,opacity; }
+  .st { position:absolute; transform:rotate(var(--r,0deg)); z-index:5; }
+  .st > * { position:relative; }
+
+  /* header + progress */
+  .logo { top:240px; display:flex; align-items:center; gap:12px; }
+  .wordmark { font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:40px; letter-spacing:-.04em; line-height:1; font-variation-settings:'opsz' 96; }
+  .tag { top:248px; left:auto; right:var(--P); font-size:24px; color:var(--dim); }
+  .bar { position:absolute; left:var(--P); top:304px; width:936px; height:6px; border-radius:3px; background:rgba(242,239,232,.14); overflow:hidden; }
+  .bar .fill { left:0; top:0; width:936px; height:6px; background:var(--c1); transform-origin:left center; }
+
+  /* headlines */
+  .K { top:332px; font-size:28px; }
+  .H { top:374px; font-size:100px; line-height:.96; width:936px; font-weight:700; transform-origin:left top; }
+  .H em { font-style:normal; }
+  .H .p { color:var(--c5); } .H .t { color:var(--c3); } .H .y { color:var(--c2); } .H .o { color:var(--c1); }
+  .H .n { display:block; font-size:200px; line-height:.86; }
+  .H.huge { font-size:180px; line-height:.95; }
+  .H.huge s { text-decoration:none; color:var(--dim); font-weight:600; }
+  .S { top:556px; font-size:34px; color:var(--muted); width:936px; line-height:1.25; }
+
+  /* phone */
+  .phone { left:350px; top:690px; width:380px; height:794px; border-radius:52px; background:#0b0b0a; padding:12px; z-index:2;
+    box-shadow:0 40px 90px rgba(0,0,0,.6), 0 0 0 2px rgba(255,255,255,.09); }
+  .phone::after { content:''; position:absolute; left:50%; top:24px; width:104px; height:30px; margin-left:-52px; border-radius:15px; background:#0b0b0a; }
+  .screen { position:relative; width:356px; height:770px; border-radius:42px; overflow:hidden; background:#fff; --w:100; }
+  .shot { position:absolute; inset:0; }
+  .shot img { position:absolute; left:0; top:44px; width:356px; height:auto; display:block; }
+  .sb { position:absolute; left:0; top:0; width:356px; height:44px; display:flex; align-items:center; justify-content:space-between; padding:6px 24px 0 30px; font-size:15px; font-weight:600; letter-spacing:-.01em; }
+  .sb .ic { display:flex; align-items:center; gap:5px; }
+  .sb .bars { display:flex; align-items:flex-end; gap:1.5px; height:11px; }
+  .sb .bars b { width:3px; background:currentColor; border-radius:1px; display:block; }
+  .sb .bat { width:24px; height:11px; border:1.5px solid currentColor; border-radius:3.5px; padding:1.5px; opacity:.9; }
+  .sb .bat::after { content:''; display:block; height:100%; width:85%; background:currentColor; border-radius:1.5px; }
+  .before { background:#cfc9ba; } .before .sb { background:#2b4bd1; color:#fff; }
+  .after { background:#f6f1e8; color:#1c1915; }
+  .screen .after { clip-path:inset(0 0 calc(var(--w) * 1%) 0); }
+  .screen .edge { position:absolute; left:0; width:356px; height:6px; margin-top:-3px; top:calc((100 - var(--w)) * 1%); background:var(--c1); box-shadow:0 0 30px 8px rgba(228,99,47,.6); }
+  .toast { position:absolute; left:12px; width:332px; height:78px; border-radius:20px; background:rgba(255,255,255,.97); color:var(--ink); display:flex; align-items:center; gap:12px; padding:0 14px; box-shadow:0 14px 30px rgba(0,0,0,.25); }
+  .toast .ic { width:42px; height:42px; border-radius:11px; background:var(--wa); display:grid; place-items:center; flex:none; }
+  .toast b { display:block; font-size:16px; font-weight:600; line-height:1.15; }
+  .toast p { margin:3px 0 0; font-size:15px; color:#4a473f; line-height:1.15; }
+  .toast small { margin-left:auto; font-size:13px; color:#8a867d; align-self:flex-start; margin-top:12px; }
+
+  /* stamps / stickers */
+  .stamp { padding:16px 28px; border-radius:16px; background:var(--c5); color:var(--ink); font-family:'Geist Mono',monospace; font-weight:500; font-size:32px; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; box-shadow:0 24px 50px rgba(0,0,0,.5); transform-origin:center; }
+  .stamp.ok { background:var(--c3); }
+  .stamp.big { font-size:40px; padding:20px 34px; }
+
+  /* ads */
+  .ad { width:400px; height:240px; border-radius:18px; background:#fff; color:var(--ink); overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,.5); transform-origin:center; }
+  .ad .hd { height:46px; display:flex; align-items:center; gap:10px; padding:0 14px; font-size:16px; }
+  .ad .hd i { width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,#b9743f,#e4632f); flex:none; }
+  .ad .hd b { display:block; font-weight:600; line-height:1.05; }
+  .ad .hd small { display:block; font-size:13px; color:#6b685f; }
+  .ad .hd span { margin-left:auto; letter-spacing:2px; color:#6b685f; }
+  .ad .im { height:104px; background:linear-gradient(135deg,#e9c9a6,#c98b58 60%,#9e5f33); position:relative; }
+  .ad .im svg { position:absolute; left:14px; top:10px; }
+  .ad .im em { position:absolute; right:12px; bottom:10px; font-style:normal; background:rgba(28,25,21,.85); color:#fff; font-size:14px; padding:5px 10px; border-radius:999px; font-weight:600; }
+  .ad .cta { height:42px; display:flex; align-items:center; justify-content:space-between; padding:0 14px; font-size:16px; font-weight:600; border-bottom:1px solid rgba(0,0,0,.08); color:#1877f2; }
+  .ad .cap { padding:8px 14px; font-size:15px; color:#1c1915; line-height:1.2; }
+  .ad .cap b { font-weight:600; }
+  .gad { width:370px; height:150px; border-radius:18px; background:#fff; color:#202124; padding:14px 18px; font-family:Arial, Helvetica, sans-serif; box-shadow:0 30px 60px rgba(0,0,0,.5); transform-origin:center; }
+  .gad .t { display:flex; align-items:center; gap:8px; font-size:15px; }
+  .gad .t b { font-weight:700; }
+  .gad .t i { width:22px; height:22px; border-radius:50%; background:#b9743f; color:#fff; font-style:normal; display:grid; place-items:center; font-size:12px; font-weight:700; }
+  .gad h4 { margin:8px 0 4px; font-size:22px; font-weight:400; color:#1a0dab; line-height:1.15; }
+  .gad p { margin:0; font-size:15px; color:#4d5156; line-height:1.3; }
+  .chart { width:460px; height:262px; padding:18px 22px 14px; border-radius:22px; background:#1b1b19; border:1.5px solid rgba(242,239,232,.14); box-shadow:0 30px 60px rgba(0,0,0,.5); transform-origin:center; }
+  .chart .hd { display:flex; align-items:center; justify-content:space-between; font-size:20px; color:var(--dim); }
+  .chart .hd span:last-child { display:flex; align-items:center; gap:8px; color:var(--muted); font-family:'Geist',sans-serif; letter-spacing:0; text-transform:none; font-size:20px; }
+  .chart .hd i { width:14px; height:14px; border-radius:50%; background:var(--c3); display:block; }
+  .nums { display:flex; gap:34px; margin-top:8px; }
+  .nums b { display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:50px; letter-spacing:-.03em; line-height:1; font-variation-settings:'opsz' 96; color:var(--c3); }
+  .nums small { display:block; font-size:20px; color:var(--muted); margin-top:4px; }
+  .chart svg { display:block; margin-top:8px; width:416px; height:104px; overflow:visible; }
+
+  /* result stickers */
+  .bubble { width:600px; padding:22px 26px; border-radius:24px; border-top-left-radius:8px; background:#d9f5cf; color:var(--ink); font-size:28px; line-height:1.3; box-shadow:0 30px 60px rgba(0,0,0,.5); transform-origin:center; }
+  .bubble small { display:block; text-align:right; font-size:18px; color:#6b685f; margin-top:8px; }
+  .bubble small::after { content:' ✓✓'; color:#3aa0e8; }
+  .stars { display:flex; align-items:center; gap:6px; padding:16px 26px; border-radius:16px; background:var(--bone); color:var(--ink); box-shadow:0 24px 50px rgba(0,0,0,.5); transform-origin:center; white-space:nowrap; }
+  .stars span { font-size:44px; color:#e8a51b; line-height:1; display:inline-block; transform-origin:center; }
+  .stars em { font-style:normal; margin-left:14px; font-size:30px; font-weight:600; }
+
+  /* CTA */
+  .c1 { top:374px; font-size:92px; line-height:.95; width:936px; font-weight:700; }
+  .c2 { top:690px; font-size:190px; line-height:.9; color:var(--c1); white-space:nowrap; transform-origin:left center; }
+  .c3 { top:905px; font-size:34px; color:var(--bone); width:936px; line-height:1.3; }
+  .c4 { top:985px; font-size:32px; color:var(--c2); }
+  .c5 { top:1050px; font-size:30px; color:var(--muted); }
+  .bricks { top:1150px; display:flex; gap:14px; }
+  .bricks span { width:144px; height:60px; border-radius:12px; display:block; }
+  .note { top:1506px; font-size:20px; color:var(--dim); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="glow"></div>
+  <div class="flash" id="flashR" style="background:var(--c5)"></div>
+  <div class="flash" id="flashG" style="background:var(--c3)"></div>
+
+  <div class="el logo" id="logo"><svg width="48" height="48" viewBox="0 0 40 40" id="mark"></svg><span class="wordmark">Webrick</span></div>
+  <div class="el tag mono" id="tag">Client story · 20 sec</div>
+  <div class="bar"><div class="a fill" id="prog"></div></div>
+
+  <!-- hook -->
+  <div class="el H display" id="h1">This website<br>got <em class="p">0 customers</em><br>in 2 years.</div>
+  <div class="el K mono" id="k2" style="color:var(--c3)">30 days with Webrick</div>
+  <div class="el H display" id="h2"><em class="t n">41</em>enquiries.</div>
+  <div class="el H display" id="h3"><em class="y">Here’s exactly<br>what we did 👇</em></div>
+
+  <!-- step 1 -->
+  <div class="el K mono" id="k4" style="color:var(--c5)">Step 1 · Full website audit</div>
+  <div class="el H display" id="h4"><em class="p"><span id="nProb">0</span> problems</em><br>found.</div>
+  <!-- step 2 -->
+  <div class="el K mono" id="k5" style="color:var(--c3)">Step 2 · Rebuilt</div>
+  <div class="el H display" id="h5">New website.<br><em class="t">Live in 3 days.</em></div>
+  <!-- step 3 -->
+  <div class="el K mono" id="k6" style="color:var(--c4)">Step 3 · Ads on</div>
+  <div class="el H display" id="h6">We ran<br>the ads.</div>
+  <!-- result -->
+  <div class="el K mono" id="k7" style="color:var(--c2)">30 days later</div>
+  <div class="el H huge display" id="h7"><s>0</s> → <em class="t">41</em></div>
+  <div class="el S" id="s7">enquiries in 30 days. Same shop, same owner.</div>
+
+  <!-- phone -->
+  <div class="a phone" id="phone">
+    <div class="screen" id="scr">
+      <div class="shot before"><div class="sb"><span>9:41</span><span class="ic"><span class="bars"><b style="height:4px"></b><b style="height:6px"></b><b style="height:8px"></b><b style="height:11px"></b></span><span class="bat"></span></span></div><img src="./before-mobile.png" alt=""></div>
+      <div class="shot after"><div class="sb"><span>9:41</span><span class="ic"><span class="bars"><b style="height:4px"></b><b style="height:6px"></b><b style="height:8px"></b><b style="height:11px"></b></span><span class="bat"></span></span></div><img src="./after-mobile.png" alt=""></div>
+      <div class="edge a" id="edge" style="left:0"></div>
+      <div class="toast a" id="t1" style="top:56px"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="#052e16"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.23 8.24m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28"/></svg></span><div><b>Priya · WhatsApp</b><p>Price of the 3-seater sofa?</p></div><small>now</small></div>
+      <div class="toast a" id="t2" style="top:144px"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="#052e16"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.23 8.24m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28"/></svg></span><div><b>Amit · WhatsApp</b><p>Do you deliver to Vaishali Nagar?</p></div><small>now</small></div>
+      <div class="toast a" id="t3" style="top:232px"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="#052e16"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.23 8.24m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28"/></svg></span><div><b>Neha · WhatsApp</b><p>Can I visit the showroom on Sunday?</p></div><small>now</small></div>
+    </div>
+  </div>
+
+  <!-- hook stamps -->
+  <div class="st" style="left:290px;top:1010px;--r:-7deg"><div class="stamp big a" id="x0">0 enquiries</div></div>
+  <div class="st" style="left:250px;top:1010px;--r:-6deg"><div class="stamp big ok a" id="y0">✓ 41 enquiries</div></div>
+
+  <!-- step 1 stamps -->
+  <div class="st" style="left:120px;top:780px;--r:-8deg"><div class="stamp a" id="x1">Slow · 9.8 s to load</div></div>
+  <div class="st" style="left:520px;top:925px;--r:6deg"><div class="stamp a" id="x2">Breaks on mobile</div></div>
+  <div class="st" style="left:90px;top:1065px;--r:-5deg"><div class="stamp a" id="x3">No WhatsApp button</div></div>
+  <div class="st" style="left:560px;top:1205px;--r:7deg"><div class="stamp a" id="x4">Not on Google</div></div>
+  <div class="st" style="left:150px;top:1345px;--r:-6deg"><div class="stamp a" id="x5">No ads running</div></div>
+
+  <!-- step 2 stickers -->
+  <div class="st" style="left:110px;top:790px;--r:-7deg"><div class="stamp ok a" id="g1">✓ Loads in 1.1 s</div></div>
+  <div class="st" style="left:600px;top:930px;--r:6deg"><div class="stamp ok a" id="g2">✓ Mobile-first</div></div>
+  <div class="st" style="left:90px;top:1070px;--r:-5deg"><div class="stamp ok a" id="g3">✓ WhatsApp button</div></div>
+  <div class="st" style="left:540px;top:1210px;--r:7deg"><div class="stamp ok a" id="g4">✓ Found on Google</div></div>
+  <div class="st" style="left:160px;top:1350px;--r:-4deg"><div class="stamp ok a" id="g5">✓ Pixel + analytics</div></div>
+
+  <!-- step 3 cards -->
+  <div class="st" style="left:30px;top:980px;--r:-6deg"><div class="ad a" id="ad1">
+    <div class="hd"><i></i><div><b>sharmafurniture</b><small>Sponsored</small></div><span>•••</span></div>
+    <div class="im"><svg width="150" height="84" viewBox="0 0 210 110" fill="none"><rect x="20" y="40" width="170" height="44" rx="12" fill="#3b2a1d"/><rect x="32" y="18" width="146" height="40" rx="12" fill="#4e3626"/><rect x="8" y="48" width="30" height="40" rx="10" fill="#2f2117"/><rect x="172" y="48" width="30" height="40" rx="10" fill="#2f2117"/><rect x="60" y="30" width="40" height="24" rx="6" fill="#e4632f"/></svg><em>Diwali offer · Free delivery</em></div>
+    <div class="cta">Send WhatsApp message <span>›</span></div>
+    <div class="cap"><b>sharmafurniture</b> Solid wood sofas from our Jaipur workshop.</div>
+  </div></div>
+  <div class="st" style="left:700px;top:940px;--r:5deg"><div class="gad a" id="ad2">
+    <div class="t"><b>Sponsored</b><i>S</i>sharmafurniture.in</div>
+    <h4>Solid Wood Furniture Jaipur | Free Delivery</h4>
+    <p>Sofas, beds and dining sets from our own workshop. Order on WhatsApp.</p>
+  </div></div>
+  <div class="st" style="left:500px;top:1150px;--r:3deg"><div class="chart a" id="ch">
+    <div class="hd"><span class="mono">Last 30 days</span><span><i></i>Enquiries</span></div>
+    <div class="nums"><div><b id="nVis">14</b><small>website visitors</small></div><div><b id="nEnq">0</b><small>enquiries</small></div></div>
+    <svg viewBox="0 0 440 104">
+      <defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2fbfa4" stop-opacity=".45"/><stop offset="1" stop-color="#2fbfa4" stop-opacity="0"/></linearGradient></defs>
+      <path id="area" d="M0 98 C 90 97, 170 92, 240 70 S 370 22, 440 8 L 440 104 L 0 104 Z" fill="url(#fill)"/>
+      <path id="line" d="M0 98 C 90 97, 170 92, 240 70 S 370 22, 440 8" fill="none" stroke="#2fbfa4" stroke-width="5" stroke-linecap="round"/>
+      <circle id="dot" cx="440" cy="8" r="8" fill="#2fbfa4"/>
+    </svg>
+  </div></div>
+
+  <!-- result stickers -->
+  <div class="st" style="left:60px;top:770px;--r:-3deg"><div class="bubble a" id="r1">Showroom is full on weekends 🙏 Should have done this years ago.<small>Rajesh · 6:48 PM</small></div></div>
+  <div class="st" style="left:470px;top:1030px;--r:4deg"><div class="stars a" id="r2"><span id="st1">★</span><span id="st2">★</span><span id="st3">★</span><span id="st4">★</span><span id="st5">★</span><em id="r2b">Fully satisfied</em></div></div>
+  <div class="st" style="left:110px;top:1210px;--r:-5deg"><div class="stamp big ok a" id="r3">Showroom full</div></div>
+  <div class="el note mono" id="r5">Example story · results vary</div>
+
+  <!-- CTA -->
+  <div class="el c1 display" id="c1">Website not<br>bringing<br>customers?</div>
+  <div class="el c2 display" id="c2">DM “FIX”</div>
+  <div class="el c3" id="c3">We’ll reply with a free quote. New website live in 3 days.</div>
+  <div class="el c4 mono" id="c4">@webrick.in · www.webrick.in</div>
+  <div class="el c5" id="c5">Share this with a business owner who needs it →</div>
+  <div class="el bricks" id="c6"><span style="background:var(--c1)"></span><span style="background:var(--c2)"></span><span style="background:var(--c3)"></span><span style="background:var(--c4)"></span><span style="background:var(--c5)"></span><span style="background:var(--c6)"></span></div>
+</div>
+
+<script>
+  const COLS=[2,9.5,17,24.5,32], ROWS=[5.75,13.25,20.75,28.25]
+  const BLOCKS=[[0,0],[4,0],[0,1],[2,1],[4,1],[0,2],[2,2],[4,2],[1,3,1],[3,3,1]]
+  document.getElementById('mark').innerHTML=BLOCKS.map(([c,r,a])=>`<rect x="${COLS[c]}" y="${ROWS[r]}" width="6" height="6" rx="0.8" fill="${a?'#e4632f':'#f2efe8'}"/>`).join('')
+
+  // ---- deterministic per-property tween engine: window.seek(t) sets every element for time t ----
+  const E = {
+    out: p => 1 - Math.pow(1 - p, 3),
+    in: p => p * p * p,
+    inout: p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2,
+    back: p => { const c = 1.70158 * 1.2; return 1 + (c + 1) * Math.pow(p - 1, 3) + c * Math.pow(p - 1, 2) },
+    lin: p => p,
+  }
+  const byEl = new Map()
+  const $ = (id) => document.getElementById(id)
+  function tw(id, prop, start, dur, from, to, ease = 'out') {
+    const el = $(id); if (!el) throw new Error('no element ' + id)
+    if (!byEl.has(el)) byEl.set(el, new Map())
+    const props = byEl.get(el); if (!props.has(prop)) props.set(prop, [])
+    props.get(prop).push({ start, dur, from, to, ease })
+  }
+  const clamp01 = (v) => Math.min(1, Math.max(0, v))
+  let T = 0
+  function apply(el, s) {
+    if ('o' in s) el.style.opacity = clamp01(s.o)
+    if (['x','y','s','sx','sy','r','shk'].some(k => k in s)) {
+      const sx = s.sx ?? s.s ?? 1, sy = s.sy ?? s.s ?? 1
+      const jx = s.shk ? s.shk * Math.sin(T * 95) : 0, jy = s.shk ? s.shk * .7 * Math.cos(T * 71) : 0
+      el.style.transform = `translate(${(s.x || 0) + jx}px, ${(s.y || 0) + jy}px) rotate(${s.r || 0}deg) scale(${sx}, ${sy})`
+    }
+    if ('wipe' in s) el.style.setProperty('--w', s.wipe)
+    if ('n' in s) el.textContent = Math.round(s.n).toLocaleString('en-IN')
+    if ('dash' in s) el.style.strokeDashoffset = s.dash
+  }
+  window.seek = (t) => {
+    T = t
+    for (const [el, props] of byEl) {
+      const s = {}
+      for (const [prop, list] of props) {
+        list.sort((a, b) => a.start - b.start)
+        let cur = null
+        for (const k of list) if (t >= k.start) cur = k
+        if (!cur) { s[prop] = list[0].from; continue }
+        const p = E[cur.ease](clamp01((t - cur.start) / cur.dur))
+        s[prop] = cur.from + (cur.to - cur.from) * p
+      }
+      apply(el, s)
+    }
+  }
+  // helpers (hard cuts and hits; nothing fades slowly)
+  const INIT = (id, prop, v) => tw(id, prop, -1, .01, v, v)
+  const SHOW = (id, at) => tw(id, 'o', at, .02, 0, 1, 'lin')
+  const HIDE = (id, at) => tw(id, 'o', at, .02, 1, 0, 'lin')
+  const SLAM = (id, at, from = .9, dur = .22, ease = 'back') => { tw(id, 'o', at, .1, 0, 1, 'out'); tw(id, 's', at, dur, from, 1, ease) }
+  const HIT = (id, at, from = 2.2) => { tw(id, 'o', at, .06, 0, 1, 'out'); tw(id, 's', at, .2, from, 1, 'out') }
+  const IN = (id, at, dy = 30, dur = .3) => { tw(id, 'o', at, dur, 0, 1, 'out'); tw(id, 'y', at, dur, dy, 0, 'out') }
+  const FLASH = (id, at, peak = .4) => { tw(id, 'o', at, .04, 0, peak, 'out'); tw(id, 'o', at + .04, .22, peak, 0, 'out') }
+  const SHAKE = (at, amp = 12) => tw('phone', 'shk', at, .4, amp, 0, 'out')
+  const PUNCH = (at, up = 1.05) => { tw('phone', 's', at, .08, 1, up, 'out'); tw('phone', 's', at + .08, .3, up, 1, 'out') }
+  const HIDE_ALL = (ids, at) => ids.forEach(id => HIDE(id, at))
+
+  INIT('phone', 'shk', 0); INIT('phone', 's', 1)
+  tw('prog', 'sx', 0, 20.7, 0, 1, 'lin'); tw('prog', 'sx', 20.7, .02, 1, 0, 'lin')
+
+  // HOOK 0–4: result first (open loop), then "here's what we did"
+  HIT('x0', .25); SHAKE(.3, 14); PUNCH(.25); FLASH('flashR', .3)
+  HIDE('h1', 1.5); HIDE('x0', 1.5); SLAM('k2', 1.5); SLAM('h2', 1.55, .85); tw('scr', 'wipe', 1.5, .02, 100, 0, 'lin'); FLASH('flashG', 1.5); PUNCH(1.5)
+  HIT('y0', 1.85); SHAKE(1.85, 10)
+  HIDE_ALL(['k2','h2','y0'], 3.0); SLAM('h3', 3.0); tw('scr', 'wipe', 3.0, .02, 0, 100, 'lin'); SHAKE(3.0, 8)
+
+  // STEP 1 4–6.5: problems stamped on the phone, counter ticking
+  HIDE('h3', 4.0); SLAM('k4', 4.0); SLAM('h4', 4.05); tw('phone', 'r', 4.0, .4, -3, 0)
+  tw('nProb', 'n', 4.25, 2.25, 0, 14, 'lin')
+  ;['x1','x2','x3','x4','x5'].forEach((id, i) => { const at = 4.3 + i * .45; HIT(id, at); SHAKE(at, 12); PUNCH(at); FLASH('flashR', at, .3) })
+
+  // STEP 2 6.5–9.5: wipe to the new site, green stickers
+  HIDE_ALL(['x1','x2','x3','x4','x5','k4','h4'], 6.5); SLAM('k5', 6.5); SLAM('h5', 6.55)
+  tw('scr', 'wipe', 6.55, .6, 100, 0, 'inout'); tw('edge', 'o', 6.5, .1, 0, 1, 'out'); tw('edge', 'o', 7.15, .2, 1, 0, 'in')
+  ;['g1','g2','g3','g4','g5'].forEach((id, i) => { const at = 7.3 + i * .4; HIT(id, at, 1.8); SHAKE(at, 8); FLASH('flashG', at, .25) })
+
+  // STEP 3 9.5–13: ad cards, chart, enquiries popping on the phone
+  HIDE_ALL(['g1','g2','g3','g4','g5','k5','h5'], 9.5); SLAM('k6', 9.5); SLAM('h6', 9.55)
+  HIT('ad1', 9.7, 1.6); HIT('ad2', 10.1, 1.6); HIT('ch', 10.5, 1.4)
+  const L = $('line').getTotalLength(); $('line').style.strokeDasharray = L
+  tw('line', 'dash', 10.6, 1.8, L, 0, 'out'); tw('area', 'o', 10.6, 1.8, 0, 1, 'out')
+  tw('dot', 'o', 12.2, .2, 0, 1, 'out'); tw('dot', 's', 12.2, .4, 0, 1, 'back')
+  tw('nVis', 'n', 10.6, 1.8, 14, 2380, 'out'); tw('nEnq', 'n', 10.6, 1.8, 0, 41, 'out')
+  ;['t1','t2','t3'].forEach((id, i) => { const at = 11.0 + i * .45; tw(id, 'o', at, .05, 0, 1, 'out'); tw(id, 'y', at, .5, -110, 0, 'back'); SHAKE(at, 9) })
+
+  // RESULT 13–16.5
+  HIDE_ALL(['ad1','ad2','ch','t1','t2','t3','k6','h6'], 13.0)
+  SLAM('k7', 13.0); SLAM('h7', 13.05, 1.35, .3, 'out'); FLASH('flashG', 13.05); PUNCH(13.05)
+  IN('s7', 13.4, 20)
+  HIT('r1', 13.7, 1.5); SHAKE(13.7, 8)
+  tw('r2', 'o', 14.05, .05, 0, 1, 'out'); tw('r2', 's', 14.05, .25, 1.4, 1, 'out')
+  ;['st1','st2','st3','st4','st5'].forEach((id, i) => { tw(id, 'o', 14.1 + i * .1, .1, 0, 1, 'out'); tw(id, 's', 14.1 + i * .1, .35, .2, 1, 'back') })
+  tw('r2b', 'o', 14.65, .2, 0, 1, 'out')
+  HIT('r3', 15.0, 1.8); SHAKE(15.0, 8)
+  IN('r5', 15.3, 10)
+
+  // CTA 16.5–20.7
+  HIDE_ALL(['k7','h7','s7','r1','r2','r3','r5','tag'], 16.5)
+  tw('phone', 'o', 16.5, .3, 1, 0, 'in'); tw('phone', 'y', 16.5, .3, 0, 90, 'in')
+  SLAM('c1', 16.6); SLAM('c2', 17.1, 1.5, .3, 'out'); FLASH('flashR', 17.1, .3)
+  IN('c3', 17.5); IN('c4', 17.8); IN('c5', 18.0); IN('c6', 18.2, 40)
+
+  // LOOP 20.7–21: back to the first frame so the Reel replays without a jump
+  HIDE_ALL(['c1','c2','c3','c4','c5','c6'], 20.7); SHOW('h1', 20.7); SHOW('tag', 20.7)
+  tw('phone', 'o', 20.7, .02, 0, 1, 'lin'); tw('phone', 'y', 20.7, .02, 90, 0, 'lin'); tw('phone', 'r', 20.7, .02, 0, -3, 'lin')
+  tw('scr', 'wipe', 20.7, .02, 0, 100, 'lin')
+
+  window.preload = () => Promise.all([
+    document.fonts.load('700 100px "Bricolage Grotesque"'), document.fonts.load('600 40px "Bricolage Grotesque"'),
+    document.fonts.load('400 30px Geist'), document.fonts.load('500 30px Geist'), document.fonts.load('600 30px Geist'), document.fonts.load('700 30px Geist'),
+    document.fonts.load('500 24px "Geist Mono"'), document.fonts.ready,
+    ...[...document.images].map(im => im.complete ? Promise.resolve() : new Promise(r => { im.onload = r; im.onerror = r })),
+  ])
+  seek(0)
+</script>
+</body>
+</html>

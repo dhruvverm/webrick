@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Webrick client story reel (studio cut)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=block" rel="stylesheet" />
+<style>
+  :root { --ink:#141311; --bone:#f2efe8; --text:#f2efe8; --muted:rgba(242,239,232,.72); --dim:rgba(242,239,232,.5); --terra:#e4632f; --good:#3fd3a7; --bad:#ff6b6b; --wa:#25D366; --P:72px; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; width:1080px; height:1920px; overflow:hidden; background:#0c302e; }
+  .stage { position:relative; width:1080px; height:1920px; overflow:hidden; color:var(--text); font-family:'Geist',sans-serif;
+    background:linear-gradient(180deg,#154542 0%,#0e3532 50%,#082321 100%); }
+  .hl { position:absolute; inset:0; background:radial-gradient(700px 1000px at 56% 58%, rgba(255,224,180,.26), rgba(255,224,180,0) 70%), radial-gradient(900px 500px at 50% 0%, rgba(255,255,255,.08), rgba(255,255,255,0) 70%); }
+  .vig { position:absolute; inset:0; background:radial-gradient(1200px 1700px at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.45) 100%); }
+  .grain { position:absolute; inset:0; opacity:.09; mix-blend-mode:screen; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .mono { font-family:'Geist Mono',monospace; font-weight:500; letter-spacing:.1em; text-transform:uppercase; }
+  .display { font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'opsz' 96; font-weight:600; letter-spacing:-.03em; }
+  .a { position:absolute; will-change:transform,opacity,filter; }
+  .el { position:absolute; left:var(--P); will-change:transform,opacity,filter; }
+  .w { display:inline-block; will-change:transform,opacity,filter; }
+
+  /* header */
+  .logo { top:220px; display:flex; align-items:center; gap:14px; }
+  .logo .tile { width:50px; height:50px; border-radius:13px; background:#171716; display:grid; place-items:center; box-shadow:0 0 0 1px rgba(255,255,255,.14), 0 10px 24px -10px rgba(0,0,0,.6); }
+  .wordmark { font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:36px; letter-spacing:-.04em; line-height:1; font-variation-settings:'opsz' 96; }
+  .handle { top:234px; left:auto; right:var(--P); font-size:22px; color:var(--dim); }
+
+  /* copy */
+  .K { top:330px; font-size:24px; color:var(--muted); }
+  .H { top:372px; font-size:84px; line-height:1.0; width:936px; }
+  .H em { font-style:normal; }
+  .H .bad { color:var(--bad); } .H .good { color:var(--good); }
+  .H.big { font-size:150px; line-height:.9; }
+  .H s { text-decoration:none; color:rgba(242,239,232,.42); font-weight:500; }
+  .S { top:556px; font-size:30px; color:var(--muted); width:936px; line-height:1.3; }
+  .steps { position:absolute; left:var(--P); top:572px; display:flex; gap:12px; }
+  .pill { position:relative; padding:13px 22px; border-radius:999px; border:1.5px solid rgba(242,239,232,.22); font-family:'Geist Mono',monospace; font-size:21px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); background:rgba(255,255,255,.05); }
+  .pill .on { position:absolute; inset:-1.5px; border-radius:999px; background:var(--bone); color:var(--ink); display:flex; align-items:center; justify-content:center; opacity:0; }
+  .note { top:1610px; font-size:19px; color:var(--dim); }
+
+  /* 3D scene */
+  .scene { position:absolute; inset:0; perspective:2400px; perspective-origin:50% 56%; }
+  .pg { position:absolute; left:540px; top:1130px; width:0; height:0; transform-style:preserve-3d; }
+  .floor { position:absolute; left:250px; top:1480px; width:580px; height:130px; border-radius:50%; background:radial-gradient(closest-side, rgba(0,0,0,.6), rgba(0,0,0,0)); filter:blur(14px); }
+  .phone { position:absolute; left:-200px; top:-410px; width:400px; height:820px; border-radius:64px; background:#1d1c1a; transform:translateZ(0);
+    box-shadow:inset 0 0 0 2px #5a5753, inset 0 0 0 7px #0f0e0d, 0 0 0 1px rgba(255,255,255,.08), 0 70px 120px -40px rgba(0,0,0,.75), 0 30px 50px -30px rgba(0,0,0,.6); }
+  .phone .btn { position:absolute; width:4px; border-radius:2px; background:#2a2927; left:-4px; }
+  .phone .btn.b1 { top:150px; height:34px; } .phone .btn.b2 { top:210px; height:62px; } .phone .btn.b3 { top:290px; height:62px; }
+  .phone .btn.pw { left:auto; right:-4px; top:230px; height:96px; }
+  .screen { position:absolute; left:14px; top:14px; width:372px; height:792px; border-radius:52px; overflow:hidden; background:#fff; --w:100; }
+  .shot { position:absolute; inset:0; }
+  .shot img { position:absolute; left:0; top:44px; width:372px; height:auto; display:block; }
+  .sb { position:absolute; left:0; top:0; width:372px; height:44px; display:flex; align-items:center; justify-content:space-between; padding:6px 26px 0 32px; font-size:15px; font-weight:600; letter-spacing:-.01em; }
+  .sb .ic { display:flex; align-items:center; gap:5px; }
+  .sb .bars { display:flex; align-items:flex-end; gap:1.5px; height:11px; }
+  .sb .bars b { width:3px; background:currentColor; border-radius:1px; display:block; }
+  .sb .bat { width:24px; height:11px; border:1.5px solid currentColor; border-radius:3.5px; padding:1.5px; opacity:.9; }
+  .sb .bat::after { content:''; display:block; height:100%; width:85%; background:currentColor; border-radius:1.5px; }
+  .before { background:#cfc9ba; } .before .sb { background:#2b4bd1; color:#fff; }
+  .after { background:#f6f1e8; color:#1c1915; }
+  .screen .after { clip-path:inset(0 0 calc(var(--w) * 1%) 0); }
+  .screen .edge { position:absolute; left:0; width:372px; height:5px; margin-top:-2px; top:calc((100 - var(--w)) * 1%); background:#fff; box-shadow:0 0 26px 8px rgba(255,255,255,.9), 0 0 60px 20px rgba(228,99,47,.35); }
+  .sweep { position:absolute; left:0; top:-40px; width:220px; height:900px; background:linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.85), rgba(255,255,255,0)); transform:skewX(-14deg); }
+  .scan { position:absolute; left:0; top:0; width:372px; height:3px; background:var(--bad); box-shadow:0 0 26px 6px rgba(214,69,80,.45); }
+  .island { position:absolute; left:50%; top:28px; width:112px; height:32px; margin-left:-56px; border-radius:16px; background:#0b0b0a; z-index:4; }
+  .gloss { position:absolute; inset:0; border-radius:64px; z-index:3; pointer-events:none;
+    background:linear-gradient(112deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 72%, rgba(255,255,255,.07) 100%); }
+  .toast { position:absolute; left:12px; width:348px; height:78px; border-radius:20px; background:rgba(255,255,255,.97); color:var(--ink); display:flex; align-items:center; gap:12px; padding:0 14px; box-shadow:0 14px 30px rgba(0,0,0,.22); }
+  .toast .ic { width:42px; height:42px; border-radius:11px; background:var(--wa); display:grid; place-items:center; flex:none; }
+  .toast b { display:block; font-size:16px; font-weight:600; line-height:1.15; }
+  .toast p { margin:3px 0 0; font-size:15px; color:#4a473f; line-height:1.15; }
+  .toast small { margin-left:auto; font-size:13px; color:#8a867d; align-self:flex-start; margin-top:12px; }
+
+  /* callouts (built in JS, phone-local coordinates) */
+  .dot { position:absolute; width:14px; height:14px; border-radius:50%; background:var(--bad); box-shadow:0 0 0 4px rgba(255,255,255,.95), 0 0 0 10px rgba(255,107,107,.3); transform-origin:center; }
+  .dot.good { background:var(--good); box-shadow:0 0 0 4px rgba(255,255,255,.95), 0 0 0 10px rgba(63,211,167,.28); }
+  .line { position:absolute; height:2px; background:var(--bad); }
+  .line.good { background:var(--good); }
+  .lbl { position:absolute; width:220px; padding:13px 16px; border-radius:14px; background:#fff; color:var(--ink); font-size:22px; font-weight:500; line-height:1.2; box-shadow:0 24px 50px -22px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.2); }
+  .lbl.L { text-align:right; }
+  .lbl i { display:inline-block; width:10px; height:10px; border-radius:50%; margin:0 8px 2px 0; background:#d64550; vertical-align:middle; }
+  .lbl.good i { background:#1f9d7a; }
+  .lbl.L i { margin:0 0 2px 8px; }
+
+  /* cards in 3D */
+  .card { position:absolute; border-radius:18px; background:#fff; color:var(--ink); box-shadow:0 40px 80px -30px rgba(0,0,0,.75), 0 2px 8px rgba(0,0,0,.2); overflow:hidden; }
+  .ad { left:-520px; top:-90px; width:380px; height:236px; }
+  .ad .hd { height:46px; display:flex; align-items:center; gap:10px; padding:0 14px; font-size:16px; }
+  .ad .hd i { width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,#b9743f,#e4632f); flex:none; }
+  .ad .hd b { display:block; font-weight:600; line-height:1.05; }
+  .ad .hd small { display:block; font-size:13px; color:#6b685f; }
+  .ad .hd span { margin-left:auto; letter-spacing:2px; color:#6b685f; }
+  .ad .im { height:100px; background:#e9e1d3; position:relative; overflow:hidden; }
+  .ad .im img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 58%; display:block; }
+  .ad .im em { position:absolute; right:12px; bottom:10px; font-style:normal; background:rgba(28,25,21,.85); color:#fff; font-size:14px; padding:5px 10px; border-radius:999px; font-weight:600; }
+  .ad .cta { height:42px; display:flex; align-items:center; justify-content:space-between; padding:0 14px; font-size:16px; font-weight:600; border-bottom:1px solid rgba(0,0,0,.08); color:#1877f2; }
+  .ad .cap { padding:8px 14px; font-size:15px; line-height:1.2; }
+  .ad .cap b { font-weight:600; }
+  .gad { left:150px; top:60px; width:330px; height:150px; padding:14px 18px; font-family:Arial, Helvetica, sans-serif; color:#202124; }
+  .gad .t { display:flex; align-items:center; gap:8px; font-size:15px; }
+  .gad .t b { font-weight:700; }
+  .gad .t i { width:22px; height:22px; border-radius:50%; background:#b9743f; color:#fff; font-style:normal; display:grid; place-items:center; font-size:12px; font-weight:700; }
+  .gad h4 { margin:8px 0 4px; font-size:21px; font-weight:400; color:#1a0dab; line-height:1.15; }
+  .gad p { margin:0; font-size:14px; color:#4d5156; line-height:1.3; }
+  .chart { left:-560px; top:190px; width:440px; height:250px; padding:18px 22px 12px; }
+  .chart .hd { display:flex; align-items:center; justify-content:space-between; font-size:18px; color:#9a948a; }
+  .chart .hd span:last-child { display:flex; align-items:center; gap:8px; color:#6b665c; font-family:'Geist',sans-serif; letter-spacing:0; text-transform:none; font-size:18px; }
+  .chart .hd i { width:12px; height:12px; border-radius:50%; background:#1f9d7a; display:block; }
+  .nums { display:flex; gap:30px; margin-top:8px; }
+  .nums b { display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:46px; letter-spacing:-.03em; line-height:1; font-variation-settings:'opsz' 96; color:var(--ink); font-variant-numeric:tabular-nums; }
+  .nums small { display:block; font-size:18px; color:#6b665c; margin-top:4px; }
+  .chart svg { display:block; margin-top:6px; width:396px; height:96px; overflow:visible; }
+  .chat { left:-470px; top:-60px; width:380px; padding:20px 24px; border-radius:22px; border-top-left-radius:8px; background:#dcf8d3; font-size:26px; line-height:1.3; }
+  .chat small { display:block; text-align:right; font-size:17px; color:#6b685f; margin-top:8px; }
+  .chat small::after { content:' ✓✓'; color:#3aa0e8; }
+  .stars { left:-470px; top:150px; padding:16px 24px; display:flex; align-items:center; gap:6px; white-space:nowrap; }
+  .stars span { font-size:40px; color:#f0b429; line-height:1; display:inline-block; transform-origin:center; }
+  .stars em { font-style:normal; margin-left:12px; font-size:26px; font-weight:600; }
+
+  /* CTA layer (circle wipe) */
+  .layer { position:absolute; inset:0; background:var(--terra); color:var(--bone); clip-path:circle(0% at 50% 58%); z-index:30; }
+  .layer .ck { top:480px; font-size:24px; color:rgba(242,239,232,.75); }
+  .layer .ch { top:522px; font-size:92px; line-height:.98; width:936px; color:var(--bone); }
+  .btnx { top:800px; width:520px; height:150px; border-radius:999px; background:#fff; color:var(--ink); display:flex; align-items:center; justify-content:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:72px; letter-spacing:-.03em; font-variation-settings:'opsz' 96; box-shadow:0 40px 80px -30px rgba(60,20,0,.6), 0 2px 0 rgba(0,0,0,.08); transform-origin:center; }
+  .rip { position:absolute; inset:0; border-radius:999px; border:3px solid #fff; transform-origin:center; }
+  .cs { top:990px; font-size:32px; color:var(--bone); width:936px; line-height:1.3; }
+  .cu { top:1062px; font-size:26px; color:rgba(242,239,232,.85); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="hl"></div>
+  <div class="a floor" id="floor"></div>
+
+  <div class="scene">
+    <div class="pg" id="pg">
+      <div class="phone">
+        <i class="btn b1"></i><i class="btn b2"></i><i class="btn b3"></i><i class="btn pw"></i>
+        <div class="screen" id="scr">
+          <div class="shot before"><div class="sb"><span>9:41</span><span class="ic"><span class="bars"><b style="height:4px"></b><b style="height:6px"></b><b style="height:8px"></b><b style="height:11px"></b></span><span class="bat"></span></span></div><img src="./before-mobile.png" alt=""></div>
+          <div class="shot after"><div class="sb"><span>9:41</span><span class="ic"><span class="bars"><b style="height:4px"></b><b style="height:6px"></b><b style="height:8px"></b><b style="height:11px"></b></span><span class="bat"></span></span></div><img src="./after-mobile.png" alt=""></div>
+          <div class="edge a" id="edge" style="left:0"></div>
+          <div class="scan a" id="scan"></div>
+          <div class="sweep a" id="sweep"></div>
+          <div class="toast a" id="t1" style="top:58px"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="#052e16"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.23 8.24m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28"/></svg></span><div><b>Priya · WhatsApp</b><p>Price of the 3-seater sofa?</p></div><small>now</small></div>
+          <div class="toast a" id="t2" style="top:146px"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="#052e16"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.23 8.24m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28"/></svg></span><div><b>Amit · WhatsApp</b><p>Do you deliver to Vaishali Nagar?</p></div><small>now</small></div>
+          <div class="toast a" id="t3" style="top:234px"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="#052e16"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.23 8.24m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28"/></svg></span><div><b>Neha · WhatsApp</b><p>Can I visit the showroom on Sunday?</p></div><small>now</small></div>
+        </div>
+        <div class="island"></div>
+        <div class="gloss"></div>
+      </div>
+
+      <!-- cards (phone-local coordinates, pushed in depth) -->
+      <div class="card ad a" id="ad1">
+        <div class="hd"><i></i><div><b>sharmafurniture</b><small>Sponsored</small></div><span>•••</span></div>
+        <div class="im"><img src="./img/sofa.jpg" alt=""><em>Diwali offer · Free delivery</em></div>
+        <div class="cta">Send WhatsApp message <span>›</span></div>
+        <div class="cap"><b>sharmafurniture</b> Solid wood sofas from our Jaipur workshop.</div>
+      </div>
+      <div class="card gad a" id="ad2">
+        <div class="t"><b>Sponsored</b><i>S</i>sharmafurniture.in</div>
+        <h4>Solid Wood Furniture Jaipur | Free Delivery</h4>
+        <p>Sofas, beds and dining sets from our own workshop. Order on WhatsApp.</p>
+      </div>
+      <div class="card chart a" id="ch">
+        <div class="hd"><span class="mono">Last 30 days</span><span><i></i>Enquiries</span></div>
+        <div class="nums"><div><b id="nVis">14</b><small>website visitors</small></div><div><b id="nEnq">0</b><small>enquiries</small></div></div>
+        <svg viewBox="0 0 440 104">
+          <defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f9d7a" stop-opacity=".35"/><stop offset="1" stop-color="#1f9d7a" stop-opacity="0"/></linearGradient></defs>
+          <path id="area" d="M0 98 C 90 97, 170 92, 240 70 S 370 22, 440 8 L 440 104 L 0 104 Z" fill="url(#fill)"/>
+          <path id="line" d="M0 98 C 90 97, 170 92, 240 70 S 370 22, 440 8" fill="none" stroke="#1f9d7a" stroke-width="4.5" stroke-linecap="round"/>
+          <circle id="dotc" cx="440" cy="8" r="7" fill="#1f9d7a"/>
+        </svg>
+      </div>
+      <div class="card chat a" id="r1">Showroom is full on weekends 🙏 Should have done this years ago.<small>Rajesh · 6:48 PM</small></div>
+      <div class="card stars a" id="r2"><span id="s1">★</span><span id="s2">★</span><span id="s3">★</span><span id="s4">★</span><span id="s5">★</span><em id="r2b">Fully satisfied</em></div>
+    </div>
+  </div>
+
+  <div class="vig"></div>
+  <div class="grain"></div>
+
+  <!-- header -->
+  <div class="el logo" id="logo"><span class="tile"><svg width="36" height="36" viewBox="0 0 40 40" id="mark"></svg></span><span class="wordmark">Webrick</span></div>
+  <div class="el handle mono" id="handle">@webrick.in</div>
+
+  <!-- copy -->
+  <div class="el K mono" id="k1">Sharma Furniture · Jaipur</div>
+  <div class="el H display" id="h1">2 years online.<br><em class="bad">0 customers.</em></div>
+  <div class="el K mono" id="k2">30 days with Webrick</div>
+  <div class="el H big display" id="h2"><em class="good">41</em> enquiries.</div>
+  <div class="el H display" id="h3">Here’s how.</div>
+  <div class="el K mono" id="k4">01 — Audit</div>
+  <div class="el H display" id="h4"><em class="bad"><span id="nProb" data-noword>0</span> issues</em> found.</div>
+  <div class="el K mono" id="k5">02 — Rebuild</div>
+  <div class="el H display" id="h5">Rebuilt in 3 days.</div>
+  <div class="el K mono" id="k6">03 — Ads</div>
+  <div class="el H display" id="h6">Ads on. Enquiries in.</div>
+  <div class="el K mono" id="k7">30 days later</div>
+  <div class="el H display" id="h7"><s>0</s> → <em class="good"><span id="n41" data-noword>41</span></em> enquiries.</div>
+  <div class="el S" id="s7">Same shop, same owner. New website, ads running, every enquiry on WhatsApp.</div>
+  <div class="steps">
+    <div class="pill a" id="p1">01 Audit<span class="on a" id="p1on">01 Audit</span></div>
+    <div class="pill a" id="p2">02 Rebuild<span class="on a" id="p2on">02 Rebuild</span></div>
+    <div class="pill a" id="p3">03 Ads<span class="on a" id="p3on">03 Ads</span></div>
+  </div>
+  <div class="el note mono" id="r5">Example story · results vary</div>
+
+  <!-- CTA (revealed by a circular wipe; clipped away again for the loop) -->
+  <div class="layer a" id="cta">
+    <div class="el ck mono" id="ck">Webrick · Websites, ads, leads</div>
+    <div class="el ch display" id="chd">Website not<br>bringing customers?</div>
+    <div class="el btnx a" id="btn"><span class="rip a" id="rip"></span>DM “FIX”</div>
+    <div class="el cs" id="cs">We reply with a free quote. New website live in 3 days.</div>
+    <div class="el cu mono" id="cu">@webrick.in · www.webrick.in</div>
+  </div>
+</div>
+
+<script>
+  const COLS=[2,9.5,17,24.5,32], ROWS=[5.75,13.25,20.75,28.25]
+  const BLOCKS=[[0,0],[4,0],[0,1],[2,1],[4,1],[0,2],[2,2],[4,2],[1,3,1],[3,3,1]]
+  document.getElementById('mark').innerHTML=BLOCKS.map(([c,r,a])=>`<rect x="${COLS[c]}" y="${ROWS[r]}" width="6" height="6" rx="0.8" fill="${a?'#e4632f':'#f2efe8'}"/>`).join('')
+
+  // ---- callouts: anchored to real elements on the phone screen (screen coordinates, 372×792) ----
+  const CALLOUTS = [
+    { id:'c0', side:'L', x:40,  y:708, text:'0 enquiries', tone:'bad' },
+    { id:'c1', side:'L', x:60,  y:262, text:'41 enquiries', tone:'good' },
+    { id:'a1', side:'L', x:70,  y:559, text:'9.8 s to load', tone:'bad' },
+    { id:'a2', side:'R', x:330, y:254, text:'Broken images', tone:'bad' },
+    { id:'a3', side:'L', x:80,  y:640, text:'No call or WhatsApp button', tone:'bad' },
+    { id:'a4', side:'R', x:345, y:464, text:'Cut off on mobile', tone:'bad' },
+    { id:'a5', side:'L', x:70,  y:702, text:'No tracking, no SEO', tone:'bad' },
+    { id:'b1', side:'L', x:70,  y:70,  text:'Loads in 1.1 s', tone:'good' },
+    { id:'b2', side:'R', x:330, y:150, text:'Found on Google', tone:'good' },
+    { id:'b3', side:'L', x:60,  y:262, text:'WhatsApp order button', tone:'good' },
+    { id:'b4', side:'R', x:330, y:560, text:'Mobile-first layout', tone:'good' },
+    { id:'b5', side:'L', x:70,  y:700, text:'Pixel + analytics', tone:'good' },
+  ]
+  const pg = document.getElementById('pg')
+  for (const c of CALLOUTS) {
+    const lx = -186 + c.x, ly = -396 + c.y
+    const dot = document.createElement('div'); dot.className = `dot a ${c.tone}`; dot.id = c.id + 'd'; dot.style.cssText = `left:${lx - 7}px;top:${ly - 7}px`
+    const line = document.createElement('div'); line.className = `line a ${c.tone}`; line.id = c.id + 'l'
+    const lbl = document.createElement('div'); lbl.className = `lbl a ${c.side} ${c.tone}`; lbl.id = c.id + 't'; lbl.style.top = (ly - 28) + 'px'
+    if (c.side === 'L') {
+      line.style.cssText = `left:-216px;top:${ly - 1}px;width:${c.x + 30}px;transform-origin:right center`
+      lbl.style.left = '-450px'; lbl.innerHTML = `${c.text}<i></i>`
+    } else {
+      line.style.cssText = `left:${lx}px;top:${ly - 1}px;width:${402 - c.x}px;transform-origin:left center`
+      lbl.style.left = '230px'; lbl.innerHTML = `<i></i>${c.text}`
+    }
+    pg.append(dot, line, lbl)
+  }
+
+  // ---- deterministic per-property tween engine: window.seek(t) sets every element for time t ----
+  const E = {
+    out: p => 1 - Math.pow(1 - p, 3),
+    expo: p => p === 1 ? 1 : 1 - Math.pow(2, -10 * p),
+    in: p => p * p * p,
+    inout: p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2,
+    back: p => { const c = 1.70158 * 1.1; return 1 + (c + 1) * Math.pow(p - 1, 3) + c * Math.pow(p - 1, 2) },
+    lin: p => p,
+  }
+  const byEl = new Map()
+  const $ = (id) => document.getElementById(id)
+  function tw(id, prop, start, dur, from, to, ease = 'out') {
+    const el = $(id); if (!el) throw new Error('no element ' + id)
+    if (!byEl.has(el)) byEl.set(el, new Map())
+    const props = byEl.get(el); if (!props.has(prop)) props.set(prop, [])
+    props.get(prop).push({ start, dur, from, to, ease })
+  }
+  const clamp01 = (v) => Math.min(1, Math.max(0, v))
+  let T = 0
+  const TKEYS = ['x','y','s','sx','sy','r','rx','ry','tz','shk','drift']
+  function apply(el, s) {
+    if ('o' in s) el.style.opacity = clamp01(s.o)
+    if (TKEYS.some(k => k in s)) {
+      const sx = s.sx ?? s.s ?? 1, sy = s.sy ?? s.s ?? 1
+      let x = s.x || 0, y = s.y || 0, rx = s.rx || 0, ry = s.ry || 0
+      if (s.shk) { x += s.shk * Math.sin(T * 95); y += s.shk * .7 * Math.cos(T * 71) }
+      if (s.drift) { ry += s.drift * 2.6 * Math.sin(T * .7); rx += s.drift * 1.3 * Math.sin(T * .5 + 1); y += s.drift * 6 * Math.sin(T * .9) }
+      el.style.transform = `translate3d(${x}px, ${y}px, ${s.tz || 0}px) rotateX(${rx}deg) rotateY(${ry}deg) rotate(${s.r || 0}deg) scale(${sx}, ${sy})`
+    }
+    if ('blur' in s) el.style.filter = s.blur > .05 ? `blur(${s.blur}px)` : ''
+    if ('wipe' in s) el.style.setProperty('--w', s.wipe)
+    if ('n' in s) el.textContent = Math.round(s.n).toLocaleString('en-IN')
+    if ('dash' in s) el.style.strokeDashoffset = s.dash
+    if ('circ' in s) el.style.clipPath = `circle(${s.circ}% at 50% 58%)`
+  }
+  window.seek = (t) => {
+    T = t
+    for (const [el, props] of byEl) {
+      const s = {}
+      for (const [prop, list] of props) {
+        list.sort((a, b) => a.start - b.start)
+        let cur = null
+        for (const k of list) if (t >= k.start) cur = k
+        if (!cur) { s[prop] = list[0].from; continue }
+        const p = E[cur.ease](clamp01((t - cur.start) / cur.dur))
+        s[prop] = cur.from + (cur.to - cur.from) * p
+      }
+      apply(el, s)
+    }
+  }
+  // helpers
+  const INIT = (id, prop, v) => tw(id, prop, -1, .01, v, v)
+  const SHOW = (id, at) => tw(id, 'o', at, .02, 0, 1, 'lin')
+  const HIDE = (id, at) => tw(id, 'o', at, .02, 1, 0, 'lin')
+  const IN = (id, at, dy = 24, dur = .55) => { tw(id, 'o', at, dur, 0, 1, 'out'); tw(id, 'y', at, dur, dy, 0, 'expo'); tw(id, 'blur', at, dur, 8, 0, 'out') }
+  const OUT = (id, at, dur = .3) => { tw(id, 'o', at, dur, 1, 0, 'in'); tw(id, 'y', at, dur, 0, -14, 'in'); tw(id, 'blur', at, dur, 0, 8, 'in') }
+  const POP = (id, at, from = .9, dur = .5) => { tw(id, 'o', at, dur * .5, 0, 1, 'out'); tw(id, 's', at, dur, from, 1, 'back'); tw(id, 'blur', at, dur * .6, 6, 0, 'out') }
+  const DEPTH = (id, at, dur = .7) => { tw(id, 'o', at, dur * .5, 0, 1, 'out'); tw(id, 'tz', at, dur, -700, 0, 'expo'); tw(id, 'blur', at, dur, 14, 0, 'out') }
+  const CALL = (id, at) => { tw(id + 'd', 'o', at, .08, 0, 1, 'out'); tw(id + 'd', 's', at, .45, 0, 1, 'back'); tw(id + 'l', 'sx', at + .12, .28, 0, 1, 'expo'); tw(id + 't', 'o', at + .3, .3, 0, 1, 'out'); tw(id + 't', 'blur', at + .3, .3, 8, 0, 'out'); tw(id + 't', 'y', at + .3, .35, 10, 0, 'expo') }
+  const CALL_OUT = (id, at) => ['d','l','t'].forEach(k => { tw(id + k, 'o', at, .25, 1, 0, 'in') })
+  const SHAKE = (at, amp = 6) => tw('pg', 'shk', at, .35, amp, 0, 'out')
+  const HIDE_ALL = (ids, at) => ids.forEach(id => HIDE(id, at))
+  // word-by-word reveal (returns word ids)
+  function words(id, at, step = .07, dur = .55) {
+    const el = $(id); const ids = []
+    const walk = (node) => {
+      for (const child of [...node.childNodes]) {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment()
+          for (const p of child.textContent.split(/(\s+)/)) {
+            if (!p) continue
+            if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(p)); continue }
+            const s = document.createElement('span'); s.className = 'w'; s.textContent = p; s.id = `${id}_w${ids.length}`; ids.push(s.id); frag.appendChild(s)
+          }
+          child.replaceWith(frag)
+        } else if (child.nodeType === 1 && child.tagName !== 'BR') {
+          if (child.dataset.noword !== undefined) { child.classList.add('w'); ids.push(child.id) } else walk(child)
+        }
+      }
+    }
+    walk(el)
+    ids.forEach((w, k) => { tw(w, 'o', at + k * step, dur, 0, 1, 'out'); tw(w, 'y', at + k * step, dur, 26, 0, 'expo'); tw(w, 'blur', at + k * step, dur, 12, 0, 'out') })
+    return ids
+  }
+
+  // ---- initial state (frame 0 = loop frame) ----
+  INIT('pg', 'drift', 1); INIT('pg', 'shk', 0)
+  ;['k2','k4','k5','k6','k7','s7','p1','p2','p3','r5','ad1','ad2','ch','r1','r2','t1','t2','t3','edge','scan','sweep'].forEach(id => INIT(id, 'o', 0))
+  ;['p1on','p2on','p3on'].forEach(id => INIT(id, 'o', 0))
+  INIT('cta', 'circ', 0)
+
+  // camera / phone pose
+  tw('pg', 'x', 0, 2.0, 70, 50, 'lin'); tw('pg', 'y', 0, 2.0, 40, 40, 'lin'); tw('pg', 's', 0, 2.0, .96, .98, 'lin')
+  tw('pg', 'ry', 0, 2.0, -24, -16, 'lin'); tw('pg', 'rx', 0, 2.0, 7, 5, 'lin')
+  tw('floor', 'x', 0, 2.0, 60, 44, 'lin')
+
+  // HOOK 0–2
+  CALL('c0', .6)
+
+  // TEASE 2–3.6: flip reveal (edge-on at 2.35, screen switches while invisible)
+  OUT('h1', 2.0); OUT('k1', 2.0); CALL_OUT('c0', 2.0)
+  tw('pg', 'ry', 2.0, .36, -16, -90, 'in'); tw('pg', 'ry', 2.36, .01, -90, 90, 'lin'); tw('pg', 'ry', 2.37, .55, 90, 14, 'expo')
+  tw('scr', 'wipe', 2.36, .01, 100, 0, 'lin')
+  tw('pg', 'x', 2.0, .9, 50, 30, 'inout'); tw('floor', 'x', 2.0, .9, 44, 24, 'inout')
+  IN('k2', 2.4); words('h2', 2.5, .12)
+  CALL('c1', 2.95)
+
+  // HERE'S HOW 3.6–5: flip back to the old site, step tracker appears
+  OUT('h2', 3.6); OUT('k2', 3.6); CALL_OUT('c1', 3.6)
+  tw('pg', 'ry', 3.6, .36, 14, 90, 'in'); tw('pg', 'ry', 3.96, .01, 90, -90, 'lin'); tw('pg', 'ry', 3.97, .6, -90, -8, 'expo')
+  tw('scr', 'wipe', 3.96, .01, 0, 100, 'lin')
+  tw('pg', 'x', 3.6, 1.0, 30, 0, 'inout'); tw('pg', 'y', 3.6, 1.0, 40, 60, 'inout'); tw('pg', 's', 3.6, 1.0, .98, .92, 'inout'); tw('floor', 'x', 3.6, 1.0, 24, 0, 'inout')
+  words('h3', 3.9, .1)
+  ;['p1','p2','p3'].forEach((id, i) => IN(id, 4.3 + i * .1, 16, .5))
+
+  // 01 AUDIT 5–8.5
+  OUT('h3', 5.0); IN('k4', 5.05); words('h4', 5.15, .1)
+  tw('p1on', 'o', 5.0, .25, 0, 1, 'out')
+  tw('pg', 's', 5.0, .8, .92, 1.0, 'expo'); tw('pg', 'y', 5.0, .8, 60, 30, 'expo'); tw('pg', 'ry', 5.0, .8, -8, -4, 'expo'); tw('pg', 'rx', 5.0, .8, 5, 3, 'expo')
+  tw('scan', 'o', 5.3, .1, 0, 1, 'out'); tw('scan', 'y', 5.3, 1.7, 0, 790, 'inout'); tw('scan', 'o', 7.0, .2, 1, 0, 'in')
+  tw('nProb', 'n', 5.4, 2.2, 0, 14, 'lin')
+  ;['a1','a2','a3','a4','a5'].forEach((id, i) => CALL(id, 5.5 + i * .46))
+
+  // 02 REBUILD 8.5–12
+  ;['a1','a2','a3','a4','a5'].forEach(id => CALL_OUT(id, 8.4)); OUT('h4', 8.4); OUT('k4', 8.4)
+  tw('p1on', 'o', 8.5, .25, 1, 0, 'in'); tw('p2on', 'o', 8.5, .25, 0, 1, 'out')
+  IN('k5', 8.6); words('h5', 8.7, .09)
+  tw('sweep', 'o', 8.55, .05, 0, 1, 'out'); tw('sweep', 'x', 8.55, .65, -320, 520, 'inout'); tw('sweep', 'o', 9.1, .1, 1, 0, 'in')
+  tw('scr', 'wipe', 8.65, .75, 100, 0, 'inout'); tw('edge', 'o', 8.6, .1, 0, 1, 'out'); tw('edge', 'o', 9.35, .2, 1, 0, 'in')
+  tw('pg', 'ry', 8.5, 1.4, -4, 6, 'inout')
+  ;['b1','b2','b3','b4','b5'].forEach((id, i) => CALL(id, 9.55 + i * .42))
+
+  // 03 ADS 12–16
+  ;['b1','b2','b3','b4','b5'].forEach(id => CALL_OUT(id, 11.9)); OUT('h5', 11.9); OUT('k5', 11.9)
+  tw('p2on', 'o', 12.0, .25, 1, 0, 'in'); tw('p3on', 'o', 12.0, .25, 0, 1, 'out')
+  IN('k6', 12.1); words('h6', 12.2, .09)
+  tw('pg', 'ry', 12.0, 1.0, 6, -12, 'inout'); tw('pg', 's', 12.0, 1.0, 1.0, .92, 'inout'); tw('pg', 'x', 12.0, 1.0, 0, 20, 'inout'); tw('floor', 'x', 12.0, 1.0, 0, 20, 'inout')
+  DEPTH('ad1', 12.35); DEPTH('ad2', 12.65); DEPTH('ch', 12.95)
+  const L = $('line').getTotalLength(); $('line').style.strokeDasharray = L
+  tw('line', 'dash', 13.2, 1.5, L, 0, 'out'); tw('area', 'o', 13.2, 1.5, 0, 1, 'out')
+  tw('dotc', 'o', 14.5, .2, 0, 1, 'out'); tw('dotc', 's', 14.5, .4, 0, 1, 'back')
+  tw('nVis', 'n', 13.2, 1.5, 14, 2380, 'out'); tw('nEnq', 'n', 13.2, 1.5, 0, 41, 'out')
+  ;['t1','t2','t3'].forEach((id, i) => { const at = 13.7 + i * .42; tw(id, 'o', at, .05, 0, 1, 'out'); tw(id, 'y', at, .5, -110, 0, 'back'); SHAKE(at, 5) })
+
+  // RESULT 16–19.4
+  HIDE_ALL(['ad1','ad2','ch'], 15.95); ['ad1','ad2','ch'].forEach(id => { tw(id, 'blur', 15.75, .25, 0, 10, 'in'); tw(id, 'o', 15.75, .25, 1, 0, 'in') })
+  ;['t1','t2','t3'].forEach(id => tw(id, 'o', 15.8, .2, 1, 0, 'in'))
+  OUT('h6', 15.9); OUT('k6', 15.9); ['p1','p2','p3'].forEach((id, i) => OUT(id, 15.9 + i * .05))
+  tw('pg', 'ry', 16.0, 1.1, -12, 10, 'inout'); tw('pg', 's', 16.0, 1.1, .92, .98, 'inout'); tw('pg', 'x', 16.0, 1.1, 20, 40, 'inout'); tw('floor', 'x', 16.0, 1.1, 20, 40, 'inout')
+  IN('k7', 16.1); words('h7', 16.2, .09); tw('n41', 'n', 16.35, 1.1, 0, 41, 'out')
+  IN('s7', 16.7)
+  DEPTH('r1', 17.0, .6); SHAKE(17.05, 4)
+  DEPTH('r2', 17.5, .5)
+  ;['s1','s2','s3','s4','s5'].forEach((id, i) => { tw(id, 'o', 17.65 + i * .09, .1, 0, 1, 'out'); tw(id, 's', 17.65 + i * .09, .4, .2, 1, 'back') })
+  tw('r2b', 'o', 18.15, .25, 0, 1, 'out')
+  IN('r5', 18.3, 8)
+
+  // CTA 19.4–23.3: circular wipe to terracotta, phone exits, button gets tapped
+  tw('cta', 'circ', 19.4, .65, 0, 110, 'inout')
+  tw('pg', 'y', 19.5, .6, 30, 520, 'in'); tw('pg', 'o', 19.6, .4, 1, 0, 'in'); tw('floor', 'o', 19.4, .4, 1, 0, 'in')
+  HIDE_ALL(['k7','h7','s7','r1','r2','r5'], 20.0)
+  IN('ck', 19.85); words('chd', 19.95, .09)
+  POP('btn', 20.5, .8, .6)
+  tw('btn', 's', 21.3, .12, 1, .94, 'in'); tw('btn', 's', 21.42, .4, .94, 1, 'back')
+  tw('rip', 'o', 21.38, .05, 0, .6, 'out'); tw('rip', 'o', 21.43, .55, .6, 0, 'out'); tw('rip', 's', 21.38, .6, .7, 1.9, 'out')
+  IN('cs', 21.7); IN('cu', 21.95)
+
+  // LOOP 23.3–24: reset the scene under the terracotta, then the circle closes on frame 0
+  tw('pg', 'x', 23.3, .01, 40, 70, 'lin'); tw('pg', 'y', 23.3, .01, 520, 40, 'lin'); tw('pg', 's', 23.3, .01, .98, .96, 'lin')
+  tw('pg', 'ry', 23.3, .01, 10, -24, 'lin'); tw('pg', 'rx', 23.3, .01, 3, 7, 'lin'); tw('pg', 'o', 23.3, .01, 0, 1, 'lin')
+  tw('floor', 'x', 23.3, .01, 40, 60, 'lin'); tw('floor', 'o', 23.3, .01, 0, 1, 'lin')
+  tw('scr', 'wipe', 23.3, .01, 0, 100, 'lin')
+  ;['h1','k1'].forEach(id => { tw(id, 'o', 23.3, .01, 0, 1, 'lin'); tw(id, 'y', 23.3, .01, -14, 0, 'lin'); tw(id, 'blur', 23.3, .01, 8, 0, 'lin') })
+  tw('cta', 'circ', 23.35, .6, 110, 0, 'inout')
+  HIDE_ALL(['ck','chd','btn','cs','cu'], 23.95)
+
+  window.preload = () => Promise.all([
+    document.fonts.load('600 84px "Bricolage Grotesque"'), document.fonts.load('600 46px "Bricolage Grotesque"'),
+    document.fonts.load('400 30px Geist'), document.fonts.load('500 30px Geist'), document.fonts.load('600 30px Geist'), document.fonts.load('700 30px Geist'),
+    document.fonts.load('500 24px "Geist Mono"'), document.fonts.ready,
+    ...[...document.images].map(im => im.complete ? Promise.resolve() : new Promise(r => { im.onload = r; im.onerror = r })),
+  ])
+  seek(0)
+</script>
+</body>
+</html>
