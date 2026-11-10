@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion'
 import { ArrowDown, ArrowRight } from 'lucide-react'
 import Button from '../ui/Button'
 import MaskedText from '../ui/MaskedText'
-import BlockAssembly from '../BlockAssembly'
+const BlockAssembly = lazy(() => import('../BlockAssembly'))
 import { site } from '../../data/site'
 import { INTRO_DELAY } from '../../intro'
 
@@ -112,7 +112,11 @@ export default function Hero() {
             <div className="dots absolute -inset-10 lg:-inset-16" aria-hidden="true" />
             <div style={{ perspective: 1400 }}>
               <motion.div style={{ rotateX, rotateY, x: shiftX, transformStyle: 'preserve-3d' }}>
-                {typeof window !== 'undefined' && <BlockAssembly className="relative w-full" delay={T + 0.5} wave />}
+                {typeof window !== 'undefined' && (
+                  <Suspense fallback={null}>
+                    <BlockAssembly className="relative w-full" delay={T + 0.5} wave />
+                  </Suspense>
+                )}
               </motion.div>
             </div>
           </motion.figure>

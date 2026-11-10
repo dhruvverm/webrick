@@ -33,6 +33,8 @@ If the domain ever changes, update `public/CNAME`, the Open Graph URLs in `index
 
 ### Scroll and pointer effects
 
+- **Fonts:** self-hosted in `public/fonts` (declared in `src/fonts.css`, preloaded from `index.html`). No Google Fonts request at runtime.
+- **Slow connections:** `index.html` reveals the pre-rendered page after 1.5 s if the app script has not arrived yet, and skips the intro curtain in that case.
 - **Smooth scroll:** `src/components/SmoothScroll.jsx` (Lenis). Touch devices and reduced-motion users keep native scrolling.
 - **Custom cursor:** `src/components/Cursor.jsx`, mouse only. Add `data-cursor-text="…"` to any element to show a scrolling label over it.
 - **Pinned hero:** on desktop the hero stays put for one screen while the page slides over it (`App.jsx`, `Hero.jsx`).

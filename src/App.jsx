@@ -1,10 +1,11 @@
+import { lazy, Suspense } from 'react'
 import { MotionConfig } from 'framer-motion'
 import Intro from './components/Intro'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
-import SmoothScroll from './components/SmoothScroll'
-import Cursor from './components/Cursor'
+const SmoothScroll = lazy(() => import('./components/SmoothScroll'))
+const Cursor = lazy(() => import('./components/Cursor'))
 import ServicesBand from './components/sections/ServicesBand'
 import Hero from './components/sections/Hero'
 import Services from './components/sections/Services'
@@ -52,8 +53,10 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <a href="#main" className="skip-link">Skip to content</a>
-      <SmoothScroll />
-      <Cursor />
+      <Suspense fallback={null}>
+        <SmoothScroll />
+        <Cursor />
+      </Suspense>
       <Intro />
       <Page />
       <WhatsAppButton />

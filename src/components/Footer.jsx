@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
 
           <div className="hidden md:col-span-4 md:block lg:col-span-3 lg:col-start-5">
-            <h4 className="label">Services</h4>
+            <h3 className="label">Services</h3>
             <ul className="mt-4 space-y-2">
               {services.map((s) => (
                 <li key={s.id}><a href="#services" className="text-sm text-muted transition-colors hover:text-text">{s.title}</a></li>
@@ -53,7 +53,7 @@ export default function Footer() {
           </div>
 
           <div className="hidden md:col-span-3 md:block lg:col-span-2">
-            <h4 className="label">Company</h4>
+            <h3 className="label">Company</h3>
             <ul className="mt-4 space-y-2">
               {navLinks.slice(1).map((l) => (
                 <li key={l.href}><a href={l.href} className="text-sm text-muted transition-colors hover:text-text">{l.label}</a></li>
@@ -62,7 +62,7 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-5 lg:col-span-3">
-            <h4 className="label">Get in touch</h4>
+            <h3 className="label">Get in touch</h3>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <a href={`mailto:${site.email}`} className="group inline-flex items-center gap-2.5 text-muted transition-colors hover:text-text">

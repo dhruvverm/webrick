@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, lazy, Suspense } from 'react'
 import { AnimatePresence, motion, useInView, useMotionValue, useSpring } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import SectionHeader from '../ui/SectionHeader'
 import ProjectMockup from '../ProjectMockup'
-import ProjectModal from '../ProjectModal'
+const ProjectModal = lazy(() => import('../ProjectModal'))
 import { projects } from '../../data/projects'
 import { EASE } from '../ui/Reveal'
 
@@ -147,9 +147,11 @@ export default function Work() {
         </AnimatePresence>
       </motion.div>
 
-      <AnimatePresence>
-        {selected && <ProjectModal key={selected.id} project={selected} onClose={close} />}
-      </AnimatePresence>
+      <Suspense fallback={null}>
+        <AnimatePresence>
+          {selected && <ProjectModal key={selected.id} project={selected} onClose={close} />}
+        </AnimatePresence>
+      </Suspense>
     </section>
   )
 }
