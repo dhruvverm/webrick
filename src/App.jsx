@@ -16,6 +16,7 @@ import Plans from './components/sections/Plans'
 import TechStack from './components/sections/TechStack'
 import About from './components/sections/About'
 import Testimonials from './components/sections/Testimonials'
+import { testimonials } from './data/testimonials'
 import Faq from './components/sections/Faq'
 import Contact from './components/sections/Contact'
 
@@ -39,7 +40,7 @@ export function Page() {
           <Work />
           <TechStack />
           <About />
-          <Testimonials />
+          {testimonials.length > 0 && <Testimonials />}
           <Faq />
           <Contact />
         </div>
