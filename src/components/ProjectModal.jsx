@@ -41,7 +41,7 @@ export default function ProjectModal({ project: p, onClose }) {
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-line bg-bg-1/90 px-5 py-3 backdrop-blur-md sm:px-8">
           <span className="label">
             <span className="text-accent">({p.category})</span>
-            <span className="ml-3">{p.year} · {p.duration}</span>
+            <span className="ml-3">{p.duration ? `${p.year} · ${p.duration}` : p.year}</span>
           </span>
           <button
             ref={closeRef}
