@@ -6,9 +6,10 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { writePages } from './pages.mjs'
 
 const root = process.cwd()
-const { render, faq, services, site, keywords, serviceAreas } = await import(pathToFileURL(path.join(root, 'dist-ssr/entry-server.js')).href)
+const { render, faq, services, serviceCatalog, projects, servicePages, site, keywords, serviceAreas } = await import(pathToFileURL(path.join(root, 'dist-ssr/entry-server.js')).href)
 
 // Animation start states (opacity 0, off-screen transforms) make no sense in static HTML: strip them.
 const clean = (html) =>
@@ -55,11 +56,13 @@ const ld = {
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Digital marketing services',
-        itemListElement: services.map((s) => ({
+        itemListElement: serviceCatalog.map((s) => ({
           '@type': 'Offer',
+          url: `${SITE}services/${servicePages.find((p) => p.serviceId === s.id)?.slug}/`,
           itemOffered: {
             '@type': 'Service',
             name: s.title,
+            url: `${SITE}services/${servicePages.find((p) => p.serviceId === s.id)?.slug}/`,
             serviceType: s.serviceType,
             description: s.description,
             areaServed: { '@type': 'Country', name: 'India' },
@@ -92,11 +95,21 @@ html = html.replace('</head>', `  <script type="application/ld+json">${JSON.stri
 html = html.replace('<link rel="canonical"', `<meta name="keywords" content="${keywords.join(', ')}" />\n    <link rel="canonical"`)
 fs.writeFileSync('dist/index.html', html)
 
-// Keep the sitemap's lastmod honest.
+// Static service pages and case studies, then a sitemap that lists every page.
+const pageUrls = writePages({ projects, servicePages, serviceCatalog, site, SITE })
 const today = new Date().toISOString().slice(0, 10)
-const sm = path.join('dist', 'sitemap.xml')
-if (fs.existsSync(sm)) fs.writeFileSync(sm, fs.readFileSync(sm, 'utf8').replace(/<lastmod>[^<]*<\/lastmod>/, `<lastmod>${today}</lastmod>`))
+const entries = [
+  { loc: SITE, changefreq: 'weekly', priority: '1.0' },
+  ...pageUrls,
+  { loc: `${SITE}privacy-policy/`, changefreq: 'yearly', priority: '0.3' },
+]
+fs.writeFileSync(
+  path.join('dist', 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
+    .map((e) => `  <url>\n    <loc>${e.loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`)
+    .join('\n')}\n</urlset>\n`,
+)
 
 fs.rmSync('dist-ssr', { recursive: true, force: true })
 const words = app.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length
-console.log(`prerendered: ${(app.length / 1024).toFixed(0)} KB of HTML, ~${words} words, ${faq.length} FAQs, ${services.length} services`)
+console.log(`prerendered: ${(app.length / 1024).toFixed(0)} KB of HTML, ~${words} words, ${faq.length} FAQs, ${services.length} services, ${pageUrls.length} static pages`)

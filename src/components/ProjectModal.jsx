@@ -115,6 +115,9 @@ export default function ProjectModal({ project: p, onClose }) {
                 Visit live site
               </Button>
             )}
+            <Button href={`/work/${p.id}/`} variant="secondary">
+              Read the case study
+            </Button>
           </div>
         </div>
       </motion.div>

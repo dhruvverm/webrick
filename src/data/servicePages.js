@@ -1,0 +1,235 @@
+/**
+ * Content for the static service landing pages (/services/<slug>/), generated at build time by
+ * scripts/pages.mjs from this file. `serviceId` links back to services.js; `matchServices` picks
+ * the projects shown as examples (any project whose `services` list contains one of them).
+ */
+export const servicePages = [
+  {
+    serviceId: 'websites',
+    slug: 'website-design',
+    title: 'Website Design & Development',
+    h1: 'A website that brings customers, live in 2–3 days.',
+    metaTitle: 'Website Design & Development Company in India | Webrick',
+    metaDescription:
+      'Fast, mobile-first business websites and online stores from Webrick. Custom design, WhatsApp and call buttons, SEO basics built in, live in 2–3 days with a fixed quote.',
+    intro: [
+      'Most small-business websites are built to exist, not to work. They load slowly on a phone, bury the phone number and never show up on Google. We build the opposite: a fast, mobile-first site with one job, turning the people who land on it into enquiries.',
+      'Every site is designed for your business, not adapted from a template. You send us your logo, a few photos and what you want people to do; we come back with a fixed quote, and a typical business website is live within 2–3 days of go-ahead.',
+    ],
+    includes: [
+      { title: 'Custom design', text: 'Layout, colours and type chosen for your business and your customers. No stock template with your logo pasted on.' },
+      { title: 'Mobile-first build', text: 'Designed on a phone screen first, because that is where most of your visitors are.' },
+      { title: 'WhatsApp and call buttons', text: 'A tap to message or call you from every page, so an interested visitor never has to hunt for a number.' },
+      { title: 'SEO basics built in', text: 'Page titles, descriptions, headings, structured data and a sitemap, so Google can understand and list the site.' },
+      { title: 'Speed', text: 'Compressed images and no bloated plugins. Pages that open fast on a 4G connection.' },
+      { title: 'Online stores', text: 'Shopify or WooCommerce stores with products, payments, shipping and order notifications set up.' },
+    ],
+    goodFor: ['Shops, showrooms and local services', 'Clinics, coaching centres and consultants', 'D2C brands selling online', 'Manufacturers and B2B suppliers', 'Restaurants, salons and studios'],
+    steps: [
+      { title: 'Brief', text: 'A short call or WhatsApp chat about your business, your customers and what the site needs to do. You get a fixed quote the same day.' },
+      { title: 'Design and build', text: 'We design the pages and build them straight away. You see a working link, not a mock-up.' },
+      { title: 'Your feedback', text: 'One round of changes is included. Colours, wording, photos, order of sections: tell us and it is done.' },
+      { title: 'Launch and handover', text: 'The site goes live on your domain, with Google Search Console and analytics connected. You get the logins and a short guide.' },
+    ],
+    matchServices: ['Website Development', 'E-Commerce'],
+    faqs: [
+      { q: 'How long does a website take?', a: 'A standard business website (home, about, services, contact and a gallery or two) is usually live 2–3 days after we receive your content. Online stores and larger sites take longer; we give a date with the quote.' },
+      { q: 'What do I need to send you?', a: 'Your logo, 6–10 photos, the services or products you offer, and your contact details. If you do not have photos or text yet, we can work with what you have and refine later.' },
+      { q: 'Are the domain and hosting included?', a: 'No. The domain and hosting are bought in your name so you always own them. We set everything up and tell you exactly what to buy.' },
+      { q: 'Can I update the site myself?', a: 'Yes. Stores run on Shopify or WooCommerce, which you can edit from your phone. For business websites we either set up a simple editor or make small changes for you as part of support.' },
+      { q: 'Will the website bring me customers?', a: 'A website makes it easy for people who have already found you to contact you. To bring new people to it you need ads or SEO, which is why many clients combine a website with our paid ads service. We never promise a number of sales.' },
+    ],
+    cta: { title: 'Ready for a website that works?', text: 'Tell us about your business and we reply with a fixed quote within one business day.' },
+  },
+  {
+    serviceId: 'ads',
+    slug: 'paid-ads',
+    title: 'Paid Ads Management',
+    h1: 'Facebook, Instagram and Google ads that bring enquiries.',
+    metaTitle: 'Facebook, Instagram & Google Ads Agency in India | Webrick',
+    metaDescription:
+      'Webrick plans, designs and runs Meta and Google ad campaigns for small businesses in India. Fixed management fee, ad budget paid by you directly to the platforms, every enquiry tracked.',
+    intro: [
+      'Ads are the fastest way to put your business in front of people who are looking for what you sell. Done badly, they burn a budget on likes and clicks that never become customers. We run campaigns with one goal: enquiries you can answer on WhatsApp or the phone.',
+      'We handle the whole thing: campaign structure, audiences, ad creatives, landing page, tracking and weekly optimisation. You pay your ad budget directly to Meta or Google, so you always see exactly where the money goes, and we charge a fixed monthly fee for managing it.',
+    ],
+    includes: [
+      { title: 'Campaign strategy', text: 'Which platform, which objective and which audience, based on what you sell and who buys it.' },
+      { title: 'Ad creatives', text: 'Images, short videos and copy made for your business, refreshed when performance drops.' },
+      { title: 'Landing page or lead form', text: 'Visitors arrive somewhere built to convert: a page with WhatsApp and call buttons, or an instant lead form.' },
+      { title: 'Tracking', text: 'Meta Pixel, Google tag and conversion events set up, so we know which ads produce enquiries, not just clicks.' },
+      { title: 'Weekly optimisation', text: 'Budgets shifted to what works, weak ads paused, new audiences tested.' },
+      { title: 'Plain reports', text: 'A weekly update on spend and enquiries you can read in a minute, and a monthly review with next steps.' },
+    ],
+    goodFor: ['Local services that need calls and WhatsApp enquiries', 'D2C and e-commerce brands', 'Clinics, coaching and education', 'Real estate and high-ticket services', 'Launches, offers and seasonal pushes'],
+    steps: [
+      { title: 'Goal and budget', text: 'We agree what an enquiry is worth to you and set a monthly ad budget you are comfortable with. You pay it to Meta or Google directly.' },
+      { title: 'Set-up', text: 'Ad accounts, pixel, audiences, creatives and the landing page or lead form, usually within a week.' },
+      { title: 'Launch and learn', text: 'The first two weeks are for testing audiences and creatives. We keep what performs and cut what does not.' },
+      { title: 'Scale', text: 'Once the cost per enquiry is stable, we increase the budget gradually and keep refreshing creatives.' },
+    ],
+    matchServices: ['Paid Ads'],
+    faqs: [
+      { q: 'How much do ads cost?', a: 'Two parts: the ad budget, which you pay directly to Meta or Google and can change any month, and our fixed management fee, quoted up front. We suggest a starting budget based on your city and industry.' },
+      { q: 'Which is better for me, Meta or Google?', a: 'Google reaches people who are searching for what you sell right now. Meta (Facebook and Instagram) reaches people who match your customers but are not searching yet. Most local businesses start with one and add the other once the first is working.' },
+      { q: 'How soon will I see enquiries?', a: 'Usually within the first week of going live. The first month is about finding the audiences and creatives that bring enquiries at a sensible cost; results improve from there.' },
+      { q: 'Do you guarantee leads or sales?', a: 'No one honestly can. We guarantee the work: proper set-up, tracking, weekly optimisation and clear reporting. If a campaign is not working after a fair test, we tell you and change course.' },
+      { q: 'Do I need a website to run ads?', a: 'Not always. Lead-form ads on Facebook and Instagram collect enquiries inside the app. A landing page converts better for most businesses, and we can build one in a few days.' },
+    ],
+    cta: { title: 'Want enquiries this month?', text: 'Tell us what you sell and your city. We reply with a plan, a suggested starting budget and a fixed fee.' },
+  },
+  {
+    serviceId: 'social-media',
+    slug: 'social-media-marketing',
+    title: 'Social Media Marketing',
+    h1: 'Your Instagram and Facebook, handled every week.',
+    metaTitle: 'Social Media Marketing Agency in India | Webrick',
+    metaDescription:
+      'Webrick plans, designs and publishes posts, reels and stories for small businesses on Instagram and Facebook every week, with a content calendar you approve and a monthly report.',
+    intro: [
+      'A business page that last posted in March tells customers you might not be open. Keeping it alive takes time most owners do not have. We plan, design, write and publish your content every week, so the page looks active, on-brand and worth following.',
+      'You approve a monthly content calendar and send us photos from the shop floor when you can. We do the rest: designs in your colours, captions in your voice, reels cut from your clips, and a short report each month on what grew.',
+    ],
+    includes: [
+      { title: 'Monthly content calendar', text: 'A plan of posts, reels and stories for the month, sent for your approval before anything is made.' },
+      { title: 'Designed posts', text: 'Branded creatives for offers, products, tips and festivals, in your colours and fonts.' },
+      { title: 'Reels and short video', text: 'Edited from your clips or shot simply on a phone, with captions and trending audio.' },
+      { title: 'Captions and hashtags', text: 'Written in your voice, with the hashtags and locations that reach your city.' },
+      { title: 'Scheduling and publishing', text: 'Posted at the right times, every week, without you lifting a finger.' },
+      { title: 'Monthly report', text: 'Followers, reach, saves, profile visits and messages, with what we will do differently next month.' },
+    ],
+    goodFor: ['Restaurants, cafés and bakeries', 'Salons, clinics and gyms', 'Fashion, jewellery and D2C brands', 'Real estate and interiors', 'Coaching centres and consultants'],
+    steps: [
+      { title: 'Brand and voice', text: 'We look at your business, your customers and your competitors and agree the look and tone of the page.' },
+      { title: 'Calendar', text: 'A monthly plan with post ideas, formats and dates. You approve or change it.' },
+      { title: 'Make and publish', text: 'We design, write, edit and post every week. You send photos and clips when you have them.' },
+      { title: 'Review', text: 'A monthly report with the numbers and the next month’s plan.' },
+    ],
+    matchServices: ['Social Media'],
+    faqs: [
+      { q: 'How many posts a month?', a: 'It depends on the plan; most clients run 12–16 pieces a month across posts, reels and stories. We quote per plan, with a fixed monthly fee.' },
+      { q: 'Do I need to appear in videos?', a: 'No. Product shots, behind-the-scenes clips, customer reviews and text-led reels all work without a face on camera. If you are comfortable on camera, it does help.' },
+      { q: 'Will you reply to comments and messages?', a: 'Comment replies and basic DM responses can be included. Sales conversations are best handled by you, and we route them to your WhatsApp.' },
+      { q: 'Can you grow followers quickly?', a: 'Steady, real growth comes from consistent, useful content and reach from reels. We do not buy followers or use engagement pods; those damage a page.' },
+      { q: 'Do you also run ads on the posts?', a: 'Yes. Boosting the best posts or running proper campaigns is part of our paid ads service and works well alongside this.' },
+    ],
+    cta: { title: 'Want a page that looks alive?', text: 'Send us your Instagram handle and what you sell. We reply with a plan and a fixed monthly fee.' },
+  },
+  {
+    serviceId: 'branding',
+    slug: 'branding-and-creatives',
+    title: 'Branding & Creative Design',
+    h1: 'A brand that makes a small business look established.',
+    metaTitle: 'Branding, Logo & Ad Creative Design in India | Webrick',
+    metaDescription:
+      'Logo, colours, typography, social post templates and ad creatives from Webrick. A consistent brand kit for small businesses in India, delivered with every file you need.',
+    intro: [
+      'Customers judge a business in seconds, from the logo on the signboard to the post on their feed. When those things do not match, the business looks temporary. We build a simple, consistent brand kit and then use it everywhere: website, posts, ads, menus, packaging.',
+      'This is not a logo contest. We start with who your customers are and what they should feel, show you directions, refine one with you, and hand over a kit with every file and a one-page guide so anyone you work with later keeps it consistent.',
+    ],
+    includes: [
+      { title: 'Logo', text: 'Primary logo, a compact mark and a one-colour version, in SVG, PNG and PDF.' },
+      { title: 'Colours and type', text: 'A palette and font pairing chosen to work on a phone screen and in print.' },
+      { title: 'Brand guide', text: 'One page: how to use the logo, colours, type and spacing. Enough to keep everything consistent.' },
+      { title: 'Social templates', text: 'Post and story templates for offers, products and announcements, editable in Canva.' },
+      { title: 'Ad creatives', text: 'Static and short-video creatives made for Meta and Google campaigns.' },
+      { title: 'Print and packaging', text: 'Visiting cards, flyers, menus, labels and signboards, ready for the printer.' },
+    ],
+    goodFor: ['New businesses launching from scratch', 'Established shops with an outdated logo', 'D2C brands that need packaging and social to match', 'Clinics, schools and professional practices', 'Businesses preparing to franchise'],
+    steps: [
+      { title: 'Discovery', text: 'A conversation about your customers, your competitors and what you want the brand to say.' },
+      { title: 'Directions', text: 'Two or three visual directions: logo, colours and type shown on real things like a signboard and an Instagram post.' },
+      { title: 'Refine', text: 'We develop the direction you choose, with one round of revisions.' },
+      { title: 'Kit and handover', text: 'All files, the brand guide and templates, delivered in a shared folder.' },
+    ],
+    matchServices: ['Branding'],
+    faqs: [
+      { q: 'How long does branding take?', a: 'A logo and brand kit typically takes one to two weeks, depending on how fast feedback comes back. Ad creatives and post designs are ongoing and usually turn around in a few days.' },
+      { q: 'Do I own the logo?', a: 'Yes. Once paid for, the logo and all files are yours, with no usage limits.' },
+      { q: 'Can you redesign my existing logo?', a: 'Yes. Often the right move is a refresh: cleaner type, better colours and a mark that works at small sizes, while keeping what customers recognise.' },
+      { q: 'Do you only do digital?', a: 'No. We prepare print-ready files for cards, flyers, menus, signboards and packaging, and can coordinate with your printer.' },
+      { q: 'Can I get just ad creatives?', a: 'Yes. Many paid-ads clients use us only for creatives, with fresh designs each month to keep campaigns performing.' },
+    ],
+    cta: { title: 'Need a brand people remember?', text: 'Tell us about your business. We reply with a fixed quote and a timeline.' },
+  },
+  {
+    serviceId: 'seo',
+    slug: 'seo',
+    title: 'SEO Services',
+    h1: 'Be found on Google by people looking for what you sell.',
+    metaTitle: 'SEO Services for Small Businesses in India | Webrick',
+    metaDescription:
+      'On-page and local SEO from Webrick: keyword research, page content, technical fixes, Google Business Profile and monthly tracking, so small businesses in India rank for the searches that matter.',
+    intro: [
+      'Ads stop the moment you stop paying. Search traffic keeps coming once your pages earn it. SEO is slower than ads, but it is the cheapest enquiry you will ever get, and for local businesses the Google Maps listing alone can be the biggest source of calls.',
+      'We focus on what moves rankings for a small business: pages written around the searches people actually make, a site Google can crawl and trust, a complete Google Business Profile, and reviews. We report rankings and enquiries monthly, in plain language.',
+    ],
+    includes: [
+      { title: 'Keyword research', text: 'The searches your customers make, by city and service, ranked by how likely they are to turn into an enquiry.' },
+      { title: 'On-page SEO', text: 'Titles, descriptions, headings, internal links and structured data on every page.' },
+      { title: 'Content', text: 'Service and location pages written to answer the search, plus occasional articles where they help.' },
+      { title: 'Technical fixes', text: 'Speed, mobile usability, broken links, redirects, sitemaps and indexing issues.' },
+      { title: 'Google Business Profile', text: 'Set up or cleaned up, with categories, photos, services, posts and a review process.' },
+      { title: 'Monthly tracking', text: 'Rankings, Search Console clicks and enquiries, with next steps.' },
+    ],
+    goodFor: ['Local services competing in one city', 'Clinics, dentists and diagnostic centres', 'Coaching centres and schools', 'Manufacturers and B2B suppliers', 'E-commerce stores with product categories'],
+    steps: [
+      { title: 'Audit', text: 'Where the site stands today: indexing, speed, content gaps and the keywords you already rank for.' },
+      { title: 'Fix and build', text: 'Technical fixes first, then new or rewritten pages for the searches that matter.' },
+      { title: 'Local presence', text: 'Google Business Profile, citations and a simple way to collect reviews.' },
+      { title: 'Measure monthly', text: 'Rankings and clicks tracked; the plan adjusted every month.' },
+    ],
+    matchServices: ['SEO'],
+    faqs: [
+      { q: 'How long does SEO take to work?', a: 'Local Maps results can move within weeks. Organic rankings for competitive searches usually take three to six months of consistent work. Anyone promising page one in a week is not describing SEO.' },
+      { q: 'Do you guarantee first-page rankings?', a: 'No. Rankings are decided by Google. We commit to the work, show you the data every month and tell you honestly what is and is not moving.' },
+      { q: 'Is SEO included with a website?', a: 'Every website we build has SEO basics: proper titles, headings, structured data, speed and a sitemap. Ongoing SEO, content and local optimisation is a separate monthly service.' },
+      { q: 'What is local SEO?', a: 'Showing up in Google Maps and the local results when someone searches for your service near them. It depends on your Google Business Profile, reviews, and consistent business details across the web.' },
+      { q: 'Will I need new content?', a: 'Usually yes. Google ranks pages that answer a search properly; a one-line service description rarely does. We write it with you, in your voice.' },
+    ],
+    cta: { title: 'Want to be found on Google?', text: 'Send us your website and city. We reply with what we would fix first and a fixed monthly fee.' },
+  },
+  {
+    serviceId: 'leads',
+    slug: 'leads-and-follow-up',
+    title: 'Lead Management & Follow-up',
+    h1: 'Every enquiry answered, tracked and followed up.',
+    metaTitle: 'Lead Management, WhatsApp & CRM Set-up for Small Businesses | Webrick',
+    metaDescription:
+      'Webrick routes every website, ad and social enquiry to WhatsApp and a CRM, with follow-up reminders and simple reports, so small businesses in India stop losing the leads they paid for.',
+    intro: [
+      'Most businesses lose enquiries after they arrive: a missed call, a WhatsApp message buried under family chats, a form submission nobody saw. Those are leads you already paid for with ads or a website. We make sure each one lands somewhere, gets answered, and is followed up until it closes or clearly drops.',
+      'We connect your website, ad lead forms and social pages to WhatsApp and to a CRM. For teams that sell on the phone, we set up SabseraCRM, our own calling CRM, so every call is logged and every follow-up is on a list.',
+    ],
+    includes: [
+      { title: 'WhatsApp routing', text: 'Website buttons, ad lead forms and Instagram messages arrive on the WhatsApp number you choose, with the lead’s details.' },
+      { title: 'CRM set-up', text: 'Every enquiry in one list with source, status and notes. SabseraCRM for calling teams, or a simple tool for solo owners.' },
+      { title: 'Follow-up reminders', text: 'Nobody forgets a lead: reminders for the next call or message, and a view of what is overdue.' },
+      { title: 'Auto-replies', text: 'An instant first reply on WhatsApp and lead forms, so the customer knows you received it.' },
+      { title: 'Call tracking', text: 'With SabseraCRM: click-to-call, call logs and recordings per agent.' },
+      { title: 'Simple reports', text: 'Enquiries by source, response time and conversion, so you know which marketing pays.' },
+    ],
+    goodFor: ['Real estate, education and finance teams that sell on calls', 'Clinics and service businesses with many daily enquiries', 'Anyone running ads who wants to know what each lead cost', 'Businesses with more than one person answering enquiries', 'Owners who answer everything themselves and miss half of it'],
+    steps: [
+      { title: 'Map the enquiries', text: 'Where leads come from today, who answers, and where they get lost.' },
+      { title: 'Connect', text: 'Website, ad forms, Instagram and calls routed to WhatsApp and the CRM.' },
+      { title: 'Set the routine', text: 'Who answers, how fast, what the follow-up schedule is, and the templates for first replies.' },
+      { title: 'Review', text: 'A monthly look at response times and conversions, and fixes where leads still slip.' },
+    ],
+    matchServices: ['Business Solutions', 'Web Applications'],
+    faqs: [
+      { q: 'What is SabseraCRM?', a: 'A calling CRM we built at Webrick. Leads, click-to-call, call logs, recordings and follow-up reminders sit on one screen, with a live dashboard per agent. It suits teams that sell on the phone.' },
+      { q: 'Do I have to use SabseraCRM?', a: 'No. If you prefer a tool you already use, we connect to that. The goal is that every lead is in one list with a next step, whatever the software.' },
+      { q: 'Can enquiries go to more than one person?', a: 'Yes. Leads can be assigned by round-robin, by service or by city, and managers can see everything.' },
+      { q: 'Is this only for businesses running ads?', a: 'No, but it matters most when you are paying for leads. It is included in our start-to-end plan and available on its own.' },
+      { q: 'How long does set-up take?', a: 'WhatsApp routing and a basic CRM take a few days. A full SabseraCRM roll-out for a team, with training, takes about a week.' },
+    ],
+    cta: { title: 'Stop losing the leads you paid for.', text: 'Tell us how enquiries reach you today. We reply with a set-up plan and a fixed quote.' },
+  },
+]
+
+/** URL of the landing page for a service id (services.js), or the services section when none exists. */
+export const servicePath = (serviceId) => {
+  const page = servicePages.find((p) => p.serviceId === serviceId)
+  return page ? `/services/${page.slug}/` : '/#services'
+}

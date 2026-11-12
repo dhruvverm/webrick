@@ -6,6 +6,7 @@ import MaskedText from './ui/MaskedText'
 import { services } from '../data/services'
 import { navLinks } from '../data/nav'
 import { site } from '../data/site'
+import { servicePath } from '../data/servicePages'
 
 const channels = [
   { label: 'WhatsApp', icon: 'whatsapp', href: site.whatsapp },
@@ -47,7 +48,7 @@ export default function Footer() {
             <h3 className="label">Services</h3>
             <ul className="mt-4 space-y-2">
               {services.map((s) => (
-                <li key={s.id}><a href="#services" className="text-sm text-muted transition-colors hover:text-text">{s.title}</a></li>
+                <li key={s.id}><a href={servicePath(s.id)} className="text-sm text-muted transition-colors hover:text-text">{s.title}</a></li>
               ))}
             </ul>
           </div>

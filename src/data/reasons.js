@@ -42,8 +42,8 @@ export const reasons = [
 
 /** Headline numbers. Placeholders — update to your real figures. */
 export const stats = [
-  { value: 120, suffix: '+', label: 'Projects delivered' },
-  { value: 98, suffix: '%', label: 'Client satisfaction' },
-  { value: 1.2, suffix: 's', label: 'Average page load', decimals: 1, prefix: '<' },
-  { value: 24, suffix: 'h', label: 'Max reply time' },
+  { value: 2, suffix: '–3 days', label: 'Typical website, brief to live' },
+  { value: 0, label: 'Hidden charges: fixed quote first' },
+  { value: 1, label: 'Point of contact, start to end' },
+  { value: 98, label: 'Lighthouse performance, this site (desktop)' },
 ]

@@ -149,6 +149,13 @@ export default function Contact() {
   const update = (e) => set(e.target.name, e.target.value)
 
   // A service row or project modal can pre-select the project type.
+  // Static pages (/services/*, /work/*) link here with ?service=<chip>#contact.
+  useEffect(() => {
+    const t = new URLSearchParams(window.location.search).get('service')
+    if (t && projectTypes.includes(t)) set('type', t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   useEffect(() => {
     const onPrefill = (e) => {
       const t = e.detail?.type
