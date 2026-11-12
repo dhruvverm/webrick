@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { LOGO_BLOCKS, LOGO_COLS, LOGO_ROWS } from './Logo'
 import { SHOW_INTRO, markIntroPlayed } from '../intro'
@@ -6,6 +6,7 @@ import { SHOW_INTRO, markIntroPlayed } from '../intro'
 /** Bricks assemble, then the curtain lifts to reveal the page (about 1.2 s, once per session). */
 export default function Intro() {
   const [show, setShow] = useState(SHOW_INTRO)
+  const ref = useRef(null)
 
   useEffect(() => {
     if (!SHOW_INTRO) return
@@ -13,13 +14,21 @@ export default function Intro() {
       setShow(false)
       markIntroPlayed()
     }, 600)
-    return () => clearTimeout(t)
+    // Safety net: if animation frames are paused (background tab, throttled webview), never leave the curtain up.
+    const hard = setTimeout(() => {
+      if (ref.current) ref.current.style.display = 'none'
+    }, 2500)
+    return () => {
+      clearTimeout(t)
+      clearTimeout(hard)
+    }
   }, [])
 
   return (
     <AnimatePresence>
       {show && (
         <motion.div
+          ref={ref}
           key="intro"
           className="intro-curtain fixed inset-0 z-[100] flex items-center justify-center bg-bg-0"
           exit={{ y: '-100%' }}
