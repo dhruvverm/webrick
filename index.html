@@ -6,9 +6,30 @@
     <meta name="theme-color" content="#111110" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="geo.region" content="IN" />
+    <!-- The preloaded faces are declared here, before the first script, so document.fonts.load() can wait for them. -->
+    <style>
+      @font-face { font-family: 'Bricolage Grotesque'; font-style: normal; font-weight: 400 800; font-display: swap; src: url('/fonts/bricolage-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: 'Geist'; font-style: normal; font-weight: 400 600; font-display: swap; src: url('/fonts/geist-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: 'Geist Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('/fonts/geist-mono-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    </style>
     <script>
-      document.documentElement.classList.add('js')
+      var d = document.documentElement
+      d.classList.add('js', 'fonts-pending')
       window.__t0 = performance.now()
+      // The intro curtain is the first paint. Page text stays hidden behind it until the preloaded fonts
+      // are in (so the headline is laid out once, in the right font), capped at 2.5 s. 600 ms after that
+      // the static curtain lifts (CSS); if the app has mounted by then it runs the same timing itself.
+      var ready = false
+      var fontsDone = function () {
+        if (ready) return
+        ready = true
+        d.classList.remove('fonts-pending')
+        setTimeout(function () { d.classList.add('intro-lift') }, 600)
+      }
+      if (document.fonts && document.fonts.load) {
+        Promise.all([document.fonts.load('600 1em "Bricolage Grotesque"', 'Websites, Ads & Social Media That Bring Customers.'), document.fonts.load('400 1em Geist', 'Webrick is a digital marketing agency')]).then(fontsDone, fontsDone)
+        setTimeout(fontsDone, 2500)
+      } else fontsDone()
     </script>
     <meta name="description" content="Webrick is a digital marketing agency in India. We build your website, run Facebook, Instagram and Google ads, manage social media and track every lead." />
     <link rel="canonical" href="https://www.webrick.in/" />

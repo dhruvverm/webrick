@@ -3,21 +3,29 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { LOGO_BLOCKS, LOGO_COLS, LOGO_ROWS } from './Logo'
 import { SHOW_INTRO, markIntroPlayed } from '../intro'
 
-/** Bricks assemble, then the curtain lifts to reveal the page (about 1.2 s, once per session). */
+/** Bricks assemble while the fonts load, then the curtain lifts to reveal the page (once per session). */
 export default function Intro() {
   const [show, setShow] = useState(SHOW_INTRO)
   const ref = useRef(null)
 
   useEffect(() => {
     if (!SHOW_INTRO) return
-    const t = setTimeout(() => {
-      setShow(false)
-      markIntroPlayed()
-    }, 600)
+    let t
+    const fonts = document.fonts && document.fonts.load
+      ? Promise.all([document.fonts.load('600 1em "Bricolage Grotesque"', 'Websites, Ads & Social Media That Bring Customers.'), document.fonts.load('400 1em Geist', 'Webrick is a digital marketing agency')]).catch(() => {})
+      : Promise.resolve()
+    const cap = new Promise((r) => setTimeout(r, 2500))
+    Promise.race([fonts, cap]).then(() => {
+      t = setTimeout(() => {
+        setShow(false)
+        markIntroPlayed()
+      }, 600)
+    })
     // Safety net: if animation frames are paused (background tab, throttled webview), never leave the curtain up.
     const hard = setTimeout(() => {
       if (ref.current) ref.current.style.display = 'none'
-    }, 2500)
+      markIntroPlayed()
+    }, 4500)
     return () => {
       clearTimeout(t)
       clearTimeout(hard)

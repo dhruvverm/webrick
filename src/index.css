@@ -28,10 +28,12 @@
 }
 
 @layer base {
-  /* The intro curtain ships in the static HTML. Without JS it is hidden; with JS it lifts on its own
-     after 1.2 s unless the app has mounted and taken over the animation. */
+  /* The intro curtain ships in the static HTML. Without JS it is hidden; with JS the inline script in
+     index.html lifts it once the fonts are in, unless the app has mounted and taken over the animation. */
   html:not(.js) .intro-curtain { display: none; }
-  .js #root[data-prerendered] .intro-curtain { animation: intro-lift 0.6s cubic-bezier(0.76, 0, 0.24, 1) 1.2s forwards; }
+  /* Text waits for the fonts (see index.html), so it is laid out once, in the right font. */
+  html.fonts-pending #root > :not(.intro-curtain) { visibility: hidden; }
+  html.intro-lift #root[data-prerendered] .intro-curtain { animation: intro-lift 0.6s cubic-bezier(0.76, 0, 0.24, 1) forwards; }
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;

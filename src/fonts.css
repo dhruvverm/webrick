@@ -52,7 +52,7 @@
 @font-face {
   font-family: 'Bricolage Grotesque Fallback';
   src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'), local('Roboto Bold');
-  size-adjust: 91.68%;
+  size-adjust: 88.71%;
   ascent-override: 101.44%;
   descent-override: 29.45%;
   line-gap-override: 0.00%;
@@ -60,7 +60,7 @@
 @font-face {
   font-family: 'Geist Fallback';
   src: local('Arial'), local('ArialMT'), local('Helvetica'), local('Roboto');
-  size-adjust: 103.50%;
+  size-adjust: 102.12%;
   ascent-override: 97.10%;
   descent-override: 28.50%;
   line-gap-override: 0.00%;

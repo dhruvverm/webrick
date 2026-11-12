@@ -1,7 +1,7 @@
 /**
  * Intro curtain: plays once per browser session. The curtain is also part of the static HTML, so it is on
- * screen from the first paint; CSS lifts that static copy after 1.2 s if the app has not mounted by then
- * (see index.css), in which case the app skips its own copy instead of playing the intro twice.
+ * screen from the first paint; the inline script in index.html lifts that static copy once the fonts are in
+ * (or after 2.5 s). If that has already happened when the app mounts, the app skips its own copy.
  */
 const KEY = 'webrick-intro-played'
 let played = false
@@ -10,9 +10,9 @@ try {
 } catch {
   played = false
 }
-const mountedEarly = typeof window === 'undefined' || typeof performance === 'undefined' || performance.now() - (window.__t0 || 0) < 1100
+const staticLifted = typeof document !== 'undefined' && document.documentElement.classList.contains('intro-lift')
 
-export const SHOW_INTRO = !played && mountedEarly
+export const SHOW_INTRO = !played && !staticLifted
 
 export function markIntroPlayed() {
   try {
