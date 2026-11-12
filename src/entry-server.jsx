@@ -1,6 +1,7 @@
 import { renderToString } from 'react-dom/server'
 import { MotionConfig } from 'framer-motion'
 import { Page } from './App'
+import Intro from './components/Intro'
 
 export { faq } from './data/faq'
 export { site } from './data/site'
@@ -16,6 +17,7 @@ export const serviceCatalog = serviceList.map(({ id, title, description, service
 export function render() {
   return renderToString(
     <MotionConfig reducedMotion="always">
+      <Intro />
       <Page />
     </MotionConfig>,
   )
