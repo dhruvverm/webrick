@@ -1,6 +1,5 @@
 import { lazy, Suspense } from 'react'
 import { MotionConfig } from 'framer-motion'
-import Intro from './components/Intro'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
@@ -58,7 +57,6 @@ export default function App() {
         <SmoothScroll />
         <Cursor />
       </Suspense>
-      <Intro />
       <Page />
       <WhatsAppButton />
     </MotionConfig>

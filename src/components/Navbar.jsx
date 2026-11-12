@@ -8,7 +8,7 @@ import { navLinks } from '../data/nav'
 import { site } from '../data/site'
 import useActiveSection from '../hooks/useActiveSection'
 import useLockBody from '../hooks/useLockBody'
-import { INTRO_DELAY } from '../intro'
+import { STATIC_SHOWN } from '../boot'
 
 const SECTION_IDS = navLinks.map((l) => l.href.slice(1))
 const EASE = [0.2, 0.65, 0.3, 1]
@@ -78,10 +78,10 @@ export default function Navbar() {
   return (
     <>
       <motion.header
-        initial={{ opacity: 0 }}
+        initial={STATIC_SHOWN ? false : { opacity: 0 }}
         animate={{ opacity: 1, y: hidden && !open ? '-100%' : 0 }}
         transition={{
-          opacity: { duration: 0.8, delay: INTRO_DELAY + 0.3 },
+          opacity: { duration: 0.8, delay: 0.3 },
           y: { duration: 0.45, ease: [0.2, 0.65, 0.2, 1] },
         }}
         className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${scrolled || open ? 'nav-solid' : ''}`}

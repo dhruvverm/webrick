@@ -6,7 +6,7 @@ import MaskedText from './ui/MaskedText'
 import { services } from '../data/services'
 import { navLinks } from '../data/nav'
 import { site } from '../data/site'
-import { servicePath } from '../data/servicePages'
+import { servicePath } from '../data/servicePaths'
 
 const channels = [
   { label: 'WhatsApp', icon: 'whatsapp', href: site.whatsapp },

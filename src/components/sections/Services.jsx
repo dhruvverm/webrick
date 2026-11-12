@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import SectionHeader from '../ui/SectionHeader'
 import { services } from '../../data/services'
-import { servicePath } from '../../data/servicePages'
+import { servicePath } from '../../data/servicePaths'
 import { EASE } from '../ui/Reveal'
 import { prefillContact } from '../../prefill'
 

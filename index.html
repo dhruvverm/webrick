@@ -8,21 +8,6 @@
     <meta name="geo.region" content="IN" />
     <script>
       document.documentElement.classList.add('js')
-      // Slow connection: show the pre-rendered page before the app script arrives (once the fonts are in, so the
-      // text does not jump), and skip the intro curtain in that case.
-      var reveal = function () {
-        var r = document.getElementById('root')
-        if (r && r.hasAttribute('data-prerendered')) {
-          r.removeAttribute('data-prerendered')
-          try { sessionStorage.setItem('webrick-intro-played', '1') } catch (e) {}
-        }
-      }
-      setTimeout(function () {
-        if (document.fonts && document.fonts.status === 'loading') {
-          document.fonts.ready.then(reveal)
-          setTimeout(reveal, 2000)
-        } else reveal()
-      }, 1500)
     </script>
     <meta name="description" content="Webrick is a digital marketing agency in India. We build your website, run Facebook, Instagram and Google ads, manage social media and track every lead." />
     <link rel="canonical" href="https://www.webrick.in/" />

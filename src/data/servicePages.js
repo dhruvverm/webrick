@@ -228,8 +228,3 @@ export const servicePages = [
   },
 ]
 
-/** URL of the landing page for a service id (services.js), or the services section when none exists. */
-export const servicePath = (serviceId) => {
-  const page = servicePages.find((p) => p.serviceId === serviceId)
-  return page ? `/services/${page.slug}/` : '/#services'
-}

@@ -5,18 +5,21 @@ import Button from '../ui/Button'
 import MaskedText from '../ui/MaskedText'
 const BlockAssembly = lazy(() => import('../BlockAssembly'))
 import { site } from '../../data/site'
-import { INTRO_DELAY } from '../../intro'
+import { STATIC_SHOWN } from '../../boot'
 
 const EASE = [0.2, 0.65, 0.2, 1]
-const T = INTRO_DELAY
+const T = 0
 /** The whole job in four words: what we build, and what it is for. */
 const FLOW = ['Website', 'Ads', 'Leads', 'Customers']
 
-const fade = (delay) => ({
-  initial: { opacity: 0, y: 14 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: EASE, delay: T + delay },
-})
+const fade = (delay) =>
+  STATIC_SHOWN
+    ? { initial: false }
+    : {
+        initial: { opacity: 0, y: 14 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.8, ease: EASE, delay: T + delay },
+      }
 
 export default function Hero() {
   const mx = useMotionValue(0)
@@ -78,7 +81,7 @@ export default function Hero() {
             </motion.p>
 
             <h1 className="display mt-6 max-w-[12ch] text-[3.1rem] xs:text-[3.7rem] sm:text-[4.6rem] lg:text-[4.9rem] xl:text-[5.7rem]">
-              <MaskedText text="Websites, Ads & Social Media That Bring Customers." onMount delay={T + 0.15} stagger={0.055} accentDot />
+              <MaskedText text="Websites, Ads & Social Media That Bring Customers." onMount instant={STATIC_SHOWN} delay={T + 0.15} stagger={0.055} accentDot />
             </h1>
 
             <motion.p {...fade(0.7)} className="mt-6 max-w-md text-[1.05rem] leading-relaxed text-muted">
