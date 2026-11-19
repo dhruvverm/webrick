@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Webrick makeover reel · Ep. 01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=block" rel="stylesheet" />
+<style>
+  :root { --bone:#f2efe8; --ink:#111110; --muted:rgba(242,239,232,.72); --dim:rgba(242,239,232,.5); --terra:#e4632f; --good:#3fd3a7; --bad:#ff6b6b; --wa:#25D366; --ig:#0095f6; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; width:1080px; height:1920px; overflow:hidden; background:#140f0d; }
+  .stage { position:relative; width:1080px; height:1920px; overflow:hidden; color:var(--bone); font-family:'Geist',sans-serif;
+    background:radial-gradient(900px 700px at 50% 42%, #3a1f16 0%, #22140f 45%, #120d0b 100%); }
+  .grain { position:absolute; inset:0; opacity:.14; mix-blend-mode:screen; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .lines { position:absolute; inset:0; background-image:linear-gradient(rgba(242,239,232,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(242,239,232,.035) 1px, transparent 1px); background-size:120px 120px; mask-image:radial-gradient(700px 900px at 50% 50%, #000, transparent 80%); }
+  .vig { position:absolute; inset:0; background:radial-gradient(1200px 1700px at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%); }
+  .mono { font-family:'Geist Mono',monospace; font-weight:500; letter-spacing:.14em; text-transform:uppercase; }
+  .display { font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'opsz' 96; font-weight:600; letter-spacing:-.03em; }
+  .a { position:absolute; will-change:transform,opacity,filter; }
+
+  /* header strip */
+  .strip { position:absolute; left:72px; right:72px; top:232px; display:flex; align-items:center; justify-content:space-between; font-size:22px; color:var(--dim); }
+  .strip b { color:var(--terra); font-weight:500; margin-left:10px; }
+  .strip .brand { display:flex; align-items:center; gap:10px; color:var(--bone); font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:26px; letter-spacing:-.03em; text-transform:none; font-variation-settings:'opsz' 96; }
+  .rule { position:absolute; left:72px; right:72px; top:282px; height:1px; background:linear-gradient(90deg, var(--terra), rgba(242,239,232,.15) 40%, rgba(242,239,232,.08)); }
+
+  /* captions (spoken lines) */
+  .cap { position:absolute; left:72px; width:936px; top:330px; font-size:46px; line-height:1.22; font-weight:500; color:var(--bone); text-shadow:0 4px 30px rgba(0,0,0,.6); }
+  .cap em { font-style:normal; color:var(--terra); }
+  .cap.hook { font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'opsz' 96; font-weight:600; font-size:62px; line-height:1.08; letter-spacing:-.03em; }
+  .cap.hook em { font-style:italic; font-weight:600; }
+
+  /* phone */
+  .pg { position:absolute; left:540px; top:1085px; width:0; height:0; }
+  .phone { position:absolute; left:-230px; top:-490px; width:460px; height:980px; border-radius:66px; background:#101010; padding:14px;
+    box-shadow:inset 0 0 0 2px #4a4744, inset 0 0 0 7px #0a0a0a, 0 70px 120px -30px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.08); }
+  .phone::after { content:''; position:absolute; left:50%; top:26px; width:112px; height:32px; margin-left:-56px; border-radius:16px; background:#0a0a0a; z-index:5; }
+  .screen { position:absolute; left:14px; top:14px; width:432px; height:952px; border-radius:54px; overflow:hidden; background:#fff; color:#111; }
+  .ui { position:absolute; left:0; top:0; width:390px; height:860px; transform-origin:top left; transform:scale(1.108); } /* 390×860 design → 432×952 */
+  .sb { height:44px; display:flex; align-items:center; justify-content:space-between; padding:6px 24px 0 30px; font-size:15px; font-weight:600; }
+  .sb i { font-style:normal; font-size:12px; letter-spacing:1px; }
+
+  /* instagram profile */
+  .ig { background:#fff; color:#111; }
+  .ig .top { display:flex; align-items:center; justify-content:space-between; padding:6px 16px 10px; font-weight:700; font-size:17px; }
+  .ig .top .u { display:flex; align-items:center; gap:6px; }
+  .ig .top .u i { font-style:normal; width:16px; height:16px; border-radius:50%; background:#0095f6; display:inline-grid; place-items:center; color:#fff; font-size:10px; }
+  .ig .head { display:flex; align-items:center; gap:22px; padding:4px 16px 0; }
+  .ig .av { width:86px; height:86px; border-radius:50%; background:#e9e9e9; border:2px solid #fff; box-shadow:0 0 0 2px #ddd; position:relative; overflow:hidden; display:grid; place-items:center; }
+  .ig .av img { width:100%; height:100%; object-fit:cover; }
+  .ig .stats { display:flex; gap:22px; flex:1; justify-content:space-around; text-align:center; }
+  .ig .stats b { display:block; font-size:17px; font-weight:700; line-height:1.1; }
+  .ig .stats small { font-size:13px; color:#333; }
+  .ig .bio { padding:10px 16px 0; font-size:14px; line-height:1.35; }
+  .ig .bio b { display:block; font-size:14.5px; }
+  .ig .bio .cat { color:#777; }
+  .ig .bio .ln { display:block; }
+  .ig .bio .link { color:#00376b; font-weight:600; }
+  .ig .btns { display:flex; gap:6px; padding:10px 16px 0; }
+  .ig .btns span { flex:1; height:32px; border-radius:8px; background:#efefef; display:grid; place-items:center; font-size:14px; font-weight:600; }
+  .ig .btns span.f { background:#0095f6; color:#fff; }
+  .ig .hl { display:flex; gap:14px; padding:14px 16px 6px; }
+  .ig .hl div { width:62px; text-align:center; font-size:11.5px; color:#333; }
+  .ig .hl i { display:block; width:60px; height:60px; border-radius:50%; margin:0 auto 5px; border:2px solid #fff; box-shadow:0 0 0 1.5px #ccc; background:#eee; overflow:hidden; }
+  .ig .hl i img { width:100%; height:100%; object-fit:cover; }
+  .ig .tabs { display:flex; border-top:1px solid #ddd; margin-top:8px; }
+  .ig .tabs span { flex:1; text-align:center; padding:9px 0; font-size:14px; color:#999; }
+  .ig .tabs span:first-child { color:#111; border-bottom:1.5px solid #111; }
+  .ig .grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; }
+  .ig .grid div { aspect-ratio:1; background:#ececec; position:relative; overflow:hidden; display:grid; place-items:center; font-size:11px; color:#999; text-align:center; padding:6px; }
+  .ig .grid div img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .ig .grid div .plan { position:absolute; inset:0; display:grid; place-items:center; background:#f6f1e8; color:#5a3a22; font-weight:600; font-size:12px; line-height:1.2; padding:8px; }
+  .ig .nav { position:absolute; left:0; right:0; bottom:0; height:56px; border-top:1px solid #ddd; background:#fff; display:flex; justify-content:space-around; align-items:center; font-size:20px; }
+  .empty .av { background:#e3e3e3; }
+  .typing::after { content:'|'; color:#0095f6; font-weight:400; animation:none; }
+
+  /* google */
+  .g { background:#fff; color:#202124; font-family:Arial, Helvetica, sans-serif; }
+  .g .bar { margin:8px 14px 0; height:44px; border-radius:22px; border:1px solid #dfe1e5; box-shadow:0 1px 6px rgba(32,33,36,.18); display:flex; align-items:center; gap:10px; padding:0 14px; font-size:15px; }
+  .g .bar i { width:18px; height:18px; border-radius:50%; background:conic-gradient(#4285f4 0 25%, #ea4335 0 50%, #fbbc05 0 75%, #34a853 0); }
+  .g .chips { display:flex; gap:8px; padding:10px 14px 0; }
+  .g .chips span { padding:6px 12px; border-radius:16px; border:1px solid #dadce0; font-size:12.5px; }
+  .g .chips span:first-child { background:#202124; color:#fff; border-color:#202124; }
+  .g .map { margin:12px 14px 0; height:120px; border-radius:10px; background:linear-gradient(135deg,#e8f0e9,#dce9dd 50%,#f1e6d2); position:relative; overflow:hidden; }
+  .g .map::before, .g .map::after { content:''; position:absolute; background:#fff; opacity:.9; }
+  .g .map::before { left:0; right:0; top:58px; height:8px; }
+  .g .map::after { top:0; bottom:0; left:150px; width:8px; }
+  .g .pin { position:absolute; left:140px; top:34px; width:28px; height:28px; border-radius:50% 50% 50% 0; background:#ea4335; transform:rotate(-45deg); box-shadow:0 4px 10px rgba(0,0,0,.3); }
+  .g .pin::after { content:''; position:absolute; left:9px; top:9px; width:10px; height:10px; border-radius:50%; background:#fff; }
+  .g .card { margin:10px 14px 0; padding:12px 14px; border-radius:12px; border:1px solid #dadce0; }
+  .g .card b { font-size:17px; display:block; }
+  .g .card .r { font-size:13px; color:#5f6368; margin-top:3px; }
+  .g .card .r em { font-style:normal; color:#188038; font-weight:700; }
+  .g .card .star { color:#fbbc04; }
+  .g .card .acts { display:flex; gap:8px; margin-top:10px; }
+  .g .card .acts span { flex:1; text-align:center; padding:7px 0; border-radius:18px; border:1px solid #dadce0; color:#1a73e8; font-size:13px; font-weight:600; }
+  .g .res { margin:14px 14px 0; }
+  .g .res .u { font-size:12px; color:#202124; display:flex; align-items:center; gap:8px; }
+  .g .res .u i { width:22px; height:22px; border-radius:50%; background:#b9743f; color:#fff; font-style:normal; display:grid; place-items:center; font-size:11px; font-weight:700; }
+  .g .res h4 { margin:4px 0 2px; font-size:17px; font-weight:400; color:#1a0dab; }
+  .g .res p { margin:0; font-size:13px; color:#4d5156; line-height:1.35; }
+
+  /* website */
+  .site img { position:absolute; left:0; top:44px; width:390px; height:auto; }
+  .site .fab { position:absolute; right:16px; bottom:18px; width:54px; height:54px; border-radius:50%; background:var(--wa); display:grid; place-items:center; box-shadow:0 10px 24px rgba(37,211,102,.4); z-index:3; }
+  .site .ring { position:absolute; right:16px; bottom:18px; width:54px; height:54px; border-radius:50%; border:3px solid var(--wa); z-index:2; }
+
+  /* ads overlay cards (stage coordinates) */
+  .ad { width:420px; border-radius:18px; background:#fff; color:#111; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,.9); }
+  .ad .hd { height:48px; display:flex; align-items:center; gap:10px; padding:0 14px; font-size:16px; }
+  .ad .hd i { width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,#b9743f,#e4632f); flex:none; }
+  .ad .hd b { display:block; font-weight:600; line-height:1.05; }
+  .ad .hd small { display:block; font-size:13px; color:#6b685f; }
+  .ad .im { height:220px; position:relative; }
+  .ad .im img { width:100%; height:100%; object-fit:cover; object-position:center 60%; display:block; }
+  .ad .im em { position:absolute; right:12px; bottom:10px; font-style:normal; background:rgba(28,25,21,.85); color:#fff; font-size:14px; padding:5px 10px; border-radius:999px; font-weight:600; }
+  .ad .cta { height:44px; display:flex; align-items:center; justify-content:space-between; padding:0 14px; font-size:16px; font-weight:600; color:#1877f2; border-bottom:1px solid rgba(0,0,0,.08); }
+  .ad .cap { padding:8px 14px 12px; font-size:15px; line-height:1.25; }
+  .pill { padding:14px 22px; border-radius:999px; background:var(--bone); color:var(--ink); font-size:24px; font-weight:600; white-space:nowrap; box-shadow:0 20px 40px rgba(0,0,0,.5); }
+  .pill.t { background:var(--terra); color:#fff; }
+
+  /* whatsapp list */
+  .wa { background:#fff; color:#111; }
+  .wa .hd { padding:8px 16px 10px; display:flex; align-items:center; justify-content:space-between; }
+  .wa .hd b { font-size:28px; font-weight:700; letter-spacing:-.02em; }
+  .wa .hd .badge { min-width:30px; height:30px; padding:0 9px; border-radius:15px; background:var(--wa); color:#fff; font-size:15px; font-weight:700; display:grid; place-items:center; }
+  .wa .search { margin:0 16px 8px; height:36px; border-radius:10px; background:#f0f0f0; display:flex; align-items:center; padding:0 12px; color:#8a8a8a; font-size:15px; }
+  .wa .row { display:flex; align-items:center; gap:12px; padding:10px 16px; border-bottom:1px solid #f0f0f0; }
+  .wa .row .av { width:52px; height:52px; border-radius:50%; background:#d9d9d9; flex:none; display:grid; place-items:center; font-weight:700; color:#555; }
+  .wa .row .t { flex:1; min-width:0; }
+  .wa .row b { display:block; font-size:16px; font-weight:600; }
+  .wa .row p { margin:2px 0 0; font-size:14px; color:#555; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .wa .row small { font-size:12px; color:var(--wa); font-weight:600; align-self:flex-start; }
+  .wa .row .n { width:22px; height:22px; border-radius:50%; background:var(--wa); color:#fff; font-size:12px; font-weight:700; display:grid; place-items:center; margin-top:4px; margin-left:auto; }
+
+  /* result + cta (stage) */
+  .result { width:936px; border-radius:28px; background:rgba(20,15,13,.86); border:1px solid rgba(242,239,232,.14); backdrop-filter:blur(6px); padding:44px 48px; box-shadow:0 60px 120px -40px rgba(0,0,0,.9); }
+  .result h2 { font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'opsz' 96; font-weight:600; letter-spacing:-.03em; font-size:86px; line-height:.98; margin:0; }
+  .result h2 em { font-style:normal; color:var(--terra); }
+  .result p { margin:22px 0 0; font-size:30px; color:var(--muted); line-height:1.35; }
+  .kpis { display:flex; gap:16px; margin-top:28px; }
+  .kpi { flex:1; border-radius:18px; background:rgba(242,239,232,.06); border:1px solid rgba(242,239,232,.12); padding:18px 22px; }
+  .kpi b { display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:56px; letter-spacing:-.03em; line-height:1; color:var(--good); font-variant-numeric:tabular-nums; }
+  .kpi small { display:block; margin-top:8px; font-size:20px; color:var(--muted); }
+  .ctaw { width:936px; }
+  .ctaw .wal { width:130px; height:130px; border-radius:50%; background:var(--wa); display:grid; place-items:center; margin:0 auto 34px; box-shadow:0 30px 60px -20px rgba(37,211,102,.6); }
+  .ctac { display:flex; align-items:center; gap:18px; padding:20px 26px; border-radius:22px; background:rgba(242,239,232,.07); border:1px solid rgba(242,239,232,.14); margin-top:16px; }
+  .ctac .num { width:44px; height:44px; border-radius:50%; background:var(--terra); color:#fff; font-weight:700; font-size:22px; display:grid; place-items:center; flex:none; }
+  .ctac b { font-size:34px; font-weight:600; display:block; letter-spacing:-.01em; }
+  .ctac small { display:block; font-size:22px; color:var(--muted); margin-top:4px; }
+  .ctac .tag { margin-left:auto; padding:10px 16px; border-radius:999px; background:var(--good); color:#062b17; font-size:18px; font-weight:700; white-space:nowrap; }
+  .foot { position:absolute; left:72px; width:936px; top:1560px; text-align:center; font-size:26px; color:var(--muted); }
+  .foot b { color:var(--bone); font-weight:600; }
+  .ep { position:absolute; left:72px; width:936px; top:1640px; text-align:center; font-size:22px; color:var(--dim); }
+  .note { position:absolute; left:72px; width:936px; top:1600px; text-align:center; font-size:20px; color:var(--dim); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="lines"></div>
+  <div class="grain"></div>
+  <div class="vig"></div>
+
+  <div class="strip mono"><span>Shop makeover <b>Ep. 01</b></span><span class="brand"><svg width="30" height="30" viewBox="0 0 40 40" id="mark"></svg>Webrick</span></div>
+  <div class="rule"></div>
+
+  <!-- captions -->
+  <div class="a cap hook" id="c0">If I handled your <em>furniture shop’s</em> marketing, here’s what would happen from day one 👇</div>
+  <div class="a cap" id="c1">First, people would actually <em>find you</em>. Search “furniture shop near me” and there you are, with your hours and a 4.8.</div>
+  <div class="a cap" id="c2">They tap through to a website that opens in <em>a second</em>. One button: message us on WhatsApp.</div>
+  <div class="a cap" id="c3">Your Instagram gets a <em>proper bio</em>: what you make, where you are, when you’re open. And a grid with a plan.</div>
+  <div class="a cap" id="c4">Then the ads start. Only to people <em>nearby</em> who are looking for furniture this month.</div>
+  <div class="a cap" id="c5">Every enquiry lands on your <em>WhatsApp</em> and on a list. Nobody gets forgotten.</div>
+  <div class="a cap" id="c6">The result? Busier weekends. And you didn’t post <em>a single thing</em>.</div>
+
+  <!-- phone -->
+  <div class="a pg" id="pg">
+    <div class="phone">
+      <div class="screen">
+        <!-- Instagram profile (empty → made over) -->
+        <div class="a ui ig" id="igp" style="left:0;top:0">
+          <div class="sb"><span>9:41</span><i>●●● ▲ ▮</i></div>
+          <div class="top"><span>‹</span><span class="u" id="igUser"><span id="igName">username</span><i class="a" id="igCheck" style="position:static">✓</i></span><span>⋮</span></div>
+          <div class="head">
+            <div class="av" id="igAv"><img id="igAvImg" src="./sofa.jpg" alt="" style="opacity:0"></div>
+            <div class="stats"><div><b id="nPosts">0</b><small>posts</small></div><div><b id="nFol">0</b><small>followers</small></div><div><b id="nFing">0</b><small>following</small></div></div>
+          </div>
+          <div class="bio">
+            <b id="bName">Account Name</b>
+            <span class="cat" id="bCat">Category</span>
+            <span class="ln a" id="b1" style="position:relative">🛋️ Solid wood sofas, beds &amp; dining sets</span>
+            <span class="ln a" id="b2" style="position:relative">📍 C-Scheme, Jaipur · free delivery in city</span>
+            <span class="ln a" id="b3" style="position:relative">🕘 Open daily 10 AM – 8 PM</span>
+            <span class="ln link a" id="b4" style="position:relative">💬 wa.me/sharmafurniture · Order on WhatsApp</span>
+          </div>
+          <div class="btns"><span class="f">Follow</span><span>Message</span><span>Email</span></div>
+          <div class="hl">
+            <div><i id="h1i"><img src="./sofa.jpg" alt="" class="a" id="h1img" style="position:static"></i><span id="h1t">Highlight 1</span></div>
+            <div><i id="h2i"><img src="./bed.jpg" alt="" class="a" id="h2img" style="position:static"></i><span id="h2t">Highlight 2</span></div>
+            <div><i id="h3i"><img src="./dining.jpg" alt="" class="a" id="h3img" style="position:static"></i><span id="h3t">Highlight 3</span></div>
+            <div><i id="h4i"><img src="./wardrobe.jpg" alt="" class="a" id="h4img" style="position:static"></i><span id="h4t">Highlight 4</span></div>
+            <div><i id="h5i"><img src="./chair.jpg" alt="" class="a" id="h5img" style="position:static"></i><span id="h5t">Highlight 5</span></div>
+          </div>
+          <div class="tabs"><span>▦</span><span>▶</span><span>◉</span></div>
+          <div class="grid">
+            <div>CONTENT 1<span class="plan a" id="p1">Signature<br>sofa</span><img src="./sofa.jpg" alt="" class="a" id="g1"></div>
+            <div>CONTENT 2<span class="plan a" id="p2">Behind the<br>workshop</span><img src="./chair.jpg" alt="" class="a" id="g2"></div>
+            <div>CONTENT 3<span class="plan a" id="p3">Customer<br>homes</span><img src="./bed.jpg" alt="" class="a" id="g3"></div>
+            <div>CONTENT 4<span class="plan a" id="p4">Weekend<br>offer</span><img src="./dining.jpg" alt="" class="a" id="g4"></div>
+            <div>CONTENT 5<span class="plan a" id="p5">Dining<br>sets</span><img src="./wardrobe.jpg" alt="" class="a" id="g5"></div>
+            <div>CONTENT 6<span class="plan a" id="p6">Reviews</span><img src="./sofa.jpg" alt="" class="a" id="g6"></div>
+            <div>CONTENT 7<span class="plan a" id="p7">Beds</span><img src="./bed.jpg" alt="" class="a" id="g7"></div>
+            <div>CONTENT 8<span class="plan a" id="p8">Before /<br>after</span><img src="./chair.jpg" alt="" class="a" id="g8"></div>
+            <div>CONTENT 9<span class="plan a" id="p9">Delivery<br>day</span><img src="./dining.jpg" alt="" class="a" id="g9"></div>
+          </div>
+          <div class="nav"><span>⌂</span><span>⌕</span><span>⊕</span><span>▶</span><span>◯</span></div>
+        </div>
+
+        <!-- Google -->
+        <div class="a ui g" id="gs" style="left:0;top:0">
+          <div class="sb"><span>9:41</span><i>●●● ▲ ▮</i></div>
+          <div class="bar"><i></i><span id="gq">furniture shop near me</span><span style="margin-left:auto;color:#4285f4">🎤</span></div>
+          <div class="chips"><span>All</span><span>Maps</span><span>Images</span><span>Shopping</span></div>
+          <div class="a map" id="gmap" style="position:relative;left:0;top:0"><div class="pin"></div></div>
+          <div class="a card" id="gcard" style="position:relative;left:0;top:0">
+            <b>Sharma Furniture</b>
+            <div class="r"><span class="star">★★★★★</span> 4.8 (212) · Furniture store · 1.2 km</div>
+            <div class="r"><em>Open</em> · Closes 8 PM</div>
+            <div class="acts"><span>Call</span><span>Directions</span><span>WhatsApp</span></div>
+          </div>
+          <div class="a res" id="gres" style="position:relative;left:0;top:0">
+            <div class="u"><i>S</i>sharmafurniture.in</div>
+            <h4>Sharma Furniture | Solid wood furniture, made in Jaipur</h4>
+            <p>Sofas, beds, dining sets and wardrobes from our own workshop. Free delivery in Jaipur, 10-year warranty. Order on WhatsApp.</p>
+          </div>
+        </div>
+
+        <!-- website -->
+        <div class="a ui site" id="site" style="left:0;top:0;background:#f6f1e8">
+          <div class="sb" style="color:#1c1915"><span>9:41</span><i>●●● ▲ ▮</i></div>
+          <img src="./site-mobile.png" alt="" class="a" id="siteImg" style="left:0;top:44px">
+          <div class="a ring" id="ring"></div>
+          <div class="a fab" id="fab"><svg width="30" height="30" viewBox="0 0 24 24" fill="#052e16"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.23 8.24m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28"/></svg></div>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="a ui wa" id="wal" style="left:0;top:0">
+          <div class="sb"><span>9:41</span><i>●●● ▲ ▮</i></div>
+          <div class="hd"><b>Chats</b><span class="badge" id="waBadge">0</span></div>
+          <div class="search">🔍 Search</div>
+          <div class="row a" id="w1" style="position:relative;left:0;top:0"><span class="av">P</span><div class="t"><b>Priya</b><p>Price of the 3-seater sofa?</p></div><div><small>now</small><div class="n">1</div></div></div>
+          <div class="row a" id="w2" style="position:relative;left:0;top:0"><span class="av">A</span><div class="t"><b>Amit</b><p>Do you deliver to Vaishali Nagar?</p></div><div><small>now</small><div class="n">1</div></div></div>
+          <div class="row a" id="w3" style="position:relative;left:0;top:0"><span class="av">N</span><div class="t"><b>Neha</b><p>Can I visit the showroom on Sunday?</p></div><div><small>now</small><div class="n">2</div></div></div>
+          <div class="row a" id="w4" style="position:relative;left:0;top:0"><span class="av">R</span><div class="t"><b>Rahul</b><p>Do you make dining sets in sheesham?</p></div><div><small>now</small><div class="n">1</div></div></div>
+          <div class="row a" id="w5" style="position:relative;left:0;top:0"><span class="av">S</span><div class="t"><b>Sunita</b><p>Sent you the room photo, can you suggest a bed?</p></div><div><small>now</small><div class="n">3</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ads overlays -->
+  <div class="a ad" id="ad1" style="left:60px;top:980px">
+    <div class="hd"><i></i><div><b>sharmafurniture</b><small>Sponsored</small></div></div>
+    <div class="im"><img src="./sofa.jpg" alt=""><em>Free delivery in Jaipur</em></div>
+    <div class="cta">Send WhatsApp message <span>›</span></div>
+    <div class="cap"><b>sharmafurniture</b> Solid wood sofas from our Jaipur workshop. 10-year warranty.</div>
+  </div>
+  <div class="a pill t" id="pill1" style="left:600px;top:1180px">📍 Within 10 km of the shop</div>
+  <div class="a pill" id="pill2" style="left:560px;top:1290px">🛋️ Looking for a sofa this month</div>
+
+  <!-- result -->
+  <div class="a result" id="res" style="left:72px;top:600px">
+    <h2>You make the furniture.<br><em>We bring the customers.</em></h2>
+    <p>No posting. No chasing leads. No tech headaches. One team, one fixed fee, start to end.</p>
+    <div class="kpis"><div class="kpi"><b id="kEnq">0</b><small>enquiries in 30 days</small></div><div class="kpi"><b id="kVis">0</b><small>website visitors</small></div><div class="kpi"><b style="color:var(--bone)">0</b><small>posts you had to make</small></div></div>
+  </div>
+  <div class="a note mono" id="resNote">Example makeover · results vary by business</div>
+
+  <!-- cta -->
+  <div class="a ctaw" id="cta" style="left:72px;top:560px">
+    <div class="wal"><svg width="72" height="72" viewBox="0 0 24 24" fill="#062b17"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.23 8.24m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28"/></svg></div>
+    <div class="cap" style="position:static;text-align:center;font-size:52px;line-height:1.15;margin-bottom:30px">Want this for <em>your</em> shop?</div>
+    <div class="ctac a" id="cta1" style="position:relative;left:0;top:0"><span class="num">1</span><div><b>@webrick.in</b><small>Profile → WhatsApp us</small></div><span class="tag">Link in bio</span></div>
+    <div class="ctac a" id="cta2" style="position:relative;left:0;top:0"><span class="num">2</span><div><b>+91 90348 89399</b><small>Send the word “SHOP” on WhatsApp</small></div><span class="tag" style="background:var(--wa)">WhatsApp</span></div>
+  </div>
+  <div class="a foot" id="foot">Which business should we make over next? <b>Tell me in the comments 👇</b></div>
+  <div class="a ep mono" id="ep">Ep. 01 · Furniture shop makeover · Webrick</div>
+</div>
+
+<script>
+  const COLS=[2,9.5,17,24.5,32], ROWS=[5.75,13.25,20.75,28.25]
+  const BLOCKS=[[0,0],[4,0],[0,1],[2,1],[4,1],[0,2],[2,2],[4,2],[1,3,1],[3,3,1]]
+  document.getElementById('mark').innerHTML=BLOCKS.map(([c,r,a])=>`<rect x="${COLS[c]}" y="${ROWS[r]}" width="6" height="6" rx="0.8" fill="${a?'#e4632f':'#f2efe8'}"/>`).join('')
+
+  // ---- deterministic per-property tween engine: window.seek(t) ----
+  const E = { out: p => 1 - Math.pow(1 - p, 3), expo: p => p === 1 ? 1 : 1 - Math.pow(2, -10 * p), in: p => p * p * p, inout: p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2, back: p => { const c = 1.70158 * 1.1; return 1 + (c + 1) * Math.pow(p - 1, 3) + c * Math.pow(p - 1, 2) }, lin: p => p }
+  const byEl = new Map(); const $ = (id) => document.getElementById(id)
+  function tw(id, prop, start, dur, from, to, ease = 'out') { const el = $(id); if (!el) throw new Error('no element ' + id); if (!byEl.has(el)) byEl.set(el, new Map()); const props = byEl.get(el); if (!props.has(prop)) props.set(prop, []); props.get(prop).push({ start, dur, from, to, ease }) }
+  const clamp01 = (v) => Math.min(1, Math.max(0, v)); let T = 0
+  const TEXT = {}, PLACE = {}
+  function apply(el, s) {
+    if ('o' in s) el.style.opacity = clamp01(s.o)
+    if (['x','y','s','r','shk'].some(k => k in s)) { let x = s.x || 0, y = s.y || 0; if (s.shk) { x += s.shk * Math.sin(T * 95); y += s.shk * .7 * Math.cos(T * 71) } el.style.transform = `translate(${x}px, ${y}px) rotate(${s.r || 0}deg) scale(${s.s ?? 1})` }
+    if ('blur' in s) el.style.filter = s.blur > .05 ? `blur(${s.blur}px)` : ''
+    if ('n' in s) el.textContent = Math.round(s.n).toLocaleString('en-IN')
+    if ('nk' in s) el.textContent = s.nk >= 1000 ? (s.nk / 1000).toFixed(1) + 'K' : String(Math.round(s.nk))
+    if ('ty' in s) { const full = TEXT[el.id]; if (full !== undefined) { const n = Math.round(s.ty); el.textContent = n <= 0 && PLACE[el.id] !== undefined ? PLACE[el.id] : full.slice(0, n) } }
+  }
+  window.seek = (t) => { T = t; for (const [el, props] of byEl) { const s = {}; for (const [prop, list] of props) { list.sort((a, b) => a.start - b.start); let cur = null; for (const k of list) if (t >= k.start) cur = k; if (!cur) { s[prop] = list[0].from; continue } const p = E[cur.ease](clamp01((t - cur.start) / cur.dur)); s[prop] = cur.from + (cur.to - cur.from) * p } apply(el, s) } }
+  const INIT = (id, prop, v) => tw(id, prop, -1, .01, v, v)
+  const SHOW = (id, at) => tw(id, 'o', at, .02, 0, 1, 'lin')
+  const HIDE = (id, at) => tw(id, 'o', at, .02, 1, 0, 'lin')
+  const IN = (id, at, dy = 24, dur = .5) => { tw(id, 'o', at, dur, 0, 1, 'out'); tw(id, 'y', at, dur, dy, 0, 'expo'); tw(id, 'blur', at, dur, 8, 0, 'out') }
+  const OUT = (id, at, dur = .3) => { tw(id, 'o', at, dur, 1, 0, 'in'); tw(id, 'y', at, dur, 0, -14, 'in'); tw(id, 'blur', at, dur, 0, 8, 'in') }
+  const POP = (id, at, from = .85, dur = .45) => { tw(id, 'o', at, dur * .5, 0, 1, 'out'); tw(id, 's', at, dur, from, 1, 'back') }
+  const FADE = (id, at, dur = .35) => tw(id, 'o', at, dur, 0, 1, 'out')
+  const TYPE = (id, at, cps = 22, target, placeholder) => { TEXT[id] = target ?? $(id).textContent; if (placeholder !== undefined) PLACE[id] = placeholder; const n = TEXT[id].length; tw(id, 'ty', at, n / cps, 0, n, 'lin') }
+  const CAP = (n, at, until) => { IN('c' + n, at, 24, .5); OUT('c' + n, until, .3) }
+  const SCREEN = (id, at, until) => { SHOW(id, at); if (until) HIDE(id, until) }
+
+  // initial state
+  ;['c0','c1','c2','c3','c4','c5','c6','gs','site','wal','ad1','pill1','pill2','res','resNote','cta','foot','ep','ring','w1','w2','w3','w4','w5','gmap','gcard','gres','b1','b2','b3','b4','cta1','cta2','igCheck'].forEach(id => INIT(id, 'o', 0))
+  ;['p1','p2','p3','p4','p5','p6','p7','p8','p9','g1','g2','g3','g4','g5','g6','g7','g8','g9','h1img','h2img','h3img','h4img','h5img','igAvImg'].forEach(id => INIT(id, 'o', 0))
+  INIT('pg', 'shk', 0)
+
+  // phone enters
+  tw('pg', 'o', 0, .6, 0, 1, 'out'); tw('pg', 'y', 0, .9, 120, 0, 'expo'); tw('pg', 's', 0, .9, .92, 1, 'expo')
+
+  // 0–4 HOOK: empty profile
+  CAP(0, .25, 4.0)
+
+  // 4–10 GOOGLE
+  SCREEN('gs', 4.2, 10.3)
+  TYPE('gq', 4.4, 20)
+  IN('gmap', 5.9, 16, .4); IN('gcard', 6.4, 16, .45); IN('gres', 7.2, 16, .45)
+  CAP(1, 4.1, 10.1)
+
+  // 10–18 WEBSITE
+  SCREEN('site', 10.4, 18.3)
+  tw('siteImg', 'y', 11.2, 5.5, 0, -300, 'inout')
+  SHOW('fab', 10.4)
+  ;[13.2, 14.4, 15.6].forEach(at => { tw('ring', 'o', at, .1, 0, .9, 'out'); tw('ring', 'o', at + .1, .9, .9, 0, 'out'); tw('ring', 's', at, 1.0, 1, 1.9, 'out') })
+  CAP(2, 10.5, 18.1)
+
+  // 18–28 INSTAGRAM MAKEOVER (the empty profile is the base screen, revealed again when site hides)
+  CAP(3, 18.5, 28.3)
+  TYPE('igName', 18.8, 18, 'sharmafurniture', 'username'); SHOW('igCheck', 19.8)
+  TYPE('bName', 19.8, 24, 'Sharma Furniture | Jaipur', 'Account Name'); TYPE('bCat', 20.6, 24, 'Furniture store', 'Category')
+  tw('igAvImg', 'o', 20.4, .3, 0, 1, 'out'); POP('igAv', 20.4, .6, .5)
+  IN('b1', 21.2, 8, .3); IN('b2', 21.7, 8, .3); IN('b3', 22.2, 8, .3); IN('b4', 22.7, 8, .3)
+  ;['Sofas','Beds','Dining','Reviews','Visit'].forEach((label, i) => { const h = 'h' + (i + 1); TYPE(h + 't', 23.3 + i * .22, 30, label, 'Highlight ' + (i + 1)); tw(h + 'img', 'o', 23.3 + i * .22, .25, 0, 1, 'out') })
+  ;['p1','p2','p3','p4','p5','p6','p7','p8','p9'].forEach((p, i) => POP(p, 24.6 + i * .16, .7, .3))
+  ;['g1','g2','g3','g4','g5','g6','g7','g8','g9'].forEach((g, i) => tw(g, 'o', 26.4 + i * .12, .3, 0, 1, 'out'))
+  tw('nPosts', 'n', 26.4, 1.4, 0, 48, 'out'); tw('nFol', 'nk', 26.6, 1.6, 0, 11700, 'out'); tw('nFing', 'n', 26.6, 1.2, 0, 212, 'out')
+
+  // 28–35 ADS
+  CAP(4, 28.5, 35.3)
+  POP('ad1', 28.9, .8, .5); tw('ad1', 'r', 28.9, .5, -6, -4, 'out')
+  POP('pill1', 30.2, .7, .45); POP('pill2', 31.0, .7, .45)
+  ;['ad1','pill1','pill2'].forEach(id => OUT(id, 35.0, .3))
+
+  // 35–43 WHATSAPP
+  SCREEN('wal', 35.4, 43.3)
+  ;['w1','w2','w3','w4','w5'].forEach((w, i) => { IN(w, 35.9 + i * .55, 14, .35); tw('pg', 'shk', 35.9 + i * .55, .3, 4, 0, 'out') })
+  tw('waBadge', 'n', 35.9, 4.5, 0, 41, 'out')
+  CAP(5, 35.5, 43.1)
+
+  // 43–49 RESULT
+  tw('pg', 'o', 43.2, .5, 1, .18, 'out'); tw('pg', 'blur', 43.2, .5, 0, 10, 'out'); tw('pg', 's', 43.2, .6, 1, .96, 'out')
+  CAP(6, 43.4, 49.2)
+  POP('res', 43.9, .92, .5); tw('res', 'y', 43.9, .5, 30, 0, 'expo')
+  tw('kEnq', 'n', 44.4, 1.4, 0, 41, 'out'); tw('kVis', 'n', 44.4, 1.4, 0, 2380, 'out')
+  IN('resNote', 45.2, 8, .4)
+  OUT('res', 49.2, .35); OUT('resNote', 49.2, .3)
+  tw('pg', 'o', 49.2, .3, .18, 0, 'in')
+
+  // 49–56 CTA
+  POP('cta', 49.6, .94, .5)
+  IN('cta1', 50.3, 18, .4); IN('cta2', 50.8, 18, .4)
+  IN('foot', 52.2, 12, .4); IN('ep', 52.8, 8, .4)
+
+  window.preload = () => Promise.all([
+    document.fonts.load('600 60px "Bricolage Grotesque"'), document.fonts.load('400 30px Geist'), document.fonts.load('500 30px Geist'), document.fonts.load('600 30px Geist'), document.fonts.load('700 30px Geist'), document.fonts.load('500 24px "Geist Mono"'), document.fonts.ready,
+    ...[...document.images].map(im => im.complete ? Promise.resolve() : new Promise(r => { im.onload = r; im.onerror = r })),
+  ])
+  seek(0)
+</script>
+</body>
+</html>
