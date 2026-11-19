@@ -325,61 +325,65 @@
   ;['p1','p2','p3','p4','p5','p6','p7','p8','p9','g1','g2','g3','g4','g5','g6','g7','g8','g9','h1img','h2img','h3img','h4img','h5img','igAvImg'].forEach(id => INIT(id, 'o', 0))
   INIT('pg', 'shk', 0)
 
+  // scene start times (fitted to the voice-over clips) and overall length
+  const S = [0.0, 6.18, 16.44, 25.98, 38.84, 47.1, 56.13, 65.19]
+  const END = 77.9
+
   // phone enters
   tw('pg', 'o', 0, .6, 0, 1, 'out'); tw('pg', 'y', 0, .9, 120, 0, 'expo'); tw('pg', 's', 0, .9, .92, 1, 'expo')
 
-  // 0–4 HOOK: empty profile
-  CAP(0, .25, 4.0)
+  // HOOK: empty profile
+  CAP(0, .25, S[1] - .2)
 
-  // 4–10 GOOGLE
-  SCREEN('gs', 4.2, 10.3)
-  TYPE('gq', 4.4, 20)
-  IN('gmap', 5.9, 16, .4); IN('gcard', 6.4, 16, .45); IN('gres', 7.2, 16, .45)
-  CAP(1, 4.1, 10.1)
+  // GOOGLE
+  SCREEN('gs', S[1], S[2] + .1)
+  TYPE('gq', S[1] + .3, 20)
+  IN('gmap', S[1] + 1.8, 16, .4); IN('gcard', S[1] + 2.4, 16, .45); IN('gres', S[1] + 3.4, 16, .45)
+  CAP(1, S[1] - .1, S[2] - .2)
 
-  // 10–18 WEBSITE
-  SCREEN('site', 10.4, 18.3)
-  tw('siteImg', 'y', 11.2, 5.5, 0, -300, 'inout')
-  SHOW('fab', 10.4)
-  ;[13.2, 14.4, 15.6].forEach(at => { tw('ring', 'o', at, .1, 0, .9, 'out'); tw('ring', 'o', at + .1, .9, .9, 0, 'out'); tw('ring', 's', at, 1.0, 1, 1.9, 'out') })
-  CAP(2, 10.5, 18.1)
+  // WEBSITE
+  SCREEN('site', S[2], S[3] + .1)
+  tw('siteImg', 'y', S[2] + .8, Math.max(4, (S[3] - S[2]) - 2.2), 0, -300, 'inout')
+  SHOW('fab', S[2])
+  ;[S[2] + 2.6, S[2] + 3.9, S[2] + 5.2, S[2] + 6.5].forEach(at => { tw('ring', 'o', at, .1, 0, .9, 'out'); tw('ring', 'o', at + .1, .9, .9, 0, 'out'); tw('ring', 's', at, 1.0, 1, 1.9, 'out') })
+  CAP(2, S[2] + .1, S[3] - .2)
 
-  // 18–28 INSTAGRAM MAKEOVER (the empty profile is the base screen, revealed again when site hides)
-  CAP(3, 18.5, 28.3)
-  TYPE('igName', 18.8, 18, 'sharmafurniture', 'username'); SHOW('igCheck', 19.8)
-  TYPE('bName', 19.8, 24, 'Sharma Furniture | Jaipur', 'Account Name'); TYPE('bCat', 20.6, 24, 'Furniture store', 'Category')
-  tw('igAvImg', 'o', 20.4, .3, 0, 1, 'out'); POP('igAv', 20.4, .6, .5)
-  IN('b1', 21.2, 8, .3); IN('b2', 21.7, 8, .3); IN('b3', 22.2, 8, .3); IN('b4', 22.7, 8, .3)
-  ;['Sofas','Beds','Dining','Reviews','Visit'].forEach((label, i) => { const h = 'h' + (i + 1); TYPE(h + 't', 23.3 + i * .22, 30, label, 'Highlight ' + (i + 1)); tw(h + 'img', 'o', 23.3 + i * .22, .25, 0, 1, 'out') })
-  ;['p1','p2','p3','p4','p5','p6','p7','p8','p9'].forEach((p, i) => POP(p, 24.6 + i * .16, .7, .3))
-  ;['g1','g2','g3','g4','g5','g6','g7','g8','g9'].forEach((g, i) => tw(g, 'o', 26.4 + i * .12, .3, 0, 1, 'out'))
-  tw('nPosts', 'n', 26.4, 1.4, 0, 48, 'out'); tw('nFol', 'nk', 26.6, 1.6, 0, 11700, 'out'); tw('nFing', 'n', 26.6, 1.2, 0, 212, 'out')
+  // INSTAGRAM MAKEOVER (the empty profile is the base screen again)
+  CAP(3, S[3] + .1, S[4] - .2)
+  TYPE('igName', S[3] + .4, 18, 'sharmafurniture', 'username'); SHOW('igCheck', S[3] + 1.4)
+  TYPE('bName', S[3] + 1.5, 24, 'Sharma Furniture | Jaipur', 'Account Name'); TYPE('bCat', S[3] + 2.4, 24, 'Furniture store', 'Category')
+  tw('igAvImg', 'o', S[3] + 2.2, .3, 0, 1, 'out'); POP('igAv', S[3] + 2.2, .6, .5)
+  IN('b1', S[3] + 3.2, 8, .3); IN('b2', S[3] + 3.8, 8, .3); IN('b3', S[3] + 4.4, 8, .3); IN('b4', S[3] + 5.0, 8, .3)
+  ;['Sofas','Beds','Dining','Reviews','Visit'].forEach((label, i) => { const h = 'h' + (i + 1); TYPE(h + 't', S[3] + 6.0 + i * .22, 30, label, 'Highlight ' + (i + 1)); tw(h + 'img', 'o', S[3] + 6.0 + i * .22, .25, 0, 1, 'out') })
+  ;['p1','p2','p3','p4','p5','p6','p7','p8','p9'].forEach((p, i) => POP(p, S[3] + 7.6 + i * .16, .7, .3))
+  ;['g1','g2','g3','g4','g5','g6','g7','g8','g9'].forEach((g, i) => tw(g, 'o', S[3] + 9.6 + i * .12, .3, 0, 1, 'out'))
+  tw('nPosts', 'n', S[3] + 9.6, 1.4, 0, 48, 'out'); tw('nFol', 'nk', S[3] + 9.8, 1.6, 0, 11700, 'out'); tw('nFing', 'n', S[3] + 9.8, 1.2, 0, 212, 'out')
 
-  // 28–35 ADS
-  CAP(4, 28.5, 35.3)
-  POP('ad1', 28.9, .8, .5); tw('ad1', 'r', 28.9, .5, -6, -4, 'out')
-  POP('pill1', 30.2, .7, .45); POP('pill2', 31.0, .7, .45)
-  ;['ad1','pill1','pill2'].forEach(id => OUT(id, 35.0, .3))
+  // ADS
+  CAP(4, S[4] + .1, S[5] - .2)
+  POP('ad1', S[4] + .5, .8, .5); tw('ad1', 'r', S[4] + .5, .5, -6, -4, 'out')
+  POP('pill1', S[4] + 2.4, .7, .45); POP('pill2', S[4] + 3.6, .7, .45)
+  ;['ad1','pill1','pill2'].forEach(id => OUT(id, S[5] - .3, .3))
 
-  // 35–43 WHATSAPP
-  SCREEN('wal', 35.4, 43.3)
-  ;['w1','w2','w3','w4','w5'].forEach((w, i) => { IN(w, 35.9 + i * .55, 14, .35); tw('pg', 'shk', 35.9 + i * .55, .3, 4, 0, 'out') })
-  tw('waBadge', 'n', 35.9, 4.5, 0, 41, 'out')
-  CAP(5, 35.5, 43.1)
+  // WHATSAPP
+  SCREEN('wal', S[5], S[6] + .1)
+  ;['w1','w2','w3','w4','w5'].forEach((w, i) => { IN(w, S[5] + .6 + i * .7, 14, .35); tw('pg', 'shk', S[5] + .6 + i * .7, .3, 4, 0, 'out') })
+  tw('waBadge', 'n', S[5] + .6, 5.0, 0, 41, 'out')
+  CAP(5, S[5] + .1, S[6] - .2)
 
-  // 43–49 RESULT
-  tw('pg', 'o', 43.2, .5, 1, .18, 'out'); tw('pg', 'blur', 43.2, .5, 0, 10, 'out'); tw('pg', 's', 43.2, .6, 1, .96, 'out')
-  CAP(6, 43.4, 49.2)
-  POP('res', 43.9, .92, .5); tw('res', 'y', 43.9, .5, 30, 0, 'expo')
-  tw('kEnq', 'n', 44.4, 1.4, 0, 41, 'out'); tw('kVis', 'n', 44.4, 1.4, 0, 2380, 'out')
-  IN('resNote', 45.2, 8, .4)
-  OUT('res', 49.2, .35); OUT('resNote', 49.2, .3)
-  tw('pg', 'o', 49.2, .3, .18, 0, 'in')
+  // RESULT
+  tw('pg', 'o', S[6] - .1, .5, 1, .18, 'out'); tw('pg', 'blur', S[6] - .1, .5, 0, 10, 'out'); tw('pg', 's', S[6] - .1, .6, 1, .96, 'out')
+  CAP(6, S[6] + .1, S[7] - .2)
+  POP('res', S[6] + .6, .92, .5); tw('res', 'y', S[6] + .6, .5, 30, 0, 'expo')
+  tw('kEnq', 'n', S[6] + 1.1, 1.4, 0, 41, 'out'); tw('kVis', 'n', S[6] + 1.1, 1.4, 0, 2380, 'out')
+  IN('resNote', S[6] + 1.9, 8, .4)
+  OUT('res', S[7] - .2, .35); OUT('resNote', S[7] - .2, .3)
+  tw('pg', 'o', S[7] - .2, .3, .18, 0, 'in')
 
-  // 49–56 CTA
-  POP('cta', 49.6, .94, .5)
-  IN('cta1', 50.3, 18, .4); IN('cta2', 50.8, 18, .4)
-  IN('foot', 52.2, 12, .4); IN('ep', 52.8, 8, .4)
+  // CTA
+  POP('cta', S[7] + .3, .94, .5)
+  IN('cta1', S[7] + 1.0, 18, .4); IN('cta2', S[7] + 1.5, 18, .4)
+  IN('foot', S[7] + 5.5, 12, .4); IN('ep', S[7] + 6.1, 8, .4)
 
   window.preload = () => Promise.all([
     document.fonts.load('600 60px "Bricolage Grotesque"'), document.fonts.load('400 30px Geist'), document.fonts.load('500 30px Geist'), document.fonts.load('600 30px Geist'), document.fonts.load('700 30px Geist'), document.fonts.load('500 24px "Geist Mono"'), document.fonts.ready,
