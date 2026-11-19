@@ -32,31 +32,6 @@ export const projects = [
     link: 'https://ratedr.in',
   },
   {
-    id: 'vedera',
-    name: 'VedEra',
-    category: 'E-commerce',
-    tagline: 'A D2C store for handcrafted tech organisers and desk accessories.',
-    description:
-      'VedEra makes organisers and pouches that give every cable, charger and gadget a place. We built the Shopify store around large product photography and a short path from the home page to checkout.',
-    challenge:
-      'A new brand with a small catalogue needs the products, not the template, to do the talking, and a store that feels as considered as the product.',
-    solution:
-      'A clean Shopify storefront with full-bleed photography, a focused catalogue, a brand line on every page and chat support for questions before buying.',
-    results: [
-      { value: 'Shopify', label: 'Store platform' },
-      { value: 'Photo-led', label: 'Full-bleed product storytelling' },
-      { value: 'Chat', label: 'Support on every page' },
-    ],
-    tech: ['Shopify', 'Liquid', 'JavaScript'],
-    services: ['E-Commerce', 'Branding'],
-    year: '2025',
-    duration: null,
-    mockup: 'storefront',
-    hue: 150,
-    image: '/work/vedera.webp',
-    link: 'https://vedera.in',
-  },
-  {
     id: 'meridian',
     name: 'Meridian',
     category: 'Business Website',
