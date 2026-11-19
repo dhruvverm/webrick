@@ -1,4 +1,4 @@
-# Shop makeover · Ep. 01 — voice-over script
+# Shop makeover · Ep. 02 (furniture) — voice-over script
 
 Record this in your own voice on your phone (Notes app → voice memo, or straight into the Instagram editor).
 Talk like you'd explain it to a shop owner over chai: relaxed, a bit of a smile, no selling voice.
@@ -50,5 +50,5 @@ Caption for the post
 > 📲 Want this for your shop? Send "SHOP" to +91 90348 89399, or tap the link in bio.
 > Which business should we make over next? Tell me in the comments 👇
 >
-> Ep. 01 | Furniture shop makeover
+> Ep. 02 | Furniture shop makeover
 > #SmallBusinessIndia #FurnitureShop #DelhiBusiness #DigitalMarketing #Webrick

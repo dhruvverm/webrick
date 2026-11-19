@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Webrick makeover reel · Ep. 01</title>
+<title>Webrick makeover reel · Ep. 01 · Clothing brand</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=block" rel="stylesheet" />
@@ -102,6 +102,17 @@
   .g .res h4 { margin:4px 0 2px; font-size:17px; font-weight:400; color:#1a0dab; }
   .g .res p { margin:0; font-size:13px; color:#4d5156; line-height:1.35; }
 
+  /* photoshoot */
+  .ph { background:#fff; color:#111; }
+  .ph .phh { display:flex; align-items:center; justify-content:space-between; padding:4px 16px 10px; font-size:14px; color:#0a84ff; }
+  .ph .phh b { color:#111; font-size:16px; }
+  .ph .phg { display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; }
+  .ph .phg div { aspect-ratio:1; background:#eee; position:relative; overflow:hidden; }
+  .ph .phg img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; }
+  .ph .phg img.bef { filter:saturate(.35) brightness(.78) contrast(.9); }
+  .ph .phg .bad { position:absolute; left:6px; bottom:6px; background:#ff6b6b; color:#fff; font-size:10px; font-weight:700; padding:3px 6px; border-radius:6px; z-index:2; }
+  .ph .pill { position:absolute; font-size:14px; padding:10px 14px; }
+
   /* website */
   .site img { position:absolute; left:0; top:44px; width:390px; height:auto; }
   .site .fab { position:absolute; right:16px; bottom:18px; width:54px; height:54px; border-radius:50%; background:var(--wa); display:grid; place-items:center; box-shadow:0 10px 24px rgba(37,211,102,.4); z-index:3; }
@@ -163,17 +174,17 @@
   <div class="grain"></div>
   <div class="vig"></div>
 
-  <div class="strip mono"><span>Shop makeover <b>Ep. 01</b></span><span class="brand"><svg width="30" height="30" viewBox="0 0 40 40" id="mark"></svg>Webrick</span></div>
+  <div class="strip mono"><span>Brand makeover <b>Ep. 01</b></span><span class="brand"><svg width="30" height="30" viewBox="0 0 40 40" id="mark"></svg>Webrick</span></div>
   <div class="rule"></div>
 
   <!-- captions -->
-  <div class="a cap hook" id="c0">If I handled your <em>furniture shop’s</em> marketing, here’s what would happen from day one 👇</div>
-  <div class="a cap" id="c1">First, people would actually <em>find you</em>. Search “furniture shop near me” and there you are, with your hours and a 4.8.</div>
-  <div class="a cap" id="c2">They tap through to a website that opens in <em>a second</em>. One button: message us on WhatsApp.</div>
-  <div class="a cap" id="c3">Your Instagram gets a <em>proper bio</em>: what you make, where you are, when you’re open. And a grid with a plan.</div>
-  <div class="a cap" id="c4">Then the ads start. Only to people <em>nearby</em> who are looking for furniture this month.</div>
-  <div class="a cap" id="c5">Every enquiry lands on your <em>WhatsApp</em> and on a list. Nobody gets forgotten.</div>
-  <div class="a cap" id="c6">The result? Busier weekends. And you didn’t post <em>a single thing</em>.</div>
+  <div class="a cap hook" id="c0">If I handled your <em>clothing brand’s</em> marketing, here’s what would happen from day one 👇</div>
+  <div class="a cap" id="c1">First, a proper <em>photoshoot</em>. Your pieces on real people, in good light. No more hanger shots on a bedsheet.</div>
+  <div class="a cap" id="c2">Your Instagram gets a <em>bio that sells</em>: what you make, where you ship, how to order. And a grid that looks like a brand.</div>
+  <div class="a cap" id="c3">Then a store that opens in <em>a second</em>. Size chart, UPI or COD, and a WhatsApp button for the “is this in medium?” question.</div>
+  <div class="a cap" id="c4">Then the ads. <em>Reels from the shoot</em>, to women browsing clothes this week, and again to the ones who didn’t buy.</div>
+  <div class="a cap" id="c5">Every DM answered, every order tracked, and a <em>WhatsApp update</em> when it ships.</div>
+  <div class="a cap" id="c6">The result? Drops that sell out. And you didn’t shoot, post or reply to <em>a single thing</em>.</div>
 
   <!-- phone -->
   <div class="a pg" id="pg">
@@ -184,57 +195,56 @@
           <div class="sb"><span>9:41</span><i>●●● ▲ ▮</i></div>
           <div class="top"><span>‹</span><span class="u" id="igUser"><span id="igName">username</span><i class="a" id="igCheck" style="position:static">✓</i></span><span>⋮</span></div>
           <div class="head">
-            <div class="av" id="igAv"><img id="igAvImg" src="./sofa.jpg" alt="" style="opacity:0"></div>
+            <div class="av" id="igAv"><img id="igAvImg" src="./look1.jpg" alt="" style="opacity:0"></div>
             <div class="stats"><div><b id="nPosts">0</b><small>posts</small></div><div><b id="nFol">0</b><small>followers</small></div><div><b id="nFing">0</b><small>following</small></div></div>
           </div>
           <div class="bio">
             <b id="bName">Account Name</b>
             <span class="cat" id="bCat">Category</span>
-            <span class="ln a" id="b1" style="position:relative">🛋️ Solid wood sofas, beds &amp; dining sets</span>
-            <span class="ln a" id="b2" style="position:relative">📍 Lajpat Nagar, Delhi · free delivery in Delhi NCR</span>
-            <span class="ln a" id="b3" style="position:relative">🕘 Open daily 10 AM – 8 PM</span>
-            <span class="ln link a" id="b4" style="position:relative">💬 wa.me/sharmafurniture · Order on WhatsApp</span>
+            <span class="ln a" id="b1" style="position:relative">👗 Dresses, co-ords &amp; everyday wear</span>
+            <span class="ln a" id="b2" style="position:relative">🚚 Ships all over India · COD available</span>
+            <span class="ln a" id="b3" style="position:relative">📍 Delhi · new drop every Friday</span>
+            <span class="ln link a" id="b4" style="position:relative">💬 wa.me/nyralabel · Order on WhatsApp</span>
           </div>
           <div class="btns"><span class="f">Follow</span><span>Message</span><span>Email</span></div>
           <div class="hl">
-            <div><i id="h1i"><img src="./sofa.jpg" alt="" class="a" id="h1img" style="position:static"></i><span id="h1t">Highlight 1</span></div>
-            <div><i id="h2i"><img src="./bed.jpg" alt="" class="a" id="h2img" style="position:static"></i><span id="h2t">Highlight 2</span></div>
-            <div><i id="h3i"><img src="./dining.jpg" alt="" class="a" id="h3img" style="position:static"></i><span id="h3t">Highlight 3</span></div>
-            <div><i id="h4i"><img src="./wardrobe.jpg" alt="" class="a" id="h4img" style="position:static"></i><span id="h4t">Highlight 4</span></div>
-            <div><i id="h5i"><img src="./chair.jpg" alt="" class="a" id="h5img" style="position:static"></i><span id="h5t">Highlight 5</span></div>
+            <div><i id="h1i"><img src="./look1.jpg" alt="" class="a" id="h1img" style="position:static"></i><span id="h1t">Highlight 1</span></div>
+            <div><i id="h2i"><img src="./look2.jpg" alt="" class="a" id="h2img" style="position:static"></i><span id="h2t">Highlight 2</span></div>
+            <div><i id="h3i"><img src="./look3.jpg" alt="" class="a" id="h3img" style="position:static"></i><span id="h3t">Highlight 3</span></div>
+            <div><i id="h4i"><img src="./look5.jpg" alt="" class="a" id="h4img" style="position:static"></i><span id="h4t">Highlight 4</span></div>
+            <div><i id="h5i"><img src="./look4.jpg" alt="" class="a" id="h5img" style="position:static"></i><span id="h5t">Highlight 5</span></div>
           </div>
           <div class="tabs"><span>▦</span><span>▶</span><span>◉</span></div>
           <div class="grid">
-            <div>CONTENT 1<span class="plan a" id="p1">Signature<br>sofa</span><img src="./sofa.jpg" alt="" class="a" id="g1"></div>
-            <div>CONTENT 2<span class="plan a" id="p2">Behind the<br>workshop</span><img src="./chair.jpg" alt="" class="a" id="g2"></div>
-            <div>CONTENT 3<span class="plan a" id="p3">Customer<br>homes</span><img src="./bed.jpg" alt="" class="a" id="g3"></div>
-            <div>CONTENT 4<span class="plan a" id="p4">Weekend<br>offer</span><img src="./dining.jpg" alt="" class="a" id="g4"></div>
-            <div>CONTENT 5<span class="plan a" id="p5">Dining<br>sets</span><img src="./wardrobe.jpg" alt="" class="a" id="g5"></div>
-            <div>CONTENT 6<span class="plan a" id="p6">Reviews</span><img src="./sofa.jpg" alt="" class="a" id="g6"></div>
-            <div>CONTENT 7<span class="plan a" id="p7">Beds</span><img src="./bed.jpg" alt="" class="a" id="g7"></div>
-            <div>CONTENT 8<span class="plan a" id="p8">Before /<br>after</span><img src="./chair.jpg" alt="" class="a" id="g8"></div>
-            <div>CONTENT 9<span class="plan a" id="p9">Delivery<br>day</span><img src="./dining.jpg" alt="" class="a" id="g9"></div>
+            <div>CONTENT 1<span class="plan a" id="p1">New<br>drop</span><img src="./look1.jpg" alt="" class="a" id="g1"></div>
+            <div>CONTENT 2<span class="plan a" id="p2">Styling<br>reel</span><img src="./look2.jpg" alt="" class="a" id="g2"></div>
+            <div>CONTENT 3<span class="plan a" id="p3">Customer<br>pics</span><img src="./look3.jpg" alt="" class="a" id="g3"></div>
+            <div>CONTENT 4<span class="plan a" id="p4">Behind the<br>shoot</span><img src="./look4.jpg" alt="" class="a" id="g4"></div>
+            <div>CONTENT 5<span class="plan a" id="p5">Sale</span><img src="./look5.jpg" alt="" class="a" id="g5"></div>
+            <div>CONTENT 6<span class="plan a" id="p6">Reviews</span><img src="./look6.jpg" alt="" class="a" id="g6"></div>
+            <div>CONTENT 7<span class="plan a" id="p7">Lookbook</span><img src="./look7.jpg" alt="" class="a" id="g7"></div>
+            <div>CONTENT 8<span class="plan a" id="p8">Try-on</span><img src="./look8.jpg" alt="" class="a" id="g8"></div>
+            <div>CONTENT 9<span class="plan a" id="p9">Restock</span><img src="./look9.jpg" alt="" class="a" id="g9"></div>
           </div>
           <div class="nav"><span>⌂</span><span>⌕</span><span>⊕</span><span>▶</span><span>◯</span></div>
         </div>
 
-        <!-- Google -->
-        <div class="a ui g" id="gs" style="left:0;top:0">
+        <!-- Photoshoot (Photos app) -->
+        <div class="a ui ph" id="gs" style="left:0;top:0">
           <div class="sb"><span>9:41</span><i>●●● ▲ ▮</i></div>
-          <div class="bar"><i></i><span id="gq">furniture shop near me</span><span style="margin-left:auto;color:#4285f4">🎤</span></div>
-          <div class="chips"><span>All</span><span>Maps</span><span>Images</span><span>Shopping</span></div>
-          <div class="a map" id="gmap" style="position:relative;left:0;top:0"><div class="pin"></div></div>
-          <div class="a card" id="gcard" style="position:relative;left:0;top:0">
-            <b>Sharma Furniture</b>
-            <div class="r"><span class="star">★★★★★</span> 4.8 (212) · Furniture store · 1.2 km</div>
-            <div class="r"><em>Open</em> · Closes 8 PM</div>
-            <div class="acts"><span>Call</span><span>Directions</span><span>WhatsApp</span></div>
+          <div class="phh"><span>‹ Albums</span><b>Shoot day · Nyra</b><span>Select</span></div>
+          <div class="phg">
+            <div><img src="./before.jpg" alt="" class="bef"><span class="bad">✕ hanger shot</span><img src="./look1.jpg" alt="" class="a" id="s1"></div>
+            <div><img src="./look2.jpg" alt="" class="a" id="s2"></div>
+            <div><img src="./look3.jpg" alt="" class="a" id="s3"></div>
+            <div><img src="./look4.jpg" alt="" class="a" id="s4"></div>
+            <div><img src="./look5.jpg" alt="" class="a" id="s5"></div>
+            <div><img src="./look6.jpg" alt="" class="a" id="s6"></div>
+            <div><img src="./look7.jpg" alt="" class="a" id="s7"></div>
+            <div><img src="./look8.jpg" alt="" class="a" id="s8"></div>
+            <div><img src="./look9.jpg" alt="" class="a" id="s9"></div>
           </div>
-          <div class="a res" id="gres" style="position:relative;left:0;top:0">
-            <div class="u"><i>S</i>sharmafurniture.in</div>
-            <h4>Sharma Furniture | Solid wood furniture, made in Delhi</h4>
-            <p>Sofas, beds, dining sets and wardrobes from our own workshop. Free delivery across Delhi NCR, 10-year warranty. Order on WhatsApp.</p>
-          </div>
+          <div class="a pill t" id="shootPill" style="left:40px;top:560px">📸 24 looks · 3 hours · 1 location</div>
         </div>
 
         <!-- website -->
@@ -250,11 +260,11 @@
           <div class="sb"><span>9:41</span><i>●●● ▲ ▮</i></div>
           <div class="hd"><b>Chats</b><span class="badge" id="waBadge">0</span></div>
           <div class="search">🔍 Search</div>
-          <div class="row a" id="w1" style="position:relative;left:0;top:0"><span class="av">P</span><div class="t"><b>Priya</b><p>Price of the 3-seater sofa?</p></div><div><small>now</small><div class="n">1</div></div></div>
-          <div class="row a" id="w2" style="position:relative;left:0;top:0"><span class="av">A</span><div class="t"><b>Amit</b><p>Do you deliver to Dwarka?</p></div><div><small>now</small><div class="n">1</div></div></div>
-          <div class="row a" id="w3" style="position:relative;left:0;top:0"><span class="av">N</span><div class="t"><b>Neha</b><p>Can I visit the showroom on Sunday?</p></div><div><small>now</small><div class="n">2</div></div></div>
-          <div class="row a" id="w4" style="position:relative;left:0;top:0"><span class="av">R</span><div class="t"><b>Rahul</b><p>Do you make dining sets in sheesham?</p></div><div><small>now</small><div class="n">1</div></div></div>
-          <div class="row a" id="w5" style="position:relative;left:0;top:0"><span class="av">S</span><div class="t"><b>Sunita</b><p>Sent you the room photo, can you suggest a bed?</p></div><div><small>now</small><div class="n">3</div></div></div>
+          <div class="row a" id="w1" style="position:relative;left:0;top:0"><span class="av">A</span><div class="t"><b>Ananya</b><p>Is the terracotta dress available in M?</p></div><div><small>now</small><div class="n">1</div></div></div>
+          <div class="row a" id="w2" style="position:relative;left:0;top:0"><span class="av" style="background:#d9f5cf;color:#1f7a3f">🧾</span><div class="t"><b>Nyra Orders</b><p>Order #1042 paid · Dwarka · ships tomorrow</p></div><div><small>now</small><div class="n">1</div></div></div>
+          <div class="row a" id="w3" style="position:relative;left:0;top:0"><span class="av">R</span><div class="t"><b>Riya</b><p>Can I exchange for a smaller size?</p></div><div><small>now</small><div class="n">2</div></div></div>
+          <div class="row a" id="w4" style="position:relative;left:0;top:0"><span class="av">S</span><div class="t"><b>Sneha</b><p>Loved the co-ord! Sending a pic 📸</p></div><div><small>now</small><div class="n">1</div></div></div>
+          <div class="row a" id="w5" style="position:relative;left:0;top:0"><span class="av" style="background:#d9f5cf;color:#1f7a3f">🚚</span><div class="t"><b>Nyra Orders</b><p>Order #1043 shipped · Noida · tracking sent</p></div><div><small>now</small><div class="n">3</div></div></div>
         </div>
       </div>
     </div>
@@ -262,31 +272,31 @@
 
   <!-- ads overlays -->
   <div class="a ad" id="ad1" style="left:60px;top:980px">
-    <div class="hd"><i></i><div><b>sharmafurniture</b><small>Sponsored</small></div></div>
-    <div class="im"><img src="./sofa.jpg" alt=""><em>Free delivery in Delhi NCR</em></div>
+    <div class="hd"><i></i><div><b>nyra.label</b><small>Sponsored</small></div></div>
+    <div class="im"><img src="./look3.jpg" alt=""><em>New drop · Free shipping</em></div>
     <div class="cta">Send WhatsApp message <span>›</span></div>
-    <div class="cap"><b>sharmafurniture</b> Solid wood sofas from our Delhi workshop. 10-year warranty.</div>
+    <div class="cap"><b>nyra.label</b> Everyday dresses, made in Delhi. 7-day exchange, COD available.</div>
   </div>
-  <div class="a pill t" id="pill1" style="left:600px;top:1180px">📍 Within 10 km of the shop</div>
-  <div class="a pill" id="pill2" style="left:560px;top:1290px">🛋️ Looking for a sofa this month</div>
+  <div class="a pill t" id="pill1" style="left:560px;top:1180px">👩 Women 18–35 · Delhi NCR</div>
+  <div class="a pill" id="pill2" style="left:520px;top:1290px">👀 Viewed a dress, didn’t buy</div>
 
   <!-- result -->
   <div class="a result" id="res" style="left:72px;top:600px">
-    <h2>You make the furniture.<br><em>We bring the customers.</em></h2>
-    <p>No posting. No chasing leads. No tech headaches. One team, one fixed fee, start to end.</p>
-    <div class="kpis"><div class="kpi"><b id="kEnq">0</b><small>enquiries in 30 days</small></div><div class="kpi"><b id="kVis">0</b><small>website visitors</small></div><div class="kpi"><b style="color:var(--bone)">0</b><small>posts you had to make</small></div></div>
+    <h2>You make the clothes.<br><em>We bring the customers.</em></h2>
+    <p>Photoshoot, Instagram, store, ads and order updates. One team, one fixed fee, start to end.</p>
+    <div class="kpis"><div class="kpi"><b id="kEnq">0</b><small>orders in 30 days</small></div><div class="kpi"><b id="kVis">0</b><small>people reached</small></div><div class="kpi"><b style="color:var(--bone)">0</b><small>posts you had to make</small></div></div>
   </div>
-  <div class="a note mono" id="resNote">Example makeover · results vary by business</div>
+  <div class="a note mono" id="resNote">Example makeover · results vary by brand</div>
 
   <!-- cta -->
   <div class="a ctaw" id="cta" style="left:72px;top:560px">
     <div class="wal"><svg width="72" height="72" viewBox="0 0 24 24" fill="#062b17"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.23 8.24m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28"/></svg></div>
-    <div class="cap" style="position:static;text-align:center;font-size:52px;line-height:1.15;margin-bottom:30px">Want this for <em>your</em> shop?</div>
+    <div class="cap" style="position:static;text-align:center;font-size:52px;line-height:1.15;margin-bottom:30px">Want this for <em>your</em> brand?</div>
     <div class="ctac a" id="cta1" style="position:relative;left:0;top:0"><span class="num">1</span><div><b>@webrick.in</b><small>Profile → WhatsApp us</small></div><span class="tag">Link in bio</span></div>
-    <div class="ctac a" id="cta2" style="position:relative;left:0;top:0"><span class="num">2</span><div><b>+91 90348 89399</b><small>Send the word “SHOP” on WhatsApp</small></div><span class="tag" style="background:var(--wa)">WhatsApp</span></div>
+    <div class="ctac a" id="cta2" style="position:relative;left:0;top:0"><span class="num">2</span><div><b>+91 90348 89399</b><small>Send the word “BRAND” on WhatsApp</small></div><span class="tag" style="background:var(--wa)">WhatsApp</span></div>
   </div>
   <div class="a foot" id="foot">Which business should we make over next? <b>Tell me in the comments 👇</b></div>
-  <div class="a ep mono" id="ep">Ep. 01 · Furniture shop makeover · Webrick</div>
+  <div class="a ep mono" id="ep">Ep. 01 · Clothing brand makeover · Webrick</div>
 </div>
 
 <script>
@@ -321,13 +331,13 @@
   const SCREEN = (id, at, until) => { SHOW(id, at); if (until) HIDE(id, until) }
 
   // initial state
-  ;['c0','c1','c2','c3','c4','c5','c6','gs','site','wal','ad1','pill1','pill2','res','resNote','cta','foot','ep','ring','w1','w2','w3','w4','w5','gmap','gcard','gres','b1','b2','b3','b4','cta1','cta2','igCheck'].forEach(id => INIT(id, 'o', 0))
+  ;['c0','c1','c2','c3','c4','c5','c6','gs','site','wal','ad1','pill1','pill2','res','resNote','cta','foot','ep','ring','w1','w2','w3','w4','w5','b1','b2','b3','b4','cta1','cta2','igCheck','s1','s2','s3','s4','s5','s6','s7','s8','s9','shootPill'].forEach(id => INIT(id, 'o', 0))
   ;['p1','p2','p3','p4','p5','p6','p7','p8','p9','g1','g2','g3','g4','g5','g6','g7','g8','g9','h1img','h2img','h3img','h4img','h5img','igAvImg'].forEach(id => INIT(id, 'o', 0))
   INIT('pg', 'shk', 0)
 
   // scene start times (fitted to the voice-over clips) and overall length
-  const S = [0.0, 5.91, 18.08, 28.38, 40.82, 48.48, 56.44, 65.08]
-  const END = 77.8
+  const S = [0.0, 4.4, 14.64, 25.5, 34.87, 44.22, 52.76, 62.15]
+  const END = 75.6
 
   // phone enters
   tw('pg', 'o', 0, .6, 0, 1, 'out'); tw('pg', 'y', 0, .9, 120, 0, 'expo'); tw('pg', 's', 0, .9, .92, 1, 'expo')
@@ -335,29 +345,29 @@
   // HOOK: empty profile
   CAP(0, .25, S[1] - .2)
 
-  // GOOGLE
+  // PHOTOSHOOT
   SCREEN('gs', S[1], S[2] + .1)
-  TYPE('gq', S[1] + .3, 20)
-  IN('gmap', S[1] + 1.8, 16, .4); IN('gcard', S[1] + 2.4, 16, .45); IN('gres', S[1] + 3.4, 16, .45)
+  ;['s1','s2','s3','s4','s5','s6','s7','s8','s9'].forEach((id, i) => tw(id, 'o', S[1] + 1.6 + i * .42, .35, 0, 1, 'out'))
+  POP('shootPill', S[1] + 6.2, .7, .45); OUT('shootPill', S[2] - .3, .25)
   CAP(1, S[1] - .1, S[2] - .2)
 
-  // WEBSITE
-  SCREEN('site', S[2], S[3] + .1)
-  tw('siteImg', 'y', S[2] + .8, Math.max(4, (S[3] - S[2]) - 2.2), 0, -300, 'inout')
-  SHOW('fab', S[2])
-  ;[S[2] + 2.6, S[2] + 3.9, S[2] + 5.2, S[2] + 6.5].forEach(at => { tw('ring', 'o', at, .1, 0, .9, 'out'); tw('ring', 'o', at + .1, .9, .9, 0, 'out'); tw('ring', 's', at, 1.0, 1, 1.9, 'out') })
-  CAP(2, S[2] + .1, S[3] - .2)
-
   // INSTAGRAM MAKEOVER (the empty profile is the base screen again)
+  CAP(2, S[2] + .1, S[3] - .2)
+  TYPE('igName', S[2] + .4, 18, 'nyra.label', 'username'); SHOW('igCheck', S[2] + 1.4)
+  TYPE('bName', S[2] + 1.5, 24, 'Nyra | Everyday dresses', 'Account Name'); TYPE('bCat', S[2] + 2.4, 24, 'Clothing brand', 'Category')
+  tw('igAvImg', 'o', S[2] + 2.2, .3, 0, 1, 'out'); POP('igAv', S[2] + 2.2, .6, .5)
+  IN('b1', S[2] + 3.2, 8, .3); IN('b2', S[2] + 3.8, 8, .3); IN('b3', S[2] + 4.4, 8, .3); IN('b4', S[2] + 5.0, 8, .3)
+  ;['New drop','Dresses','Co-ords','Sizes','Reviews'].forEach((label, i) => { const h = 'h' + (i + 1); TYPE(h + 't', S[2] + 6.0 + i * .22, 30, label, 'Highlight ' + (i + 1)); tw(h + 'img', 'o', S[2] + 6.0 + i * .22, .25, 0, 1, 'out') })
+  ;['p1','p2','p3','p4','p5','p6','p7','p8','p9'].forEach((p, i) => POP(p, S[2] + 7.6 + i * .16, .7, .3))
+  ;['g1','g2','g3','g4','g5','g6','g7','g8','g9'].forEach((g, i) => tw(g, 'o', S[2] + 9.6 + i * .12, .3, 0, 1, 'out'))
+  tw('nPosts', 'n', S[2] + 9.6, 1.4, 0, 36, 'out'); tw('nFol', 'nk', S[2] + 9.8, 1.6, 0, 24300, 'out'); tw('nFing', 'n', S[2] + 9.8, 1.2, 0, 180, 'out')
+
+  // WEBSITE
+  SCREEN('site', S[3], S[4] + .1)
+  tw('siteImg', 'y', S[3] + .8, Math.max(4, (S[4] - S[3]) - 2.2), 0, -300, 'inout')
+  SHOW('fab', S[3])
+  ;[S[3] + 2.6, S[3] + 3.9, S[3] + 5.2, S[3] + 6.5].forEach(at => { tw('ring', 'o', at, .1, 0, .9, 'out'); tw('ring', 'o', at + .1, .9, .9, 0, 'out'); tw('ring', 's', at, 1.0, 1, 1.9, 'out') })
   CAP(3, S[3] + .1, S[4] - .2)
-  TYPE('igName', S[3] + .4, 18, 'sharmafurniture', 'username'); SHOW('igCheck', S[3] + 1.4)
-  TYPE('bName', S[3] + 1.5, 24, 'Sharma Furniture | Delhi', 'Account Name'); TYPE('bCat', S[3] + 2.4, 24, 'Furniture store', 'Category')
-  tw('igAvImg', 'o', S[3] + 2.2, .3, 0, 1, 'out'); POP('igAv', S[3] + 2.2, .6, .5)
-  IN('b1', S[3] + 3.2, 8, .3); IN('b2', S[3] + 3.8, 8, .3); IN('b3', S[3] + 4.4, 8, .3); IN('b4', S[3] + 5.0, 8, .3)
-  ;['Sofas','Beds','Dining','Reviews','Visit'].forEach((label, i) => { const h = 'h' + (i + 1); TYPE(h + 't', S[3] + 6.0 + i * .22, 30, label, 'Highlight ' + (i + 1)); tw(h + 'img', 'o', S[3] + 6.0 + i * .22, .25, 0, 1, 'out') })
-  ;['p1','p2','p3','p4','p5','p6','p7','p8','p9'].forEach((p, i) => POP(p, S[3] + 7.6 + i * .16, .7, .3))
-  ;['g1','g2','g3','g4','g5','g6','g7','g8','g9'].forEach((g, i) => tw(g, 'o', S[3] + 9.6 + i * .12, .3, 0, 1, 'out'))
-  tw('nPosts', 'n', S[3] + 9.6, 1.4, 0, 48, 'out'); tw('nFol', 'nk', S[3] + 9.8, 1.6, 0, 11700, 'out'); tw('nFing', 'n', S[3] + 9.8, 1.2, 0, 212, 'out')
 
   // ADS
   CAP(4, S[4] + .1, S[5] - .2)
@@ -368,14 +378,14 @@
   // WHATSAPP
   SCREEN('wal', S[5], S[6] + .1)
   ;['w1','w2','w3','w4','w5'].forEach((w, i) => { IN(w, S[5] + .6 + i * .7, 14, .35); tw('pg', 'shk', S[5] + .6 + i * .7, .3, 4, 0, 'out') })
-  tw('waBadge', 'n', S[5] + .6, 5.0, 0, 41, 'out')
+  tw('waBadge', 'n', S[5] + .6, 5.0, 0, 128, 'out')
   CAP(5, S[5] + .1, S[6] - .2)
 
   // RESULT
   tw('pg', 'o', S[6] - .1, .5, 1, .18, 'out'); tw('pg', 'blur', S[6] - .1, .5, 0, 10, 'out'); tw('pg', 's', S[6] - .1, .6, 1, .96, 'out')
   CAP(6, S[6] + .1, S[7] - .2)
   POP('res', S[6] + .6, .92, .5); tw('res', 'y', S[6] + .6, .5, 30, 0, 'expo')
-  tw('kEnq', 'n', S[6] + 1.1, 1.4, 0, 41, 'out'); tw('kVis', 'n', S[6] + 1.1, 1.4, 0, 2380, 'out')
+  tw('kEnq', 'n', S[6] + 1.1, 1.4, 0, 128, 'out'); tw('kVis', 'n', S[6] + 1.1, 1.4, 0, 84000, 'out')
   IN('resNote', S[6] + 1.9, 8, .4)
   OUT('res', S[7] - .2, .35); OUT('resNote', S[7] - .2, .3)
   tw('pg', 'o', S[7] - .2, .3, .18, 0, 'in')
