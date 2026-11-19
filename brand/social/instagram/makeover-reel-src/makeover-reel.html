@@ -191,7 +191,7 @@
             <b id="bName">Account Name</b>
             <span class="cat" id="bCat">Category</span>
             <span class="ln a" id="b1" style="position:relative">🛋️ Solid wood sofas, beds &amp; dining sets</span>
-            <span class="ln a" id="b2" style="position:relative">📍 C-Scheme, Jaipur · free delivery in city</span>
+            <span class="ln a" id="b2" style="position:relative">📍 Lajpat Nagar, Delhi · free delivery in Delhi NCR</span>
             <span class="ln a" id="b3" style="position:relative">🕘 Open daily 10 AM – 8 PM</span>
             <span class="ln link a" id="b4" style="position:relative">💬 wa.me/sharmafurniture · Order on WhatsApp</span>
           </div>
@@ -232,8 +232,8 @@
           </div>
           <div class="a res" id="gres" style="position:relative;left:0;top:0">
             <div class="u"><i>S</i>sharmafurniture.in</div>
-            <h4>Sharma Furniture | Solid wood furniture, made in Jaipur</h4>
-            <p>Sofas, beds, dining sets and wardrobes from our own workshop. Free delivery in Jaipur, 10-year warranty. Order on WhatsApp.</p>
+            <h4>Sharma Furniture | Solid wood furniture, made in Delhi</h4>
+            <p>Sofas, beds, dining sets and wardrobes from our own workshop. Free delivery across Delhi NCR, 10-year warranty. Order on WhatsApp.</p>
           </div>
         </div>
 
@@ -251,7 +251,7 @@
           <div class="hd"><b>Chats</b><span class="badge" id="waBadge">0</span></div>
           <div class="search">🔍 Search</div>
           <div class="row a" id="w1" style="position:relative;left:0;top:0"><span class="av">P</span><div class="t"><b>Priya</b><p>Price of the 3-seater sofa?</p></div><div><small>now</small><div class="n">1</div></div></div>
-          <div class="row a" id="w2" style="position:relative;left:0;top:0"><span class="av">A</span><div class="t"><b>Amit</b><p>Do you deliver to Vaishali Nagar?</p></div><div><small>now</small><div class="n">1</div></div></div>
+          <div class="row a" id="w2" style="position:relative;left:0;top:0"><span class="av">A</span><div class="t"><b>Amit</b><p>Do you deliver to Dwarka?</p></div><div><small>now</small><div class="n">1</div></div></div>
           <div class="row a" id="w3" style="position:relative;left:0;top:0"><span class="av">N</span><div class="t"><b>Neha</b><p>Can I visit the showroom on Sunday?</p></div><div><small>now</small><div class="n">2</div></div></div>
           <div class="row a" id="w4" style="position:relative;left:0;top:0"><span class="av">R</span><div class="t"><b>Rahul</b><p>Do you make dining sets in sheesham?</p></div><div><small>now</small><div class="n">1</div></div></div>
           <div class="row a" id="w5" style="position:relative;left:0;top:0"><span class="av">S</span><div class="t"><b>Sunita</b><p>Sent you the room photo, can you suggest a bed?</p></div><div><small>now</small><div class="n">3</div></div></div>
@@ -263,9 +263,9 @@
   <!-- ads overlays -->
   <div class="a ad" id="ad1" style="left:60px;top:980px">
     <div class="hd"><i></i><div><b>sharmafurniture</b><small>Sponsored</small></div></div>
-    <div class="im"><img src="./sofa.jpg" alt=""><em>Free delivery in Jaipur</em></div>
+    <div class="im"><img src="./sofa.jpg" alt=""><em>Free delivery in Delhi NCR</em></div>
     <div class="cta">Send WhatsApp message <span>›</span></div>
-    <div class="cap"><b>sharmafurniture</b> Solid wood sofas from our Jaipur workshop. 10-year warranty.</div>
+    <div class="cap"><b>sharmafurniture</b> Solid wood sofas from our Delhi workshop. 10-year warranty.</div>
   </div>
   <div class="a pill t" id="pill1" style="left:600px;top:1180px">📍 Within 10 km of the shop</div>
   <div class="a pill" id="pill2" style="left:560px;top:1290px">🛋️ Looking for a sofa this month</div>
@@ -326,8 +326,8 @@
   INIT('pg', 'shk', 0)
 
   // scene start times (fitted to the voice-over clips) and overall length
-  const S = [0.0, 6.18, 16.44, 25.98, 38.84, 47.1, 56.13, 65.19]
-  const END = 77.9
+  const S = [0.0, 5.91, 18.08, 28.38, 40.82, 48.48, 56.44, 65.08]
+  const END = 77.8
 
   // phone enters
   tw('pg', 'o', 0, .6, 0, 1, 'out'); tw('pg', 'y', 0, .9, 120, 0, 'expo'); tw('pg', 's', 0, .9, .92, 1, 'expo')
@@ -351,7 +351,7 @@
   // INSTAGRAM MAKEOVER (the empty profile is the base screen again)
   CAP(3, S[3] + .1, S[4] - .2)
   TYPE('igName', S[3] + .4, 18, 'sharmafurniture', 'username'); SHOW('igCheck', S[3] + 1.4)
-  TYPE('bName', S[3] + 1.5, 24, 'Sharma Furniture | Jaipur', 'Account Name'); TYPE('bCat', S[3] + 2.4, 24, 'Furniture store', 'Category')
+  TYPE('bName', S[3] + 1.5, 24, 'Sharma Furniture | Delhi', 'Account Name'); TYPE('bCat', S[3] + 2.4, 24, 'Furniture store', 'Category')
   tw('igAvImg', 'o', S[3] + 2.2, .3, 0, 1, 'out'); POP('igAv', S[3] + 2.2, .6, .5)
   IN('b1', S[3] + 3.2, 8, .3); IN('b2', S[3] + 3.8, 8, .3); IN('b3', S[3] + 4.4, 8, .3); IN('b4', S[3] + 5.0, 8, .3)
   ;['Sofas','Beds','Dining','Reviews','Visit'].forEach((label, i) => { const h = 'h' + (i + 1); TYPE(h + 't', S[3] + 6.0 + i * .22, 30, label, 'Highlight ' + (i + 1)); tw(h + 'img', 'o', S[3] + 6.0 + i * .22, .25, 0, 1, 'out') })

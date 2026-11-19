@@ -51,4 +51,4 @@ Caption for the post
 > Which business should we make over next? Tell me in the comments 👇
 >
 > Ep. 01 | Furniture shop makeover
-> #SmallBusinessIndia #FurnitureShop #JaipurBusiness #DigitalMarketing #Webrick
+> #SmallBusinessIndia #FurnitureShop #DelhiBusiness #DigitalMarketing #Webrick
